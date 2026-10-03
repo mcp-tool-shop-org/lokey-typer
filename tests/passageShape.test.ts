@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { findExercise } from '../src/content/loadPacks'
 import { isScreenReaderSafePassage, tagMatches, weaknessForTag } from '../src/lib/passageShape'
 
 describe('passage shape', () => {
@@ -33,14 +34,38 @@ describe('passage shape', () => {
     ).toBe(true)
   })
 
-  it('drops a passage that runs longer than a minute', () => {
+  it('keeps a short line when the estimate is longer than a minute', () => {
     expect(
       isScreenReaderSafePassage({
         tags: ['sentences'],
         text: 'Slow is smooth.',
         estimated_seconds: 90,
       }),
+    ).toBe(true)
+  })
+
+  it('drops a single line longer than 160 characters even when the estimate is 30 seconds', () => {
+    expect(
+      isScreenReaderSafePassage({
+        tags: ['sentences'],
+        text: 'a'.repeat(160),
+        estimated_seconds: 30,
+      }),
+    ).toBe(true)
+    expect(
+      isScreenReaderSafePassage({
+        tags: ['sentences'],
+        text: 'a'.repeat(161),
+        estimated_seconds: 30,
+      }),
     ).toBe(false)
+  })
+
+  it('keeps the one-sentence competitive sprint whose estimate is 120 seconds', () => {
+    const exercise = findExercise('competitive_mixed_01_001')
+    expect(exercise).not.toBeNull()
+    expect(exercise!.estimated_seconds).toBe(120)
+    expect(isScreenReaderSafePassage(exercise!)).toBe(true)
   })
 
   it('keeps a passage when text, text_short, and text_long are the same single line', () => {
