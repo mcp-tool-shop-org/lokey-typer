@@ -5,6 +5,7 @@ import {
   type AmbientTrack,
 } from '../ambientManifest'
 import { AmbientHistoryV3 } from './ambientHistoryV3'
+import { LOOP_JOIN_SECONDS, repairLoopHead } from './loopJoin'
 import { LRUBufferCache } from './lruBufferCache'
 
 // ---------------------------------------------------------------------------
@@ -39,6 +40,16 @@ function ramp(param: AudioParam, ctx: AudioContext, value: number, seconds: numb
   param.cancelScheduledValues(t0)
   param.setValueAtTime(param.value, t0)
   param.linearRampToValueAtTime(value, t0 + Math.max(0.01, seconds))
+}
+
+function withLoopJoin(ctx: AudioContext, buf: AudioBuffer): AudioBuffer {
+  const fadeSamples = Math.floor(LOOP_JOIN_SECONDS * buf.sampleRate)
+  if (fadeSamples < 2 || buf.length <= fadeSamples * 2) return buf
+  const copy = ctx.createBuffer(buf.numberOfChannels, buf.length, buf.sampleRate)
+  for (let c = 0; c < buf.numberOfChannels; c++) {
+    copy.getChannelData(c).set(repairLoopHead(buf.getChannelData(c), fadeSamples))
+  }
+  return copy
 }
 
 async function fetchDecode(ctx: AudioContext, url: string): Promise<AudioBuffer | null> {
@@ -83,6 +94,8 @@ export class AmbientPlayerV3 {
   private preloadedBuffer: AudioBuffer | null = null
   private started = false
   private pausedByVisibility = false
+  /** Bumped by stop and by turning ambient off, so an in-flight load cannot start. */
+  private playbackGeneration = 0
 
   // Timers
   private rotationTimer: number | null = null
@@ -103,23 +116,33 @@ export class AmbientPlayerV3 {
       console.log('[ambient] start() skipped — already started')
       return
     }
-    this.started = true
+    const generation = this.playbackGeneration
     console.log('[ambient] start() — resuming audio context')
 
-    await resumeAudioContext()
-    await this.ensureManifestLoaded()
+    try {
+      await resumeAudioContext()
+    } catch (err) {
+      console.warn('[ambient] audio context resume failed', err)
+      return
+    }
+    if (generation !== this.playbackGeneration) return
+    if (!getAudioContext()) return
 
+    this.started = true
+    await this.ensureManifestLoaded()
     const tracks = this.getFilteredTracks()
     console.log('[ambient] manifest loaded, %d tracks, enabled=%s, shouldPlay=%s', tracks.length, this.enabled, this.shouldPlay())
 
-    if (!this.shouldPlay()) return
+    if (generation !== this.playbackGeneration || !this.shouldPlay()) return
 
     await this.playRandomTrack()
+    if (generation !== this.playbackGeneration) return
     this.scheduleRotation()
   }
 
   /** Fade out and disconnect everything. */
   stop(): void {
+    this.playbackGeneration += 1
     this.fadeOutAndClear()
     this.clearRotationTimer()
     this.started = false
@@ -142,8 +165,9 @@ export class AmbientPlayerV3 {
     // Volume change: smooth ramp.
     this.applyMasterVolume(0.4)
 
-    // Toggled off: fade out.
+    // Toggled off: fade out, and drop any load that is already in flight.
     if (wasEnabled && !nowEnabled) {
+      this.playbackGeneration += 1
       this.fadeOutAndClear()
       this.clearRotationTimer()
       return
@@ -310,7 +334,7 @@ export class AmbientPlayerV3 {
     if (!g) return null
 
     const source = g.ctx.createBufferSource()
-    source.buffer = buf
+    source.buffer = withLoopJoin(g.ctx, buf)
     source.loop = true
 
     const gain = g.ctx.createGain()
@@ -318,6 +342,10 @@ export class AmbientPlayerV3 {
 
     source.connect(gain)
     gain.connect(g.master)
+    source.onended = () => {
+      try { source.disconnect() } catch { /* already stopped */ }
+      try { gain.disconnect() } catch { /* already stopped */ }
+    }
 
     // Randomized loop start offset (0–8s).
     const offset = clamp(Math.random() * 8, 0, Math.max(0, buf.duration - 0.01))
@@ -343,15 +371,23 @@ export class AmbientPlayerV3 {
   }
 
   private async playRandomTrack(): Promise<void> {
+    const generation = this.playbackGeneration
     await this.ensureManifestLoaded()
+    if (generation !== this.playbackGeneration || !this.shouldPlay()) return
+
     const track = this.pickRandomTrack()
     if (!track) { console.warn('[ambient] no track picked'); return }
 
     const buf = await this.getBuffer(track)
+    if (generation !== this.playbackGeneration || !this.shouldPlay()) return
     if (!buf) { console.warn('[ambient] failed to decode buffer for %s', track.path); return }
 
     const slot = this.createSlot(track, buf, 1)
     if (!slot) { console.warn('[ambient] failed to create slot'); return }
+    if (generation !== this.playbackGeneration || !this.shouldPlay()) {
+      this.stopSlot(slot, 0.05)
+      return
+    }
 
     // If something was already playing, stop it cleanly.
     if (this.currentSlot) {
@@ -369,6 +405,7 @@ export class AmbientPlayerV3 {
   }
 
   private async preloadNext(): Promise<void> {
+    const generation = this.playbackGeneration
     const track = this.pickRandomTrack()
     if (!track) {
       this.preloadedTrack = null
@@ -377,15 +414,18 @@ export class AmbientPlayerV3 {
     }
 
     const buf = await this.getBuffer(track)
+    if (generation !== this.playbackGeneration) return
     this.preloadedTrack = track
     this.preloadedBuffer = buf
   }
 
   private async rotate(): Promise<void> {
+    const generation = this.playbackGeneration
     if (!this.shouldPlay()) return
     if (this.reducedMotion) return
 
     await this.ensureManifestLoaded()
+    if (generation !== this.playbackGeneration || !this.shouldPlay()) return
 
     // Use preloaded if available and still matches category.
     let nextTrack = this.preloadedTrack
@@ -399,8 +439,11 @@ export class AmbientPlayerV3 {
       nextTrack = this.pickRandomTrack()
       if (!nextTrack) return
       nextBuf = await this.getBuffer(nextTrack)
+      if (generation !== this.playbackGeneration || !this.shouldPlay()) return
       if (!nextBuf) return
     }
+
+    if (generation !== this.playbackGeneration || !this.shouldPlay()) return
 
     const ctx = getAudioContext()
     if (!ctx) return
@@ -408,6 +451,10 @@ export class AmbientPlayerV3 {
     // Create new slot at gain 0, then crossfade.
     const newSlot = this.createSlot(nextTrack, nextBuf, 0)
     if (!newSlot) return
+    if (generation !== this.playbackGeneration || !this.shouldPlay()) {
+      this.stopSlot(newSlot, 0.05)
+      return
+    }
 
     const fadeSec = CROSSFADE_SEC_MIN + Math.random() * (CROSSFADE_SEC_MAX - CROSSFADE_SEC_MIN)
 

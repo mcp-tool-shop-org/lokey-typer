@@ -4,7 +4,7 @@ import path from 'node:path'
 const ROOT = process.cwd()
 
 const MANIFEST_PATH = path.join(ROOT, 'public', 'audio', 'ambient', 'manifest.json')
-const ENGINE_PATH = path.join(ROOT, 'src', 'lib', 'ambient', 'ambientEngine.ts')
+const ENGINE_PATH = path.join(ROOT, 'src', 'lib', 'ambient', 'ambientPlayerV3.ts')
 
 function readText(p) {
   try {
@@ -31,32 +31,33 @@ function ok(msg) {
   console.log(`OK: ${msg}`)
 }
 
-const strict = process.argv.includes('--strict')
-
 console.log('--- QA: Sound Design Manifesto Gates ---')
 
-// Gate 1: Engine numeric constraints (macro interval, safe window, crossfade).
+// Gate 1: the constants AmbientPlayerV3 actually ships.
 const engine = readText(ENGINE_PATH)
 if (!engine) {
-  if (strict) fail(`Cannot read ${ENGINE_PATH}`)
-  else console.log(`WARN: Cannot read ${ENGINE_PATH}; skipping engine checks`)
+  fail(`Cannot read ${ENGINE_PATH}`)
 } else {
   const checks = [
     {
-      name: 'Macro evolution interval randomized 3–6 minutes',
-      re: /\bminutes\s*=\s*3\s*\+\s*this\.rand\(\)\s*\*\s*3\b/,
+      name: 'Rotation interval is 5–10 minutes',
+      re: /const ROTATION_MIN_MS = 5 \* 60_000\b[\s\S]*const ROTATION_MAX_MS = 10 \* 60_000\b/,
     },
     {
-      name: 'No evolution within 20 seconds of exercise end',
-      re: /\bremainingMs\s*>\s*20_000\b/,
+      name: 'Track crossfade is 6–8 seconds',
+      re: /const CROSSFADE_SEC_MIN = 6\b[\s\S]*const CROSSFADE_SEC_MAX = 8\b/,
     },
     {
-      name: 'Layer swap crossfade 12–25 seconds',
-      re: /fadeSeconds:\s*12\s*\+\s*this\.rand\(\)\s*\*\s*13\s*,/,
+      name: 'Ambient master is capped at 0.7',
+      re: /const MAX_VOLUME = 0\.7\b/,
     },
     {
-      name: 'Ambient capped at 70% of typing volume when typing SFX enabled',
-      re: /typingCap\s*=\s*prefs\.soundEnabled\s*\?\s*clamp\(prefs\.volume,\s*0,\s*1\)\s*\*\s*0\.7\s*:/,
+      name: 'Reduced motion skips rotation',
+      re: /if \(this\.reducedMotion\) return/,
+    },
+    {
+      name: 'Screen reader mode keeps ambient off',
+      re: /return this\.enabled && !this\.screenReaderMode && !this\.pausedByVisibility/,
     },
   ]
 
@@ -66,17 +67,17 @@ if (!engine) {
   }
 }
 
-// Gate 2: Manifest metadata constraints (LUFS).
+// Gate 2: version 3 tracks carry lufs_i. A stems array is the old generator shape.
 if (!fs.existsSync(MANIFEST_PATH)) {
-  if (strict) fail(`Manifest missing: ${MANIFEST_PATH}`)
-  else console.log('WARN: manifest not found; skipping stem LUFS checks')
+  fail(`Manifest missing: ${MANIFEST_PATH}`)
 } else {
   const manifest = parseJson(MANIFEST_PATH)
-  const stems = Array.isArray(manifest?.stems) ? manifest.stems : []
+  const tracks = Array.isArray(manifest?.tracks) ? manifest.tracks : null
 
-  if (stems.length === 0) {
-    if (strict) fail('Manifest has zero stems')
-    else console.log('WARN: manifest has zero stems; LUFS checks not applicable')
+  if (!tracks) {
+    fail('Manifest has no tracks array (version 3). A stems array is not the live catalog.')
+  } else if (tracks.length === 0) {
+    fail('Manifest has zero tracks')
   } else {
     // Acceptance: –30 to –34 LUFS with ±1 LUFS tolerance => [-35, -29]
     const min = -35
@@ -85,25 +86,25 @@ if (!fs.existsSync(MANIFEST_PATH)) {
     let missing = 0
     let outOfRange = 0
 
-    for (const s of stems) {
+    for (const s of tracks) {
       const id = String(s?.id ?? '')
       const lufs = Number(s?.lufs_i)
       if (!Number.isFinite(lufs)) {
         missing += 1
-        console.log(`FAIL: stem missing lufs_i: ${id || '(unknown id)'}`)
+        console.log(`FAIL: track missing lufs_i: ${id || '(unknown id)'}`)
         continue
       }
       if (lufs < min || lufs > max) {
         outOfRange += 1
-        console.log(`FAIL: stem lufs_i out of range [-35, -29]: ${id || '(unknown id)'} => ${lufs}`)
+        console.log(`FAIL: track lufs_i out of range [-35, -29]: ${id || '(unknown id)'} => ${lufs}`)
       }
     }
 
-    if (missing === 0) ok('All stems provide lufs_i metadata')
-    else fail(`${missing} stem(s) missing lufs_i metadata`)
+    if (missing === 0) ok('All tracks provide lufs_i metadata')
+    else fail(`${missing} track(s) missing lufs_i metadata`)
 
-    if (outOfRange === 0) ok('All stems lufs_i within acceptance range [-35, -29]')
-    else fail(`${outOfRange} stem(s) out of LUFS range [-35, -29]`)
+    if (outOfRange === 0) ok('All tracks lufs_i within acceptance range [-35, -29]')
+    else fail(`${outOfRange} track(s) out of LUFS range [-35, -29]`)
   }
 }
 

@@ -43,7 +43,7 @@ Rhythmic or periodic audio can entrain attention and motor timing. For a typing 
 **Implementation guardrails**
 
 - Prefer aperiodic modulation (noise / random walk) over fixed-frequency LFOs.
-- Macro evolution intervals are randomized (engine schedules ~3–6 minutes).
+- Macro evolution intervals are randomized. AmbientPlayerV3 schedules the next track every 5–10 minutes, and crossfades for 6–8 seconds.
 
 **Defensible claim**
 
@@ -175,7 +175,7 @@ Ambient must not react to typing rhythm.
 
 ### 4.2 Reduced motion / sensory sensitivity
 
-- Reduced Motion disables macro evolution (micro drift only).
+- Reduced Motion turns track rotation off.
 - Ambient can still be used, but should remain conservative.
 
 ### 4.3 Cognitive predictability

@@ -1,10 +1,13 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react-swc'
 import { VitePWA } from 'vite-plugin-pwa'
 import { fileURLToPath } from 'node:url'
 
 // https://vite.dev/config/
 export default defineConfig({
+  test: {
+    exclude: ['**/.swarm/**', '**/node_modules/**', '**/dist/**'],
+  },
   base: '/lokey-typer/',
   resolve: {
     alias: {

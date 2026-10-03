@@ -187,17 +187,17 @@ These are engineering gates, not suggestions.
 ### A. Loudness & Mixing
 
 - **Integrated loudness per ambient stem**: –30 to –34 LUFS (±1 LUFS tolerance)
-- **Ambient master RMS ≤ 70% of typing SFX RMS**
+- **Ambient master cap**: 0.7, applied in AmbientPlayerV3 after the quadratic volume curve. This is a cap on full scale, not a measurement against the typing bus.
 - **Gain drift per layer**: ≤ ±2 dB, time constant ≥ 30 seconds
 
 ### B. Modulation & Evolution
 
 - No fixed-frequency LFOs
 - All modulation sources must be aperiodic
-- **Macro evolution interval**: ≥ 3 minutes, ≤ 6 minutes (randomized)
-- **Crossfade duration for layer swaps**: 12–25 seconds
+- **Track rotation**: 5–10 minutes, randomized (`ROTATION_MIN_MS` / `ROTATION_MAX_MS`)
+- **Crossfade when the track changes**: 6–8 seconds
 - **Max layers swapped simultaneously**: 1
-- **No evolution within 20 seconds of exercise end**
+- Rotation does not watch the exercise clock. Reduced motion turns rotation off.
 
 ### C. Novelty / Repetition
 

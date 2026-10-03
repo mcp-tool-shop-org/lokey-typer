@@ -1,32 +1,31 @@
-# LoKey-Typer
+# lokey-typer
 
-## What This Does
+Calm typing practice. The sound is the product: a mechanical keybed, other keyboard voices, and ambient beds quiet enough to type under.
 
-A keyboard typing automation and key binding tool for Windows.
-Provides keyboard simulation, macro recording, and hotkey support.
+## What it is
 
-## Architecture
+A Vite + React app, plus a WinUI shell that hosts it for Windows. No accounts. Session data stays on the device.
 
-- Windows-native keyboard input simulation
-- Macro recording and playback
-- Hotkey registration and event handling
-- Configuration via JSON hotkey maps
+Modes are Focus, Real Life, Competitive, and a daily set.
 
-## Building & Deployment
+## Sound
 
-- GitHub Pages deployment via npm build
-- Static site generation from source
-- Automated CI/CD on push to main
+- Keystrokes: `src/lib/audio.ts`
+- Ambient: `src/lib/ambient/ambientPlayerV3.ts`
+- Live catalog: `public/audio/ambient/manifest.json` (version 3, a `tracks` array)
+- `scripts/audio/generate_ambient_stems.py` writes `manifest.generated.json`. It does not replace the live manifest.
 
-## Dependencies
+## Package
 
-- Node.js >= 18
-- npm
-- Python 3.10+ (if running backend services)
+The Store submission is `LoKeyTyper_1.1.0.0_x64.msix` for product `9NRVWM08HQC4`. The package identity name is `mcp-tool-shop.LoKeyTyper`. The publisher subject is the one in `desktop/LoKeyTyper/Package.appxmanifest`. A later Rust executable can take that package's entry point. Keep the name and the publisher, or the Store product will not update.
 
-## Key Notes
+The hosted StartPage manifest under `msix-package/` is not that package.
 
-- Primarily a frontend/CLI tool
-- Windows-only (uses Windows APIs)
-- Deployed to GitHub Pages at https://mcp-tool-shop-org.github.io/lokey-typer/
-- Configuration in .claude/config.json
+## Commands
+
+Node 22.
+
+- `npm run dev`
+- `npm test`
+- `npm run qa:sound-design`
+- `npm run qa:ambient:assets`

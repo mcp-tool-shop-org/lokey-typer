@@ -9,10 +9,14 @@ Usage:
 
 Output:
     public/audio/ambient/{mode}/{profile}/{layer}/*.wav
+    public/audio/ambient/manifest.generated.json
+
+Does not replace public/audio/ambient/manifest.json.
 """
 
 import os
 import json
+import hashlib
 import numpy as np
 from scipy.signal import butter, sosfilt
 import soundfile as sf
@@ -122,24 +126,17 @@ def normalize(audio: np.ndarray, target_peak: float = TARGET_PEAK) -> np.ndarray
     return audio * (target_peak / peak)
 
 
-def gentle_fade_in(audio: np.ndarray, seconds: float = 0.5) -> np.ndarray:
-    """Apply a gentle fade-in to avoid click at start."""
-    n = int(seconds * SAMPLE_RATE)
-    n = min(n, len(audio))
-    fade = 0.5 * (1 - np.cos(np.pi * np.arange(n) / n))
-    audio = audio.copy()
-    audio[:n] *= fade
-    return audio
-
-
 def generate_stem(synth_fn, duration_sec: float, rng: np.random.Generator) -> np.ndarray:
-    """Generate a loopable stem: synthesize with overlap, crossfade, normalize."""
+    """Generate a loopable stem: synthesize with overlap, crossfade, normalize.
+
+    Do not fade the head in after the crossfade. That ramp starts at zero, so a
+    native loop joins a hot tail to silence and clicks once per loop.
+    """
     fade_samples = int(CROSSFADE_SEC * SAMPLE_RATE)
     total_samples = int(duration_sec * SAMPLE_RATE) + fade_samples
 
     raw = synth_fn(total_samples, rng)
     looped = crossfade_loop(raw, fade_samples)
-    looped = gentle_fade_in(looped)
     return normalize(looped)
 
 
@@ -351,8 +348,8 @@ def main():
                 stem_id = f"{profile_id}_{layer_name}_{variant_num:02d}"
                 duration = DURATIONS[variant_idx % len(DURATIONS)]
 
-                # Deterministic but unique seed per stem
-                seed = hash(stem_id) & 0xFFFFFFFF
+                # Stable across processes. Python's hash() is salted per run.
+                seed = int.from_bytes(hashlib.sha256(stem_id.encode("utf-8")).digest()[:4], "big")
                 rng = np.random.default_rng(seed)
 
                 print(f"  Generating {stem_id} ({duration}s)...")
@@ -378,14 +375,32 @@ def main():
                 })
                 total_files += 1
 
-    # Write manifest
-    manifest = {"version": 2, "stems": manifest_stems}
-    manifest_path = os.path.join(BASE_DIR, "manifest.json")
-    with open(manifest_path, "w") as f:
-        json.dump(manifest, f, indent=2)
+    # Sidecar only. The live manifest is version 3 tracks, including scene beds
+    # this generator does not own. Replacing it silences the player.
+    live_path = os.path.join(BASE_DIR, "manifest.json")
+    sidecar_path = os.path.join(BASE_DIR, "manifest.generated.json")
+    generated = {
+        "version": 3,
+        "tracks": [
+            {
+                "id": stem["id"],
+                "title": stem["id"],
+                "category": "white_noise",
+                "tags": [stem["mode"], stem["profile"], stem["layer"]],
+                "path": stem["path"],
+                "duration_sec": stem["length_sec"],
+                "lufs_i": stem["lufs_i"],
+            }
+            for stem in manifest_stems
+        ],
+    }
+    with open(sidecar_path, "w", encoding="utf-8") as f:
+        json.dump(generated, f, indent=2)
+        f.write("\n")
 
     print(f"\nDone! Generated {total_files} stems.")
-    print(f"Manifest: {manifest_path}")
+    print(f"Wrote {sidecar_path}")
+    print(f"Left {live_path} unchanged.")
 
 
 if __name__ == "__main__":

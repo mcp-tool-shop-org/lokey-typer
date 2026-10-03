@@ -1,3 +1,4 @@
+import { attackOffsetSamples } from './attackOffset'
 import { getAudioContext, resumeAudioContext } from './audioContext'
 
 export type TypewriterSound =
@@ -95,6 +96,24 @@ export class TypewriterAudio {
     gain.gain.value = Math.max(0, Math.min(1, settings.volume)) * settings.modeGain
     gain.connect(ctx.destination)
 
+    const release = (src: AudioBufferSourceNode) => {
+      try { src.disconnect() } catch { /* already released */ }
+      try { gain.disconnect() } catch { /* already released */ }
+    }
+
+    const arm = (src: AudioBufferSourceNode, seconds: number) => {
+      const rate = src.playbackRate.value || 1
+      const stopAt = now + seconds / rate
+      src.onended = () => release(src)
+      this.active.push({
+        stopAt,
+        stop: () => {
+          try { src.stop() } catch { /* already ended */ }
+          release(src)
+        },
+      })
+    }
+
     const tryBuffer = () => {
       const urls = SAMPLE_URLS[kind]
       const url = urls[Math.floor(Math.random() * urls.length)]
@@ -106,9 +125,10 @@ export class TypewriterAudio {
       src.buffer = buf
       src.playbackRate.value = 0.98 + Math.random() * 0.06
       src.connect(gain)
-      src.start()
-      const stopAt = now + buf.duration
-      this.active.push({ stopAt, stop: () => src.stop() })
+      const offsetSamples = attackOffsetSamples(buf.getChannelData(0))
+      const offset = Math.min(offsetSamples / buf.sampleRate, Math.max(0, buf.duration - 0.02))
+      src.start(ctx.currentTime, offset)
+      arm(src, Math.max(0.01, buf.duration - offset))
       return true
     }
 
@@ -141,8 +161,7 @@ export class TypewriterAudio {
     src.playbackRate.value = 0.98 + Math.random() * 0.06
     src.connect(gain)
     src.start()
-    const stopAt = now + dur
-    this.active.push({ stopAt, stop: () => src.stop() })
+    arm(src, dur)
   }
 }
 
