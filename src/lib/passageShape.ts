@@ -51,6 +51,13 @@ export function isMultilinePassage(ex: Passage): boolean {
   )
 }
 
+function typedBody(ex: Passage): string {
+  if (typeof ex.template === 'string' && ex.template.length > 0) return ex.template
+  return ex.text_short ?? ex.text ?? ex.text_long ?? ''
+}
+
+// Safety is the typed line. estimated_seconds is a practice-time label, not a length cap.
 export function isScreenReaderSafePassage(ex: Passage & { estimated_seconds: number }): boolean {
-  return ex.estimated_seconds <= 60 && !isMultilinePassage(ex)
+  if (isMultilinePassage(ex)) return false
+  return typedBody(ex).length <= 160
 }

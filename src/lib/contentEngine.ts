@@ -1,5 +1,6 @@
 import type { Exercise, Mode } from '@content'
-import { loadExercisesByMode } from '@content'
+import { findExercise, loadExercisesByMode } from '@content'
+import { passageKey } from '@content/catalog'
 import { keyboardPassage } from './keyboardPassage'
 import { isTemplateExercise, renderTemplateExercise } from './templateRender'
 import { isScreenReaderSafePassage, tagMatches, weaknessForTag } from './passageShape'
@@ -126,6 +127,35 @@ function resolveText(
 }
 
 // ---------------------------------------------------------------------------
+// Seen passages
+// ---------------------------------------------------------------------------
+
+// An old id opens the canonical passage but keeps that old id. Match passageKey.
+function resolveModeRecents(mode: Mode): {
+  ids: readonly string[]
+  seenKeys: ReadonlySet<string>
+  earliestIndexByKey: ReadonlyMap<string, number>
+} {
+  const ids = loadRecents().byMode[mode] ?? []
+  const seenKeys = new Set<string>()
+  const earliestIndexByKey = new Map<string, number>()
+
+  for (let index = 0; index < ids.length; index++) {
+    const found = findExercise(ids[index])
+    if (!found || found.mode !== mode) continue
+    const key = passageKey(found)
+    seenKeys.add(key)
+    if (!earliestIndexByKey.has(key)) earliestIndexByKey.set(key, index)
+  }
+
+  return { ids, seenKeys, earliestIndexByKey }
+}
+
+function passageSeen(exercise: Exercise, seenKeys: ReadonlySet<string>): boolean {
+  return seenKeys.has(passageKey(exercise))
+}
+
+// ---------------------------------------------------------------------------
 // Core engine
 // ---------------------------------------------------------------------------
 
@@ -142,8 +172,7 @@ export function pickNextExercise(params: {
     throw new Error(`No exercises available for mode: ${mode}`)
   }
 
-  const recents = loadRecents().byMode[mode] ?? []
-  const recentSet = new Set(recents)
+  const { ids: recents, seenKeys, earliestIndexByKey } = resolveModeRecents(mode)
   const screenReaderMode = prefs.screenReaderMode
 
   // Unseen first. Screen reader never leaves the safe set: novelty relaxes inside it.
@@ -151,7 +180,7 @@ export function pickNextExercise(params: {
   let noveltyRelaxed = false
   if (screenReaderMode) {
     const safe = allExercises.filter((ex) => isScreenReaderSafePassage(ex))
-    const unseenSafe = safe.filter((ex) => !recentSet.has(ex.id))
+    const unseenSafe = safe.filter((ex) => !passageSeen(ex, seenKeys))
     if (unseenSafe.length > 0) {
       pool = unseenSafe
     } else if (safe.length > 0) {
@@ -161,7 +190,7 @@ export function pickNextExercise(params: {
       throw new Error('No screen-reader-safe exercise for this mode')
     }
   } else {
-    const unseen = allExercises.filter((ex) => !recentSet.has(ex.id))
+    const unseen = allExercises.filter((ex) => !passageSeen(ex, seenKeys))
     noveltyRelaxed = unseen.length === 0
     pool = noveltyRelaxed ? allExercises : unseen
   }
@@ -194,10 +223,11 @@ export function pickNextExercise(params: {
     // Template preference (replayable = always fresh)
     if (ex.type === 'template') w *= 1.15
 
-    // If we're in the "seen pool" fallback, deprioritize most-recently-played
-    if (noveltyRelaxed && recentSet.has(ex.id)) {
-      const idx = recents.indexOf(ex.id)
-      if (idx >= 0) {
+    // If we're in the "seen pool" fallback, deprioritize most-recently-played.
+    // Several stored ids can open one passage. The earliest raw index is the latest play.
+    if (noveltyRelaxed) {
+      const idx = earliestIndexByKey.get(passageKey(ex))
+      if (idx != null) {
         // Exponential decay: most recent (idx=0) gets lowest weight
         w *= 0.1 + 0.9 * (idx / Math.max(1, recents.length - 1))
       }
@@ -225,8 +255,12 @@ export function pickNextExercise(params: {
 // ---------------------------------------------------------------------------
 
 export function getPoolStatus(mode: Mode): PoolStatus {
-  const total = loadExercisesByMode(mode).length
-  const recents = loadRecents().byMode[mode] ?? []
-  const seen = Math.min(recents.length, total)
+  const pool = loadExercisesByMode(mode)
+  const { seenKeys } = resolveModeRecents(mode)
+  let seen = 0
+  for (const exercise of pool) {
+    if (passageSeen(exercise, seenKeys)) seen += 1
+  }
+  const total = pool.length
   return { total, seen, remaining: total - seen }
 }
