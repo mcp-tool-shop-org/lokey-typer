@@ -1,10 +1,13 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { enforceAccessibilityLocks, getEffectiveAmbientEnabled } from '../src/lib/effectivePrefs'
 import {
+  appendRun,
   getPersonalBest,
   loadPreferences,
   loadRuns,
+  loadSkillModel,
   maybeUpdatePersonalBest,
+  saveLastMode,
   savePreferences,
   sanitizePreferences,
 } from '../src/lib/storage'
@@ -167,5 +170,83 @@ describe('personal bests and run history', () => {
     }).not.toThrow()
     expect(rows).toHaveLength(1)
     expect(rows[0]).toMatchObject(valid)
+  })
+})
+
+describe('storage writes and skill documents', () => {
+  let store: Map<string, string>
+
+  beforeEach(() => {
+    store = installMemoryStorage()
+  })
+
+  it('does not throw when setItem fails and getItem still works', () => {
+    const storage = globalThis.localStorage
+    storage.setItem = () => {
+      throw new Error('quota')
+    }
+    expect(storage.getItem('lkt_runs_v1')).toBeNull()
+
+    const valid = {
+      exercise_id: 'ex-focus',
+      mode: 'focus' as const,
+      timestamp: 1_700_000_000_000,
+      wpm: 48,
+      accuracy: 0.98,
+      errors: 2,
+      backspaces: 3,
+      duration_ms: 20_000,
+    }
+
+    expect(() => appendRun(valid)).not.toThrow()
+    expect(() => saveLastMode('focus')).not.toThrow()
+    expect(() =>
+      maybeUpdatePersonalBest({
+        exerciseId: 'ex-focus',
+        wpm: 48,
+        accuracy: 0.99,
+        timestamp: 1_700_000_000_000,
+      }),
+    ).not.toThrow()
+    expect(storage.getItem('lkt_runs_v1')).toBeNull()
+    expect(storage.getItem('lkt_last_mode_v1')).toBeNull()
+  })
+
+  it('fills a bare version 2 skill model and keeps a complete short bucket', () => {
+    const present = {
+      ema_wpm: 0,
+      ema_accuracy: 1,
+      ema_backspace_rate: 0,
+      runs: 0,
+    }
+
+    store.set('lkt_skill_v1', JSON.stringify({ version: 2 }))
+    const filled = loadSkillModel()
+    expect(filled.performance_by_length.short).toEqual({
+      ema_wpm: 0,
+      ema_accuracy: 1,
+      ema_backspace_rate: 0,
+      runs: 0,
+    })
+    expect(filled.performance_by_length.medium.runs).toBe(0)
+    expect(filled.performance_by_length.long.runs).toBe(0)
+    expect(filled.performance_by_length.multiline.runs).toBe(0)
+
+    store.set(
+      'lkt_skill_v1',
+      JSON.stringify({
+        version: 2,
+        total_runs: 4,
+        performance_by_length: {
+          short: { ...present, ema_wpm: 42 },
+          medium: present,
+          long: present,
+          multiline: present,
+        },
+      }),
+    )
+    const kept = loadSkillModel()
+    expect(kept.total_runs).toBe(4)
+    expect(kept.performance_by_length.short.ema_wpm).toBe(42)
   })
 })

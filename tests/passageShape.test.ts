@@ -13,6 +13,16 @@ describe('passage shape', () => {
     expect(weaknessForTag({ multiline: 0.8 }, 'newlines')).toBe(0.8)
   })
 
+  it('treats the pack tag dash and the recorded tag dashes as the same tag', () => {
+    expect(tagMatches(['dash'], 'dashes')).toBe(true)
+    expect(tagMatches(['dashes'], 'dash')).toBe(true)
+    expect(weaknessForTag({ dashes: 0.8 }, 'dash')).toBe(0.8)
+    expect(weaknessForTag({ dash: 0.8 }, 'dashes')).toBe(0.8)
+    expect(tagMatches(['punctuation'], 'dashes')).toBe(false)
+    expect(tagMatches(['comma'], 'punctuation')).toBe(false)
+    expect(weaknessForTag({ punctuation: 0.8 }, 'comma')).toBe(0)
+  })
+
   it('keeps a short single-line passage', () => {
     expect(
       isScreenReaderSafePassage({
