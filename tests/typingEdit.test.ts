@@ -12,6 +12,11 @@ describe('acceptTypingEdit', () => {
     expect(acceptTypingEdit('Slow', 'Slow is smooth; smooth is fast.')).toBe(false)
   })
 
+  it('accepts one emoji and rejects two', () => {
+    expect(acceptTypingEdit('hi', 'hi👍')).toBe(true)
+    expect(acceptTypingEdit('hi', 'hi👍👍')).toBe(false)
+  })
+
   it('accepts clearing a selection', () => {
     expect(acceptTypingEdit('hello', 'h')).toBe(true)
   })
