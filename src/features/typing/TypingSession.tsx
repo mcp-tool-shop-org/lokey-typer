@@ -18,6 +18,7 @@ import {
   typewriterAudio,
   updateSkillModelFromRun,
 } from '@lib'
+import { acceptTypingEdit } from '@lib-internal/typingEdit'
 import { useAmbient } from '@app'
 import { TypingOverlay } from './TypingOverlay'
 
@@ -453,9 +454,12 @@ export function TypingSession(props: {
               }
             }
           }}
+          onPaste={(e) => e.preventDefault()}
+          onDrop={(e) => e.preventDefault()}
           onChange={(e) => {
             if (isComplete) return
             const next = e.target.value
+            if (!acceptTypingEdit(typed, next)) return
             setTyped(next)
 
             if (next.length !== typed.length) noteTypingActivity()

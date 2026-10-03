@@ -1,5 +1,6 @@
 import type { Exercise, Mode } from '@content'
 import { loadExercisesByMode } from '@content'
+import { tagMatches } from './passageShape'
 import type { UserSkillModel } from './storage'
 
 function xmur3(str: string) {
@@ -171,10 +172,10 @@ function exerciseWeight(params: {
     w *= difficultyBandWeight(ex.difficulty, bandCenter)
   }
 
-  const tagHits = weakTags.reduce((acc, t) => (ex.tags.includes(t) ? acc + 1 : acc), 0)
+  const tagHits = weakTags.reduce((acc, t) => (tagMatches(ex.tags, t) ? acc + 1 : acc), 0)
   if (tagHits > 0) w *= 1 + tagHits * 0.75
 
-  if (kind === 'targeted' && targetTag && ex.tags.includes(targetTag)) w *= 2.0
+  if (kind === 'targeted' && targetTag && tagMatches(ex.tags, targetTag)) w *= 2.0
 
   // Small bias toward templates in the daily loop for replayability.
   if (ex.type === 'template') w *= 1.15

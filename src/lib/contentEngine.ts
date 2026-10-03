@@ -1,6 +1,7 @@
 import type { Exercise, Mode } from '@content'
 import { loadExercisesByMode } from '@content'
 import { isTemplateExercise, renderTemplateExercise } from './templateRender'
+import { isScreenReaderSafePassage, tagMatches, weaknessForTag } from './passageShape'
 import { loadRecents, type Preferences, type UserSkillModel } from './storage'
 
 // ---------------------------------------------------------------------------
@@ -154,7 +155,7 @@ export function pickNextExercise(params: {
   // Screen reader safety filter
   const srSafe = prefs.screenReaderMode
   const candidates = srSafe
-    ? pool.filter((ex) => !ex.tags.includes('multiline') && ex.estimated_seconds <= 60)
+    ? pool.filter((ex) => isScreenReaderSafePassage(ex))
     : pool
 
   // If screen reader filtered everything, fall back to full pool
@@ -168,12 +169,12 @@ export function pickNextExercise(params: {
 
     // Weakness targeting
     for (const t of ex.tags) {
-      const s = weakness[t]
-      if (Number.isFinite(s) && s > 0) w *= 1 + clamp(s, 0, 1) * 0.75
+      const s = weaknessForTag(weakness, t)
+      if (s > 0) w *= 1 + clamp(s, 0, 1) * 0.75
     }
 
-    // Weak tag boost
-    const hits = weakTags.reduce((acc: number, t: string) => (ex.tags.includes(t) ? acc + 1 : acc), 0)
+    // Weak tag boost. `multiline` in the skill model matches pack tag `newlines`.
+    const hits = weakTags.reduce((acc: number, t: string) => (tagMatches(ex.tags, t) ? acc + 1 : acc), 0)
     if (hits > 0) w *= 1 + hits * 0.4
 
     // Template preference (replayable = always fresh)

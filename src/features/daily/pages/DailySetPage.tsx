@@ -70,9 +70,9 @@ function computeBestWeek(days: Set<string>) {
   return best
 }
 
-function resolveExerciseText(exercise: Exercise): string {
+function resolveExerciseText(exercise: Exercise, seed: string): string {
   if (isTemplateExercise(exercise)) {
-    return renderTemplateExercise(exercise, { seed: `daily|${exercise.id}|${Date.now()}` })
+    return renderTemplateExercise(exercise, { seed })
   }
   return exercise.text_short ?? exercise.text ?? exercise.text_long ?? ''
 }
@@ -423,7 +423,10 @@ export function DailySetPage() {
             key={`daily-${currentIndex}-${sessionKey}`}
             mode={currentItem.mode}
             exercise={currentExercise}
-            targetText={resolveExerciseText(currentExercise)}
+            targetText={resolveExerciseText(
+              currentExercise,
+              `daily|${daily.dateKey}|${userId}|${currentExercise.id}|${currentIndex}`,
+            )}
             prefs={prefs}
             showCompetitiveHud={false}
             ghostEnabled={false}

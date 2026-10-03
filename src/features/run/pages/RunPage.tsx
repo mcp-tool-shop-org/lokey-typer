@@ -12,6 +12,12 @@ import { usePreferences } from '@app'
 import { Icon } from '@app/components/Icon'
 import { TypingSession } from '@features/typing'
 
+function modeHome(mode: Mode): string {
+  if (mode === 'real_life') return '/real-life'
+  if (mode === 'competitive') return '/competitive'
+  return '/focus'
+}
+
 function repeatToLength(base: string, minLen: number) {
   let out = base
   while (out.length < minLen) out += `\n\n${base}`
@@ -137,7 +143,7 @@ export function RunPage({ mode }: { mode: Mode }) {
         sprintDurationMs={mode === 'competitive' ? (sprintDurationMs as SprintDurationMs) : undefined}
         showCompetitiveHud={showCompetitiveHud}
         ghostEnabled={ghost}
-        onExit={() => navigate('/daily')}
+        onExit={() => navigate(modeHome(mode))}
         onRestart={() => navigate(0)}
       />
     </div>

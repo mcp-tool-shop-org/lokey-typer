@@ -1,5 +1,6 @@
 import type { Exercise, Mode } from '@content'
 import { loadExercisesByMode } from '@content'
+import { isScreenReaderSafePassage, tagMatches, weaknessForTag } from './passageShape'
 import type { UserSkillModel } from './storage'
 
 function xmur3(str: string) {
@@ -70,9 +71,7 @@ function difficultyBandWeight(difficulty: number, center: number) {
 }
 
 function isSrSafe(ex: Exercise): boolean {
-  if (ex.tags.includes('multiline')) return false
-  if (ex.estimated_seconds > 60) return false
-  return true
+  return isScreenReaderSafePassage(ex)
 }
 
 function pickWeighted<T>(items: T[], weight: (x: T) => number, rand: () => number): T | null {
@@ -119,12 +118,12 @@ export function getNextRecommendations(
 
     // Tag targeting (weakness-weighted).
     for (const t of ex.tags) {
-      const s = weakness[t]
-      if (Number.isFinite(s) && s > 0) w *= 1 + clamp(s, 0, 1) * 0.75
+      const s = weaknessForTag(weakness, t)
+      if (s > 0) w *= 1 + clamp(s, 0, 1) * 0.75
     }
 
     // Small bias toward exercises that match any known weak tag.
-    const hits = weakTags.reduce((acc, t) => (ex.tags.includes(t) ? acc + 1 : acc), 0)
+    const hits = weakTags.reduce((acc, t) => (tagMatches(ex.tags, t) ? acc + 1 : acc), 0)
     if (hits > 0) w *= 1 + hits * 0.4
 
     // Prefer templates slightly for replayability.
@@ -142,7 +141,7 @@ export function getNextRecommendations(
 
     used.add(picked.id)
 
-    const reasonTags = weakTags.filter((t) => picked.tags.includes(t)).slice(0, 3)
+    const reasonTags = weakTags.filter((t) => tagMatches(picked.tags, t)).slice(0, 3)
     const reasonText =
       reasonTags.length > 0
         ? `Targets: ${reasonTags.join(', ')} (and stays near your current band).`
