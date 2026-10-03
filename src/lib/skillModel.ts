@@ -43,6 +43,55 @@ function charClassForExpected(expected: string | null): CharClass {
   return 'symbol'
 }
 
+export type MistakeCounts = Partial<Record<CharClass, number>>
+
+const CHAR_CLASSES: readonly CharClass[] = [
+  'letters',
+  'numbers',
+  'space',
+  'newline',
+  'apostrophe',
+  'quotes',
+  'dash',
+  'punctuation',
+  'brackets',
+  'slash',
+  'symbol',
+  'overflow',
+]
+
+// tags_hit names are not the char-class names: dashes, multiline, slashes.
+const TAG_TO_CLASS: Readonly<Record<string, CharClass | undefined>> = {
+  apostrophe: 'apostrophe',
+  quotes: 'quotes',
+  dashes: 'dash',
+  punctuation: 'punctuation',
+  multiline: 'newline',
+  brackets: 'brackets',
+  slashes: 'slash',
+  numbers: 'numbers',
+}
+
+export function noteMistake(counts: MistakeCounts, expected: string | null): MistakeCounts {
+  const cls = charClassForExpected(expected)
+  counts[cls] = (counts[cls] ?? 0) + 1
+  return counts
+}
+
+function mistakeCount(counts: MistakeCounts, cls: CharClass): number {
+  const n = counts[cls]
+  return typeof n === 'number' && Number.isFinite(n) && n > 0 ? n : 0
+}
+
+function countCharsByClass(text: string): Partial<Record<CharClass, number>> {
+  const counts: Partial<Record<CharClass, number>> = {}
+  for (let i = 0; i < text.length; i++) {
+    const cls = charClassForExpected(text[i] ?? null)
+    counts[cls] = (counts[cls] ?? 0) + 1
+  }
+  return counts
+}
+
 function bucketForExercise(ex: Exercise, targetText: string): LengthBucket {
   const isMultiline =
     (ex.type === 'template' ? ex.template.includes('\n') : false) || targetText.includes('\n')
@@ -129,6 +178,7 @@ export function updateSkillModelFromRun(params: {
   exercise: Exercise
   targetText: string
   typedText: string
+  mistakes: MistakeCounts
 }): UserSkillModel {
   const alpha = 0.2
   const now = new Date().toISOString()
@@ -137,20 +187,26 @@ export function updateSkillModelFromRun(params: {
   const backspaceRate = Math.max(0, Math.min(1, params.run.backspaces / typedLen))
 
   const bucket = bucketForExercise(params.exercise, params.targetText)
-  const hotspots = computeErrorHotspots({ target: params.targetText, typed: params.typedText })
+  const opportunities = countCharsByClass(params.targetText)
 
   const nextErrorsByClass: Record<string, number> = { ...(params.prev.errors_by_class ?? {}) }
-  for (const [cls, count] of Object.entries(hotspots)) {
+  for (const cls of CHAR_CLASSES) {
+    const seen = (opportunities[cls] ?? 0) > 0
+    const mistakes = mistakeCount(params.mistakes, cls)
+    if (!seen && mistakes === 0) continue
     const prevVal = nextErrorsByClass[cls] ?? 0
-    nextErrorsByClass[cls] = emaUpdate(prevVal, count, alpha)
+    nextErrorsByClass[cls] = emaUpdate(prevVal, mistakes, alpha)
   }
 
-  const errorRate = Math.max(0, Math.min(1, params.run.errors / Math.max(1, params.targetText.length)))
   const tagsHit = (params.run.tags_hit ?? []).filter((t) => typeof t === 'string')
   const nextWeaknessByTag: Record<string, number> = { ...(params.prev.weakness_by_tag ?? {}) }
   for (const tag of tagsHit) {
+    const cls = TAG_TO_CLASS[tag]
+    if (cls == null) continue
+    const seen = opportunities[cls] ?? 0
+    const rate = seen === 0 ? 0 : Math.max(0, Math.min(1, mistakeCount(params.mistakes, cls) / seen))
     const prevScore = nextWeaknessByTag[tag] ?? 0
-    nextWeaknessByTag[tag] = emaUpdate(prevScore, errorRate, alpha)
+    nextWeaknessByTag[tag] = emaUpdate(prevScore, rate, alpha)
   }
 
   const derivedWeakTags = deriveWeakTagsFromScores(nextWeaknessByTag)
@@ -191,7 +247,7 @@ export function updateSkillModelFromRun(params: {
     errors_by_class: nextErrorsByClass,
     performance_by_length: nextPerf,
     weakness_by_tag: nextWeaknessByTag,
-    weak_tags: derivedWeakTags.length > 0 ? derivedWeakTags : (params.prev.weak_tags ?? []),
+    weak_tags: derivedWeakTags,
     recent_exercise_ids_by_mode: {
       ...(params.prev.recent_exercise_ids_by_mode ?? { focus: [], real_life: [], competitive: [] }),
       [params.run.mode]: updateRecentIds({
