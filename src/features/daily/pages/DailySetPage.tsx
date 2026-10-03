@@ -169,12 +169,18 @@ export function DailySetPage() {
   const [sessionKey, setSessionKey] = useState(0)
   const phaseRef = useRef<HTMLDivElement>(null)
 
-  // Scroll phase content into view on transitions
+  // Scroll phase content into view on transitions.
+  // An explicit scrollIntoView behavior is not stopped by the CSS reduced-motion rules.
   useEffect(() => {
     if (phase === 'transition' || phase === 'summary') {
-      phaseRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      const reduceMotion =
+        prefs.reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      phaseRef.current?.scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+        block: 'start',
+      })
     }
-  }, [phase])
+  }, [phase, prefs.reducedMotion])
 
   // ---- Current exercise ----
 

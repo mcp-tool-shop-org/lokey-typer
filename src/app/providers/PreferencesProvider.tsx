@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { loadPreferences, sanitizePreferences, savePreferences, type Preferences } from '@lib-internal/storage'
 
 type PreferencesContextValue = {
@@ -11,6 +11,15 @@ const PreferencesContext = createContext<PreferencesContextValue | null>(null)
 
 export function PreferencesProvider({ children }: { children: React.ReactNode }) {
   const [prefs, setPrefsState] = useState<Preferences>(() => loadPreferences())
+
+  useEffect(() => {
+    const root = document.documentElement
+    if (prefs.reducedMotion) root.classList.add('reduce-motion')
+    else root.classList.remove('reduce-motion')
+    return () => {
+      root.classList.remove('reduce-motion')
+    }
+  }, [prefs.reducedMotion])
 
   const setPrefs = useCallback((next: Preferences) => {
     const sanitized = sanitizePreferences(next)
