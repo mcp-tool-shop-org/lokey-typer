@@ -1,6 +1,6 @@
 import type { Exercise, Mode } from '@content'
 import { loadExercisesByMode } from '@content'
-import { tagMatches } from './passageShape'
+import { isScreenReaderSafePassage, tagMatches } from './passageShape'
 import type { UserSkillModel } from './storage'
 
 function xmur3(str: string) {
@@ -98,10 +98,25 @@ function safeParse<T>(raw: string | null): T | null {
   }
 }
 
-function getCachedDailySet(params: { userId: string; dateKey: string; sessionType: DailySessionType }): DailySet | null {
+function dailyCacheKey(params: {
+  userId: string
+  dateKey: string
+  sessionType: DailySessionType
+  screenReaderMode: boolean
+}): string {
+  const base = `${DAILY_SET_CACHE_PREFIX}|${params.userId}|${params.dateKey}|${params.sessionType}`
+  return params.screenReaderMode ? `${base}|sr` : base
+}
+
+function getCachedDailySet(params: {
+  userId: string
+  dateKey: string
+  sessionType: DailySessionType
+  screenReaderMode: boolean
+}): DailySet | null {
   try {
     if (typeof localStorage === 'undefined') return null
-    const key = `${DAILY_SET_CACHE_PREFIX}|${params.userId}|${params.dateKey}|${params.sessionType}`
+    const key = dailyCacheKey(params)
     const parsed = safeParse<DailySet>(localStorage.getItem(key))
     if (!parsed) return null
     if (parsed.userId !== params.userId) return null
@@ -114,10 +129,15 @@ function getCachedDailySet(params: { userId: string; dateKey: string; sessionTyp
   }
 }
 
-function setCachedDailySet(set: DailySet) {
+function setCachedDailySet(set: DailySet, screenReaderMode: boolean) {
   try {
     if (typeof localStorage === 'undefined') return
-    const key = `${DAILY_SET_CACHE_PREFIX}|${set.userId}|${set.dateKey}|${set.sessionType}`
+    const key = dailyCacheKey({
+      userId: set.userId,
+      dateKey: set.dateKey,
+      sessionType: set.sessionType,
+      screenReaderMode,
+    })
     localStorage.setItem(key, JSON.stringify(set))
   } catch {
     // ignore
@@ -191,8 +211,13 @@ function pickExercise(params: {
   bandCenter: number
   targetTag: string | null
   excludeIds: Set<string>
+  screenReaderMode: boolean
 }): Exercise | null {
-  const pool = loadExercisesByMode(params.mode).filter((ex) => !params.excludeIds.has(ex.id))
+  const pool = loadExercisesByMode(params.mode).filter((ex) => {
+    if (params.excludeIds.has(ex.id)) return false
+    if (params.screenReaderMode && !isScreenReaderSafePassage(ex)) return false
+    return true
+  })
   if (pool.length === 0) return null
   const picked = pickWeighted(
     pool,
@@ -218,27 +243,21 @@ function pickWithRelaxation(params: {
   targetTag: string | null
   used: Set<string>
   avoid: Set<string>
+  screenReaderMode: boolean
 }): Exercise | null {
   const strict = new Set<string>([...params.used, ...params.avoid])
+  const shared = {
+    mode: params.mode,
+    kind: params.kind,
+    rand: params.rand,
+    weakTags: params.weakTags,
+    bandCenter: params.bandCenter,
+    targetTag: params.targetTag,
+    screenReaderMode: params.screenReaderMode,
+  }
   return (
-    pickExercise({
-      mode: params.mode,
-      kind: params.kind,
-      rand: params.rand,
-      weakTags: params.weakTags,
-      bandCenter: params.bandCenter,
-      targetTag: params.targetTag,
-      excludeIds: strict,
-    }) ??
-    pickExercise({
-      mode: params.mode,
-      kind: params.kind,
-      rand: params.rand,
-      weakTags: params.weakTags,
-      bandCenter: params.bandCenter,
-      targetTag: params.targetTag,
-      excludeIds: params.used,
-    })
+    pickExercise({ ...shared, excludeIds: strict }) ??
+    pickExercise({ ...shared, excludeIds: params.used })
   )
 }
 
@@ -248,13 +267,22 @@ export function generateDailySet(params: {
   sessionType: DailySessionType
   weakTags?: string[]
   skill?: Pick<UserSkillModel, 'total_runs' | 'ema' | 'recent_exercise_ids_by_mode'>
+  screenReaderMode?: boolean
 }): DailySet {
   const dateKey = params.dateKey ?? todayKey()
+  const screenReaderMode = Boolean(params.screenReaderMode)
 
-  const cached = getCachedDailySet({ userId: params.userId, dateKey, sessionType: params.sessionType })
+  const cached = getCachedDailySet({
+    userId: params.userId,
+    dateKey,
+    sessionType: params.sessionType,
+    screenReaderMode,
+  })
   if (cached) return cached
 
-  const seedStr = `${params.userId}|${dateKey}|${params.sessionType}`
+  const seedStr = screenReaderMode
+    ? `${params.userId}|${dateKey}|${params.sessionType}|sr`
+    : `${params.userId}|${dateKey}|${params.sessionType}`
   const rand = mulberry32(xmur3(seedStr)())
 
   const weakTags = params.weakTags ?? []
@@ -282,6 +310,7 @@ export function generateDailySet(params: {
     targetTag,
     used,
     avoid,
+    screenReaderMode,
   })
   if (confidence) {
     used.add(confidence.id)
@@ -297,6 +326,7 @@ export function generateDailySet(params: {
     targetTag,
     used,
     avoid,
+    screenReaderMode,
   })
   if (scenario) {
     used.add(scenario.id)
@@ -314,6 +344,7 @@ export function generateDailySet(params: {
       targetTag,
       used,
       avoid,
+      screenReaderMode,
     })
     if (targeted) {
       used.add(targeted.id)
@@ -331,6 +362,7 @@ export function generateDailySet(params: {
       targetTag,
       used,
       avoid,
+      screenReaderMode,
     })
     if (challenge) {
       used.add(challenge.id)
@@ -349,6 +381,7 @@ export function generateDailySet(params: {
       targetTag,
       used,
       avoid,
+      screenReaderMode,
     })
     if (!ex) break
     used.add(ex.id)
@@ -357,7 +390,9 @@ export function generateDailySet(params: {
 
   // Deterministic fallback if pools were unexpectedly empty.
   if (items.length === 0) {
-    const pool = loadExercisesByMode('focus')
+    const pool = loadExercisesByMode('focus').filter((ex) =>
+      screenReaderMode ? isScreenReaderSafePassage(ex) : true,
+    )
     const first = pool[0]
     if (first) items.push({ kind: 'mix', mode: 'focus', exerciseId: first.id })
   }
@@ -369,7 +404,7 @@ export function generateDailySet(params: {
     items,
   }
 
-  setCachedDailySet(out)
+  setCachedDailySet(out, screenReaderMode)
   return out
 }
 

@@ -116,8 +116,9 @@ export function DailySetPage() {
       sessionType,
       weakTags: skill.weak_tags,
       skill,
+      screenReaderMode: prefs.screenReaderMode,
     })
-  }, [userId, sessionType, skill])
+  }, [userId, sessionType, skill, prefs.screenReaderMode])
 
   // ---- Progress persistence ----
 
