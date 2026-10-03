@@ -24,7 +24,7 @@ Todos os dados permanecem no seu dispositivo. Não são necessários contas. Nã
 ## Modos de treino
 
 - **Foco** — Exercícios cuidadosamente elaborados para desenvolver ritmo e precisão.
-- **Realidade** — Prática com e-mails, trechos de código e textos do dia a dia.
+- **Realidade** — Prática com e-mails, formulários, mensagens, notas e outros textos do dia a dia.
 - **Competitivo** — Desafios cronometrados com seus melhores resultados pessoais.
 - **Conjunto Diário** — Um novo conjunto de exercícios gerado diariamente, adaptado às suas sessões recentes.
 
@@ -109,9 +109,10 @@ Consulte o arquivo `modular.md` para obter informações sobre os contratos de a
 - `/focus` — Modo de foco
 - `/real-life` — Modo "vida real"
 - `/competitive` — Modo competitivo
-- `/<modo>/exercises` — Lista de exercícios
-- `/<modo>/settings` — Configurações
-- `/<modo>/run/:id_do_exercício` — Executar um exercício
+- `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId` — Executar um exercício
+- `/practice` redireciona para `/focus`. `/arcade` redireciona para `/competitive`
+
+As configurações abrem no cabeçalho. Não há uma página de lista de exercícios.
 
 ### Documentos
 

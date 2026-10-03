@@ -49,7 +49,7 @@ Outside of Daily Set, each mode has a recommendation engine that suggests exerci
 
 ## Your control
 
-You can ignore personalization entirely. The app remains fully usable without it. You can pick exercises manually in any mode, or let the recommendation engine handle selection.
+You can ignore personalization entirely. The app remains fully usable without it. Start typing on a mode page, or open Daily Set. There is no separate exercise list.
 
 ## How data is stored
 

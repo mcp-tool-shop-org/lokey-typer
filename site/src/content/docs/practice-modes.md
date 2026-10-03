@@ -13,7 +13,7 @@ Calm, curated exercises for building rhythm and accuracy. This is the default mo
 
 ## Real-Life
 
-Practice with emails, code snippets, and everyday text. If you want to improve at the kind of typing you actually do at work, this mode pulls from realistic content rather than artificial drills.
+Practice with emails, forms, messages, notes, and other everyday writing. This mode pulls from that kind of writing rather than artificial drills.
 
 ## Competitive
 
@@ -31,11 +31,15 @@ See the [Personalization](/lokey-typer/handbook/personalization/) page for detai
 
 ## Routes
 
-Each mode has its own set of pages:
+The app mounts these routes:
 
 | Route | Purpose |
 |-------|---------|
-| `/<mode>` | Mode landing page |
-| `/<mode>/exercises` | Exercise list |
-| `/<mode>/settings` | Mode-specific settings |
-| `/<mode>/run/:exerciseId` | Active typing session |
+| `/` | Home |
+| `/daily` | Daily set |
+| `/focus`, `/real-life`, `/competitive` | Mode pages. Start typing begins a session |
+| `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId` | A direct run |
+| `/practice` | Redirects to `/focus` |
+| `/arcade` | Redirects to `/competitive` |
+
+Settings open from the header. There is no exercise-list page.

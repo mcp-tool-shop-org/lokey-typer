@@ -24,7 +24,7 @@ All data stays on your device. No accounts. No cloud. No tracking.
 ## Practice modes
 
 - **Focus** — Calm, curated exercises for building rhythm and accuracy
-- **Real-Life** — Practice with emails, code snippets, and everyday text
+- **Real-Life** — Practice with emails, forms, messages, notes, and other everyday writing
 - **Competitive** — Timed sprints with personal bests
 - **Daily Set** — A fresh set of exercises generated each day, adapted to your recent sessions
 
@@ -109,9 +109,10 @@ See `modular.md` for architecture contracts and import boundaries.
 - `/focus` — Focus mode
 - `/real-life` — Real-Life mode
 - `/competitive` — Competitive mode
-- `/<mode>/exercises` — exercise list
-- `/<mode>/settings` — settings
-- `/<mode>/run/:exerciseId` — run an exercise
+- `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId` — run an exercise
+- `/practice` redirects to `/focus`. `/arcade` redirects to `/competitive`
+
+Settings open from the header. There is no exercise-list page.
 
 ### Docs
 

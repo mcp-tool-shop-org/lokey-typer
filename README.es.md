@@ -24,7 +24,7 @@ Todos los datos permanecen en su dispositivo. No requiere cuentas. No utiliza la
 ## Modos de práctica
 
 - **Enfoque:** Ejercicios cuidadosamente diseñados para mejorar el ritmo y la precisión.
-- **Aplicación práctica:** Práctica con correos electrónicos, fragmentos de código y textos cotidianos.
+- **Aplicación práctica:** Práctica con correos, formularios, mensajes, notas y otros textos cotidianos.
 - **Competitivo:** Pruebas cronometradas con registros personales.
 - **Conjunto diario:** Un nuevo conjunto de ejercicios generado cada día, adaptado a tus sesiones recientes.
 
@@ -114,9 +114,10 @@ Consulte el archivo `modular.md` para obtener información sobre los contratos d
 - `/focus` — Modo de concentración
 - `/real-life` — Modo de vida real
 - `/competitive` — Modo competitivo
-- `/<modo>/ejercicios` — Lista de ejercicios
-- `/<modo>/configuración` — Configuración
-- `/<modo>/ejecutar/:idEjercicio` — Ejecutar un ejercicio
+- `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId` — Ejecutar un ejercicio
+- `/practice` redirige a `/focus`. `/arcade` redirige a `/competitive`
+
+Los ajustes se abren desde el encabezado. No hay una página de lista de ejercicios.
 
 ### Documentos
 

@@ -18,7 +18,7 @@ All your data stays on your device in browser localStorage. Nothing is sent anyw
 LoKey Typer has four practice modes. Each one serves a different purpose:
 
 - **Focus** -- Short, calm exercises for building rhythm and accuracy. The HUD is minimal by default, and live WPM is hidden so you can concentrate on the text. This is the best mode for beginners.
-- **Real-Life** -- Exercises based on emails, code snippets, and everyday text. Use this when you want to practice the kind of typing you actually do at work.
+- **Real-Life** -- Exercises based on emails, forms, messages, notes, and other everyday writing. Use this when you want to practice the kind of typing you actually do.
 - **Competitive** -- Timed sprints (30s, 60s, or 120s) with personal bests. Live WPM is shown by default. Use this when you want to measure your speed.
 - **Daily Set** -- A fresh set of exercises generated each day, adapted to your recent sessions. The set stays the same all day, so you can return to it anytime.
 
@@ -62,7 +62,7 @@ The personalization is subtle:
 - If you consistently struggle with certain character types (punctuation, brackets, numbers), exercises targeting those areas get a small weight boost.
 - Recently completed exercises are deprioritized so you see fresh content.
 
-You do not need to do anything to activate personalization. It happens automatically based on your runs. You can also ignore it entirely and pick exercises manually.
+You do not need to do anything to activate personalization. It happens automatically based on your runs. You can also ignore it and just start a session.
 
 For full details, see the [Personalization](/lokey-typer/handbook/personalization/) page.
 

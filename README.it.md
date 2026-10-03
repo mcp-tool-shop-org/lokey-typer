@@ -24,7 +24,7 @@ Tutti i dati rimangono sul tuo dispositivo. Nessun account. Nessun servizio clou
 ## Modalità di allenamento
 
 - **Focus:** Esercizi mirati e ben strutturati per migliorare il ritmo e la precisione.
-- **Vita reale:** Pratica con email, frammenti di codice e testi di uso quotidiano.
+- **Vita reale:** Pratica con email, moduli, messaggi, note e altri testi di uso quotidiano.
 - **Competitivo:** Sessioni a tempo con il monitoraggio dei risultati personali.
 - **Set giornaliero:** Un nuovo insieme di esercizi generato ogni giorno, adattato alle vostre sessioni precedenti.
 
@@ -113,9 +113,10 @@ Consultare il file `modular.md` per informazioni sulle specifiche architetturali
 - `/focus` — Modalità "Focus"
 - `/real-life` — Modalità "Vita reale"
 - `/competitive` — Modalità "Competitiva"
-- `/<mode>/exercises` — Elenco degli esercizi
-- `/<mode>/settings` — Impostazioni
-- `/<mode>/run/:exerciseId` — Esegui un esercizio
+- `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId` — Esegui un esercizio
+- `/practice` reindirizza a `/focus`. `/arcade` reindirizza a `/competitive`
+
+Le impostazioni si aprono dall'intestazione. Non c'è una pagina elenco esercizi.
 
 ### Documenti
 

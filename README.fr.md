@@ -24,7 +24,7 @@ Toutes les données restent sur votre appareil. Pas de comptes, pas de stockage 
 ## Modes d'entraînement
 
 - **Concentration** — Exercices calmes et structurés pour améliorer le rythme et la précision.
-- **Réaliste** — Entraînement avec des exemples de courriels, de fragments de code et de textes courants.
+- **Réaliste** — Entraînement avec des courriels, des formulaires, des messages, des notes et d'autres textes courants.
 - **Compétitif** — Sprints chronométrés avec enregistrement des meilleurs résultats personnels.
 - **Programme quotidien** — Un ensemble d'exercices renouvelé chaque jour, adapté à vos sessions précédentes.
 
@@ -114,9 +114,10 @@ Consultez le fichier `modular.md` pour connaître les contrats d'architecture et
 - `/focus` — Mode concentration
 - `/real-life` — Mode "vie réelle"
 - `/competitive` — Mode compétitif
-- `/<mode>/exercises` — Liste des exercices
-- `/<mode>/settings` — Paramètres
-- `/<mode>/run/:exerciseId` — Exécuter un exercice
+- `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId` — Exécuter un exercice
+- `/practice` renvoie vers `/focus`. `/arcade` renvoie vers `/competitive`
+
+Les réglages s'ouvrent depuis l'en-tête. Il n'y a pas de page liste d'exercices.
 
 ### Documents
 

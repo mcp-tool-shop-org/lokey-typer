@@ -24,7 +24,7 @@ LoKey Typerは、ゲーム要素やランキング、そして気が散るよう
 ## 練習モード
 
 - **Focus (集中)**：リズムと正確性を高めるための、落ち着いて構成された練習メニュー。
-- **Real-Life (実用)**：メール、コードの断片、日常的な文章を使った実践的な練習。
+- **Real-Life (実用)**：メール、フォーム、メッセージ、メモ、その他の日常的な文章を使った実践的な練習。
 - **Competitive (競技)**：制限時間内にできるだけ多く問題を解くスピード練習で、自身の最高記録に挑戦。
 - **Daily Set (デイリーセット)**：毎日、あなたの最近の練習履歴に合わせて調整された、新しい練習メニューが提供されます。
 
@@ -110,9 +110,10 @@ npm run preview
 - `/focus`：集中モード
 - `/real-life`：実生活モード
 - `/competitive`：競技モード
-- `/<mode>/exercises`：エクササイズのリスト
-- `/<mode>/settings`：設定
-- `/<mode>/run/:exerciseId`：エクササイズを実行する
+- `/focus/run/:exerciseId`、`/real-life/run/:exerciseId`、`/competitive/run/:exerciseId`：練習を実行する
+- `/practice` は `/focus` へ、`/arcade` は `/competitive` へ移る
+
+設定はヘッダーから開く。練習一覧のページはない。
 
 ### ドキュメント
 

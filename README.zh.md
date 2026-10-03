@@ -24,7 +24,7 @@ LoKey Typer是一款专为希望在安静、专注的环境中进行打字练习
 ## 练习模式
 
 - **重点**：精心设计的练习，旨在提高节奏感和准确性。
-- **真实场景**：通过电子邮件、代码片段和日常文本进行练习。
+- **真实场景**：通过电子邮件、表格、消息、笔记和其他日常文本进行练习。
 - **竞技模式**：限时练习，并记录个人最佳成绩。
 - **每日练习**：每天生成一套新的练习内容，并根据您最近的练习情况进行调整。
 
@@ -109,9 +109,10 @@ npm run preview
 - `/focus` — 专注模式
 - `/real-life` — 真实场景模式
 - `/competitive` — 竞技模式
-- `/<mode>/exercises` — 练习列表
-- `/<mode>/settings` — 设置
-- `/<mode>/run/:exerciseId` — 运行练习 (exerciseId 为练习的 ID)
+- `/focus/run/:exerciseId`、`/real-life/run/:exerciseId`、`/competitive/run/:exerciseId` — 运行练习
+- `/practice` 会转到 `/focus`。`/arcade` 会转到 `/competitive`
+
+设置从页眉打开。没有练习列表页面。
 
 ### 文档
 

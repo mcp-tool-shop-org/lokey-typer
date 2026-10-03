@@ -19,7 +19,7 @@ LoKey Typer is a typing practice app built for adults who want quiet, focused se
 Choose from multiple practice modes:
 
 - Focus: Calm, curated exercises for building rhythm and accuracy.
-- Real-Life: Practice with emails, code snippets, and everyday text.
+- Real-Life: Practice with emails, forms, messages, notes, and other everyday writing.
 - Competitive: Timed sprints with personal bests for those who want speed.
 - Daily Set: A fresh set of exercises generated each day, adapted to your recent sessions.
 
