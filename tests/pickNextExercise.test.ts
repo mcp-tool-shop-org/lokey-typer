@@ -64,4 +64,18 @@ describe('pickNextExercise screen reader', () => {
 
     expect(result.renderedText.length).toBeGreaterThanOrEqual(1800)
   })
+
+  it('pads a 120 second competitive sprint to at least 4000 characters when screen reader mode is off', () => {
+    const result = pickNextExercise({
+      mode: 'competitive',
+      userId: USER_ID,
+      skill: null,
+      prefs: sanitizePreferences({
+        screenReaderMode: false,
+        competitiveSprintDurationMs: 120000,
+      }),
+    })
+
+    expect(result.renderedText.length).toBeGreaterThanOrEqual(4000)
+  })
 })
