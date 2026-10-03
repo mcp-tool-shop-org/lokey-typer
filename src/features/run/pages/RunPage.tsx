@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { findExercise, type Mode } from '@content'
 import {
@@ -25,6 +25,7 @@ export function RunPage({ mode }: { mode: Mode }) {
   const params = useParams<{ exerciseId: string }>()
   const [search] = useSearchParams()
   const { prefs } = usePreferences()
+  const [sessionKey, setSessionKey] = useState(0)
 
   const exerciseId = params.exerciseId ?? ''
   const exercise = findExercise(exerciseId)
@@ -133,6 +134,7 @@ export function RunPage({ mode }: { mode: Mode }) {
       ) : null}
 
       <TypingSession
+        key={`${exercise.id}-${sessionKey}`}
         mode={mode}
         exercise={exercise}
         targetText={targetText}
@@ -141,7 +143,7 @@ export function RunPage({ mode }: { mode: Mode }) {
         showCompetitiveHud={showCompetitiveHud}
         ghostEnabled={ghost}
         onExit={() => navigate(modeHome(mode))}
-        onRestart={() => navigate(0)}
+        onRestart={() => setSessionKey((key) => key + 1)}
       />
     </div>
   )

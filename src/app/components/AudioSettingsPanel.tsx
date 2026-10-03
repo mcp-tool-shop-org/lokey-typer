@@ -67,6 +67,16 @@ const FONT_SCALES: { value: Preferences['fontScale']; label: string }[] = [
   { value: 1.1, label: 'Larger' },
 ]
 
+const FOCUSABLE_SELECTOR = 'button, input, select, textarea, a[href], [tabindex]'
+
+function focusableControls(root: HTMLElement): HTMLElement[] {
+  return Array.from(root.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter((el) => {
+    if (el.getAttribute('tabindex') === '-1') return false
+    if ('disabled' in el && (el as { disabled?: boolean }).disabled) return false
+    return true
+  })
+}
+
 export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { prefs, patchPrefs } = usePreferences()
   const panelRef = useRef<HTMLDivElement>(null)
@@ -87,10 +97,38 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
   useEffect(() => {
     if (!open) return
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        e.stopPropagation()
+        onClose()
+        return
+      }
+      if (e.key !== 'Tab') return
+      const root = panelRef.current
+      if (!root) return
+      const focusable = focusableControls(root)
+      if (focusable.length === 0) {
+        e.preventDefault()
+        return
+      }
+      const active = document.activeElement
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey) {
+        if (active === first || !root.contains(active)) {
+          e.preventDefault()
+          last.focus()
+        }
+        return
+      }
+      if (active === last || !root.contains(active)) {
+        e.preventDefault()
+        first.focus()
+      }
     }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
+    // Capture so Escape never reaches the typing field, which treats it as exit.
+    document.addEventListener('keydown', onKey, true)
+    return () => document.removeEventListener('keydown', onKey, true)
   }, [open, onClose])
 
   useEffect(() => {

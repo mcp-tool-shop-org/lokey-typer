@@ -311,14 +311,14 @@ export function DailySetPage() {
           <div
             className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-800"
             role="progressbar"
-            aria-valuenow={currentIndex + (phase === 'transition' ? 1 : 0)}
+            aria-valuenow={currentIndex}
             aria-valuemin={0}
             aria-valuemax={daily.items.length}
             aria-label="Exercise progress"
           >
             <div
               className="h-full rounded-full bg-slate-500/80 transition-all duration-700 ease-out"
-              style={{ width: `${((currentIndex + (phase === 'transition' ? 1 : 0)) / daily.items.length) * 100}%` }}
+              style={{ width: `${(currentIndex / daily.items.length) * 100}%` }}
             />
           </div>
         </div>
