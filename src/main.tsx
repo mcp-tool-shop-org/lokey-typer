@@ -8,7 +8,7 @@ import { ErrorBoundary } from '@app/components/ErrorBoundary'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>
         <PreferencesProvider>
           <AmbientProvider>
             <App />
