@@ -5,11 +5,13 @@ export function TypingOverlay({
   typed,
   showCursor,
   ghostIndex,
+  fontScale,
 }: {
   target: string
   typed: string
   showCursor: boolean
   ghostIndex?: number | null
+  fontScale: number
 }) {
   const cursorIndex = typed.length
 
@@ -55,7 +57,10 @@ export function TypingOverlay({
   }, [target, typed, showCursor, cursorIndex, ghostIndex])
 
   return (
-    <div className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">
+    <div
+      className="font-mono text-sm leading-6 whitespace-pre-wrap break-words"
+      style={{ fontSize: `calc(0.875rem * ${fontScale})` }}
+    >
       {parts.map((p, idx) => {
         if (p.kind === 'cursor') {
           return (

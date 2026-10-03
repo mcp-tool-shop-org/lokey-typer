@@ -11,6 +11,7 @@ import {
 import { usePreferences } from '@app'
 import { Icon } from '@app/components/Icon'
 import { TypingSession } from '@features/typing'
+import { keyboardPassage } from '@lib-internal/keyboardPassage'
 import { repeatPassage } from '@lib-internal/repeatPassage'
 
 function modeHome(mode: Mode): string {
@@ -52,12 +53,13 @@ export function RunPage({ mode }: { mode: Mode }) {
         ? (exercise.text_long ?? exercise.text_short ?? exercise.text ?? '')
         : (exercise.text_short ?? exercise.text ?? exercise.text_long ?? '')
 
-    if (mode === 'competitive') {
+    const folded = keyboardPassage(base)
+    if (mode === 'competitive' && !prefs.screenReaderMode) {
       // keep sprints going without running out of target text
-      return repeatPassage(base, 1800)
+      return repeatPassage(folded, 1800)
     }
-    return base
-  }, [exercise, mode, variant])
+    return folded
+  }, [exercise, mode, variant, prefs.screenReaderMode])
 
   if (!exercise) {
     return (

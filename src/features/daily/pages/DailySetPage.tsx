@@ -19,6 +19,7 @@ import {
 } from '@lib'
 import { usePreferences } from '@app'
 import { Icon, type IconName } from '@app/components/Icon'
+import { keyboardPassage } from '@lib-internal/keyboardPassage'
 import { TypingSession } from '@features/typing'
 
 // ---------------------------------------------------------------------------
@@ -71,10 +72,10 @@ function computeBestWeek(days: Set<string>) {
 }
 
 function resolveExerciseText(exercise: Exercise, seed: string): string {
-  if (isTemplateExercise(exercise)) {
-    return renderTemplateExercise(exercise, { seed })
-  }
-  return exercise.text_short ?? exercise.text ?? exercise.text_long ?? ''
+  const raw = isTemplateExercise(exercise)
+    ? renderTemplateExercise(exercise, { seed })
+    : (exercise.text_short ?? exercise.text ?? exercise.text_long ?? '')
+  return keyboardPassage(raw)
 }
 
 function formatDuration(ms: number): string {
