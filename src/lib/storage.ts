@@ -199,7 +199,7 @@ function randomId(len = 16) {
 
 export function getOrCreateUserId(): string {
   ensureStorageKeysMigrated()
-  const existing = localStorage.getItem(KEY_USER_ID)
+  const existing = readStorage(KEY_USER_ID)
   if (existing && existing.length >= 8) return existing
   const next = `u_${randomId(20)}`
   try {
@@ -288,12 +288,64 @@ function migrateSkillModelV1ToV2(input: UserSkillModelV1): UserSkillModel {
   }
 }
 
+type LengthBucket = UserSkillModel['performance_by_length']['short']
+
+const LENGTH_BUCKETS = ['short', 'medium', 'long', 'multiline'] as const
+
+function isLengthBucket(value: unknown): value is LengthBucket {
+  if (value == null || typeof value !== 'object') return false
+  const bucket = value as Partial<LengthBucket>
+  return (
+    typeof bucket.ema_wpm === 'number' &&
+    typeof bucket.ema_accuracy === 'number' &&
+    typeof bucket.ema_backspace_rate === 'number' &&
+    typeof bucket.runs === 'number'
+  )
+}
+
+function skillModelFromV2(parsed: Partial<UserSkillModel>): UserSkillModel {
+  const base = defaultSkillModel()
+  const stored = parsed.performance_by_length
+  const performance_by_length: UserSkillModel['performance_by_length'] = {
+    short: base.performance_by_length.short,
+    medium: base.performance_by_length.medium,
+    long: base.performance_by_length.long,
+    multiline: base.performance_by_length.multiline,
+  }
+  let repaired = stored == null || typeof stored !== 'object'
+  if (stored && typeof stored === 'object') {
+    for (const name of LENGTH_BUCKETS) {
+      const candidate = stored[name]
+      if (isLengthBucket(candidate)) performance_by_length[name] = candidate
+      else repaired = true
+    }
+  }
+
+  const totalRuns = parsed.total_runs
+  const model = {
+    ...base,
+    ...parsed,
+    version: 2 as const,
+    total_runs: typeof totalRuns === 'number' ? totalRuns : base.total_runs,
+    performance_by_length,
+  } as UserSkillModel
+
+  if (repaired) {
+    try {
+      writeStorage(KEY_SKILL, JSON.stringify(model))
+    } catch {
+      // Return the filled model even when the write-back throws.
+    }
+  }
+  return model
+}
+
 export function loadSkillModel(): UserSkillModel {
   ensureStorageKeysMigrated()
-  const raw = safeParse<unknown>(localStorage.getItem(KEY_SKILL))
+  const raw = safeParse<unknown>(readStorage(KEY_SKILL))
 
   const parsed = raw as Partial<UserSkillModel> | null
-  if (parsed && parsed.version === 2) return parsed as UserSkillModel
+  if (parsed && parsed.version === 2) return skillModelFromV2(parsed)
 
   // Lightweight migration from v1 -> v2.
   const v1 = raw as { version?: number } | null
@@ -332,11 +384,12 @@ function readStorage(key: string): string | null {
   }
 }
 
-function writeStorage(key: string, value: string) {
+function writeStorage(key: string, value: string): boolean {
   try {
     localStorage.setItem(key, value)
+    return true
   } catch {
-    // ignore
+    return false
   }
 }
 
@@ -402,11 +455,13 @@ export function loadPreferences(): Preferences {
   return fresh
 }
 
-export function savePreferences(prefs: Preferences) {
+export function savePreferences(prefs: Preferences): boolean {
   const sanitized = sanitizePreferences(prefs)
-  localStorage.setItem(KEY_PREFS, JSON.stringify(sanitized))
+  const json = JSON.stringify(sanitized)
+  const live = writeStorage(KEY_PREFS, json)
   // last known good snapshot
-  localStorage.setItem(KEY_PREFS_LKG, JSON.stringify(sanitized))
+  const backup = writeStorage(KEY_PREFS_LKG, json)
+  return live && backup
 }
 
 export function resetPreferencesToDefaults() {
@@ -416,7 +471,7 @@ export function resetPreferencesToDefaults() {
 
 export function loadRuns(): RunResult[] {
   ensureStorageKeysMigrated()
-  const parsed = safeParse<unknown>(localStorage.getItem(KEY_RUNS))
+  const parsed = safeParse<unknown>(readStorage(KEY_RUNS))
   if (!Array.isArray(parsed)) return []
 
   const out: RunResult[] = []
@@ -460,57 +515,116 @@ export function loadRuns(): RunResult[] {
   return out
 }
 
-export function appendRun(run: RunResult) {
+export function appendRun(run: RunResult): boolean {
   const runs = loadRuns()
   runs.push({ ...run, v: 2 })
   // keep it bounded
   const trimmed = runs.slice(Math.max(0, runs.length - 5000))
-  localStorage.setItem(KEY_RUNS, JSON.stringify(trimmed))
+  return writeStorage(KEY_RUNS, JSON.stringify(trimmed))
+}
+
+const RECENT_MODES = ['focus', 'real_life', 'competitive'] as const
+
+function emptyRecents(): RecentHistory {
+  return {
+    byMode: {
+      focus: [],
+      real_life: [],
+      competitive: [],
+    },
+  }
+}
+
+function recentIds(value: unknown): string[] | null {
+  if (!Array.isArray(value)) return null
+  const ids: string[] = []
+  for (const item of value) {
+    if (typeof item === 'string') ids.push(item)
+  }
+  return ids
 }
 
 export function loadRecents(): RecentHistory {
   ensureStorageKeysMigrated()
-  return (
-    safeParse<RecentHistory>(localStorage.getItem(KEY_RECENTS)) ?? {
-      byMode: {
-        focus: [],
-        real_life: [],
-        competitive: [],
-      },
-    }
-  )
+  const parsed = safeParse<unknown>(readStorage(KEY_RECENTS))
+  const recents = emptyRecents()
+  if (parsed == null || typeof parsed !== 'object') return recents
+  const byMode = (parsed as { byMode?: unknown }).byMode
+  if (byMode == null || typeof byMode !== 'object') return recents
+  const raw = byMode as Record<string, unknown>
+  for (const mode of RECENT_MODES) {
+    const ids = recentIds(raw[mode])
+    if (ids) recents.byMode[mode] = ids
+  }
+  return recents
 }
 
-export function pushRecent(mode: Mode, exerciseId: string) {
+export function pushRecent(mode: Mode, exerciseId: string): boolean {
   const recents = loadRecents()
   const existing = recents.byMode[mode] ?? []
   const next = [exerciseId, ...existing.filter((id) => id !== exerciseId)].slice(0, 200)
   recents.byMode[mode] = next
-  localStorage.setItem(KEY_RECENTS, JSON.stringify(recents))
+  return writeStorage(KEY_RECENTS, JSON.stringify(recents))
 }
 
 export function loadLastMode(): Mode | null {
   ensureStorageKeysMigrated()
-  const raw = localStorage.getItem(KEY_LAST_MODE)
+  const raw = readStorage(KEY_LAST_MODE)
   if (raw === 'focus' || raw === 'real_life' || raw === 'competitive') return raw
   return null
 }
 
-export function saveLastMode(mode: Mode) {
-  localStorage.setItem(KEY_LAST_MODE, mode)
+export function saveLastMode(mode: Mode): boolean {
+  return writeStorage(KEY_LAST_MODE, mode)
 }
 
 function pbKey(exerciseId: string, sprintDurationMs?: SprintDurationMs) {
   return `${exerciseId}|${sprintDurationMs ?? 0}`
 }
 
+function isPersonalBest(value: unknown): value is PersonalBest {
+  if (value == null || typeof value !== 'object') return false
+  const row = value as Partial<PersonalBest>
+  if (typeof row.exercise_id !== 'string' || row.exercise_id.length === 0) return false
+  if (typeof row.wpm !== 'number' || !Number.isFinite(row.wpm)) return false
+  if (typeof row.accuracy !== 'number' || !Number.isFinite(row.accuracy)) return false
+  if (typeof row.timestamp !== 'number' || !Number.isFinite(row.timestamp)) return false
+  if (
+    row.sprint_duration_ms != null &&
+    row.sprint_duration_ms !== 30_000 &&
+    row.sprint_duration_ms !== 60_000 &&
+    row.sprint_duration_ms !== 120_000
+  ) {
+    return false
+  }
+  return true
+}
+
 export function loadPersonalBests(): PersonalBestsStore {
   ensureStorageKeysMigrated()
-  return (
-    safeParse<PersonalBestsStore>(localStorage.getItem(KEY_PBS)) ?? {
-      byKey: {},
+  const parsed = safeParse<unknown>(readStorage(KEY_PBS))
+  const byKey: Record<string, PersonalBest> = {}
+  if (parsed == null || typeof parsed !== 'object') return { byKey }
+  const raw = (parsed as { byKey?: unknown }).byKey
+  if (raw == null || typeof raw !== 'object' || Array.isArray(raw)) return { byKey }
+  for (const [key, value] of Object.entries(raw)) {
+    if (!isPersonalBest(value)) continue
+    const best: PersonalBest = {
+      exercise_id: value.exercise_id,
+      wpm: value.wpm,
+      accuracy: value.accuracy,
+      timestamp: value.timestamp,
     }
-  )
+    if (
+      value.sprint_duration_ms === 30_000 ||
+      value.sprint_duration_ms === 60_000 ||
+      value.sprint_duration_ms === 120_000
+    ) {
+      best.sprint_duration_ms = value.sprint_duration_ms
+    }
+    byKey[key] = best
+  }
+  return { byKey }
 }
 
 export function getPersonalBest(exerciseId: string, sprintDurationMs?: SprintDurationMs) {
@@ -540,7 +654,7 @@ export function maybeUpdatePersonalBest(params: {
       accuracy: params.accuracy,
       timestamp: params.timestamp,
     }
-    localStorage.setItem(KEY_PBS, JSON.stringify(store))
+    writeStorage(KEY_PBS, JSON.stringify(store))
     return { updated: true as const, previous: prev ?? null }
   }
 
