@@ -124,7 +124,7 @@ export function DailySetPage() {
   // ---- Progress persistence ----
 
   const [progress, setProgress] = useState<DailyProgress>(() => {
-    const existing = loadDailyProgress(daily.dateKey, userId)
+    const existing = loadDailyProgress(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
     if (existing && existing.sessionType === sessionType) return existing
     return {
       dateKey: daily.dateKey,
@@ -137,7 +137,7 @@ export function DailySetPage() {
 
   // Reset progress if session type changes (different set = different exercises).
   useEffect(() => {
-    const existing = loadDailyProgress(daily.dateKey, userId)
+    const existing = loadDailyProgress(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
     if (existing && existing.sessionType === sessionType) {
       setProgress(existing)
     } else {
@@ -149,7 +149,7 @@ export function DailySetPage() {
         startedAt: Date.now(),
       })
     }
-  }, [daily.dateKey, userId, sessionType])
+  }, [daily.dateKey, userId, sessionType, prefs.screenReaderMode])
 
   // ---- Phase state ----
 
@@ -216,7 +216,7 @@ export function DailySetPage() {
         finishedAt: isLast ? Date.now() : undefined,
       }
 
-      saveDailyProgress(nextProgress)
+      saveDailyProgress(nextProgress, prefs.screenReaderMode)
       setProgress(nextProgress)
 
       if (isLast) {
@@ -225,7 +225,7 @@ export function DailySetPage() {
         setPhase('transition')
       }
     },
-    [progress, daily.items.length],
+    [progress, daily.items.length, prefs.screenReaderMode],
   )
 
   const handleExit = useCallback(() => {

@@ -21,7 +21,7 @@ import {
   updateSkillModelFromRun,
 } from '@lib'
 import { keyboardPassage } from '@lib-internal/keyboardPassage'
-import { acceptTypingEdit } from '@lib-internal/typingEdit'
+import { acceptTypingEdit, addedSpan, graphemesOf } from '@lib-internal/typingEdit'
 import { useAmbient } from '@app'
 import { TypingOverlay } from './TypingOverlay'
 
@@ -66,11 +66,26 @@ function computeTagsHit(params: { exercise: Exercise; targetText: string }): str
   return Array.from(tags)
 }
 
-function singleInsertedChar(prev: string, next: string): { index: number; ch: string } | null {
-  if (next.length !== prev.length + 1) return null
-  let index = 0
-  while (index < prev.length && prev[index] === next[index]) index++
-  return { index, ch: next[index] }
+function noteGraphemeMistakes(
+  mistakes: MistakeCounts,
+  targetText: string,
+  index: number,
+  graphemes: readonly string[],
+): MistakeCounts {
+  let counts = mistakes
+  let at = index
+  for (const grapheme of graphemes) {
+    const expected = targetText.slice(at, at + grapheme.length)
+    if (grapheme !== expected) {
+      counts = noteMistake(counts, at < targetText.length ? expected : null)
+    }
+    at += grapheme.length
+  }
+  return counts
+}
+
+function isNativeComposing(event: Event): boolean {
+  return 'isComposing' in event && (event as InputEvent).isComposing === true
 }
 
 function formatMs(ms: number) {
@@ -115,6 +130,9 @@ export function TypingSession(props: {
   const inputRef = useRef<HTMLTextAreaElement | null>(null)
   const endOnceRef = useRef(false)
   const mistakesRef = useRef<MistakeCounts>({} as MistakeCounts)
+  const typedRef = useRef('')
+  const composingRef = useRef(false)
+  const compositionBaseRef = useRef('')
 
   const timeLimitMs = props.sprintDurationMs
 
@@ -465,21 +483,58 @@ export function TypingSession(props: {
           }}
           onPaste={(e) => e.preventDefault()}
           onDrop={(e) => e.preventDefault()}
+          onCompositionStart={(e) => {
+            if (isComplete) return
+            composingRef.current = true
+            compositionBaseRef.current = e.currentTarget.value
+          }}
+          onCompositionEnd={(e) => {
+            const commit = e.currentTarget.value
+            const base = compositionBaseRef.current
+            composingRef.current = false
+            if (isComplete) return
+            typedRef.current = commit
+            setTyped(commit)
+            const added = addedSpan(base, commit)
+            mistakesRef.current = noteGraphemeMistakes(
+              mistakesRef.current,
+              targetText,
+              added.index,
+              graphemesOf(added.text),
+            )
+            if (commit.length !== base.length) noteTypingActivity()
+            if (startedAtMs == null && commit.length > 0) setStartedAtMs(Date.now())
+            if (timeLimitMs == null && commit === targetText) setEndedAtMs(Date.now())
+          }}
           onChange={(e) => {
             if (isComplete) return
             const next = e.target.value
-            if (!acceptTypingEdit(typed, next)) return
-            const inserted = singleInsertedChar(typed, next)
-            if (inserted) {
-              const expected = inserted.index < targetText.length ? targetText[inserted.index] : null
-              if (inserted.ch !== expected) {
-                const noted = noteMistake(mistakesRef.current, expected)
-                if (noted) mistakesRef.current = noted
+            // Follow the field while IME is open. Gating the preedit cancels composition.
+            if (isNativeComposing(e.nativeEvent) || composingRef.current) {
+              if (!composingRef.current) {
+                composingRef.current = true
+                compositionBaseRef.current = typedRef.current
               }
+              typedRef.current = next
+              setTyped(next)
+              return
             }
+            const prev = typedRef.current
+            if (!acceptTypingEdit(prev, next)) return
+            const added = addedSpan(prev, next)
+            const graphemes = graphemesOf(added.text)
+            if (graphemes.length === 1) {
+              mistakesRef.current = noteGraphemeMistakes(
+                mistakesRef.current,
+                targetText,
+                added.index,
+                graphemes,
+              )
+            }
+            typedRef.current = next
             setTyped(next)
 
-            if (next.length !== typed.length) noteTypingActivity()
+            if (next.length !== prev.length) noteTypingActivity()
 
             if (startedAtMs == null && next.length > 0) setStartedAtMs(Date.now())
 
@@ -487,6 +542,9 @@ export function TypingSession(props: {
               setEndedAtMs(Date.now())
             }
           }}
+          autoCapitalize="off"
+          autoCorrect="off"
+          autoComplete="off"
           spellCheck={false}
           style={{ fontSize: `calc(0.875rem * ${props.prefs.fontScale})` }}
           className="mt-4 min-h-24 w-full resize-y rounded-lg border border-zinc-700/50 bg-zinc-950 px-3 py-2 font-mono text-sm text-zinc-100 outline-none transition-colors duration-200 focus:border-zinc-500/70 focus-visible:ring-2 focus-visible:ring-zinc-200/30 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
