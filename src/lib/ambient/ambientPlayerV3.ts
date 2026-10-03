@@ -152,6 +152,7 @@ export class AmbientPlayerV3 {
   setPreferences(p: AmbientPrefs): void {
     const wasEnabled = this.enabled && !this.screenReaderMode
     const wasCategory = this.category
+    const wasReducedMotion = this.reducedMotion
 
     this.enabled = p.enabled
     this.desiredVolume = clamp(p.volume, 0, 1)
@@ -164,6 +165,11 @@ export class AmbientPlayerV3 {
 
     // Volume change: smooth ramp.
     this.applyMasterVolume(0.4)
+
+    // Reduced motion stops automatic rotation. A live timer must not fire after that.
+    if (!wasReducedMotion && this.reducedMotion) {
+      this.clearRotationTimer()
+    }
 
     // Toggled off: fade out, and drop any load that is already in flight.
     if (wasEnabled && !nowEnabled) {
@@ -180,12 +186,23 @@ export class AmbientPlayerV3 {
       return
     }
 
-    // Category changed while playing: crossfade to new track from new category.
+    // Category changed while playing: one crossfade, including when reduced motion is on.
     if (wasCategory !== this.category && this.currentSlot && nowEnabled) {
       this.preloadedTrack = null
       this.preloadedBuffer = null
-      void this.rotate()
+      void this.rotate(true)
       return
+    }
+
+    // Turning reduced motion off re-arms only when the chain was dropped.
+    if (
+      wasReducedMotion &&
+      !this.reducedMotion &&
+      this.started &&
+      this.shouldPlay() &&
+      this.rotationTimer == null
+    ) {
+      this.scheduleRotation()
     }
   }
 
@@ -195,7 +212,7 @@ export class AmbientPlayerV3 {
     if (!this.shouldPlay()) return
     this.preloadedTrack = null
     this.preloadedBuffer = null
-    await this.rotate()
+    await this.rotate(true)
   }
 
   /** Duck volume briefly when user is actively typing. */
@@ -217,18 +234,22 @@ export class AmbientPlayerV3 {
     }, 900)
   }
 
-  /** Fade on tab blur, restore on tab focus. */
+  /** Fade on tab blur, restore on tab focus. Hiding does not rotate. */
   setVisibilityPaused(hidden: boolean): void {
     this.pausedByVisibility = hidden
-    if (!this.masterGain) return
 
-    const ctx = getAudioContext()
-    if (!ctx) return
+    const ctx = this.masterGain ? getAudioContext() : null
+    if (this.masterGain && ctx) {
+      if (hidden) {
+        ramp(this.masterGain.gain, ctx, 0, 0.6)
+      } else {
+        this.applyMasterVolume(0.8)
+      }
+    }
 
-    if (hidden) {
-      ramp(this.masterGain.gain, ctx, 0, 0.6)
-    } else {
-      this.applyMasterVolume(0.8)
+    // A fired timer is already null. Show re-arms the chain; it does not rotate now.
+    if (!hidden && this.started && this.shouldPlay() && !this.reducedMotion && this.rotationTimer == null) {
+      this.scheduleRotation()
     }
   }
 
@@ -421,13 +442,15 @@ export class AmbientPlayerV3 {
     this.preloadedBuffer = buf
   }
 
-  private async rotate(): Promise<void> {
+  private async rotate(manual: boolean): Promise<void> {
     const generation = this.playbackGeneration
-    if (!this.shouldPlay()) return
-    if (this.reducedMotion) return
+    // Stopped, hidden, or an automatic tick under reduced motion: do not arm another timer.
+    if (!this.started || !this.shouldPlay()) return
+    if (this.reducedMotion && !manual) return
 
     await this.ensureManifestLoaded()
-    if (generation !== this.playbackGeneration || !this.shouldPlay()) return
+    if (generation !== this.playbackGeneration) return
+    if (!this.shouldPlay()) return
 
     // Use preloaded if available and still matches category.
     let nextTrack = this.preloadedTrack
@@ -439,20 +462,34 @@ export class AmbientPlayerV3 {
       (this.category !== 'all' && nextTrack.category !== this.category)
     ) {
       nextTrack = this.pickRandomTrack()
-      if (!nextTrack) return
+      if (!nextTrack) {
+        if (!this.reducedMotion) this.scheduleRotation()
+        return
+      }
       nextBuf = await this.getBuffer(nextTrack)
-      if (generation !== this.playbackGeneration || !this.shouldPlay()) return
-      if (!nextBuf) return
+      if (generation !== this.playbackGeneration) return
+      if (!this.shouldPlay()) return
+      if (!nextBuf) {
+        if (!this.reducedMotion) this.scheduleRotation()
+        return
+      }
     }
 
-    if (generation !== this.playbackGeneration || !this.shouldPlay()) return
+    if (generation !== this.playbackGeneration) return
+    if (!this.shouldPlay()) return
 
     const ctx = getAudioContext()
-    if (!ctx) return
+    if (!ctx) {
+      if (!this.reducedMotion) this.scheduleRotation()
+      return
+    }
 
     // Create new slot at gain 0, then crossfade.
     const newSlot = this.createSlot(nextTrack, nextBuf, 0)
-    if (!newSlot) return
+    if (!newSlot) {
+      if (!this.reducedMotion) this.scheduleRotation()
+      return
+    }
     if (generation !== this.playbackGeneration || !this.shouldPlay()) {
       this.stopSlot(newSlot, 0.05)
       return
@@ -483,7 +520,11 @@ export class AmbientPlayerV3 {
     this.preloadedBuffer = null
     void this.preloadNext()
 
-    // Reschedule rotation.
+    // Reduced motion: this crossfade was deliberate. Do not arm the next automatic rotation.
+    if (this.reducedMotion) {
+      this.clearRotationTimer()
+      return
+    }
     this.scheduleRotation()
   }
 
@@ -492,9 +533,12 @@ export class AmbientPlayerV3 {
     if (this.reducedMotion) return
 
     const ms = ROTATION_MIN_MS + Math.random() * (ROTATION_MAX_MS - ROTATION_MIN_MS)
-    this.rotationTimer = window.setTimeout(() => {
-      void this.rotate()
+    const timerId = window.setTimeout(() => {
+      // A fired timer is not live. Do not clear a timer that replaced this one.
+      if (this.rotationTimer === timerId) this.rotationTimer = null
+      void this.rotate(false)
     }, ms)
+    this.rotationTimer = timerId
   }
 
   private clearRotationTimer(): void {
