@@ -52,12 +52,9 @@ public sealed partial class MainWindow : Window
             // Hide splash once the page has rendered
             AppWebView.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
 
-            // Suppress new-window requests (open in same view)
-            AppWebView.CoreWebView2.NewWindowRequested += (s, args) =>
-            {
-                args.Handled = true;
-                AppWebView.CoreWebView2.Navigate(args.Uri);
-            };
+            // Only https://lokey.local stays in this WebView. Other http(s) leaves the app.
+            AppWebView.CoreWebView2.NewWindowRequested += OnNewWindowRequested;
+            AppWebView.CoreWebView2.NavigationStarting += OnNavigationStarting;
 
             // Navigate to the bundled app
             AppWebView.CoreWebView2.Navigate("https://lokey.local/index.html");
@@ -67,6 +64,58 @@ public sealed partial class MainWindow : Window
             // If WebView2 runtime is missing, show a helpful message
             ShowFallbackError(ex.Message);
         }
+    }
+
+    private void OnNewWindowRequested(CoreWebView2 sender, CoreWebView2NewWindowRequestedEventArgs args)
+    {
+        args.Handled = true;
+        if (!Uri.TryCreate(args.Uri, UriKind.Absolute, out var uri))
+            return;
+
+        if (IsLokeyHttps(uri))
+        {
+            sender.Navigate(args.Uri);
+            return;
+        }
+
+        if (IsExternalHttp(uri))
+            LaunchOutside(uri);
+    }
+
+    private void OnNavigationStarting(CoreWebView2 sender, CoreWebView2NavigationStartingEventArgs args)
+    {
+        if (!Uri.TryCreate(args.Uri, UriKind.Absolute, out var uri))
+            return;
+
+        if (IsLokeyHttps(uri))
+            return;
+
+        args.Cancel = true;
+        if (uri.Scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase)
+            || uri.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase))
+            LaunchOutside(uri);
+    }
+
+    private static bool IsLokeyHttps(Uri uri)
+    {
+        return uri.IsAbsoluteUri
+            && uri.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase)
+            && uri.Host.Equals("lokey.local", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsExternalHttp(Uri uri)
+    {
+        return uri.IsAbsoluteUri
+            && (uri.Scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase)
+                || uri.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase))
+            && !uri.Host.Equals("lokey.local", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static void LaunchOutside(Uri uri)
+    {
+        // Starts immediately. The WebView handler must not await this.
+        var launch = Windows.System.Launcher.LaunchUriAsync(uri);
+        _ = launch.Status;
     }
 
     private void OnWebResourceRequested(CoreWebView2 sender, CoreWebView2WebResourceRequestedEventArgs args)
