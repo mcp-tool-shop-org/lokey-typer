@@ -66,7 +66,7 @@ export function AppShell() {
       </a>
       <header inert={settingsOpen ? true : undefined} className="border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 overflow-x-auto px-4 py-4 sm:px-6 sm:py-5">
-          <Link to="/" className="flex shrink-0 items-center gap-2.5 transition duration-200 hover:opacity-80">
+          <Link to="/" aria-label="LoKey Typer" className="flex shrink-0 items-center gap-2.5 transition duration-200 hover:opacity-80">
             <Icon name="logo-mark" size={22} className="text-zinc-400" />
             <div className="hidden text-base font-medium tracking-tight text-zinc-200 sm:block">LoKey Typer</div>
             <div className="hidden text-xs text-zinc-600 md:block">·</div>
