@@ -78,7 +78,11 @@ export type DailyProgress = {
 }
 
 function todayKey() {
-  return new Date().toISOString().slice(0, 10)
+  const now = new Date()
+  const year = now.getFullYear()
+  const month = String(now.getMonth() + 1).padStart(2, '0')
+  const day = String(now.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
 }
 
 function itemCount(sessionType: DailySessionType) {
@@ -410,25 +414,67 @@ export function generateDailySet(params: {
 
 // --- Daily progress persistence ---
 
-const DAILY_PROGRESS_KEY = 'lkt_daily_progress'
+const DAILY_PROGRESS_PREFIX = 'lkt_daily_progress_v1'
+const LEGACY_DAILY_PROGRESS_KEY = 'lkt_daily_progress'
 
-export function loadDailyProgress(dateKey: string, userId: string): DailyProgress | null {
+function dailyProgressKey(
+  userId: string,
+  dateKey: string,
+  sessionType: DailySessionType,
+  screenReaderMode: boolean,
+): string {
+  const base = `${DAILY_PROGRESS_PREFIX}|${userId}|${dateKey}|${sessionType}`
+  return screenReaderMode ? `${base}|sr` : base
+}
+
+function progressMatches(
+  progress: DailyProgress,
+  dateKey: string,
+  userId: string,
+  sessionType: DailySessionType,
+): boolean {
+  return progress.dateKey === dateKey && progress.userId === userId && progress.sessionType === sessionType
+}
+
+function readDailyProgress(raw: string | null): DailyProgress | null {
+  const parsed = safeParse<DailyProgress>(raw)
+  if (!parsed || !Array.isArray(parsed.completedItems)) return null
+  return parsed
+}
+
+export function loadDailyProgress(
+  dateKey: string,
+  userId: string,
+  sessionType: DailySessionType,
+  screenReaderMode: boolean,
+): DailyProgress | null {
   try {
     if (typeof localStorage === 'undefined') return null
-    const raw = localStorage.getItem(DAILY_PROGRESS_KEY)
-    const parsed = safeParse<DailyProgress>(raw)
-    if (!parsed || parsed.dateKey !== dateKey || parsed.userId !== userId) return null
-    if (!Array.isArray(parsed.completedItems)) return null
-    return parsed
+    const key = dailyProgressKey(userId, dateKey, sessionType, screenReaderMode)
+    const raw = localStorage.getItem(key)
+    if (raw != null) {
+      const current = readDailyProgress(raw)
+      if (current && progressMatches(current, dateKey, userId, sessionType)) return current
+      return null
+    }
+
+    const legacyRaw = localStorage.getItem(LEGACY_DAILY_PROGRESS_KEY)
+    if (legacyRaw == null) return null
+    const legacy = readDailyProgress(legacyRaw)
+    if (!legacy || !progressMatches(legacy, dateKey, userId, sessionType)) return null
+    localStorage.setItem(key, legacyRaw)
+    localStorage.removeItem(LEGACY_DAILY_PROGRESS_KEY)
+    return legacy
   } catch {
     return null
   }
 }
 
-export function saveDailyProgress(progress: DailyProgress): void {
+export function saveDailyProgress(progress: DailyProgress, screenReaderMode: boolean): void {
   try {
     if (typeof localStorage === 'undefined') return
-    localStorage.setItem(DAILY_PROGRESS_KEY, JSON.stringify(progress))
+    const key = dailyProgressKey(progress.userId, progress.dateKey, progress.sessionType, screenReaderMode)
+    localStorage.setItem(key, JSON.stringify(progress))
   } catch {
     // ignore
   }

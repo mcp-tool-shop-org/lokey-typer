@@ -1,3 +1,9 @@
+/** 120s sprints need a longer target. Every other duration, including none, stays at 1800. */
+export function competitiveMinLength(sprintDurationMs: number | undefined): number {
+  if (sprintDurationMs === 120_000) return 4000
+  return 1800
+}
+
 /**
  * Competitive sprints need a long target. A single-line passage stays one line.
  * A passage that already has line breaks repeats as another paragraph.

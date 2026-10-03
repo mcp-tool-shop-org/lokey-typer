@@ -1,9 +1,15 @@
 /**
- * A typing attempt may insert at most one character per change.
+ * A typing attempt may insert at most one grapheme per change.
  * Deletes of any size stay, so a selection can be cleared. A paste cannot.
  */
-export function acceptTypingEdit(prev: string, next: string): boolean {
-  if (next === prev) return true
+
+export function graphemesOf(value: string): string[] {
+  if (value.length === 0) return []
+  const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' })
+  return [...segmenter.segment(value)].map((part) => part.segment)
+}
+
+export function addedSpan(prev: string, next: string): { index: number; text: string } {
   let prefix = 0
   const max = Math.min(prev.length, next.length)
   while (prefix < max && prev[prefix] === next[prefix]) prefix++
@@ -15,6 +21,10 @@ export function acceptTypingEdit(prev: string, next: string): boolean {
   ) {
     suffix++
   }
-  const added = next.length - prefix - suffix
-  return added <= 1
+  return { index: prefix, text: next.slice(prefix, next.length - suffix) }
+}
+
+export function acceptTypingEdit(prev: string, next: string): boolean {
+  if (next === prev) return true
+  return graphemesOf(addedSpan(prev, next).text).length <= 1
 }

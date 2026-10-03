@@ -3,7 +3,7 @@ import { loadExercisesByMode } from '@content'
 import { keyboardPassage } from './keyboardPassage'
 import { isTemplateExercise, renderTemplateExercise } from './templateRender'
 import { isScreenReaderSafePassage, tagMatches, weaknessForTag } from './passageShape'
-import { repeatPassage } from './repeatPassage'
+import { competitiveMinLength, repeatPassage } from './repeatPassage'
 import { loadRecents, type Preferences, type UserSkillModel } from './storage'
 
 // ---------------------------------------------------------------------------
@@ -104,6 +104,7 @@ function resolveText(
   userId: string,
   mode: Mode,
   screenReaderMode: boolean,
+  competitiveSprintDurationMs: number | undefined,
 ): { text: string; seed: string } {
   const seed = `${userId}|${exercise.id}|${Date.now()}`
 
@@ -118,7 +119,7 @@ function resolveText(
 
   // Sprint padding is a long repeat. Screen reader stays on the one folded copy.
   if (mode === 'competitive' && !screenReaderMode) {
-    text = repeatPassage(text, 1800)
+    text = repeatPassage(text, competitiveMinLength(competitiveSprintDurationMs))
   }
 
   return { text, seed }
@@ -208,7 +209,13 @@ export function pickNextExercise(params: {
   const picked = pickWeighted(pool, weight, rand)
   const exercise = picked ?? pool[0]
 
-  const { text, seed } = resolveText(exercise, userId, mode, screenReaderMode)
+  const { text, seed } = resolveText(
+    exercise,
+    userId,
+    mode,
+    screenReaderMode,
+    prefs.competitiveSprintDurationMs,
+  )
 
   return { exercise, renderedText: text, seed }
 }
