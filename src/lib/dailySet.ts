@@ -470,12 +470,13 @@ export function loadDailyProgress(
   }
 }
 
-export function saveDailyProgress(progress: DailyProgress, screenReaderMode: boolean): void {
+export function saveDailyProgress(progress: DailyProgress, screenReaderMode: boolean): boolean {
   try {
-    if (typeof localStorage === 'undefined') return
+    if (typeof localStorage === 'undefined') return false
     const key = dailyProgressKey(progress.userId, progress.dateKey, progress.sessionType, screenReaderMode)
     localStorage.setItem(key, JSON.stringify(progress))
+    return true
   } catch {
-    // ignore
+    return false
   }
 }

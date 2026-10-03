@@ -723,6 +723,36 @@ describe('TypingSession', () => {
     expect(statValue('WPM')).not.toBe('Hidden')
   })
 
+  it('does not treat a blocked run write as a saved finish', async () => {
+    const onComplete = vi.fn()
+    const { input } = renderSession({
+      targetText: 'ab',
+      onComplete,
+      prefs: { bellOnCompletion: true, soundEnabled: true },
+    })
+    const storage = globalThis.localStorage
+    const write = storage.setItem.bind(storage)
+    storage.setItem = (key: string, value: string) => {
+      if (key === 'lkt_runs_v1') throw new Error('quota')
+      write(key, value)
+    }
+
+    typeAll(input, 'ab')
+    await waitFor(() => {
+      expect(screen.getByText("This finish didn't save. Restart to try again.")).toBeTruthy()
+    })
+    expect(onComplete).not.toHaveBeenCalled()
+    expect(play).not.toHaveBeenCalledWith('return_bell', expect.anything())
+    expect(screen.queryByText('Strong accuracy. Nice, steady work.')).toBeNull()
+    expect(localStorage.getItem('lkt_runs_v1')).toBeNull()
+
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 180))
+    })
+    expect(onComplete).not.toHaveBeenCalled()
+    expect(screen.getByRole('button', { name: 'Restart' })).toBeTruthy()
+  })
+
   it('mentions frequent corrections after many backspaces', async () => {
     const { input } = renderSession({
       targetText: 'ab',

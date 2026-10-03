@@ -156,6 +156,8 @@ export function DailySetPage() {
   const currentIndex = progress.completedItems.length
   const isFinished = currentIndex >= daily.items.length
 
+  const [progressSaveFailed, setProgressSaveFailed] = useState(false)
+
   const [phase, setPhase] = useState<PagePhase>(() => {
     if (isFinished) return 'summary'
     return 'idle'
@@ -216,7 +218,11 @@ export function DailySetPage() {
         finishedAt: isLast ? Date.now() : undefined,
       }
 
-      saveDailyProgress(nextProgress, prefs.screenReaderMode)
+      if (!saveDailyProgress(nextProgress, prefs.screenReaderMode)) {
+        setProgressSaveFailed(true)
+        return
+      }
+      setProgressSaveFailed(false)
       setProgress(nextProgress)
 
       if (isLast) {
@@ -233,6 +239,7 @@ export function DailySetPage() {
   }, [navigate])
 
   const handleRestart = useCallback(() => {
+    setProgressSaveFailed(false)
     setSessionKey((k) => k + 1)
   }, [])
 
@@ -261,6 +268,12 @@ export function DailySetPage() {
               ? 'Daily set complete.'
               : null}
       </div>
+
+      {progressSaveFailed ? (
+        <p role="status" className="text-center text-sm text-zinc-300">
+          Today's set didn't keep this exercise. Try again.
+        </p>
+      ) : null}
 
       {/* CTA — same position as every other tab (idle only) */}
       {phase === 'idle' ? (

@@ -2010,8 +2010,8 @@ describe('daily set', () => {
     }
     const key = `lkt_daily_progress_v1|${matching.userId}|${matching.dateKey}|reset`
 
-    publicLib.saveDailyProgress(matching, false)
-    publicLib.saveDailyProgress({ ...matching, startedAt: 9 }, true)
+    expect(publicLib.saveDailyProgress(matching, false)).toBe(true)
+    expect(publicLib.saveDailyProgress({ ...matching, startedAt: 9 }, true)).toBe(true)
     expect(publicLib.loadDailyProgress(matching.dateKey, matching.userId, 'reset', false)?.startedAt).toBe(1)
     expect(publicLib.loadDailyProgress(matching.dateKey, matching.userId, 'reset', true)?.startedAt).toBe(9)
     store.delete(key)
@@ -2057,7 +2057,7 @@ describe('daily set', () => {
     }
     expect(publicLib.loadDailyProgress(matching.dateKey, matching.userId, 'reset', false)).toBeNull()
     expect(store.get('lkt_daily_progress')).toBe(JSON.stringify(matching))
-    expect(() => publicLib.saveDailyProgress(matching, false)).not.toThrow()
+    expect(publicLib.saveDailyProgress(matching, false)).toBe(false)
 
     storage.getItem = () => {
       throw new Error('blocked')
@@ -2066,7 +2066,7 @@ describe('daily set', () => {
 
     Reflect.deleteProperty(globalThis, 'localStorage')
     expect(publicLib.loadDailyProgress(matching.dateKey, matching.userId, 'reset', false)).toBeNull()
-    expect(() => publicLib.saveDailyProgress(matching, true)).not.toThrow()
+    expect(publicLib.saveDailyProgress(matching, true)).toBe(false)
     const detached = publicLib.generateDailySet({
       userId: 'no-store',
       dateKey: '2026-07-07',

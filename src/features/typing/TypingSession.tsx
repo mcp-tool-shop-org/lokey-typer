@@ -129,6 +129,7 @@ export function TypingSession(props: {
 
   const inputRef = useRef<HTMLTextAreaElement | null>(null)
   const endOnceRef = useRef(false)
+  const [saveFailed, setSaveFailed] = useState(false)
   const mistakesRef = useRef<MistakeCounts>({} as MistakeCounts)
   const typedRef = useRef('')
   const composingRef = useRef(false)
@@ -197,7 +198,14 @@ export function TypingSession(props: {
       sprint_duration_ms: timeLimitMs as SprintDurationMs | undefined,
     }
 
-    appendRun(run)
+    // A failed write is not a stored finish. The ref stays set so this
+    // mount does not retry while the passage remains complete. Restart
+    // remounts the session and can try the write again.
+    if (!appendRun(run)) {
+      setSaveFailed(true)
+      return
+    }
+
     pushRecent(props.mode, props.exercise.id)
     saveLastMode(props.mode)
 
@@ -553,6 +561,9 @@ export function TypingSession(props: {
 
         <div id={helpTextId} className="mt-4 text-xs leading-relaxed text-zinc-400" aria-live="polite" aria-atomic="true">
           {isComplete ? (
+            saveFailed ? (
+              <div className="font-medium text-zinc-200">This finish didn't save. Restart to try again.</div>
+            ) : (
             <div className="space-y-2 animate-fade-in">
               <div className={`flex items-center gap-1.5 font-medium ${feedback.isNewPb ? 'text-zinc-50' : 'text-zinc-200'}`}>
                 <Icon name={feedback.isNewPb ? 'personal-best' : 'checkmark-circle'} size={14} className={`shrink-0 ${feedback.isNewPb ? 'text-zinc-300' : 'text-zinc-400'}`} />
@@ -578,6 +589,7 @@ export function TypingSession(props: {
                 <div className="flex items-center gap-1"><Icon name="backspace" size={12} className="text-zinc-500" /> Backspaces: {backspaces}</div>
               </div>
             </div>
+            )
           ) : (
             <div className="flex items-center gap-1.5">
               <Icon name="keyboard" size={14} className="shrink-0 text-zinc-500" />

@@ -925,6 +925,31 @@ describe('daily set', () => {
     expect(screen.getByRole('heading', { name: /LoKey Typer/ })).toBeTruthy()
   }, 20_000)
 
+  it("stays on the exercise when today's progress cannot be stored", async () => {
+    const user = setupUser()
+    seedUser()
+    seedDailySet('reset', [{ kind: 'mix', mode: 'focus', exerciseId: 'missing-daily-item' }])
+    renderApp(['/daily?type=reset'])
+    await user.click(screen.getByRole('button', { name: 'Begin' }))
+    expect(await screen.findByText('Exercise unavailable')).toBeTruthy()
+
+    const storage = globalThis.localStorage
+    const write = storage.setItem.bind(storage)
+    storage.setItem = (key: string, value: string) => {
+      if (key.startsWith('lkt_daily_progress')) throw new Error('quota')
+      write(key, value)
+    }
+
+    await user.click(screen.getByRole('button', { name: 'Skip to next' }))
+    expect((await screen.findByRole('status')).textContent).toBe(
+      "Today's set didn't keep this exercise. Try again.",
+    )
+    expect(screen.getByText('Exercise unavailable')).toBeTruthy()
+    expect(screen.queryByRole('heading', { name: /Daily Set Complete/ })).toBeNull()
+    expect(screen.queryByText(/Exercise complete/)).toBeNull()
+    expect([...store.keys()].some((key) => key.startsWith('lkt_daily_progress'))).toBe(false)
+  })
+
   it('skips a missing exercise into the summary', async () => {
     const user = setupUser()
     seedUser()
