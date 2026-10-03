@@ -1,0 +1,517 @@
+{
+  "pack_id": "real_life_journal_templates",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "tpl_008",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_018",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_028",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_038",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_048",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 5,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_058",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_068",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_078",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_088",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 5,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_098",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_108",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_118",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_128",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 5,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_138",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_148",
+      "mode": "real_life",
+      "pack": "real_life_journal_templates",
+      "title": "Journal Template",
+      "difficulty": 5,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Today: {line_1} {line_2}",
+      "slots": {
+        "line_1": [
+          "Today I want to keep things simple.",
+          "This is a short entry to clear my head.",
+          "I’m practicing calm attention, one line at a time.",
+          "I’m choosing steady effort over noisy effort."
+        ],
+        "line_2": [
+          "One clear priority is enough for today.",
+          "If I slow down, I notice more—and I make fewer mistakes.",
+          "Consistency matters more than intensity.",
+          "I can be firm and still stay calm.",
+          "A quiet plan is better than a rushed plan."
+        ]
+      },
+      "tags": [
+        "journal",
+        "calm",
+        "colon"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    }
+  ]
+}

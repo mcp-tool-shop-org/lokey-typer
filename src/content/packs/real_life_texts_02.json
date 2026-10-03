@@ -1,0 +1,707 @@
+{
+  "pack_id": "real_life_texts_02",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "real_life_texts_02_001",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "On My Way",
+      "difficulty": 2,
+      "estimated_seconds": 20,
+      "text": "On my way now. See you in 60.",
+      "tags": [
+        "texts",
+        "short",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_002",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Check",
+      "difficulty": 2,
+      "estimated_seconds": 25,
+      "text": "Quick question: are we still on for tomorrow?",
+      "tags": [
+        "texts",
+        "question",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_003",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Small Update",
+      "difficulty": 2,
+      "estimated_seconds": 30,
+      "text": "Running a few minutes late, but I’m close.",
+      "tags": [
+        "texts",
+        "comma",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_004",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Plan Shift",
+      "difficulty": 2,
+      "estimated_seconds": 20,
+      "text": "Can we do 5:45 instead of 7:00? Traffic is heavier than I expected.",
+      "tags": [
+        "texts",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_005",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Errand",
+      "difficulty": 2,
+      "estimated_seconds": 20,
+      "text": "If you’re stopping by the station, could you grab tea, soap, and coffee?",
+      "tags": [
+        "texts",
+        "list",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_006",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Heads Up",
+      "difficulty": 2,
+      "estimated_seconds": 35,
+      "text": "Heads up—my phone might be spotty for a bit, but I’ll reply when I can.",
+      "tags": [
+        "texts",
+        "dash",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_007",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "On My Way",
+      "difficulty": 2,
+      "estimated_seconds": 35,
+      "text": "On my way now. See you in 2.",
+      "tags": [
+        "texts",
+        "short",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_008",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Check",
+      "difficulty": 2,
+      "estimated_seconds": 15,
+      "text": "Quick question: are we still on for tonight?",
+      "tags": [
+        "texts",
+        "question",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_009",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Small Update",
+      "difficulty": 2,
+      "estimated_seconds": 20,
+      "text": "Running a few minutes late, but I’m close.",
+      "tags": [
+        "texts",
+        "comma",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_010",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Plan Shift",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "text": "Can we do 5:45 instead of 7:00? Traffic is heavier than I expected.",
+      "tags": [
+        "texts",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_011",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Errand",
+      "difficulty": 2,
+      "estimated_seconds": 30,
+      "text": "If you’re stopping by the station, could you grab bread, tea, and soap?",
+      "tags": [
+        "texts",
+        "list",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_012",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Heads Up",
+      "difficulty": 2,
+      "estimated_seconds": 40,
+      "text": "Heads up—my phone might be spotty for a bit, but I’ll reply when I can.",
+      "tags": [
+        "texts",
+        "dash",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_013",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "On My Way",
+      "difficulty": 2,
+      "estimated_seconds": 20,
+      "text": "On my way now. See you in 5.",
+      "tags": [
+        "texts",
+        "short",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_014",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Check",
+      "difficulty": 2,
+      "estimated_seconds": 20,
+      "text": "Quick question: are we still on for tomorrow?",
+      "tags": [
+        "texts",
+        "question",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_015",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Small Update",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "text": "Running a few minutes late, but I’m close.",
+      "tags": [
+        "texts",
+        "comma",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_016",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Plan Shift",
+      "difficulty": 2,
+      "estimated_seconds": 20,
+      "text": "Can we do 7:15 instead of 6:00? Traffic is heavier than I expected.",
+      "tags": [
+        "texts",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_017",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Errand",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "text": "If you’re stopping by the station, could you grab eggs, bread, and coffee?",
+      "tags": [
+        "texts",
+        "list",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_018",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Heads Up",
+      "difficulty": 3,
+      "estimated_seconds": 15,
+      "text": "Heads up—my phone might be spotty for a bit, but I’ll reply when I can.",
+      "tags": [
+        "texts",
+        "dash",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_019",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "On My Way",
+      "difficulty": 3,
+      "estimated_seconds": 35,
+      "text": "On my way now. See you in 25.",
+      "tags": [
+        "texts",
+        "short",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_020",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Check",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Quick question: are we still on for Saturday?",
+      "tags": [
+        "texts",
+        "question",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_021",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Small Update",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Running a few minutes late, but I’m close.",
+      "tags": [
+        "texts",
+        "comma",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_022",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Plan Shift",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Can we do 5:45 instead of 6:00? Traffic is heavier than I expected.",
+      "tags": [
+        "texts",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_023",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Errand",
+      "difficulty": 3,
+      "estimated_seconds": 40,
+      "text": "If you’re stopping by the office, could you grab soap, oats, and coffee?",
+      "tags": [
+        "texts",
+        "list",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_024",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Heads Up",
+      "difficulty": 3,
+      "estimated_seconds": 35,
+      "text": "Heads up—my phone might be spotty for a bit, but I’ll reply when I can.",
+      "tags": [
+        "texts",
+        "dash",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_025",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "On My Way",
+      "difficulty": 3,
+      "estimated_seconds": 40,
+      "text": "On my way now. See you in 5.",
+      "tags": [
+        "texts",
+        "short",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_026",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Check",
+      "difficulty": 3,
+      "estimated_seconds": 30,
+      "text": "Quick question: are we still on for next week?",
+      "tags": [
+        "texts",
+        "question",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_027",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Small Update",
+      "difficulty": 3,
+      "estimated_seconds": 30,
+      "text": "Running a few minutes late, but I’m close.",
+      "tags": [
+        "texts",
+        "comma",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_028",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Plan Shift",
+      "difficulty": 3,
+      "estimated_seconds": 20,
+      "text": "Can we do 7:15 instead of 6:00? Traffic is heavier than I expected.",
+      "tags": [
+        "texts",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_029",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Errand",
+      "difficulty": 3,
+      "estimated_seconds": 20,
+      "text": "If you’re stopping by the store, could you grab tea, soap, and bread?",
+      "tags": [
+        "texts",
+        "list",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_030",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Heads Up",
+      "difficulty": 3,
+      "estimated_seconds": 15,
+      "text": "Heads up—my phone might be spotty for a bit, but I’ll reply when I can.",
+      "tags": [
+        "texts",
+        "dash",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_031",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "On My Way",
+      "difficulty": 3,
+      "estimated_seconds": 40,
+      "text": "On my way now. See you in 7.",
+      "tags": [
+        "texts",
+        "short",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_032",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Check",
+      "difficulty": 3,
+      "estimated_seconds": 35,
+      "text": "Quick question: are we still on for tonight?",
+      "tags": [
+        "texts",
+        "question",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_033",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Small Update",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Running a few minutes late, but I’m close.",
+      "tags": [
+        "texts",
+        "comma",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_034",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Plan Shift",
+      "difficulty": 3,
+      "estimated_seconds": 20,
+      "text": "Can we do 5:45 instead of 7:00? Traffic is heavier than I expected.",
+      "tags": [
+        "texts",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_035",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Errand",
+      "difficulty": 4,
+      "estimated_seconds": 20,
+      "text": "If you’re stopping by the gym, could you grab bread, oats, and fruit?",
+      "tags": [
+        "texts",
+        "list",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_036",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Heads Up",
+      "difficulty": 4,
+      "estimated_seconds": 15,
+      "text": "Heads up—my phone might be spotty for a bit, but I’ll reply when I can.",
+      "tags": [
+        "texts",
+        "dash",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_037",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "On My Way",
+      "difficulty": 4,
+      "estimated_seconds": 15,
+      "text": "On my way now. See you in 25.",
+      "tags": [
+        "texts",
+        "short",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_038",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Check",
+      "difficulty": 4,
+      "estimated_seconds": 15,
+      "text": "Quick question: are we still on for Saturday?",
+      "tags": [
+        "texts",
+        "question",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_039",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Small Update",
+      "difficulty": 4,
+      "estimated_seconds": 35,
+      "text": "Running a few minutes late, but I’m close.",
+      "tags": [
+        "texts",
+        "comma",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_040",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Plan Shift",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "text": "Can we do 7:15 instead of 7:00? Traffic is heavier than I expected.",
+      "tags": [
+        "texts",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_041",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Errand",
+      "difficulty": 4,
+      "estimated_seconds": 20,
+      "text": "If you’re stopping by the station, could you grab eggs, fruit, and tea?",
+      "tags": [
+        "texts",
+        "list",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_042",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Heads Up",
+      "difficulty": 4,
+      "estimated_seconds": 30,
+      "text": "Heads up—my phone might be spotty for a bit, but I’ll reply when I can.",
+      "tags": [
+        "texts",
+        "dash",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_043",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "On My Way",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "text": "On my way now. See you in 90.",
+      "tags": [
+        "texts",
+        "short",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_044",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Check",
+      "difficulty": 4,
+      "estimated_seconds": 30,
+      "text": "Quick question: are we still on for tomorrow?",
+      "tags": [
+        "texts",
+        "question",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_045",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Small Update",
+      "difficulty": 4,
+      "estimated_seconds": 40,
+      "text": "Running a few minutes late, but I’m close.",
+      "tags": [
+        "texts",
+        "comma",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_046",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Plan Shift",
+      "difficulty": 4,
+      "estimated_seconds": 15,
+      "text": "Can we do 6:30 instead of 6:00? Traffic is heavier than I expected.",
+      "tags": [
+        "texts",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_047",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Errand",
+      "difficulty": 4,
+      "estimated_seconds": 40,
+      "text": "If you’re stopping by the station, could you grab yogurt, bread, and eggs?",
+      "tags": [
+        "texts",
+        "list",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_048",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Heads Up",
+      "difficulty": 4,
+      "estimated_seconds": 30,
+      "text": "Heads up—my phone might be spotty for a bit, but I’ll reply when I can.",
+      "tags": [
+        "texts",
+        "dash",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_049",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "On My Way",
+      "difficulty": 4,
+      "estimated_seconds": 35,
+      "text": "On my way now. See you in 2.",
+      "tags": [
+        "texts",
+        "short",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_texts_02_050",
+      "mode": "real_life",
+      "pack": "real_life_texts_02",
+      "title": "Quick Check",
+      "difficulty": 4,
+      "estimated_seconds": 20,
+      "text": "Quick question: are we still on for tomorrow?",
+      "tags": [
+        "texts",
+        "question",
+        "colon"
+      ]
+    }
+  ]
+}

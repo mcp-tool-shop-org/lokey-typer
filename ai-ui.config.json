@@ -1,0 +1,35 @@
+{
+  "docs": {
+    "globs": [
+      "README.md",
+      "CHANGELOG.md",
+      "docs/*.md"
+    ]
+  },
+  "probe": {
+    "baseUrl": "http://localhost:5173/lokey-typer",
+    "routes": [
+      "/",
+      "/daily",
+      "/focus",
+      "/real-life",
+      "/competitive"
+    ]
+  },
+  "featureAliases": {
+    "four-practice-modes": ["Daily", "Focus", "Real-Life", "Competitive"],
+    "ambient-sound-system-with-42-non-rhythmic-soundscape-tracks": ["change", "Audio Settings"],
+    "ambient-soundscapes-designed-for-sustained-focus": ["Audio Settings"],
+    "mechanical-typewriter-keystroke-audio": ["Audio Settings"],
+    "mechanical-typewriter-keystroke-audio-with-synth-fallback": ["Audio Settings"],
+    "curated-content-packs-with-exercises-across": ["Short set", "Standard set", "Long set"],
+    "personalized-daily-exercise-sets-adapted-to-recent-sessions": ["Daily"],
+    "personalized-daily-exercises-based-on-recent-sessions": ["Daily"],
+    "wpm-and-accuracy-metrics-with-end-of-run-feedback": ["Start typing", "Begin"],
+    "personal-best-tracking-per-exercise": ["Start typing", "Begin"]
+  },
+  "goalRules": [
+    { "id": "audio_open", "label": "Open Audio Settings", "kind": "domEffect", "dom": { "textRegex": "Audio Settings" }, "score": 2 },
+    { "id": "audio_change", "label": "Change Audio Preference", "kind": "storageWrite", "storage": { "keyRegex": "^lkt_prefs_v1$" }, "score": 5 }
+  ]
+}

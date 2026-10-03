@@ -1,0 +1,2542 @@
+{
+  "pack_id": "real_life_email_templates",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "tpl_001",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_002",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_011",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_012",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 5,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_021",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_022",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_031",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_032",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 5,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_041",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_042",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_051",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_052",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 5,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_061",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_062",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_071",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_072",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 5,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_081",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_082",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_091",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_092",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 5,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_101",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_102",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 3,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_111",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_112",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 5,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_121",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_122",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_131",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_132",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 5,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_141",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Scheduling Template",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hi {name},\n\nCan we move our {meeting_type} to {day} at {time}? If that doesn’t work, I’m free {alt_day} {alt_window}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "meeting_type": [
+          "check-in",
+          "review",
+          "sync",
+          "call",
+          "working session",
+          "retro",
+          "planning session"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ],
+        "alt_day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "alt_window": [
+          "in the morning",
+          "after 2 PM",
+          "between 1 and 4 PM",
+          "before noon",
+          "after 3 PM"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_142",
+      "mode": "real_life",
+      "pack": "real_life_email_templates",
+      "title": "Update Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hi {name},\n\nQuick update on {project}: I’ve finished a first pass and added comments around the {topic}. I can walk you through it on {day}.\n\n{closing}\n—",
+      "slots": {
+        "name": [
+          "Alex",
+          "Jordan",
+          "Sam",
+          "Renee",
+          "Morgan",
+          "Taylor",
+          "Casey",
+          "Priya",
+          "Lee",
+          "Avery",
+          "Cameron",
+          "Drew",
+          "Harper",
+          "Noah",
+          "Quinn",
+          "Rowan",
+          "Sasha",
+          "Tara"
+        ],
+        "project": [
+          "the proposal",
+          "the draft",
+          "the rollout",
+          "the Q1 plan",
+          "the onboarding doc",
+          "the report",
+          "the dashboard",
+          "the release notes",
+          "the research summary",
+          "the schedule"
+        ],
+        "topic": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "day": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "closing": [
+          "Best,",
+          "Thanks,",
+          "Regards,",
+          "All the best,",
+          "Thank you,"
+        ]
+      },
+      "tags": [
+        "email",
+        "newlines",
+        "colon",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    }
+  ]
+}

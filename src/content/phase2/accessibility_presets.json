@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "presets": [
+    {
+      "id": "default",
+      "label": "Default",
+      "settings": {
+        "theme": "calm",
+        "text_scale": 1,
+        "font_family": "system",
+        "letter_spacing_em": 0,
+        "line_height": 1.4,
+        "reduced_motion": false,
+        "screen_reader_mode": false,
+        "minimal_hud": true,
+        "color_independent_markers": true,
+        "caret_thickness_px": 2
+      }
+    },
+    {
+      "id": "high_contrast",
+      "label": "High Contrast",
+      "settings": {
+        "theme": "high_contrast",
+        "text_scale": 1.15,
+        "color_independent_markers": true,
+        "caret_thickness_px": 3
+      }
+    },
+    {
+      "id": "extra_high_contrast",
+      "label": "Extra High Contrast",
+      "settings": {
+        "theme": "extra_high_contrast",
+        "text_scale": 1.2,
+        "color_independent_markers": true,
+        "caret_thickness_px": 4
+      }
+    },
+    {
+      "id": "low_vision",
+      "label": "Low Vision",
+      "settings": {
+        "theme": "high_contrast",
+        "text_scale": 1.5,
+        "focus_line_mode": true,
+        "caret_thickness_px": 5,
+        "line_height": 1.7
+      }
+    },
+    {
+      "id": "dyslexia_friendly",
+      "label": "Dyslexia-friendly",
+      "settings": {
+        "font_family": "atkinson_hyperlegible",
+        "text_scale": 1.15,
+        "letter_spacing_em": 0.03,
+        "line_height": 1.7,
+        "color_independent_markers": true
+      }
+    },
+    {
+      "id": "screen_reader",
+      "label": "Screen Reader",
+      "settings": {
+        "screen_reader_mode": true,
+        "ambient_enabled": false,
+        "ambient_profile": "off",
+        "minimal_hud": true,
+        "announce_debounced_errors": true,
+        "announce_progress": true,
+        "chunking_mode": "sentence"
+      }
+    },
+    {
+      "id": "reduced_motion",
+      "label": "Reduced Motion",
+      "settings": {
+        "reduced_motion": true,
+        "ambient_enabled": false,
+        "ambient_profile": "off",
+        "disable_pulsing_timers": true,
+        "disable_counter_animations": true
+      }
+    },
+    {
+      "id": "minimal_hud",
+      "label": "Minimal HUD",
+      "settings": {
+        "minimal_hud": true,
+        "show_live_wpm": false,
+        "show_live_accuracy": false
+      }
+    }
+  ]
+}

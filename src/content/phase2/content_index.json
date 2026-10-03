@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "packs": [
+    "competitive_mixed_01",
+    "competitive_mixed_02",
+    "competitive_templates",
+    "focus_calm_01",
+    "focus_calm_02",
+    "focus_calm_03",
+    "real_life_admin_forms_01",
+    "real_life_admin_templates",
+    "real_life_email_01",
+    "real_life_email_02",
+    "real_life_email_templates",
+    "real_life_journal_01",
+    "real_life_journal_templates",
+    "real_life_meetings_notes_01",
+    "real_life_meetings_templates",
+    "real_life_support_01",
+    "real_life_support_templates",
+    "real_life_texts_01",
+    "real_life_texts_02",
+    "real_life_texts_templates"
+  ],
+  "recommended_quickstart": {
+    "focus": [
+      "focus_calm_01",
+      "focus_calm_02",
+      "focus_calm_03"
+    ],
+    "real_life": [
+      "real_life_email_01",
+      "real_life_texts_01",
+      "real_life_support_01",
+      "real_life_meetings_notes_01",
+      "real_life_admin_forms_01",
+      "real_life_journal_01"
+    ],
+    "competitive": [
+      "competitive_mixed_01",
+      "competitive_mixed_02",
+      "competitive_templates"
+    ]
+  },
+  "extras": [
+    "micro_feedback_rules_v2.json",
+    "accessibility_presets.json",
+    "ui_strings_accessible.json"
+  ]
+}

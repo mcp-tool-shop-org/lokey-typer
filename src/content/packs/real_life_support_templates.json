@@ -1,0 +1,502 @@
+{
+  "pack_id": "real_life_support_templates",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "tpl_004",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_014",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_024",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_034",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_044",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 5,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_054",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_064",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_074",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_084",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 5,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_094",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_104",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_114",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_124",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_134",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_144",
+      "mode": "real_life",
+      "pack": "real_life_support_templates",
+      "title": "Support Confirm Template",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "To confirm, are you seeing this on {device}? If possible, send the {detail} and the time it happened.",
+      "slots": {
+        "device": [
+          "mobile",
+          "desktop",
+          "tablet",
+          "both mobile and desktop"
+        ],
+        "detail": [
+          "error message",
+          "screenshot",
+          "timestamp",
+          "steps to reproduce",
+          "account email"
+        ]
+      },
+      "tags": [
+        "support",
+        "question"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    }
+  ]
+}

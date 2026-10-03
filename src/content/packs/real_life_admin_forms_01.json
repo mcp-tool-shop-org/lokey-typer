@@ -1,0 +1,690 @@
+{
+  "pack_id": "real_life_admin_forms_01",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "real_life_admin_forms_01_001",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Form Check",
+      "difficulty": 1,
+      "estimated_seconds": 75,
+      "text": "Form check: enter your policy number, then select the correct date from the calendar.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_002",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Reminder",
+      "difficulty": 1,
+      "estimated_seconds": 45,
+      "text": "Reminder: confirm the address, verify the phone number, and submit the request before 1:00 PM.",
+      "tags": [
+        "admin",
+        "comma",
+        "times"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_003",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Appointment",
+      "difficulty": 1,
+      "estimated_seconds": 85,
+      "text": "Appointment: September 60 at 1:00 PM. Bring a photo ID and arrive 10 minutes early.",
+      "tags": [
+        "admin",
+        "numbers",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_004",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Shipping",
+      "difficulty": 1,
+      "estimated_seconds": 35,
+      "text": "Shipping instructions: include the unit number, use the correct ZIP code, and double-check the recipient name.",
+      "tags": [
+        "admin",
+        "colon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_005",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Receipt",
+      "difficulty": 1,
+      "estimated_seconds": 55,
+      "text": "Receipt note: save the confirmation email and keep the reference number in a safe place.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_006",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Checklist",
+      "difficulty": 1,
+      "estimated_seconds": 45,
+      "text": "Checklist: pay the bill, file the document, and set a reminder for next month.",
+      "tags": [
+        "admin",
+        "colon",
+        "list_inline"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_007",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Form Check",
+      "difficulty": 1,
+      "estimated_seconds": 65,
+      "text": "Form check: enter your order ID, then select the correct date from the calendar.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_008",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Reminder",
+      "difficulty": 1,
+      "estimated_seconds": 75,
+      "text": "Reminder: confirm the address, verify the phone number, and submit the request before 4:00 PM.",
+      "tags": [
+        "admin",
+        "comma",
+        "times"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_009",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Appointment",
+      "difficulty": 1,
+      "estimated_seconds": 65,
+      "text": "Appointment: February 30 at 4:00 PM. Bring a photo ID and arrive 10 minutes early.",
+      "tags": [
+        "admin",
+        "numbers",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_010",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Shipping",
+      "difficulty": 1,
+      "estimated_seconds": 85,
+      "text": "Shipping instructions: include the unit number, use the correct ZIP code, and double-check the recipient name.",
+      "tags": [
+        "admin",
+        "colon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_011",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Receipt",
+      "difficulty": 1,
+      "estimated_seconds": 35,
+      "text": "Receipt note: save the confirmation email and keep the reference number in a safe place.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_012",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Checklist",
+      "difficulty": 1,
+      "estimated_seconds": 35,
+      "text": "Checklist: pay the bill, file the document, and set a reminder for next month.",
+      "tags": [
+        "admin",
+        "colon",
+        "list_inline"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_013",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Form Check",
+      "difficulty": 1,
+      "estimated_seconds": 65,
+      "text": "Form check: enter your phone number, then select the correct date from the calendar.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_014",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Reminder",
+      "difficulty": 1,
+      "estimated_seconds": 55,
+      "text": "Reminder: confirm the address, verify the phone number, and submit the request before 10:00 AM.",
+      "tags": [
+        "admin",
+        "comma",
+        "times"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_015",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Appointment",
+      "difficulty": 1,
+      "estimated_seconds": 75,
+      "text": "Appointment: January 90 at 2:30 PM. Bring a photo ID and arrive 10 minutes early.",
+      "tags": [
+        "admin",
+        "numbers",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_016",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Shipping",
+      "difficulty": 1,
+      "estimated_seconds": 45,
+      "text": "Shipping instructions: include the unit number, use the correct ZIP code, and double-check the recipient name.",
+      "tags": [
+        "admin",
+        "colon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_017",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Receipt",
+      "difficulty": 1,
+      "estimated_seconds": 35,
+      "text": "Receipt note: save the confirmation email and keep the reference number in a safe place.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_018",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Checklist",
+      "difficulty": 2,
+      "estimated_seconds": 85,
+      "text": "Checklist: pay the bill, file the document, and set a reminder for next month.",
+      "tags": [
+        "admin",
+        "colon",
+        "list_inline"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_019",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Form Check",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "text": "Form check: enter your account number, then select the correct date from the calendar.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_020",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Reminder",
+      "difficulty": 2,
+      "estimated_seconds": 35,
+      "text": "Reminder: confirm the address, verify the phone number, and submit the request before 9:00 AM.",
+      "tags": [
+        "admin",
+        "comma",
+        "times"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_021",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Appointment",
+      "difficulty": 2,
+      "estimated_seconds": 55,
+      "text": "Appointment: November 25 at 1:00 PM. Bring a photo ID and arrive 10 minutes early.",
+      "tags": [
+        "admin",
+        "numbers",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_022",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Shipping",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "text": "Shipping instructions: include the unit number, use the correct ZIP code, and double-check the recipient name.",
+      "tags": [
+        "admin",
+        "colon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_023",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Receipt",
+      "difficulty": 2,
+      "estimated_seconds": 55,
+      "text": "Receipt note: save the confirmation email and keep the reference number in a safe place.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_024",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Checklist",
+      "difficulty": 2,
+      "estimated_seconds": 65,
+      "text": "Checklist: pay the bill, file the document, and set a reminder for next month.",
+      "tags": [
+        "admin",
+        "colon",
+        "list_inline"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_025",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Form Check",
+      "difficulty": 2,
+      "estimated_seconds": 65,
+      "text": "Form check: enter your mailing address, then select the correct date from the calendar.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_026",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Reminder",
+      "difficulty": 2,
+      "estimated_seconds": 35,
+      "text": "Reminder: confirm the address, verify the phone number, and submit the request before 10:00 AM.",
+      "tags": [
+        "admin",
+        "comma",
+        "times"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_027",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Appointment",
+      "difficulty": 2,
+      "estimated_seconds": 55,
+      "text": "Appointment: March 7 at 10:00 AM. Bring a photo ID and arrive 10 minutes early.",
+      "tags": [
+        "admin",
+        "numbers",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_028",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Shipping",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "text": "Shipping instructions: include the unit number, use the correct ZIP code, and double-check the recipient name.",
+      "tags": [
+        "admin",
+        "colon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_029",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Receipt",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "text": "Receipt note: save the confirmation email and keep the reference number in a safe place.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_030",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Checklist",
+      "difficulty": 2,
+      "estimated_seconds": 55,
+      "text": "Checklist: pay the bill, file the document, and set a reminder for next month.",
+      "tags": [
+        "admin",
+        "colon",
+        "list_inline"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_031",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Form Check",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "text": "Form check: enter your phone number, then select the correct date from the calendar.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_032",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Reminder",
+      "difficulty": 2,
+      "estimated_seconds": 35,
+      "text": "Reminder: confirm the address, verify the phone number, and submit the request before 4:30 PM.",
+      "tags": [
+        "admin",
+        "comma",
+        "times"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_033",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Appointment",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "text": "Appointment: October 5 at 1:00 PM. Bring a photo ID and arrive 10 minutes early.",
+      "tags": [
+        "admin",
+        "numbers",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_034",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Shipping",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "text": "Shipping instructions: include the unit number, use the correct ZIP code, and double-check the recipient name.",
+      "tags": [
+        "admin",
+        "colon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_035",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Receipt",
+      "difficulty": 3,
+      "estimated_seconds": 65,
+      "text": "Receipt note: save the confirmation email and keep the reference number in a safe place.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_036",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Checklist",
+      "difficulty": 3,
+      "estimated_seconds": 55,
+      "text": "Checklist: pay the bill, file the document, and set a reminder for next month.",
+      "tags": [
+        "admin",
+        "colon",
+        "list_inline"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_037",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Form Check",
+      "difficulty": 3,
+      "estimated_seconds": 65,
+      "text": "Form check: enter your order ID, then select the correct date from the calendar.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_038",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Reminder",
+      "difficulty": 3,
+      "estimated_seconds": 35,
+      "text": "Reminder: confirm the address, verify the phone number, and submit the request before 4:30 PM.",
+      "tags": [
+        "admin",
+        "comma",
+        "times"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_039",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Appointment",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "Appointment: March 45 at 3:00 PM. Bring a photo ID and arrive 10 minutes early.",
+      "tags": [
+        "admin",
+        "numbers",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_040",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Shipping",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Shipping instructions: include the unit number, use the correct ZIP code, and double-check the recipient name.",
+      "tags": [
+        "admin",
+        "colon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_041",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Receipt",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "Receipt note: save the confirmation email and keep the reference number in a safe place.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_042",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Checklist",
+      "difficulty": 3,
+      "estimated_seconds": 85,
+      "text": "Checklist: pay the bill, file the document, and set a reminder for next month.",
+      "tags": [
+        "admin",
+        "colon",
+        "list_inline"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_043",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Form Check",
+      "difficulty": 3,
+      "estimated_seconds": 85,
+      "text": "Form check: enter your emergency contact, then select the correct date from the calendar.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_044",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Reminder",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Reminder: confirm the address, verify the phone number, and submit the request before 11:30 AM.",
+      "tags": [
+        "admin",
+        "comma",
+        "times"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_045",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Appointment",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Appointment: September 15 at 9:00 AM. Bring a photo ID and arrive 10 minutes early.",
+      "tags": [
+        "admin",
+        "numbers",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_046",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Shipping",
+      "difficulty": 3,
+      "estimated_seconds": 85,
+      "text": "Shipping instructions: include the unit number, use the correct ZIP code, and double-check the recipient name.",
+      "tags": [
+        "admin",
+        "colon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_047",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Receipt",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "Receipt note: save the confirmation email and keep the reference number in a safe place.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_048",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Checklist",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Checklist: pay the bill, file the document, and set a reminder for next month.",
+      "tags": [
+        "admin",
+        "colon",
+        "list_inline"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_049",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Form Check",
+      "difficulty": 3,
+      "estimated_seconds": 85,
+      "text": "Form check: enter your account number, then select the correct date from the calendar.",
+      "tags": [
+        "admin",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_admin_forms_01_050",
+      "mode": "real_life",
+      "pack": "real_life_admin_forms_01",
+      "title": "Reminder",
+      "difficulty": 3,
+      "estimated_seconds": 55,
+      "text": "Reminder: confirm the address, verify the phone number, and submit the request before 11:30 AM.",
+      "tags": [
+        "admin",
+        "comma",
+        "times"
+      ]
+    }
+  ]
+}

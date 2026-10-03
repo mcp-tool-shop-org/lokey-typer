@@ -1,0 +1,564 @@
+{
+  "pack_id": "competitive_mixed_02",
+  "mode": "competitive",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "competitive_mixed_02_001",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Clean Sprint",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "Start controlled. Hold a steady tempo. Let accuracy lead the run.",
+      "tags": [
+        "competitive",
+        "short"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_003",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Targets",
+      "difficulty": 3,
+      "estimated_seconds": 20,
+      "text": "Targets: 95% accuracy, 50+ WPM, and fewer than 12 backspaces.",
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_004",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Work Notes",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "Notes: finalize the report by Monday; share updates by 11:30 AM; flag blockers early.",
+      "tags": [
+        "competitive",
+        "semicolon",
+        "times"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_005",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Tempo Hold",
+      "difficulty": 3,
+      "estimated_seconds": 30,
+      "text": "Hold pace. Don’t spike. Finish clean and controlled.",
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_006",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Dash Discipline",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "Speed is good, but clean entries win. Tighten spacing, then push.",
+      "tags": [
+        "competitive",
+        "dash"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_007",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Clean Sprint",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "text": "Type clean. Keep the pace. Let accuracy lead the run.",
+      "tags": [
+        "competitive",
+        "short"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_009",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Targets",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "Targets: 95% accuracy, 55+ WPM, and fewer than 12 backspaces.",
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_010",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Work Notes",
+      "difficulty": 3,
+      "estimated_seconds": 30,
+      "text": "Notes: finalize the release notes by Monday; share updates by 9:00 AM; flag blockers early.",
+      "tags": [
+        "competitive",
+        "semicolon",
+        "times"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_011",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Tempo Hold",
+      "difficulty": 3,
+      "estimated_seconds": 120,
+      "text": "Hold pace. No panic corrections. Finish clean and controlled.",
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_012",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Dash Discipline",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "Reminder: speed is fine, but clean entries win. Tighten spacing, then push.",
+      "tags": [
+        "competitive",
+        "dash"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_013",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Clean Sprint",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "text": "Clean entries first. No spikes—steady cadence. Convert speed with accuracy.",
+      "tags": [
+        "competitive",
+        "short"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_015",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Targets",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Targets: 95% accuracy, 50+ WPM, and fewer than 15 backspaces.",
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_016",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Work Notes",
+      "difficulty": 3,
+      "estimated_seconds": 20,
+      "text": "Notes: finalize the draft by Thursday; share updates by 10:00 AM; flag blockers early.",
+      "tags": [
+        "competitive",
+        "semicolon",
+        "times"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_017",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Tempo Hold",
+      "difficulty": 3,
+      "estimated_seconds": 30,
+      "text": "Hold tempo. Don’t spike. Carry the cadence through the last line.",
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_018",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Dash Discipline",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "text": "Heads up—speed is fine, but clean entries win. Keep spaces clean, then push pace.",
+      "tags": [
+        "competitive",
+        "dash"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_019",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Clean Sprint",
+      "difficulty": 4,
+      "estimated_seconds": 75,
+      "text": "Clean entries first. No spikes—steady cadence. Convert speed with accuracy.",
+      "tags": [
+        "competitive",
+        "short"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_021",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Targets",
+      "difficulty": 4,
+      "estimated_seconds": 75,
+      "text": "Targets: 95% accuracy, 50+ WPM, and fewer than 12 backspaces.",
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_022",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Work Notes",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "text": "Notes: finalize the dashboard by Monday; share updates by 4:30 PM; flag blockers early.",
+      "tags": [
+        "competitive",
+        "semicolon",
+        "times"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_023",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Tempo Hold",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "text": "Stay on tempo. No panic corrections. Carry the cadence through the last line.",
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_024",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Dash Discipline",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "text": "Speed is good, but clean entries win. Lock spacing, then accelerate.",
+      "tags": [
+        "competitive",
+        "dash"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_025",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Clean Sprint",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "text": "Type calmly and cleanly. No spikes—steady cadence. Convert speed with accuracy.",
+      "tags": [
+        "competitive",
+        "short"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_027",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Targets",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "text": "Targets: 95% accuracy, 55+ WPM, and fewer than 12 backspaces.",
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_028",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Work Notes",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "text": "Notes: finalize the dashboard by Wednesday; share updates by 9:00 AM; flag blockers early.",
+      "tags": [
+        "competitive",
+        "semicolon",
+        "times"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_029",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Tempo Hold",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "text": "Hold tempo. Don’t spike. Finish clean and controlled.",
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_030",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Dash Discipline",
+      "difficulty": 4,
+      "estimated_seconds": 30,
+      "text": "Speed is good, but clean entries win. Keep spaces clean, then push pace.",
+      "tags": [
+        "competitive",
+        "dash"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_031",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Clean Sprint",
+      "difficulty": 4,
+      "estimated_seconds": 30,
+      "text": "Start controlled. No spikes—steady cadence. Make it repeatable.",
+      "tags": [
+        "competitive",
+        "short"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_033",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Targets",
+      "difficulty": 4,
+      "estimated_seconds": 120,
+      "text": "Targets: 95% accuracy, 55+ WPM, and fewer than 10 backspaces.",
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_034",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Work Notes",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "text": "Notes: finalize the schedule by Wednesday; share updates by 2:30 PM; flag blockers early.",
+      "tags": [
+        "competitive",
+        "semicolon",
+        "times"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_035",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Tempo Hold",
+      "difficulty": 5,
+      "estimated_seconds": 90,
+      "text": "Hold tempo. No surges. Carry the cadence through the last line.",
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_036",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Dash Discipline",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "text": "Heads up—speed is fine, but clean entries win. Tighten spacing, then push.",
+      "tags": [
+        "competitive",
+        "dash"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_037",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Clean Sprint",
+      "difficulty": 5,
+      "estimated_seconds": 30,
+      "text": "Type calmly and cleanly. Hold a steady tempo. Let accuracy lead the run.",
+      "tags": [
+        "competitive",
+        "short"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_039",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Targets",
+      "difficulty": 5,
+      "estimated_seconds": 120,
+      "text": "Targets: 95% accuracy, 50+ WPM, and fewer than 12 backspaces.",
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_040",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Work Notes",
+      "difficulty": 5,
+      "estimated_seconds": 30,
+      "text": "Notes: finalize the proposal by Thursday; share updates by 11:30 AM; flag blockers early.",
+      "tags": [
+        "competitive",
+        "semicolon",
+        "times"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_041",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Tempo Hold",
+      "difficulty": 5,
+      "estimated_seconds": 90,
+      "text": "Hold pace. No surges. Carry the cadence through the last line.",
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_042",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Dash Discipline",
+      "difficulty": 5,
+      "estimated_seconds": 45,
+      "text": "Heads up—speed is fine, but clean entries win. Lock spacing, then accelerate.",
+      "tags": [
+        "competitive",
+        "dash"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_043",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Clean Sprint",
+      "difficulty": 5,
+      "estimated_seconds": 30,
+      "text": "Type clean. Keep the pace. Make it repeatable.",
+      "tags": [
+        "competitive",
+        "short"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_045",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Targets",
+      "difficulty": 5,
+      "estimated_seconds": 120,
+      "text": "Targets: 95% accuracy, 55+ WPM, and fewer than 12 backspaces.",
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_046",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Work Notes",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "text": "Notes: finalize the onboarding doc by Wednesday; share updates by 4:00 PM; flag blockers early.",
+      "tags": [
+        "competitive",
+        "semicolon",
+        "times"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_047",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Tempo Hold",
+      "difficulty": 5,
+      "estimated_seconds": 20,
+      "text": "Stay on tempo. Don’t spike. Keep the cadence steady through the finish.",
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_048",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Dash Discipline",
+      "difficulty": 5,
+      "estimated_seconds": 45,
+      "text": "Reminder: speed is fine, but clean entries win. Lock spacing, then accelerate.",
+      "tags": [
+        "competitive",
+        "dash"
+      ]
+    },
+    {
+      "id": "competitive_mixed_02_049",
+      "mode": "competitive",
+      "pack": "competitive_mixed_02",
+      "title": "Clean Sprint",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "text": "Start controlled. No spikes—steady cadence. Let accuracy lead the run.",
+      "tags": [
+        "competitive",
+        "short"
+      ]
+    }
+  ]
+}

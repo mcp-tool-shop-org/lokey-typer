@@ -1,0 +1,622 @@
+{
+  "pack_id": "real_life_admin_templates",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "tpl_003",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 4,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_013",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_023",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_033",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_043",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_053",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_063",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_073",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_083",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_093",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_103",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_113",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_123",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_133",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_143",
+      "mode": "real_life",
+      "pack": "real_life_admin_templates",
+      "title": "Reminder Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Reminder: {task_1}, then {task_2}, then {task_3}. Keep it simple and finish one step at a time.",
+      "slots": {
+        "task_1": [
+          "pay the bill",
+          "send the email",
+          "book the appointment",
+          "submit the form",
+          "confirm the address"
+        ],
+        "task_2": [
+          "save the receipt",
+          "add a calendar reminder",
+          "attach the document",
+          "review the details",
+          "double-check the time"
+        ],
+        "task_3": [
+          "file the note",
+          "share an update",
+          "follow up tomorrow",
+          "close the tab",
+          "take a short break"
+        ]
+      },
+      "tags": [
+        "admin",
+        "comma"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    }
+  ]
+}

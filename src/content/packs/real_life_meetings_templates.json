@@ -1,0 +1,1747 @@
+{
+  "pack_id": "real_life_meetings_templates",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "tpl_005",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_006",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_015",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_016",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_025",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_026",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_035",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_036",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_045",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_046",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_055",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_056",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 5,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_065",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_066",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_075",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_076",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_085",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_086",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_095",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_096",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_105",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_106",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 3,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_115",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_116",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_125",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_126",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_135",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_136",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 5,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_145",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Agenda Template",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Agenda:\n1) {topic_a}\n2) {topic_b}\n3) {topic_c}\n\nGoal: {goal}.",
+      "slots": {
+        "topic_a": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_b": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "topic_c": [
+          "timeline",
+          "scope",
+          "budget",
+          "next steps",
+          "open questions",
+          "risk items",
+          "dependencies",
+          "handoff details",
+          "metrics",
+          "requirements"
+        ],
+        "goal": [
+          "clear next steps",
+          "a decision we can act on",
+          "a clean timeline",
+          "a shared understanding"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "newlines",
+        "list",
+        "numbers"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_146",
+      "mode": "real_life",
+      "pack": "real_life_meetings_templates",
+      "title": "Notes Template",
+      "difficulty": 3,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Notes: {note_1}; {note_2}; {note_3}; share status by {time}.",
+      "slots": {
+        "note_1": [
+          "confirm scope",
+          "review risks",
+          "align on requirements",
+          "update the timeline",
+          "clarify ownership"
+        ],
+        "note_2": [
+          "flag blockers early",
+          "capture open questions",
+          "record decisions",
+          "assign follow-ups",
+          "summarize outcomes"
+        ],
+        "note_3": [
+          "set the next check-in",
+          "close the loop",
+          "share the draft",
+          "post the recap",
+          "update the doc"
+        ],
+        "time": [
+          "9:00 AM",
+          "10:00 AM",
+          "11:30 AM",
+          "1:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
+      },
+      "tags": [
+        "meetings",
+        "semicolon",
+        "times"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    }
+  ]
+}

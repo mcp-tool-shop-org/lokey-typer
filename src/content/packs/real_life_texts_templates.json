@@ -1,0 +1,457 @@
+{
+  "pack_id": "real_life_texts_templates",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "tpl_007",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_017",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_027",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_037",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_047",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_057",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_067",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_077",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_087",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_097",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 2,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_107",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_117",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_127",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_137",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_147",
+      "mode": "real_life",
+      "pack": "real_life_texts_templates",
+      "title": "ETA Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "On my way—ETA {minutes} minutes. If anything changes, I’ll text you.",
+      "slots": {
+        "minutes": [
+          "5",
+          "8",
+          "10",
+          "12",
+          "15",
+          "20"
+        ]
+      },
+      "tags": [
+        "texts",
+        "dash",
+        "numbers",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    }
+  ]
+}

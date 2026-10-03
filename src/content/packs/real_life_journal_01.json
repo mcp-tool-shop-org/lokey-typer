@@ -1,0 +1,674 @@
+{
+  "pack_id": "real_life_journal_01",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "real_life_journal_01_001",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Short Entry",
+      "difficulty": 1,
+      "estimated_seconds": 95,
+      "text": "I’m practicing calm attention, one line at a time. Consistency matters more than intensity.",
+      "tags": [
+        "journal",
+        "calm"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_002",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Focus Question",
+      "difficulty": 1,
+      "estimated_seconds": 95,
+      "text": "What’s the next smallest step I can take right now?",
+      "tags": [
+        "journal",
+        "question",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_003",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Boundaries",
+      "difficulty": 1,
+      "estimated_seconds": 95,
+      "text": "I can be kind and still say no. I can be firm and still stay calm.",
+      "tags": [
+        "journal",
+        "sentences"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_004",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Tempo",
+      "difficulty": 1,
+      "estimated_seconds": 40,
+      "text": "Slow is smooth; smooth is fast. The key is staying relaxed while moving.",
+      "tags": [
+        "journal",
+        "semicolon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_005",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Closing Line",
+      "difficulty": 1,
+      "estimated_seconds": 40,
+      "text": "I’m ending this entry with one clear sentence, and then I’m done for today.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_006",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Less Noise",
+      "difficulty": 1,
+      "estimated_seconds": 95,
+      "text": "I don’t need more input. I need a few minutes of quiet attention.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_007",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Short Entry",
+      "difficulty": 1,
+      "estimated_seconds": 85,
+      "text": "I’m choosing steady effort over noisy effort. A quiet plan is better than a rushed plan.",
+      "tags": [
+        "journal",
+        "calm"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_008",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Focus Question",
+      "difficulty": 1,
+      "estimated_seconds": 55,
+      "text": "What’s the next smallest step I can take right now?",
+      "tags": [
+        "journal",
+        "question",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_009",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Boundaries",
+      "difficulty": 1,
+      "estimated_seconds": 55,
+      "text": "I can be kind and still say no. I can be firm and still stay calm.",
+      "tags": [
+        "journal",
+        "sentences"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_010",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Tempo",
+      "difficulty": 1,
+      "estimated_seconds": 95,
+      "text": "Slow is smooth; smooth is fast. The key is staying relaxed while moving.",
+      "tags": [
+        "journal",
+        "semicolon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_011",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Closing Line",
+      "difficulty": 1,
+      "estimated_seconds": 65,
+      "text": "I’m ending this entry with one clear sentence, and then I’m done for today.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_012",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Less Noise",
+      "difficulty": 1,
+      "estimated_seconds": 85,
+      "text": "I don’t need more input. I need a few minutes of quiet attention.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_013",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Short Entry",
+      "difficulty": 1,
+      "estimated_seconds": 75,
+      "text": "Today I want to keep things simple. If I slow down, I notice more—and I make fewer mistakes.",
+      "tags": [
+        "journal",
+        "calm"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_014",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Focus Question",
+      "difficulty": 1,
+      "estimated_seconds": 40,
+      "text": "What’s the next smallest step I can take right now?",
+      "tags": [
+        "journal",
+        "question",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_015",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Boundaries",
+      "difficulty": 1,
+      "estimated_seconds": 40,
+      "text": "I can be kind and still say no. I can be firm and still stay calm.",
+      "tags": [
+        "journal",
+        "sentences"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_016",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Tempo",
+      "difficulty": 1,
+      "estimated_seconds": 95,
+      "text": "Slow is smooth; smooth is fast. The key is staying relaxed while moving.",
+      "tags": [
+        "journal",
+        "semicolon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_017",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Closing Line",
+      "difficulty": 1,
+      "estimated_seconds": 65,
+      "text": "I’m ending this entry with one clear sentence, and then I’m done for today.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_018",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Less Noise",
+      "difficulty": 2,
+      "estimated_seconds": 85,
+      "text": "I don’t need more input. I need a few minutes of quiet attention.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_019",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Short Entry",
+      "difficulty": 2,
+      "estimated_seconds": 65,
+      "text": "Today I want to keep things simple. I can be firm and still stay calm.",
+      "tags": [
+        "journal",
+        "calm"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_020",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Focus Question",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "text": "What’s the next smallest step I can take right now?",
+      "tags": [
+        "journal",
+        "question",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_021",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Boundaries",
+      "difficulty": 2,
+      "estimated_seconds": 40,
+      "text": "I can be kind and still say no. I can be firm and still stay calm.",
+      "tags": [
+        "journal",
+        "sentences"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_022",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Tempo",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "text": "Slow is smooth; smooth is fast. The key is staying relaxed while moving.",
+      "tags": [
+        "journal",
+        "semicolon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_023",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Closing Line",
+      "difficulty": 2,
+      "estimated_seconds": 55,
+      "text": "I’m ending this entry with one clear sentence, and then I’m done for today.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_024",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Less Noise",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "text": "I don’t need more input. I need a few minutes of quiet attention.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_025",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Short Entry",
+      "difficulty": 2,
+      "estimated_seconds": 95,
+      "text": "I’m practicing calm attention, one line at a time. One clear priority is enough for today.",
+      "tags": [
+        "journal",
+        "calm"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_026",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Focus Question",
+      "difficulty": 2,
+      "estimated_seconds": 65,
+      "text": "What’s the next smallest step I can take right now?",
+      "tags": [
+        "journal",
+        "question",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_027",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Boundaries",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "text": "I can be kind and still say no. I can be firm and still stay calm.",
+      "tags": [
+        "journal",
+        "sentences"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_028",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Tempo",
+      "difficulty": 2,
+      "estimated_seconds": 95,
+      "text": "Slow is smooth; smooth is fast. The key is staying relaxed while moving.",
+      "tags": [
+        "journal",
+        "semicolon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_029",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Closing Line",
+      "difficulty": 2,
+      "estimated_seconds": 40,
+      "text": "I’m ending this entry with one clear sentence, and then I’m done for today.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_030",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Less Noise",
+      "difficulty": 2,
+      "estimated_seconds": 65,
+      "text": "I don’t need more input. I need a few minutes of quiet attention.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_031",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Short Entry",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "text": "I’m practicing calm attention, one line at a time. One clear priority is enough for today.",
+      "tags": [
+        "journal",
+        "calm"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_032",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Focus Question",
+      "difficulty": 2,
+      "estimated_seconds": 85,
+      "text": "What’s the next smallest step I can take right now?",
+      "tags": [
+        "journal",
+        "question",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_033",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Boundaries",
+      "difficulty": 2,
+      "estimated_seconds": 65,
+      "text": "I can be kind and still say no. I can be firm and still stay calm.",
+      "tags": [
+        "journal",
+        "sentences"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_034",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Tempo",
+      "difficulty": 2,
+      "estimated_seconds": 55,
+      "text": "Slow is smooth; smooth is fast. The key is staying relaxed while moving.",
+      "tags": [
+        "journal",
+        "semicolon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_035",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Closing Line",
+      "difficulty": 3,
+      "estimated_seconds": 110,
+      "text": "I’m ending this entry with one clear sentence, and then I’m done for today.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_036",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Less Noise",
+      "difficulty": 3,
+      "estimated_seconds": 40,
+      "text": "I don’t need more input. I need a few minutes of quiet attention.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_037",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Short Entry",
+      "difficulty": 3,
+      "estimated_seconds": 40,
+      "text": "Today I want to keep things simple. If I slow down, I notice more—and I make fewer mistakes.",
+      "tags": [
+        "journal",
+        "calm"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_038",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Focus Question",
+      "difficulty": 3,
+      "estimated_seconds": 85,
+      "text": "What’s the next smallest step I can take right now?",
+      "tags": [
+        "journal",
+        "question",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_039",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Boundaries",
+      "difficulty": 3,
+      "estimated_seconds": 55,
+      "text": "I can be kind and still say no. I can be firm and still stay calm.",
+      "tags": [
+        "journal",
+        "sentences"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_040",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Tempo",
+      "difficulty": 3,
+      "estimated_seconds": 85,
+      "text": "Slow is smooth; smooth is fast. The key is staying relaxed while moving.",
+      "tags": [
+        "journal",
+        "semicolon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_041",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Closing Line",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "I’m ending this entry with one clear sentence, and then I’m done for today.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_042",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Less Noise",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "text": "I don’t need more input. I need a few minutes of quiet attention.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_043",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Short Entry",
+      "difficulty": 3,
+      "estimated_seconds": 95,
+      "text": "Today I want to keep things simple. A quiet plan is better than a rushed plan.",
+      "tags": [
+        "journal",
+        "calm"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_044",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Focus Question",
+      "difficulty": 3,
+      "estimated_seconds": 110,
+      "text": "What’s the next smallest step I can take right now?",
+      "tags": [
+        "journal",
+        "question",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_045",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Boundaries",
+      "difficulty": 3,
+      "estimated_seconds": 110,
+      "text": "I can be kind and still say no. I can be firm and still stay calm.",
+      "tags": [
+        "journal",
+        "sentences"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_046",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Tempo",
+      "difficulty": 3,
+      "estimated_seconds": 110,
+      "text": "Slow is smooth; smooth is fast. The key is staying relaxed while moving.",
+      "tags": [
+        "journal",
+        "semicolon",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_047",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Closing Line",
+      "difficulty": 3,
+      "estimated_seconds": 40,
+      "text": "I’m ending this entry with one clear sentence, and then I’m done for today.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_048",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Less Noise",
+      "difficulty": 3,
+      "estimated_seconds": 55,
+      "text": "I don’t need more input. I need a few minutes of quiet attention.",
+      "tags": [
+        "journal",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_049",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Short Entry",
+      "difficulty": 3,
+      "estimated_seconds": 55,
+      "text": "I’m practicing calm attention, one line at a time. Consistency matters more than intensity.",
+      "tags": [
+        "journal",
+        "calm"
+      ]
+    },
+    {
+      "id": "real_life_journal_01_050",
+      "mode": "real_life",
+      "pack": "real_life_journal_01",
+      "title": "Focus Question",
+      "difficulty": 3,
+      "estimated_seconds": 40,
+      "text": "What’s the next smallest step I can take right now?",
+      "tags": [
+        "journal",
+        "question",
+        "apostrophe"
+      ]
+    }
+  ]
+}

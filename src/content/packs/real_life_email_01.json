@@ -1,0 +1,747 @@
+{
+  "pack_id": "real_life_email_01",
+  "mode": "real_life",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "real_life_email_01_001",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 1,
+      "estimated_seconds": 110,
+      "text": "Hi Taylor,\n\nCan we move our call to Friday at 3:00 PM? If that doesn’t work, I’m free Tuesday between 1 and 4 PM.\n\nBest,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_002",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 1,
+      "estimated_seconds": 90,
+      "text": "Hi Drew,\n\nQuick update on the dashboard: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the open questions.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_003",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 1,
+      "estimated_seconds": 90,
+      "text": "Hi Drew,\n\nOne small correction: the deadline is January 3, not January 2. Everything else looks solid.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_004",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 1,
+      "estimated_seconds": 90,
+      "text": "Hi Taylor,\n\nNext steps:\n1) Review the draft by Monday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_005",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 1,
+      "estimated_seconds": 110,
+      "text": "Hi Casey,\n\nI can take this on, but I’ll need until Wednesday to do it well. If that timeline works, I’ll confirm the next steps.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_email_01_006",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 1,
+      "estimated_seconds": 70,
+      "text": "Hi Rowan,\n\nCan we move our sync to Friday at 1:00 PM? If that doesn’t work, I’m free Monday before noon.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_007",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 1,
+      "estimated_seconds": 80,
+      "text": "Hi Sam,\n\nQuick update on the proposal: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the metrics.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_008",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 1,
+      "estimated_seconds": 70,
+      "text": "Hi Cameron,\n\nOne small correction: the deadline is March 60, not March 59. Everything else looks solid.\n\nBest,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_009",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 1,
+      "estimated_seconds": 110,
+      "text": "Hi Harper,\n\nNext steps:\n1) Review the draft by Wednesday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_010",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 1,
+      "estimated_seconds": 60,
+      "text": "Hi Morgan,\n\nI can take this on, but I’ll need until Thursday to do it well. If that timeline works, I’ll confirm the next steps.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_email_01_011",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 1,
+      "estimated_seconds": 70,
+      "text": "Hi Priya,\n\nCan we move our call to Monday at 10:00 AM? If that doesn’t work, I’m free Tuesday in the morning.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_012",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 1,
+      "estimated_seconds": 55,
+      "text": "Hi Tara,\n\nQuick update on the report: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the budget.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_013",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 1,
+      "estimated_seconds": 60,
+      "text": "Hi Rowan,\n\nOne small correction: the deadline is August 60, not August 59. Everything else looks solid.\n\nBest,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_014",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 1,
+      "estimated_seconds": 70,
+      "text": "Hi Rowan,\n\nNext steps:\n1) Review the draft by Tuesday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nBest,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_015",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 1,
+      "estimated_seconds": 90,
+      "text": "Hi Lee,\n\nI can take this on, but I’ll need until Friday to do it well. If that timeline works, I’ll confirm the next steps.\n\nBest,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_email_01_016",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 1,
+      "estimated_seconds": 55,
+      "text": "Hi Quinn,\n\nCan we move our review to Friday at 4:00 PM? If that doesn’t work, I’m free Thursday after 2 PM.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_017",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 1,
+      "estimated_seconds": 90,
+      "text": "Hi Rowan,\n\nQuick update on the schedule: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the timeline.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_018",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "text": "Hi Jordan,\n\nOne small correction: the deadline is May 3, not May 2. Everything else looks solid.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_019",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 2,
+      "estimated_seconds": 70,
+      "text": "Hi Sasha,\n\nNext steps:\n1) Review the draft by Friday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_020",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 2,
+      "estimated_seconds": 80,
+      "text": "Hi Tara,\n\nI can take this on, but I’ll need until Monday to do it well. If that timeline works, I’ll confirm the next steps.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_email_01_021",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "text": "Hi Cameron,\n\nCan we move our retro to Thursday at 2:30 PM? If that doesn’t work, I’m free Monday after 3 PM.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_022",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 2,
+      "estimated_seconds": 70,
+      "text": "Hi Priya,\n\nQuick update on the dashboard: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the dependencies.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_023",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 2,
+      "estimated_seconds": 80,
+      "text": "Hi Priya,\n\nOne small correction: the deadline is November 60, not November 59. Everything else looks solid.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_024",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 2,
+      "estimated_seconds": 80,
+      "text": "Hi Quinn,\n\nNext steps:\n1) Review the draft by Monday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_025",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 2,
+      "estimated_seconds": 70,
+      "text": "Hi Sasha,\n\nI can take this on, but I’ll need until Tuesday to do it well. If that timeline works, I’ll confirm the next steps.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_email_01_026",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 2,
+      "estimated_seconds": 70,
+      "text": "Hi Noah,\n\nCan we move our review to Tuesday at 4:30 PM? If that doesn’t work, I’m free Monday after 3 PM.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_027",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 2,
+      "estimated_seconds": 55,
+      "text": "Hi Morgan,\n\nQuick update on the proposal: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the budget.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_028",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "text": "Hi Noah,\n\nOne small correction: the deadline is November 30, not November 29. Everything else looks solid.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_029",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "text": "Hi Lee,\n\nNext steps:\n1) Review the draft by Tuesday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_030",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "text": "Hi Casey,\n\nI can take this on, but I’ll need until Friday to do it well. If that timeline works, I’ll confirm the next steps.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_email_01_031",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "text": "Hi Avery,\n\nCan we move our retro to Tuesday at 4:00 PM? If that doesn’t work, I’m free Wednesday in the morning.\n\nBest,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_032",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "text": "Hi Morgan,\n\nQuick update on the research summary: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the handoff details.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_033",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "text": "Hi Quinn,\n\nOne small correction: the deadline is April 25, not April 24. Everything else looks solid.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_034",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "text": "Hi Morgan,\n\nNext steps:\n1) Review the draft by Friday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_035",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 3,
+      "estimated_seconds": 70,
+      "text": "Hi Quinn,\n\nI can take this on, but I’ll need until Thursday to do it well. If that timeline works, I’ll confirm the next steps.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_email_01_036",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 3,
+      "estimated_seconds": 80,
+      "text": "Hi Cameron,\n\nCan we move our planning session to Friday at 1:00 PM? If that doesn’t work, I’m free Tuesday between 1 and 4 PM.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_037",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "text": "Hi Avery,\n\nQuick update on the schedule: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the budget.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_038",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 3,
+      "estimated_seconds": 80,
+      "text": "Hi Taylor,\n\nOne small correction: the deadline is March 18, not March 17. Everything else looks solid.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_039",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 3,
+      "estimated_seconds": 100,
+      "text": "Hi Cameron,\n\nNext steps:\n1) Review the draft by Tuesday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_040",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "text": "Hi Drew,\n\nI can take this on, but I’ll need until Tuesday to do it well. If that timeline works, I’ll confirm the next steps.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_email_01_041",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 3,
+      "estimated_seconds": 100,
+      "text": "Hi Alex,\n\nCan we move our call to Wednesday at 9:00 AM? If that doesn’t work, I’m free Friday between 1 and 4 PM.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_042",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "text": "Hi Tara,\n\nQuick update on the proposal: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the risk items.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_043",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 3,
+      "estimated_seconds": 110,
+      "text": "Hi Quinn,\n\nOne small correction: the deadline is June 60, not June 59. Everything else looks solid.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_044",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 3,
+      "estimated_seconds": 110,
+      "text": "Hi Harper,\n\nNext steps:\n1) Review the draft by Friday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_045",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "text": "Hi Tara,\n\nI can take this on, but I’ll need until Monday to do it well. If that timeline works, I’ll confirm the next steps.\n\nRegards,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    },
+    {
+      "id": "real_life_email_01_046",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Scheduling",
+      "difficulty": 3,
+      "estimated_seconds": 70,
+      "text": "Hi Tara,\n\nCan we move our planning session to Thursday at 3:00 PM? If that doesn’t work, I’m free Friday after 3 PM.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "times",
+        "question"
+      ]
+    },
+    {
+      "id": "real_life_email_01_047",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Project Update",
+      "difficulty": 3,
+      "estimated_seconds": 100,
+      "text": "Hi Cameron,\n\nQuick update on the dashboard: the draft is ready for review. I highlighted the sections that need attention and noted a few questions about the budget.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "colon"
+      ]
+    },
+    {
+      "id": "real_life_email_01_048",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Small Correction",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "text": "Hi Taylor,\n\nOne small correction: the deadline is November 30, not November 29. Everything else looks solid.\n\nThanks,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "numbers",
+        "comma"
+      ]
+    },
+    {
+      "id": "real_life_email_01_049",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Next Steps",
+      "difficulty": 3,
+      "estimated_seconds": 100,
+      "text": "Hi Taylor,\n\nNext steps:\n1) Review the draft by Monday.\n2) Add comments directly in the doc.\n3) I’ll consolidate feedback and share a clean version.\n\nAll the best,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "list",
+        "numbers"
+      ]
+    },
+    {
+      "id": "real_life_email_01_050",
+      "mode": "real_life",
+      "pack": "real_life_email_01",
+      "title": "Timeline",
+      "difficulty": 3,
+      "estimated_seconds": 70,
+      "text": "Hi Morgan,\n\nI can take this on, but I’ll need until Monday to do it well. If that timeline works, I’ll confirm the next steps.\n\nThank you,\n—",
+      "tags": [
+        "email",
+        "newlines",
+        "boundaries",
+        "apostrophe"
+      ]
+    }
+  ]
+}

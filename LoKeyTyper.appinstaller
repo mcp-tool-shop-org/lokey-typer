@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppInstaller
+  Uri="https://github.com/mcp-tool-shop-org/lokey-typer/releases/latest/download/LoKeyTyper.appinstaller"
+  Version="1.0.0.0"
+  xmlns="http://schemas.microsoft.com/appx/appinstaller/2018">
+
+  <MainPackage
+    Name="mcp-tool-shop.LoKeyTyper"
+    Publisher="CN=5305D976-6952-4F00-9C21-3A5DB090359F"
+    Version="1.0.0.0"
+    ProcessorArchitecture="x64"
+    Uri="https://github.com/mcp-tool-shop-org/lokey-typer/releases/latest/download/LoKeyTyper_1.0.0.0_x64.msix" />
+
+  <UpdateSettings>
+    <OnLaunch HoursBetweenUpdateChecks="24" ShowPrompt="false" UpdateBlocksActivation="false" />
+    <AutomaticBackgroundTask />
+    <ForceUpdateFromAnyVersion>false</ForceUpdateFromAnyVersion>
+  </UpdateSettings>
+
+</AppInstaller>

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/lokey-typer/schemas/user_skill_model.schema.json",
+  "title": "UserSkillModel",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "updated_at",
+    "total_runs",
+    "ema",
+    "by_mode",
+    "errors_by_class",
+    "weakness_by_tag",
+    "performance_by_length",
+    "weak_tags",
+    "recent_exercise_ids_by_mode"
+  ],
+  "properties": {
+    "version": { "type": "integer", "const": 2 },
+    "updated_at": { "type": "string" },
+    "total_runs": { "type": "integer", "minimum": 0 },
+
+    "ema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wpm", "accuracy", "backspace_rate"],
+      "properties": {
+        "wpm": { "type": "number", "minimum": 0 },
+        "accuracy": { "type": "number", "minimum": 0, "maximum": 1 },
+        "backspace_rate": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+
+    "errors_by_class": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+
+    "by_mode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focus", "real_life", "competitive"],
+      "properties": {
+        "focus": { "$ref": "#/definitions/modeStats" },
+        "real_life": { "$ref": "#/definitions/modeStats" },
+        "competitive": { "$ref": "#/definitions/modeStats" }
+      }
+    },
+
+    "weakness_by_tag": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+
+    "performance_by_length": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["short", "medium", "long", "multiline"],
+      "properties": {
+        "short": { "$ref": "#/definitions/lengthBucket" },
+        "medium": { "$ref": "#/definitions/lengthBucket" },
+        "long": { "$ref": "#/definitions/lengthBucket" },
+        "multiline": { "$ref": "#/definitions/lengthBucket" }
+      }
+    },
+
+    "weak_tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 12
+    },
+
+    "recent_exercise_ids_by_mode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focus", "real_life", "competitive"],
+      "properties": {
+        "focus": { "$ref": "#/definitions/idList" },
+        "real_life": { "$ref": "#/definitions/idList" },
+        "competitive": { "$ref": "#/definitions/idList" }
+      }
+    }
+  },
+
+  "definitions": {
+    "modeStats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ema_wpm", "ema_accuracy", "ema_backspace_rate", "runs"],
+      "properties": {
+        "ema_wpm": { "type": "number", "minimum": 0 },
+        "ema_accuracy": { "type": "number", "minimum": 0, "maximum": 1 },
+        "ema_backspace_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "runs": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "lengthBucket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ema_wpm", "ema_accuracy", "ema_backspace_rate", "runs"],
+      "properties": {
+        "ema_wpm": { "type": "number", "minimum": 0 },
+        "ema_accuracy": { "type": "number", "minimum": 0, "maximum": 1 },
+        "ema_backspace_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "runs": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "idList": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 100
+    }
+  }
+}

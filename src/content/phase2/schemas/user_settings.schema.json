@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "user_settings.schema.json",
+  "title": "User Settings",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "active_preset_id", "overrides"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "active_preset_id": { "type": "string", "minLength": 1 },
+    "last_known_good": {
+      "type": "object",
+      "description": "Optional snapshot of the last validated effective settings.",
+      "additionalProperties": true
+    },
+    "overrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "theme": {
+          "type": "string",
+          "enum": ["calm", "high_contrast", "extra_high_contrast"]
+        },
+        "text_scale": {
+          "type": "number",
+          "minimum": 0.8,
+          "maximum": 2.0
+        },
+        "font_family": {
+          "type": "string",
+          "enum": ["system", "atkinson_hyperlegible", "opendyslexic"]
+        },
+        "letter_spacing_em": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 0.08
+        },
+        "line_height": {
+          "type": "number",
+          "minimum": 1.2,
+          "maximum": 2.0
+        },
+        "reduced_motion": { "type": "boolean" },
+        "disable_pulsing_timers": { "type": "boolean" },
+        "disable_counter_animations": { "type": "boolean" },
+        "screen_reader_mode": { "type": "boolean" },
+        "announce_debounced_errors": { "type": "boolean" },
+        "announce_progress": { "type": "boolean" },
+        "chunking_mode": {
+          "type": "string",
+          "enum": ["off", "sentence", "words_3_6"]
+        },
+        "minimal_hud": { "type": "boolean" },
+        "show_live_wpm": { "type": "boolean" },
+        "show_live_accuracy": { "type": "boolean" },
+        "color_independent_markers": { "type": "boolean" },
+        "focus_line_mode": { "type": "boolean" },
+        "caret_thickness_px": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "sound_enabled": { "type": "boolean" },
+        "sound_volume": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "sound_keys": { "type": "boolean" },
+        "sound_backspace": { "type": "boolean" },
+        "sound_bell": { "type": "boolean" }
+        ,
+        "ambient_enabled": { "type": "boolean" },
+        "ambient_profile": {
+          "type": "string",
+          "enum": ["off", "focus_soft", "focus_warm", "competitive_clean", "nature_air"]
+        },
+        "ambient_volume": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "ambient_pause_on_typing": { "type": "boolean" }
+      }
+    }
+  }
+}

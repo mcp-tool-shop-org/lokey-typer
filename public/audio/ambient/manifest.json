@@ -1,0 +1,522 @@
+{
+  "version": 3,
+  "tracks": [
+    {
+      "id": "focus_soft_low_bed_01",
+      "title": "Soft Deep Foundation 1",
+      "category": "white_noise",
+      "tags": ["drone", "deep", "focus"],
+      "path": "/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_soft_low_bed_02",
+      "title": "Soft Deep Foundation 2",
+      "category": "white_noise",
+      "tags": ["drone", "deep", "focus"],
+      "path": "/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_soft_low_bed_03",
+      "title": "Soft Deep Foundation 3",
+      "category": "white_noise",
+      "tags": ["drone", "deep", "focus"],
+      "path": "/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_soft_mid_texture_01",
+      "title": "Soft Mid Texture 1",
+      "category": "white_noise",
+      "tags": ["texture", "mid", "focus"],
+      "path": "/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_soft_mid_texture_02",
+      "title": "Soft Mid Texture 2",
+      "category": "white_noise",
+      "tags": ["texture", "mid", "focus"],
+      "path": "/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_soft_mid_texture_03",
+      "title": "Soft Mid Texture 3",
+      "category": "white_noise",
+      "tags": ["texture", "mid", "focus"],
+      "path": "/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_soft_air_01",
+      "title": "Soft Air 1",
+      "category": "wind",
+      "tags": ["air", "breeze", "focus"],
+      "path": "/audio/ambient/focus/focus_soft/air/focus_soft_air_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_soft_air_02",
+      "title": "Soft Air 2",
+      "category": "wind",
+      "tags": ["air", "breeze", "focus"],
+      "path": "/audio/ambient/focus/focus_soft/air/focus_soft_air_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_soft_air_03",
+      "title": "Soft Air 3",
+      "category": "wind",
+      "tags": ["air", "breeze", "focus"],
+      "path": "/audio/ambient/focus/focus_soft/air/focus_soft_air_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_low_bed_01",
+      "title": "Warm Deep Foundation 1",
+      "category": "white_noise",
+      "tags": ["drone", "warm", "deep"],
+      "path": "/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_low_bed_02",
+      "title": "Warm Deep Foundation 2",
+      "category": "white_noise",
+      "tags": ["drone", "warm", "deep"],
+      "path": "/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_low_bed_03",
+      "title": "Warm Deep Foundation 3",
+      "category": "white_noise",
+      "tags": ["drone", "warm", "deep"],
+      "path": "/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_mid_texture_01",
+      "title": "Warm Mid Texture 1",
+      "category": "other",
+      "tags": ["texture", "warm", "mid"],
+      "path": "/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_mid_texture_02",
+      "title": "Warm Mid Texture 2",
+      "category": "other",
+      "tags": ["texture", "warm", "mid"],
+      "path": "/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_mid_texture_03",
+      "title": "Warm Mid Texture 3",
+      "category": "other",
+      "tags": ["texture", "warm", "mid"],
+      "path": "/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_air_01",
+      "title": "Warm Air 1",
+      "category": "wind",
+      "tags": ["air", "warm", "gentle"],
+      "path": "/audio/ambient/focus/focus_warm/air/focus_warm_air_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_air_02",
+      "title": "Warm Air 2",
+      "category": "wind",
+      "tags": ["air", "warm", "gentle"],
+      "path": "/audio/ambient/focus/focus_warm/air/focus_warm_air_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_air_03",
+      "title": "Warm Air 3",
+      "category": "wind",
+      "tags": ["air", "warm", "gentle"],
+      "path": "/audio/ambient/focus/focus_warm/air/focus_warm_air_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_room_01",
+      "title": "Warm Room Reflections 1",
+      "category": "other",
+      "tags": ["room", "reverb", "warm"],
+      "path": "/audio/ambient/focus/focus_warm/room/focus_warm_room_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_room_02",
+      "title": "Warm Room Reflections 2",
+      "category": "other",
+      "tags": ["room", "reverb", "warm"],
+      "path": "/audio/ambient/focus/focus_warm/room/focus_warm_room_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "focus_warm_room_03",
+      "title": "Warm Room Reflections 3",
+      "category": "other",
+      "tags": ["room", "reverb", "warm"],
+      "path": "/audio/ambient/focus/focus_warm/room/focus_warm_room_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "competitive_clean_low_bed_01",
+      "title": "Clean Drive Bass 1",
+      "category": "white_noise",
+      "tags": ["bass", "drive", "competitive"],
+      "path": "/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "competitive_clean_low_bed_02",
+      "title": "Clean Drive Bass 2",
+      "category": "white_noise",
+      "tags": ["bass", "drive", "competitive"],
+      "path": "/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "competitive_clean_low_bed_03",
+      "title": "Clean Drive Bass 3",
+      "category": "white_noise",
+      "tags": ["bass", "drive", "competitive"],
+      "path": "/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "competitive_clean_mid_presence_01",
+      "title": "Clean Presence 1",
+      "category": "other",
+      "tags": ["presence", "clarity", "competitive"],
+      "path": "/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "competitive_clean_mid_presence_02",
+      "title": "Clean Presence 2",
+      "category": "other",
+      "tags": ["presence", "clarity", "competitive"],
+      "path": "/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "competitive_clean_mid_presence_03",
+      "title": "Clean Presence 3",
+      "category": "other",
+      "tags": ["presence", "clarity", "competitive"],
+      "path": "/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "competitive_clean_air_01",
+      "title": "Clean Air 1",
+      "category": "wind",
+      "tags": ["air", "bright", "competitive"],
+      "path": "/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "competitive_clean_air_02",
+      "title": "Clean Air 2",
+      "category": "wind",
+      "tags": ["air", "bright", "competitive"],
+      "path": "/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "competitive_clean_air_03",
+      "title": "Clean Air 3",
+      "category": "wind",
+      "tags": ["air", "bright", "competitive"],
+      "path": "/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_low_bed_01",
+      "title": "Nature Low Bed 1",
+      "category": "forest",
+      "tags": ["nature", "deep", "organic"],
+      "path": "/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_low_bed_02",
+      "title": "Nature Low Bed 2",
+      "category": "forest",
+      "tags": ["nature", "deep", "organic"],
+      "path": "/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_low_bed_03",
+      "title": "Nature Low Bed 3",
+      "category": "forest",
+      "tags": ["nature", "deep", "organic"],
+      "path": "/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_mid_texture_01",
+      "title": "Nature Mid Texture 1",
+      "category": "forest",
+      "tags": ["nature", "texture", "organic"],
+      "path": "/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_mid_texture_02",
+      "title": "Nature Mid Texture 2",
+      "category": "forest",
+      "tags": ["nature", "texture", "organic"],
+      "path": "/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_mid_texture_03",
+      "title": "Nature Mid Texture 3",
+      "category": "forest",
+      "tags": ["nature", "texture", "organic"],
+      "path": "/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_air_01",
+      "title": "Nature Breeze 1",
+      "category": "wind",
+      "tags": ["nature", "breeze", "airy"],
+      "path": "/audio/ambient/focus/nature_air/air/nature_air_air_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_air_02",
+      "title": "Nature Breeze 2",
+      "category": "wind",
+      "tags": ["nature", "breeze", "airy"],
+      "path": "/audio/ambient/focus/nature_air/air/nature_air_air_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_air_03",
+      "title": "Nature Breeze 3",
+      "category": "wind",
+      "tags": ["nature", "breeze", "airy"],
+      "path": "/audio/ambient/focus/nature_air/air/nature_air_air_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_room_01",
+      "title": "Nature Room 1",
+      "category": "forest",
+      "tags": ["nature", "room", "reverb"],
+      "path": "/audio/ambient/focus/nature_air/room/nature_air_room_01.wav",
+      "duration_sec": 40.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_room_02",
+      "title": "Nature Room 2",
+      "category": "forest",
+      "tags": ["nature", "room", "reverb"],
+      "path": "/audio/ambient/focus/nature_air/room/nature_air_room_02.wav",
+      "duration_sec": 45.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "nature_air_room_03",
+      "title": "Nature Room 3",
+      "category": "forest",
+      "tags": ["nature", "room", "reverb"],
+      "path": "/audio/ambient/focus/nature_air/room/nature_air_room_03.wav",
+      "duration_sec": 50.0,
+      "lufs_i": -32
+    },
+
+    {
+      "id": "ocean_coastal_breeze",
+      "title": "Coastal Breeze",
+      "category": "ocean",
+      "tags": ["ocean", "breeze", "waves"],
+      "path": "/audio/ambient/ocean/ocean_coastal_breeze.wav",
+      "duration_sec": 53.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "ocean_gentle_waves",
+      "title": "Gentle Waves",
+      "category": "ocean",
+      "tags": ["ocean", "waves", "calm"],
+      "path": "/audio/ambient/ocean/ocean_gentle_waves.wav",
+      "duration_sec": 47.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "ocean_pebble_shore",
+      "title": "Pebble Shore",
+      "category": "ocean",
+      "tags": ["ocean", "pebbles", "shore"],
+      "path": "/audio/ambient/ocean/ocean_pebble_shore.wav",
+      "duration_sec": 43.0,
+      "lufs_i": -32
+    },
+
+    {
+      "id": "rain_heavy_downpour",
+      "title": "Heavy Downpour",
+      "category": "rain",
+      "tags": ["rain", "heavy", "storm"],
+      "path": "/audio/ambient/rain/rain_heavy_downpour.wav",
+      "duration_sec": 41.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "rain_steady",
+      "title": "Steady Rain",
+      "category": "rain",
+      "tags": ["rain", "steady", "calm"],
+      "path": "/audio/ambient/rain/rain_steady.wav",
+      "duration_sec": 53.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "rain_thunderstorm",
+      "title": "Thunderstorm",
+      "category": "rain",
+      "tags": ["rain", "thunder", "storm"],
+      "path": "/audio/ambient/rain/rain_thunderstorm.wav",
+      "duration_sec": 59.0,
+      "lufs_i": -32
+    },
+
+    {
+      "id": "wind_alpine_meadow",
+      "title": "Alpine Meadow Wind",
+      "category": "wind",
+      "tags": ["wind", "meadow", "alpine"],
+      "path": "/audio/ambient/wind/wind_alpine_meadow.wav",
+      "duration_sec": 47.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "wind_pine_forest",
+      "title": "Pine Forest Wind",
+      "category": "wind",
+      "tags": ["wind", "pine", "forest"],
+      "path": "/audio/ambient/wind/wind_pine_forest.wav",
+      "duration_sec": 51.0,
+      "lufs_i": -32
+    },
+
+    {
+      "id": "zen_celestial_wash",
+      "title": "Celestial Wash",
+      "category": "other",
+      "tags": ["zen", "celestial", "wash", "pad"],
+      "path": "/audio/ambient/zen/zen_celestial_wash.wav",
+      "duration_sec": 53.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "zen_crystal_harmonics",
+      "title": "Crystal Harmonics",
+      "category": "singing_bowls",
+      "tags": ["zen", "crystal", "harmonics"],
+      "path": "/audio/ambient/zen/zen_crystal_harmonics.wav",
+      "duration_sec": 59.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "zen_deep_earth_drone",
+      "title": "Deep Earth Drone",
+      "category": "binaural",
+      "tags": ["zen", "drone", "deep", "earth"],
+      "path": "/audio/ambient/zen/zen_deep_earth_drone.wav",
+      "duration_sec": 53.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "zen_ethereal_pad",
+      "title": "Ethereal Pad",
+      "category": "other",
+      "tags": ["zen", "ethereal", "pad", "ambient"],
+      "path": "/audio/ambient/zen/zen_ethereal_pad.wav",
+      "duration_sec": 59.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "zen_om_drone",
+      "title": "Om Drone",
+      "category": "binaural",
+      "tags": ["zen", "om", "drone", "meditation"],
+      "path": "/audio/ambient/zen/zen_om_drone.wav",
+      "duration_sec": 61.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "zen_singing_bowl",
+      "title": "Singing Bowl",
+      "category": "singing_bowls",
+      "tags": ["zen", "singing bowl", "tibetan"],
+      "path": "/audio/ambient/zen/zen_singing_bowl.wav",
+      "duration_sec": 53.0,
+      "lufs_i": -32
+    },
+    {
+      "id": "zen_warm_fifths",
+      "title": "Warm Fifths",
+      "category": "other",
+      "tags": ["zen", "warm", "fifths", "harmony"],
+      "path": "/audio/ambient/zen/zen_warm_fifths.wav",
+      "duration_sec": 61.0,
+      "lufs_i": -32
+    }
+  ]
+}

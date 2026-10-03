@@ -1,0 +1,707 @@
+{
+  "pack_id": "focus_calm_03",
+  "mode": "focus",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "focus_calm_03_001",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Gentle Precision",
+      "difficulty": 3,
+      "estimated_seconds": 50,
+      "text": "Slow is smooth; smooth is fast. A calm start creates a calm finish.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_002",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Clean Starts",
+      "difficulty": 3,
+      "estimated_seconds": 30,
+      "text": "Aim for an even tempo. Less tension, better control.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_003",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Light Hands",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Reset, then continue. If you rush, you lose the pattern.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_004",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Clean Starts",
+      "difficulty": 3,
+      "estimated_seconds": 50,
+      "text": "Correct calmly; keep the line moving. Your best pace is the one you can sustain.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_005",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Light Hands",
+      "difficulty": 3,
+      "estimated_seconds": 40,
+      "text": "Reset, then continue. Less tension, better control.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_006",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Light Hands",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Stay with the next character only. Hold the rhythm through punctuation.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_007",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Quiet Focus",
+      "difficulty": 3,
+      "estimated_seconds": 30,
+      "text": "Accuracy arrives before speed. Your best pace is the one you can sustain.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_008",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Gentle Precision",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Accuracy arrives before speed. Not fast, not slow—just consistent.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_009",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Steady Rhythm",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "text": "Correct calmly; keep the line moving. Small improvements compound quickly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_010",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Gentle Precision",
+      "difficulty": 3,
+      "estimated_seconds": 30,
+      "text": "Correct calmly; keep the line moving. Less tension, better control.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_011",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Clean Starts",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Stay with the next character only. Your best pace is the one you can sustain.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_012",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Quiet Focus",
+      "difficulty": 3,
+      "estimated_seconds": 50,
+      "text": "Slow is smooth; smooth is fast. Small improvements compound quickly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_013",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Steady Rhythm",
+      "difficulty": 3,
+      "estimated_seconds": 40,
+      "text": "Correct calmly; keep the line moving. A calm start creates a calm finish.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_014",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Soft Reset",
+      "difficulty": 3,
+      "estimated_seconds": 50,
+      "text": "Reset, then continue. If you rush, you lose the pattern.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_015",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 3,
+      "estimated_seconds": 45,
+      "text": "Stay with the next character only. Not fast, not slow—just consistent.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_016",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Quiet Focus",
+      "difficulty": 3,
+      "estimated_seconds": 30,
+      "text": "Let each keypress land, then move on. Hold the rhythm through punctuation.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_017",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Soft Reset",
+      "difficulty": 3,
+      "estimated_seconds": 55,
+      "text": "Stay with the next character only. Finish cleanly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_018",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Quiet Focus",
+      "difficulty": 4,
+      "estimated_seconds": 30,
+      "text": "Keep your hands light. Finish cleanly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_019",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Clean Starts",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "text": "Let each keypress land, then move on. When in doubt, slow down slightly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_020",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Clean Starts",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "text": "Quiet focus beats forced speed. When in doubt, slow down slightly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_021",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "text": "Reset, then continue. Less tension, better control.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_022",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Gentle Precision",
+      "difficulty": 4,
+      "estimated_seconds": 30,
+      "text": "Reset, then continue. Not fast, not slow—just consistent.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_023",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Quiet Focus",
+      "difficulty": 4,
+      "estimated_seconds": 40,
+      "text": "Slow is smooth; smooth is fast. Hold the rhythm through punctuation.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_024",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Gentle Precision",
+      "difficulty": 4,
+      "estimated_seconds": 50,
+      "text": "Let each keypress land, then move on. Finish cleanly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_025",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Even Tempo",
+      "difficulty": 4,
+      "estimated_seconds": 55,
+      "text": "Aim for an even tempo. Consistency makes speed feel effortless.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_026",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Steady Rhythm",
+      "difficulty": 4,
+      "estimated_seconds": 50,
+      "text": "Aim for an even tempo. If you rush, you lose the pattern.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_027",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Even Tempo",
+      "difficulty": 4,
+      "estimated_seconds": 40,
+      "text": "Correct calmly; keep the line moving. Finish cleanly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_028",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Gentle Precision",
+      "difficulty": 4,
+      "estimated_seconds": 50,
+      "text": "Smooth is repeatable. Small improvements compound quickly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_029",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "text": "Quiet focus beats forced speed. Not fast, not slow—just consistent.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_030",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Quiet Focus",
+      "difficulty": 4,
+      "estimated_seconds": 40,
+      "text": "Quiet focus beats forced speed. When in doubt, slow down slightly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_031",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Quiet Focus",
+      "difficulty": 4,
+      "estimated_seconds": 35,
+      "text": "Stay with the next character only. Finish cleanly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_032",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Clean Starts",
+      "difficulty": 4,
+      "estimated_seconds": 55,
+      "text": "Keep your hands light. When in doubt, slow down slightly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_033",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Quiet Focus",
+      "difficulty": 4,
+      "estimated_seconds": 40,
+      "text": "Stay with the next character only. Less tension, better control.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_034",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Clean Starts",
+      "difficulty": 4,
+      "estimated_seconds": 50,
+      "text": "Slow is smooth; smooth is fast. A calm start creates a calm finish.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_035",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Soft Reset",
+      "difficulty": 5,
+      "estimated_seconds": 50,
+      "text": "Stay with the next character only. Precision is a feeling you can practice.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_036",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 5,
+      "estimated_seconds": 30,
+      "text": "Keep your hands light. Not fast, not slow—just consistent.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_037",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 5,
+      "estimated_seconds": 45,
+      "text": "Keep your hands light. Small improvements compound quickly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_038",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Steady Rhythm",
+      "difficulty": 5,
+      "estimated_seconds": 30,
+      "text": "Smooth is repeatable. When in doubt, slow down slightly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_039",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Quiet Focus",
+      "difficulty": 5,
+      "estimated_seconds": 35,
+      "text": "Quiet focus beats forced speed. Consistency makes speed feel effortless.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_040",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Soft Reset",
+      "difficulty": 5,
+      "estimated_seconds": 50,
+      "text": "Correct calmly; keep the line moving. Small improvements compound quickly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_041",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Clean Starts",
+      "difficulty": 5,
+      "estimated_seconds": 40,
+      "text": "Quiet focus beats forced speed. Precision is a feeling you can practice.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_042",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Clean Starts",
+      "difficulty": 5,
+      "estimated_seconds": 35,
+      "text": "Let each keypress land, then move on. Precision is a feeling you can practice.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_043",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Light Hands",
+      "difficulty": 5,
+      "estimated_seconds": 60,
+      "text": "Accuracy arrives before speed. Not fast, not slow—just consistent.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_044",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 5,
+      "estimated_seconds": 40,
+      "text": "Let each keypress land, then move on. Precision is a feeling you can practice.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_045",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Soft Reset",
+      "difficulty": 5,
+      "estimated_seconds": 40,
+      "text": "Slow is smooth; smooth is fast. When in doubt, slow down slightly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_046",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 5,
+      "estimated_seconds": 35,
+      "text": "Stay with the next character only. Finish cleanly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_047",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Light Hands",
+      "difficulty": 5,
+      "estimated_seconds": 45,
+      "text": "Relax your shoulders and breathe. Finish cleanly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_048",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 5,
+      "estimated_seconds": 50,
+      "text": "Keep your hands light. When in doubt, slow down slightly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_049",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 5,
+      "estimated_seconds": 35,
+      "text": "Accuracy arrives before speed. Finish cleanly.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    },
+    {
+      "id": "focus_calm_03_050",
+      "mode": "focus",
+      "pack": "focus_calm_03",
+      "title": "Calm Finish",
+      "difficulty": 5,
+      "estimated_seconds": 35,
+      "text": "Relax your shoulders and breathe. Not fast, not slow—just consistent.",
+      "tags": [
+        "calm",
+        "focus",
+        "sentences"
+      ]
+    }
+  ]
+}

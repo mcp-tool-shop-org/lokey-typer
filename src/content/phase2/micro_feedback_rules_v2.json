@@ -1,0 +1,244 @@
+{
+  "version": 2,
+  "inputs_expected": [
+    "mode",
+    "wpm",
+    "accuracy",
+    "errors",
+    "backspaces",
+    "duration_ms",
+    "is_personal_best_wpm",
+    "is_personal_best_accuracy",
+    "delta_wpm_vs_best",
+    "delta_accuracy_vs_best",
+    "screen_reader_mode",
+    "reduced_motion",
+    "hud_level"
+  ],
+  "selection": {
+    "max_messages": 2,
+    "apply_order": "top_to_bottom",
+    "rotate_within_same_rule": true
+  },
+  "calm": {
+    "primary_rules_ordered": [
+      {
+        "id": "calm_sr_short",
+        "if": "screen_reader_mode == true AND accuracy >= 0.98",
+        "messages": [
+          "High accuracy.",
+          "Clean run."
+        ]
+      },
+      {
+        "id": "calm_pb_clean",
+        "if": "is_personal_best_wpm == true AND accuracy >= 0.97",
+        "messages": [
+          "New personal best, and you kept it clean.",
+          "PB with control. Nice work."
+        ]
+      },
+      {
+        "id": "calm_accuracy_elite",
+        "if": "accuracy >= 0.99 AND duration_ms >= 20000",
+        "messages": [
+          "Excellent control. Very clean.",
+          "Calm, precise typing—great control."
+        ]
+      },
+      {
+        "id": "calm_accuracy_high",
+        "if": "accuracy >= 0.98",
+        "messages": [
+          "Strong accuracy. Steady work.",
+          "Clean entries. Nice rhythm."
+        ]
+      },
+      {
+        "id": "calm_speed_controlled",
+        "if": "wpm >= 55 AND accuracy >= 0.96",
+        "messages": [
+          "Good pace, and you stayed in control.",
+          "Speed with steadiness—keep that."
+        ]
+      },
+      {
+        "id": "calm_low_backspace",
+        "if": "backspaces <= 5 AND duration_ms >= 20000",
+        "messages": [
+          "Minimal corrections. Smooth flow.",
+          "Light touch—nice continuity."
+        ]
+      },
+      {
+        "id": "calm_recovery",
+        "if": "errors > 0 AND accuracy >= 0.95",
+        "messages": [
+          "Nice recovery. You kept moving calmly.",
+          "Good reset after errors—steady finish."
+        ]
+      },
+      {
+        "id": "calm_accuracy_low",
+        "if": "accuracy < 0.93",
+        "messages": [
+          "Slow slightly and aim for clean entries.",
+          "Ease off a bit; let accuracy lead."
+        ]
+      },
+      {
+        "id": "calm_default",
+        "if": "true",
+        "messages": [
+          "Good session. Keep the rhythm steady.",
+          "Nice work. Light hands, steady pace."
+        ]
+      }
+    ],
+    "secondary_rules_ordered": [
+      {
+        "id": "calm_sr_hint",
+        "if": "screen_reader_mode == true AND accuracy < 0.95",
+        "messages": [
+          "Try slowing slightly for accuracy."
+        ]
+      },
+      {
+        "id": "calm_hint_backspace",
+        "if": "backspaces >= 15",
+        "messages": [
+          "Try fewer corrections—finish the word, then fix if needed.",
+          "Commit to the word, then correct calmly."
+        ]
+      },
+      {
+        "id": "calm_hint_errors",
+        "if": "errors >= 8",
+        "messages": [
+          "Aim for the next character only. Accuracy will bring speed.",
+          "Focus on clean characters; speed follows."
+        ]
+      },
+      {
+        "id": "calm_hint_hud",
+        "if": "hud_level == 'minimal' AND wpm < 35 AND duration_ms >= 30000",
+        "messages": [
+          "When it feels effortless, nudge the pace up."
+        ]
+      },
+      {
+        "id": "calm_hint_none",
+        "if": "true",
+        "messages": [
+          ""
+        ]
+      }
+    ]
+  },
+  "competitive": {
+    "primary_rules_ordered": [
+      {
+        "id": "comp_sr_short",
+        "if": "screen_reader_mode == true AND is_personal_best_wpm == true AND accuracy >= 0.95",
+        "messages": [
+          "New WPM best."
+        ]
+      },
+      {
+        "id": "comp_pb_wpm",
+        "if": "is_personal_best_wpm == true AND accuracy >= 0.95",
+        "messages": [
+          "New PB WPM. Keep it repeatable.",
+          "PB set. Run it clean again."
+        ]
+      },
+      {
+        "id": "comp_pb_accuracy",
+        "if": "is_personal_best_accuracy == true AND duration_ms >= 20000",
+        "messages": [
+          "New PB accuracy. Clean run.",
+          "Accuracy PB. Excellent control."
+        ]
+      },
+      {
+        "id": "comp_elite_accuracy",
+        "if": "accuracy >= 0.99",
+        "messages": [
+          "Elite accuracy. Push pace next run.",
+          "99%+ accuracy—now add speed."
+        ]
+      },
+      {
+        "id": "comp_fast_and_clean",
+        "if": "wpm >= 60 AND accuracy >= 0.97",
+        "messages": [
+          "Fast and clean. That’s the zone.",
+          "Strong pace with control."
+        ]
+      },
+      {
+        "id": "comp_fast_sloppy",
+        "if": "wpm >= 60 AND accuracy < 0.95",
+        "messages": [
+          "Pace is there. Tighten accuracy to convert it.",
+          "Speed is good; accuracy is the limiter."
+        ]
+      },
+      {
+        "id": "comp_accuracy_gate",
+        "if": "accuracy < 0.95",
+        "messages": [
+          "Accuracy under 95%. Ease off 5% and lock it in.",
+          "Below accuracy gate—slow slightly, then push."
+        ]
+      },
+      {
+        "id": "comp_default",
+        "if": "true",
+        "messages": [
+          "Solid run. Chase clean speed.",
+          "Good attempt. Run it back clean."
+        ]
+      }
+    ],
+    "secondary_rules_ordered": [
+      {
+        "id": "comp_delta_up",
+        "if": "delta_wpm_vs_best >= 1.0 AND accuracy >= 0.95",
+        "messages": [
+          "Up vs best: +{delta_wpm_vs_best} WPM."
+        ]
+      },
+      {
+        "id": "comp_delta_down",
+        "if": "delta_wpm_vs_best <= -1.0",
+        "messages": [
+          "Down vs best: {delta_wpm_vs_best} WPM. Reset and rerun."
+        ]
+      },
+      {
+        "id": "comp_backspace",
+        "if": "backspaces >= 15",
+        "messages": [
+          "Too many backspaces. Commit, then correct.",
+          "Backspace budget blown—type through, then fix."
+        ]
+      },
+      {
+        "id": "comp_errors",
+        "if": "errors >= 10",
+        "messages": [
+          "Error spike. Rebuild rhythm, then push.",
+          "Too many misses—slow slightly for one clean run."
+        ]
+      },
+      {
+        "id": "comp_none",
+        "if": "true",
+        "messages": [
+          ""
+        ]
+      }
+    ]
+  }
+}

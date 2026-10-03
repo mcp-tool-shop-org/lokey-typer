@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="LoKeyTyper.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    Title="LoKey Typer">
+
+    <Grid x:Name="RootGrid" Background="#09090b">
+        <!-- Native splash overlay — visible immediately at launch -->
+        <Grid x:Name="SplashOverlay" Background="#09090b">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="16">
+                <TextBlock Text="LoKey Typer"
+                           FontSize="28" FontWeight="SemiBold"
+                           Foreground="#fafafa"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Speed · Accuracy · Consistency"
+                           FontSize="14"
+                           Foreground="#a1a1aa"
+                           HorizontalAlignment="Center"/>
+                <ProgressRing IsActive="True" Width="32" Height="32"
+                              Foreground="#a1a1aa"
+                              Margin="0,8,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- WebView2 — loads bundled web content -->
+        <controls:WebView2 x:Name="AppWebView"
+                           DefaultBackgroundColor="#09090b"/>
+    </Grid>
+</Window>

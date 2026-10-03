@@ -1,0 +1,997 @@
+{
+  "pack_id": "competitive_templates",
+  "mode": "competitive",
+  "version": 2,
+  "exercises": [
+    {
+      "id": "tpl_009",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_010",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_019",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 4,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_020",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 5,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_029",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_030",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_039",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 4,
+      "estimated_seconds": 45,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_040",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_049",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_050",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_059",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_060",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_069",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 2,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_070",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_079",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 4,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_080",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 5,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_089",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 2,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_090",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_099",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 4,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_100",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_109",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_110",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 3,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_119",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 4,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_120",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 5,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_129",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 2,
+      "estimated_seconds": 110,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_130",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 3,
+      "estimated_seconds": 90,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_139",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 4,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_140",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 5,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_149",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Targets Template",
+      "difficulty": 2,
+      "estimated_seconds": 60,
+      "type": "template",
+      "template": "Targets: {acc}% accuracy, {wpm}+ WPM, and fewer than {backs} backspaces. Run it clean.",
+      "slots": {
+        "acc": [
+          "95",
+          "96",
+          "97",
+          "98"
+        ],
+        "wpm": [
+          "45",
+          "50",
+          "55",
+          "60"
+        ],
+        "backs": [
+          "10",
+          "12",
+          "15",
+          "18"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "numbers",
+        "plus"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    },
+    {
+      "id": "tpl_150",
+      "mode": "competitive",
+      "pack": "competitive_templates",
+      "title": "Tempo Template",
+      "difficulty": 3,
+      "estimated_seconds": 75,
+      "type": "template",
+      "template": "Hold tempo. Don’t spike. Keep the cadence steady through the {finish_word}.",
+      "slots": {
+        "finish_word": [
+          "finish",
+          "last line",
+          "final sentence",
+          "closing stretch"
+        ]
+      },
+      "tags": [
+        "competitive",
+        "cadence",
+        "apostrophe"
+      ],
+      "render_rules": {
+        "max_variants": 1000,
+        "seeded": true
+      }
+    }
+  ]
+}

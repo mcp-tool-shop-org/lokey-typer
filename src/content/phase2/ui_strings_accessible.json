@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "labels": {
+    "mode_focus": "Focus mode",
+    "mode_real_life": "Real-life mode",
+    "mode_competitive": "Competitive mode",
+    "target_text": "Target text",
+    "typed_text": "Typed text",
+    "start_button": "Start exercise",
+    "restart_button": "Restart exercise",
+    "settings_button": "Open settings",
+    "accessibility_button": "Open accessibility settings",
+    "results_heading": "Run results",
+    "wpm": "Words per minute",
+    "accuracy": "Accuracy",
+    "errors": "Errors",
+    "backspaces": "Backspaces",
+    "duration": "Duration"
+  },
+  "announcements": {
+    "exercise_start": "Exercise started.",
+    "exercise_complete": "Exercise complete.",
+    "mismatch_expected_char": "Mismatch—expected '{char}'.",
+    "progress_char_of_total": "Character {pos} of {total}.",
+    "results_summary": "{wpm} words per minute, {accuracy}% accuracy, {errors} errors."
+  },
+  "sr_behavior": {
+    "do_not_announce_every_keystroke": true,
+    "error_announce_debounce_ms": 700,
+    "progress_announce_interval_chars": 25
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "../../schemas/passport.schema.json",
+  "conformsTo": [
+    "codemeta:3.0",
+    "ro-crate:1.1",
+    "mcp-prototypes:passport:1"
+  ],
+  "id": "seed:LoKey-Typer:1.0.2",
+  "swhid": null,
+  "name": "LoKey-Typer",
+  "title": "LoKey Typer",
+  "description": "A calm typing practice app with ambient soundscapes, personalized daily sets, and no accounts required.",
+  "version": "1.0.2",
+  "license": "MIT",
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20",
+  "codeRepository": "https://github.com/mcp-tool-shop-org/lokey-typer",
+  "author": [
+    {
+      "name": "mcp-tool-shop"
+    }
+  ],
+  "keywords": [],
+  "lifecycle": {
+    "state": "dormant",
+    "stateSince": "2026-04-08",
+    "maturity": "prototype",
+    "caretaker": null,
+    "graduatedTo": null,
+    "resurrectionNotes": null
+  },
+  "taxonomy": {
+    "category": "typing-and-input",
+    "domains": [],
+    "tags": [
+      "typescript",
+      "javascript"
+    ]
+  },
+  "technical": {
+    "kind": "desktop",
+    "programmingLanguages": [
+      "TypeScript",
+      "JavaScript"
+    ],
+    "runtimes": [],
+    "operatingSystems": [
+      "any"
+    ]
+  },
+  "health": {
+    "lineCount": null,
+    "lastCommitAt": null,
+    "commitRecencyDays": null,
+    "hasTests": null,
+    "hasReadme": null,
+    "hasLicense": null,
+    "buildable": null
+  },
+  "lineage": {
+    "sourceRepo": null,
+    "consolidatedAt": "2026-04-08",
+    "relatedSeeds": [],
+    "deprecates": [],
+    "successors": []
+  },
+  "sbom": {
+    "format": "none",
+    "url": null,
+    "hash": null
+  },
+  "discovery": {
+    "oneLiner": "A typing practice app with ambient soundscapes and personalized daily exercises.",
+    "whyItMatters": "Provides a focused, account-free environment for improving typing skills in realistic contexts."
+  },
+  "patterns": [
+    {
+      "name": "adaptive-audio",
+      "category": "signal-processing",
+      "summary": "Uses ambient soundscapes designed to support sustained focus."
+    },
+    {
+      "name": "personalized-content",
+      "category": "data-model",
+      "summary": "Generates daily exercise sets tailored to the user's recent sessions."
+    }
+  ],
+  "failureModes": [],
+  "priorArt": [],
+  "agentCapsule": {
+    "insight": null,
+    "excerpt": null
+  },
+  "ingest": {
+    "method": "ollama-backfill",
+    "model": "hermes3:8b",
+    "confidence": 0.9,
+    "manualReview": false,
+    "ingestedAt": "2026-04-20T21:49:01.498Z"
+  }
+}
