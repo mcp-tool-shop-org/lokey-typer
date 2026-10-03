@@ -56,4 +56,12 @@ jobs:
       - run: npm run qa:sound-design
       - run: npm run typecheck
       - run: npm run build
-      - run: npm test
+      - run: npm run test:coverage
+      - name: Upload coverage to Codecov
+        continue-on-error: true
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+        with:
+          files: coverage/lcov.info
+          disable_search: true
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}

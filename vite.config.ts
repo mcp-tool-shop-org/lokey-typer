@@ -6,7 +6,18 @@ import { fileURLToPath } from 'node:url'
 // https://vite.dev/config/
 export default defineConfig({
   test: {
-    exclude: ['**/.swarm/**', '**/node_modules/**', '**/dist/**'],
+    exclude: ['**/.swarm/**', '**/node_modules/**', '**/dist/**', '**/coverage/**'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
+      include: ['src/**/*.{ts,tsx}'],
+      thresholds: {
+        lines: 90,
+        statements: 90,
+        functions: 90,
+        branches: 90,
+      },
+    },
   },
   base: '/lokey-typer/',
   resolve: {
