@@ -49,7 +49,7 @@ public sealed partial class MainWindow : Window
                 CoreWebView2WebResourceContext.Document);
             AppWebView.CoreWebView2.WebResourceRequested += OnWebResourceRequested;
 
-            // Hide splash once the page has rendered
+            // Hide splash only after a successful navigation.
             AppWebView.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
 
             // Only https://lokey.local stays in this WebView. Other http(s) leaves the app.
@@ -148,7 +148,13 @@ public sealed partial class MainWindow : Window
     {
         sender.NavigationCompleted -= OnNavigationCompleted;
 
-        // Fade out splash, reveal the web app
+        if (!args.IsSuccess)
+        {
+            SplashProgress.IsActive = false;
+            SplashSubtitle.Text = "The page did not load.";
+            return;
+        }
+
         SplashOverlay.Visibility = Visibility.Collapsed;
     }
 
