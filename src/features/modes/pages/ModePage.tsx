@@ -69,7 +69,7 @@ export function ModePage({ mode }: { mode: Mode }) {
   }
 
   function handleRestart() {
-    startSession()
+    setSessionKey((k) => k + 1)
   }
 
   // If running, show TypingSession inline
@@ -95,7 +95,7 @@ export function ModePage({ mode }: { mode: Mode }) {
         <div className="flex justify-center">
           <button
             type="button"
-            onClick={handleRestart}
+            onClick={startSession}
             className="group inline-flex items-center gap-2 rounded-2xl border border-zinc-700/50 bg-zinc-800/80 px-6 py-3 text-sm font-semibold text-zinc-300 transition-all duration-150 hover:bg-zinc-700 hover:border-zinc-600 hover:scale-[1.01] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
           >
             <Icon name="play" size={16} className="shrink-0 text-slate-400 transition-transform duration-150 group-hover:translate-x-0.5" />

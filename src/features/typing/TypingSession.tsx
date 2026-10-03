@@ -1,4 +1,4 @@
-import { type CSSProperties, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Exercise, Mode } from '@content'
 import { Icon, type IconName } from '@app/components/Icon'
 import {
@@ -18,6 +18,7 @@ import {
   typewriterAudio,
   updateSkillModelFromRun,
 } from '@lib'
+import { keyboardPassage } from '@lib-internal/keyboardPassage'
 import { acceptTypingEdit } from '@lib-internal/typingEdit'
 import { useAmbient } from '@app'
 import { TypingOverlay } from './TypingOverlay'
@@ -94,7 +95,7 @@ export function TypingSession(props: {
   onRestart: () => void
   onComplete?: (result: { wpm: number; accuracy: number; durationMs: number }) => void
 }) {
-  const { targetText } = props
+  const targetText = keyboardPassage(props.targetText)
   const [typed, setTyped] = useState('')
   const [backspaces, setBackspaces] = useState(0)
   const [startedAtMs, setStartedAtMs] = useState<number | null>(null)
@@ -295,14 +296,10 @@ export function TypingSession(props: {
   const showLiveWpm = props.prefs.showLiveWpm[props.mode]
   const minimalHud = props.mode === 'focus' ? props.prefs.focusMinimalHud : false
 
-  const containerStyle: CSSProperties = {
-    fontSize: `${props.prefs.fontScale}rem`,
-  }
-
   const helpTextId = `typing-help-${props.exercise.id}`
 
   return (
-    <div className="space-y-5" style={containerStyle}>
+    <div className="space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <div className="text-xs font-medium text-zinc-500">{props.exercise.pack}</div>
@@ -360,6 +357,7 @@ export function TypingSession(props: {
           typed={typed}
           showCursor={!isComplete}
           ghostIndex={!isComplete ? ghostCursorIndex : null}
+          fontScale={props.prefs.fontScale}
         />
       </div>
 
@@ -471,6 +469,7 @@ export function TypingSession(props: {
             }
           }}
           spellCheck={false}
+          style={{ fontSize: `calc(0.875rem * ${props.prefs.fontScale})` }}
           className="mt-4 min-h-24 w-full resize-y rounded-lg border border-zinc-700/50 bg-zinc-950 px-3 py-2 font-mono text-sm text-zinc-100 outline-none transition-colors duration-200 focus:border-zinc-500/70 focus-visible:ring-2 focus-visible:ring-zinc-200/30 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
           placeholder="Start typing…"
         />
