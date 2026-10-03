@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml"><img src="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml/badge.svg" alt="Deploy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Web_App-live-blue" alt="Web App"></a>
+  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Pages-target-blue" alt="Pages target"></a>
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
@@ -41,12 +41,12 @@ LoKey Typerは、ゲーム要素やランキング、そして気が散るよう
 **Microsoft Store** (推奨):
 [Microsoft Storeから入手](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
-**ブラウザ版PWA：**
-EdgeまたはChromeで、[ウェブアプリケーション](https://mcp-tool-shop-org.github.io/lokey-typer/) を開き、アドレスバーにあるインストールアイコンをクリックしてください。
+**ブラウザ:**
+`npm run dev` を実行し、表示されたローカルアドレスを開いてください。[Pages の公開先](https://mcp-tool-shop-org.github.io/lokey-typer/) は、このリポジトリが公開されたあとにワークフローがアプリを置く場所です。ハンドブックは同じサイトの `/handbook/` です。それまでは、そのアドレスは公開中のアプリではありません。
 
 ## プライバシー
 
-LoKey Typerは、いかなるデータも収集しません。すべての設定、実行履歴、および個人記録は、すべてローカルにブラウザに保存されます。詳細については、プライバシーポリシー（[https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html)）をご覧ください。
+LoKey Typerは、いかなるデータも収集しません。すべての設定、実行履歴、および個人記録は、すべてローカルにブラウザに保存されます。詳細については、[プライバシーポリシー](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html)をご覧ください。そのページはサイトと一緒に公開されます。このリポジトリが公開されるまで、そのアドレスは公開中のページではありません。
 
 ## ライセンス
 

@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml"><img src="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml/badge.svg" alt="Deploy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Web_App-live-blue" alt="Web App"></a>
+  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Pages-target-blue" alt="Pages target"></a>
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
@@ -41,12 +41,12 @@ LoKey Typer是一款专为希望在安静、专注的环境中进行打字练习
 **Microsoft 商店**（推荐）：
 [从 Microsoft 商店获取](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
-**浏览器 PWA：**
-在 Edge 或 Chrome 浏览器中访问 [该网页应用](https://mcp-tool-shop-org.github.io/lokey-typer/)，然后点击地址栏中的安装图标。
+**浏览器：**
+运行 `npm run dev` 并打开本地地址。[Pages 目标地址](https://mcp-tool-shop-org.github.io/lokey-typer/) 是本仓库公开之后，工作流发布应用的位置。手册在同一站点的 `/handbook/`。在此之前，该地址不是可用的应用。
 
 ## 隐私
 
-LoKey Typer 不会收集任何数据。所有偏好设置、运行历史以及个人最佳记录都存储在您的本地浏览器中。请参阅完整的[隐私政策](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html)。
+LoKey Typer 不会收集任何数据。所有偏好设置、运行历史以及个人最佳记录都存储在您的本地浏览器中。请参阅完整的[隐私政策](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html)。该页面会随站点一起发布。在本仓库公开之前，该地址不是可用页面。
 
 ## 许可
 

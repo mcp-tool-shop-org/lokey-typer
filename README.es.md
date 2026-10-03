@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml"><img src="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml/badge.svg" alt="Deploy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Web_App-live-blue" alt="Web App"></a>
+  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Pages-target-blue" alt="Pages target"></a>
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
@@ -41,12 +41,12 @@ Todos los datos permanecen en su dispositivo. No requiere cuentas. No utiliza la
 **Microsoft Store** (recomendado):
 [Descárguelo de la Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
-**Aplicación PWA para navegador:**
-Visite la [aplicación web](https://mcp-tool-shop-org.github.io/lokey-typer/) en Edge o Chrome, y luego haga clic en el icono de instalación que aparece en la barra de direcciones.
+**Navegador:**
+Ejecute `npm run dev` y abra la dirección local. El flujo de Pages publica la aplicación en [el destino de Pages](https://mcp-tool-shop-org.github.io/lokey-typer/) cuando este repositorio sea público. El manual está en `/handbook/` en ese mismo sitio. Hasta entonces, esa dirección no es una aplicación en línea.
 
 ## Privacidad
 
-LoKey Typer no recopila ningún dato. Todas las preferencias, el historial de uso y los mejores resultados se almacenan localmente en su navegador. Consulte la [política de privacidad](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa.
+LoKey Typer no recopila ningún dato. Todas las preferencias, el historial de uso y los mejores resultados se almacenan localmente en su navegador. Consulte la [política de privacidad](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa. Esa página se publica con el sitio. Hasta que este repositorio sea público, esa dirección no está en línea.
 
 ## Licencia
 

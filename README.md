@@ -46,7 +46,7 @@ Run `npm run dev` and open the local address. The Pages workflow publishes the a
 
 ## Privacy
 
-LoKey Typer collects no data. All preferences, run history, and personal bests are stored locally in your browser. See the full [privacy policy](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html).
+LoKey Typer collects no data. All preferences, run history, and personal bests are stored locally in your browser. See the full [privacy policy](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html). That page ships with the site. Until this repository is public, that address is not a live page.
 
 ## License
 

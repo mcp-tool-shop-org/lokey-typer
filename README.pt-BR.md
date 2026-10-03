@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml"><img src="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml/badge.svg" alt="Deploy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Web_App-live-blue" alt="Web App"></a>
+  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Pages-target-blue" alt="Pages target"></a>
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
@@ -41,12 +41,12 @@ Todos os dados permanecem no seu dispositivo. Não são necessários contas. Nã
 **Microsoft Store** (recomendado):
 [Obtenha-o na Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
-**Aplicativo PWA para navegador:**
-Acesse o [aplicativo web](https://mcp-tool-shop-org.github.io/lokey-typer/) no Edge ou Chrome e, em seguida, clique no ícone de instalação na barra de endereço.
+**Navegador:**
+Execute `npm run dev` e abra o endereço local. O fluxo do Pages publica o aplicativo em [o destino do Pages](https://mcp-tool-shop-org.github.io/lokey-typer/) quando este repositório for público. O manual fica em `/handbook/` nesse mesmo site. Até lá, esse endereço não é um aplicativo no ar.
 
 ## Privacidade
 
-O LoKey Typer não coleta nenhum dado. Todas as preferências, histórico de uso e melhores resultados são armazenados localmente no seu navegador. Consulte a [política de privacidade](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa.
+O LoKey Typer não coleta nenhum dado. Todas as preferências, histórico de uso e melhores resultados são armazenados localmente no seu navegador. Consulte a [política de privacidade](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa. Essa página é publicada com o site. Até este repositório ser público, esse endereço não está no ar.
 
 ## Licença
 

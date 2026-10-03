@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml"><img src="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml/badge.svg" alt="Deploy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Web_App-live-blue" alt="Web App"></a>
+  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Pages-target-blue" alt="Pages target"></a>
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
@@ -41,12 +41,12 @@ Tutti i dati rimangono sul tuo dispositivo. Nessun account. Nessun servizio clou
 **Microsoft Store** (consigliato):
 [Scaricalo dal Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
-**Applicazione PWA per browser:**
-Visitate l'applicazione web all'indirizzo [https://mcp-tool-shop-org.github.io/lokey-typer/](https://mcp-tool-shop-org.github.io/lokey-typer/) utilizzando Edge o Chrome, quindi cliccate sull'icona di installazione presente nella barra degli indirizzi.
+**Browser:**
+Eseguite `npm run dev` e aprite l'indirizzo locale. Il workflow di Pages pubblica l'app su [la destinazione Pages](https://mcp-tool-shop-org.github.io/lokey-typer/) quando questo repository è pubblico. Il manuale è servito sotto `/handbook/` sullo stesso sito. Fino ad allora, quell'indirizzo non è un'app attiva.
 
 ## Privacy
 
-LoKey Typer non raccoglie alcun dato. Tutte le preferenze, la cronologia delle sessioni e i risultati personali vengono memorizzati localmente nel vostro browser. Consultare la [politica sulla privacy](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa.
+LoKey Typer non raccoglie alcun dato. Tutte le preferenze, la cronologia delle sessioni e i risultati personali vengono memorizzati localmente nel vostro browser. Consultare la [politica sulla privacy](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa. Quella pagina viene pubblicata con il sito. Finché questo repository non è pubblico, quell'indirizzo non è attivo.
 
 ## Licenza
 

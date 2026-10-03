@@ -5,17 +5,15 @@ sidebar:
   order: 1
 ---
 
-LoKey Typer is available on the Microsoft Store, as a browser PWA, and as a local dev build.
+LoKey Typer is on the Microsoft Store. The browser build is a Pages target once this repository is public, and you can run it locally while you develop.
 
 ## Microsoft Store (recommended)
 
 Search **LoKey Typer** in the Microsoft Store or visit the [store listing](https://apps.microsoft.com/detail/9NRVWM08HQC4). Install and launch -- no account required.
 
-## Browser PWA
+## Browser
 
-1. Open the [web app](https://mcp-tool-shop-org.github.io/lokey-typer/) in Edge or Chrome.
-2. Click the install icon in the address bar.
-3. The app works offline from this point forward.
+The Pages workflow publishes the app at [the Pages target](https://mcp-tool-shop-org.github.io/lokey-typer/) once this repository is public. The handbook is served under `/handbook/` on that same site. Until then, that address is not a live app. Use the local steps below.
 
 ## Run locally (development)
 

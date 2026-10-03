@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml"><img src="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml/badge.svg" alt="Deploy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Web_App-live-blue" alt="Web App"></a>
+  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Pages-target-blue" alt="Pages target"></a>
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
@@ -41,12 +41,12 @@ LoKey Typer एक टाइपिंग अभ्यास ऐप है, ज�
 **माइक्रोसॉफ्ट स्टोर** (अनुशंसित):
 [इसे माइक्रोसॉफ्ट स्टोर से प्राप्त करें](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
-**ब्राउज़र PWA:**
-एज या क्रोम ब्राउज़र में [वेब ऐप](https://mcp-tool-shop-org.github.io/lokey-typer/) पर जाएं, फिर एड्रेस बार में दिए गए "इंस्टॉल" आइकन पर क्लिक करें।
+**ब्राउज़र:**
+`npm run dev` चलाएँ और स्थानीय पता खोलें। यह रिपॉजिटरी सार्वजनिक होने के बाद Pages वर्कफ़्लो ऐप को [Pages लक्ष्य](https://mcp-tool-shop-org.github.io/lokey-typer/) पर प्रकाशित करता है। पुस्तिका उसी साइट के `/handbook/` पर होती है। तब तक वह पता एक चलता हुआ ऐप नहीं है।
 
 ## गोपनीयता।
 
-लोकी टाइपर कोई भी डेटा एकत्र नहीं करता है। सभी प्राथमिकताएं, उपयोग का इतिहास और व्यक्तिगत सर्वश्रेष्ठ रिकॉर्ड आपके ब्राउज़र में स्थानीय रूप से संग्रहीत किए जाते हैं। पूरी [गोपनीयता नीति](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) देखें।
+लोकी टाइपर कोई भी डेटा एकत्र नहीं करता है। सभी प्राथमिकताएं, उपयोग का इतिहास और व्यक्तिगत सर्वश्रेष्ठ रिकॉर्ड आपके ब्राउज़र में स्थानीय रूप से संग्रहीत किए जाते हैं। पूरी [गोपनीयता नीति](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) देखें। वह पृष्ठ साइट के साथ प्रकाशित होता है। यह रिपॉजिटरी सार्वजनिक होने तक वह पता उपलब्ध नहीं है।
 
 ## लाइसेंस।
 
