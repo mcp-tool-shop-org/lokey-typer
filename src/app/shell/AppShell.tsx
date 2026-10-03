@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { Icon } from '@app/components/Icon'
 import { AudioSettingsPanel } from '@app/components/AudioSettingsPanel'
@@ -29,20 +29,42 @@ export function AppShell() {
   const { prefs, patchPrefs } = usePreferences()
   const { skipTrack } = useAmbient()
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const settingsOpenerRef = useRef<HTMLElement | null>(null)
+  const settingsWasOpenRef = useRef(false)
+
+  // Focus the opener only after a real close, once inert is off the shell.
+  useEffect(() => {
+    if (settingsOpen) {
+      settingsWasOpenRef.current = true
+      return
+    }
+    if (!settingsWasOpenRef.current) return
+    settingsWasOpenRef.current = false
+    const opener = settingsOpenerRef.current
+    settingsOpenerRef.current = null
+    if (opener?.isConnected) opener.focus()
+  }, [settingsOpen])
 
   function handleMuteToggle() {
     patchPrefs({ ambientEnabled: !prefs.ambientEnabled })
+  }
+
+  function handleSettingsClick() {
+    const active = document.activeElement
+    settingsOpenerRef.current = active instanceof HTMLElement ? active : null
+    setSettingsOpen(true)
   }
 
   return (
     <div className="min-h-full">
       <a
         href="#main-content"
+        inert={settingsOpen ? true : undefined}
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-zinc-800 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-slate-400/50"
       >
         Skip to content
       </a>
-      <header className="border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur">
+      <header inert={settingsOpen ? true : undefined} className="border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 overflow-x-auto px-4 py-4 sm:px-6 sm:py-5">
           <Link to="/" className="flex shrink-0 items-center gap-2.5 transition duration-200 hover:opacity-80">
             <Icon name="logo-mark" size={22} className="text-zinc-400" />
@@ -85,7 +107,7 @@ export function AppShell() {
             {/* Audio settings */}
             <button
               type="button"
-              onClick={() => setSettingsOpen((o) => !o)}
+              onClick={handleSettingsClick}
               className={`${ICON_BTN} text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200`}
               aria-label="Settings"
               title="Settings"
@@ -100,7 +122,7 @@ export function AppShell() {
 
       <AudioSettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
 
-      <main id="main-content" className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-16">
+      <main id="main-content" inert={settingsOpen ? true : undefined} className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-16">
         <Outlet />
       </main>
 

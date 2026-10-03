@@ -86,7 +86,7 @@ export function TypingOverlay({
             ? 'text-zinc-50'
             : p.kind === 'incorrect'
               ? 'text-rose-400 underline decoration-current decoration-2 underline-offset-2'
-              : 'text-zinc-500'
+              : 'text-zinc-400'
 
         return (
           <span
