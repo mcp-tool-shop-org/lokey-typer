@@ -13,4 +13,14 @@ describe('repeatPassage', () => {
     const out = repeatPassage('line one\nline two', 30)
     expect(out.includes('\n\n')).toBe(true)
   })
+
+  it('repeats a short single line out to a competitive sprint', () => {
+    const base = 'Slow is smooth.'
+    const out = repeatPassage(base, 1800)
+    expect(out.length).toBeGreaterThanOrEqual(1800)
+    expect(out.includes('\n')).toBe(false)
+    const parts = out.split(base)
+    expect(parts.length - 1).toBeGreaterThan(10)
+    expect(parts.every((part) => part === '' || part === ' ')).toBe(true)
+  })
 })

@@ -15,4 +15,10 @@ describe('acceptTypingEdit', () => {
   it('accepts clearing a selection', () => {
     expect(acceptTypingEdit('hello', 'h')).toBe(true)
   })
+
+  it('accepts one middle insert or delete and rejects a longer insert', () => {
+    expect(acceptTypingEdit('hllo', 'hello')).toBe(true)
+    expect(acceptTypingEdit('hello', 'heXXllo')).toBe(false)
+    expect(acceptTypingEdit('hello', 'hllo')).toBe(true)
+  })
 })

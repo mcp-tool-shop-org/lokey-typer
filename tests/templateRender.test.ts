@@ -31,6 +31,7 @@ describe('renderTemplateExercise', () => {
     expect(result).not.toContain('{')
     expect(result).not.toContain('}')
     expect(result).toMatch(/Hello \w+, welcome to \w+\./)
+    expect(result).toMatch(/^Hello (Alice|Bob), welcome to (Paris|London)\.$/)
   })
 
   it('is deterministic with same seed', () => {
