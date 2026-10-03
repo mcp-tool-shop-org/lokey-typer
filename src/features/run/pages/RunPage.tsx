@@ -11,17 +11,12 @@ import {
 import { usePreferences } from '@app'
 import { Icon } from '@app/components/Icon'
 import { TypingSession } from '@features/typing'
+import { repeatPassage } from '@lib-internal/repeatPassage'
 
 function modeHome(mode: Mode): string {
   if (mode === 'real_life') return '/real-life'
   if (mode === 'competitive') return '/competitive'
   return '/focus'
-}
-
-function repeatToLength(base: string, minLen: number) {
-  let out = base
-  while (out.length < minLen) out += `\n\n${base}`
-  return out
 }
 
 export function RunPage({ mode }: { mode: Mode }) {
@@ -59,7 +54,7 @@ export function RunPage({ mode }: { mode: Mode }) {
 
     if (mode === 'competitive') {
       // keep sprints going without running out of target text
-      return repeatToLength(base, 1800)
+      return repeatPassage(base, 1800)
     }
     return base
   }, [exercise, mode, variant])

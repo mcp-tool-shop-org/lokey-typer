@@ -285,7 +285,9 @@ export class AmbientPlayerV3 {
   private getFilteredTracks(): AmbientTrack[] {
     if (!this.manifest) return []
     if (this.category === 'all') return this.manifest.tracks
-    return this.manifest.tracks.filter((t) => t.category === this.category)
+    const matched = this.manifest.tracks.filter((t) => t.category === this.category)
+    // A saved category with no tracks would otherwise sit in silence.
+    return matched.length > 0 ? matched : this.manifest.tracks
   }
 
   private pickRandomTrack(): AmbientTrack | null {

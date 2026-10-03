@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://mcp-tool-shop-org.github.io',
-  base: '/lokey-typer',
+  base: '/lokey-typer/handbook',
   integrations: [
     starlight({
       title: 'LoKey Typer',
@@ -16,7 +16,7 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Handbook',
-          autogenerate: { directory: 'handbook' },
+          autogenerate: { directory: '.' },
         },
       ],
       customCss: ['./src/styles/starlight-custom.css'],

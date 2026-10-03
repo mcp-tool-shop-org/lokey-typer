@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef } from 'react'
 import { ambientPlayer } from '@lib-internal/ambient'
+import { ambientCategoriesInTracks, fetchAmbientManifest } from '@lib-internal/ambientManifest'
 import { resumeAudioContext } from '@lib-internal/audioContext'
 import { getEffectiveAmbientEnabled } from '@lib-internal/effectivePrefs'
 import { usePreferences } from './PreferencesProvider'
@@ -15,8 +16,23 @@ const AmbientContext = createContext<AmbientContextValue>({
 })
 
 export function AmbientProvider({ children }: { children: React.ReactNode }) {
-  const { prefs } = usePreferences()
+  const { prefs, patchPrefs } = usePreferences()
   const startedRef = useRef(false)
+
+  // A saved category that the library does not ship (campfire, café, night) falls back to the whole library.
+  useEffect(() => {
+    if (prefs.ambientCategory === 'all') return
+    const category = prefs.ambientCategory
+    let cancelled = false
+    void fetchAmbientManifest().then((manifest) => {
+      if (cancelled || !manifest) return
+      const offered = ambientCategoriesInTracks(manifest.tracks)
+      if (!offered.includes(category)) patchPrefs({ ambientCategory: 'all' })
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [patchPrefs, prefs.ambientCategory])
 
   // Sync preferences to engine on every change.
   useEffect(() => {

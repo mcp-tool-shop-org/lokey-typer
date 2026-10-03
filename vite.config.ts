@@ -23,6 +23,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
+      workbox: {
+        // The handbook is a separate build under this path. The app shell must not claim it.
+        navigateFallbackDenylist: [/^\/lokey-typer\/handbook/],
+      },
       manifest: {
         name: 'LoKey Typer',
         short_name: 'LoKey',

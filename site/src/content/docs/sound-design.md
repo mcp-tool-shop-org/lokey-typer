@@ -9,7 +9,7 @@ Most typing tools treat sound as an afterthought. LoKey Typer treats it as a cor
 
 ## An environment, not a playlist
 
-LoKey Typer does not play songs or loops. It creates a quiet, evolving acoustic environment designed to stay out of the way while you type. There is no rhythm to follow, no beat to lock onto, and no track that repeats.
+LoKey Typer does not play songs. It creates a quiet acoustic environment designed to stay out of the way while you type. There is no rhythm to follow and no beat to lock onto. A track stays for several minutes, then crossfades into the next one.
 
 ## Design principles
 
@@ -21,13 +21,13 @@ The ambient system is built around four rules:
 
 3. **Long-session safe.** Volume levels are kept low and stable. Frequency ranges associated with fatigue are avoided. Crossfades are long and smooth -- no hard cuts.
 
-4. **Subtle evolution.** The environment changes gradually over time. Macro evolution intervals are randomized (roughly 3--6 minutes). Only one layer changes at a time.
+4. **Subtle evolution.** The current track changes every 5 to 10 minutes, with a crossfade of 6 to 8 seconds. Reduced motion keeps the current track.
 
-## 42 ambient tracks across 11 categories
+## The library
 
-All 42 tracks are non-rhythmic and designed for sustained focus. They are not music. If you forget the sound is there until you turn it off, it is doing its job.
+The live catalog is `public/audio/ambient/manifest.json`. Settings only lists a category when that file contains a track for it. Campfire, café, and night stay hidden until a track arrives.
 
-Tracks are organized into 11 categories: Rain, Campfire, Forest, Ocean, Binaural Beats, Singing Bowls, Wind, Cafe, Night, White Noise, and Other. You can filter by category in the settings panel, or leave it on "All" to let the player rotate across the full library.
+The tracks are non-rhythmic. They are not music. If you forget the sound is there until you turn it off, it is doing its job.
 
 ## Typewriter keystrokes
 
@@ -35,7 +35,7 @@ Optional mechanical typewriter keystroke audio is available. It is mixed to neve
 
 ## Accessibility
 
-When Screen Reader Mode is enabled, ambient sound is automatically disabled. When Reduced Motion is enabled, macro evolution is disabled (micro drift only). Sound is always optional -- the app remains fully usable without it.
+When Screen Reader Mode is enabled, ambient sound is automatically disabled. When Reduced Motion is enabled, the soundscape stays on the current track. Sound is always optional -- the app remains fully usable without it.
 
 ## What we do not claim
 

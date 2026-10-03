@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml"><img src="https://github.com/mcp-tool-shop-org/lokey-typer/actions/workflows/deploy.yml/badge.svg" alt="Deploy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Web_App-live-blue" alt="Web App"></a>
+  <a href="https://mcp-tool-shop-org.github.io/lokey-typer/"><img src="https://img.shields.io/badge/Pages-target-blue" alt="Pages target"></a>
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
@@ -30,7 +30,7 @@ All data stays on your device. No accounts. No cloud. No tracking.
 
 ## Features
 
-- Ambient soundscapes designed for sustained focus (42 tracks, non-rhythmic)
+- Ambient soundscapes designed for sustained focus. Settings lists only categories that have a track.
 - Mechanical typewriter keystroke audio (optional)
 - Personalized daily exercises based on recent sessions
 - Full offline support after first load
@@ -41,8 +41,8 @@ All data stays on your device. No accounts. No cloud. No tracking.
 **Microsoft Store** (recommended):
 [Get it from the Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
-**Browser PWA:**
-Visit the [web app](https://mcp-tool-shop-org.github.io/lokey-typer/) in Edge or Chrome, then click the install icon in the address bar.
+**Browser:**
+Run `npm run dev` and open the local address. The Pages workflow publishes the app at [the Pages target](https://mcp-tool-shop-org.github.io/lokey-typer/) once this repository is public. The handbook is served under `/handbook/` on that same site. Until then, that address is not a live app.
 
 ## Privacy
 

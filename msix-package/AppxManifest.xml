@@ -5,8 +5,13 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   IgnorableNamespaces="uap mp">
 
+  <!--
+    Not the Microsoft Store package. That identity lives only in
+    desktop/LoKeyTyper/Package.appxmanifest. A different Name here means
+    this hosted shell cannot update the Store product.
+  -->
   <Identity
-    Name="mcp-tool-shop.LoKeyTyper"
+    Name="mcp-tool-shop.LoKeyTyper.WebHost"
     Publisher="CN=5305D976-6952-4F00-9C21-3A5DB090359F"
     Version="1.0.0.0"
     ProcessorArchitecture="neutral" />
@@ -16,7 +21,7 @@
     PhonePublisherId="00000000-0000-0000-0000-000000000000" />
 
   <Properties>
-    <DisplayName>LoKey Typer</DisplayName>
+    <DisplayName>LoKey Typer Web Host</DisplayName>
     <PublisherDisplayName>mcp-tool-shop</PublisherDisplayName>
     <Logo>images\StoreLogo.png</Logo>
   </Properties>
@@ -38,8 +43,8 @@
       StartPage="https://mcp-tool-shop-org.github.io/lokey-typer/">
 
       <uap:VisualElements
-        DisplayName="LoKey Typer"
-        Description="Practice typing speed and accuracy."
+        DisplayName="LoKey Typer Web Host"
+        Description="A hosted shell for the LoKey Typer site. This is not the Microsoft Store app."
         Square150x150Logo="images\Square150x150Logo.png"
         Square44x44Logo="images\Square44x44Logo.png"
         BackgroundColor="#09090b">
@@ -47,7 +52,7 @@
       </uap:VisualElements>
 
       <uap:ApplicationContentUriRules>
-        <uap:Rule Type="include" Match="https://mcp-tool-shop-org.github.io/lokey-typer/" WindowsRuntimeAccess="all" />
+        <uap:Rule Type="include" Match="https://mcp-tool-shop-org.github.io/lokey-typer/" WindowsRuntimeAccess="none" />
       </uap:ApplicationContentUriRules>
 
     </Application>

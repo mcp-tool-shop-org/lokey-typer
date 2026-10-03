@@ -1,3 +1,4 @@
+import { chooseCanonicalExercise, passageKey } from './catalog'
 import type { ContentPack, Exercise, Mode, PackMode } from './types'
 
 const modules = import.meta.glob('./packs/*.json', { eager: true }) as Record<
@@ -111,6 +112,32 @@ function buildCache(): CachedContent {
     }
   })
 
+  // Packs repeat the same passage at several difficulties. Keep one, and let every old id open it.
+  const groups = new Map<string, Exercise[]>()
+  for (const pack of packs) {
+    for (const ex of pack.exercises) {
+      const key = passageKey(ex)
+      const list = groups.get(key)
+      if (list) list.push(ex)
+      else groups.set(key, [ex])
+    }
+  }
+
+  const canonicalByKey = new Map<string, Exercise>()
+  for (const [key, group] of groups) {
+    canonicalByKey.set(key, chooseCanonicalExercise(group))
+  }
+
+  for (const pack of packs) {
+    const seen = new Set<string>()
+    pack.exercises = pack.exercises.flatMap((ex) => {
+      const canonical = canonicalByKey.get(passageKey(ex))
+      if (!canonical || ex.id !== canonical.id || seen.has(canonical.id)) return []
+      seen.add(canonical.id)
+      return [canonical]
+    })
+  }
+
   const exerciseById = new Map<string, Exercise>()
   const exercisesByMode: Record<Mode, Exercise[]> = {
     focus: [],
@@ -118,9 +145,17 @@ function buildCache(): CachedContent {
     competitive: [],
   }
 
+  for (const [key, group] of groups) {
+    const canonical = canonicalByKey.get(key)
+    if (!canonical) continue
+    for (const ex of group) {
+      if (exerciseById.has(ex.id)) continue
+      exerciseById.set(ex.id, ex.id === canonical.id ? canonical : { ...canonical, id: ex.id })
+    }
+  }
+
   for (const pack of packs) {
     for (const ex of pack.exercises) {
-      if (!exerciseById.has(ex.id)) exerciseById.set(ex.id, ex)
       exercisesByMode[ex.mode].push(ex)
     }
   }

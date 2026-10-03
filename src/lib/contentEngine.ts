@@ -2,6 +2,7 @@ import type { Exercise, Mode } from '@content'
 import { loadExercisesByMode } from '@content'
 import { isTemplateExercise, renderTemplateExercise } from './templateRender'
 import { isScreenReaderSafePassage, tagMatches, weaknessForTag } from './passageShape'
+import { repeatPassage } from './repeatPassage'
 import { loadRecents, type Preferences, type UserSkillModel } from './storage'
 
 // ---------------------------------------------------------------------------
@@ -95,11 +96,7 @@ function pickWeighted<T>(items: T[], weight: (x: T) => number, rand: () => numbe
 // Text resolution
 // ---------------------------------------------------------------------------
 
-function repeatToLength(base: string, minLen: number) {
-  let out = base
-  while (out.length < minLen) out += `\n\n${base}`
-  return out
-}
+
 
 function resolveText(exercise: Exercise, userId: string, mode: Mode): { text: string; seed: string } {
   const seed = `${userId}|${exercise.id}|${Date.now()}`
@@ -113,7 +110,7 @@ function resolveText(exercise: Exercise, userId: string, mode: Mode): { text: st
 
   // Competitive mode: ensure enough text for sprint
   if (mode === 'competitive') {
-    text = repeatToLength(text, 1800)
+    text = repeatPassage(text, 1800)
   }
 
   return { text, seed }

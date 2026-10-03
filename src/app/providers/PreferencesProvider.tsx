@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useCallback, useContext, useState } from 'react'
 import { loadPreferences, sanitizePreferences, savePreferences, type Preferences } from '@lib-internal/storage'
 
 type PreferencesContextValue = {
@@ -12,13 +12,13 @@ const PreferencesContext = createContext<PreferencesContextValue | null>(null)
 export function PreferencesProvider({ children }: { children: React.ReactNode }) {
   const [prefs, setPrefsState] = useState<Preferences>(() => loadPreferences())
 
-  const setPrefs = (next: Preferences) => {
+  const setPrefs = useCallback((next: Preferences) => {
     const sanitized = sanitizePreferences(next)
     setPrefsState(sanitized)
     savePreferences(sanitized)
-  }
+  }, [])
 
-  const patchPrefs = (patch: Partial<Preferences>) => {
+  const patchPrefs = useCallback((patch: Partial<Preferences>) => {
     setPrefsState((prev) => {
       const next: Preferences = {
         ...prev,
@@ -33,7 +33,7 @@ export function PreferencesProvider({ children }: { children: React.ReactNode })
       savePreferences(sanitized)
       return sanitized
     })
-  }
+  }, [])
 
   const value = { prefs, setPrefs, patchPrefs }
   return <PreferencesContext.Provider value={value}>{children}</PreferencesContext.Provider>

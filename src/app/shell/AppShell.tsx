@@ -87,11 +87,11 @@ export function AppShell() {
               type="button"
               onClick={() => setSettingsOpen((o) => !o)}
               className={`${ICON_BTN} text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200`}
-              aria-label="Audio settings"
-              title="Audio settings"
+              aria-label="Settings"
+              title="Settings"
             >
               <Icon name="settings" size={18} />
-              <span className="sr-only">Audio Settings</span>
+              <span className="sr-only">Settings</span>
             </button>
 
           </nav>

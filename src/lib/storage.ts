@@ -324,21 +324,82 @@ export function saveSkillModel(model: UserSkillModel) {
   }
 }
 
-export function loadPreferences(): Preferences {
-  ensureStorageKeysMigrated()
-  const parsed = safeParse<Partial<Preferences>>(localStorage.getItem(KEY_PREFS))
-  const sanitized = sanitizePreferences(parsed)
-
-  // If we had to correct anything (or storage was missing), persist sanitized + keep LKG.
-  // This prevents repeated "bad" states from lingering.
+function readStorage(key: string): string | null {
   try {
-    localStorage.setItem(KEY_PREFS, JSON.stringify(sanitized))
-    localStorage.setItem(KEY_PREFS_LKG, JSON.stringify(sanitized))
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+function writeStorage(key: string, value: string) {
+  try {
+    localStorage.setItem(key, value)
   } catch {
     // ignore
   }
+}
 
-  return sanitized
+function isWellFormedPreferences(input: Partial<Preferences>): boolean {
+  const sanitized = sanitizePreferences(input)
+  const live = input.showLiveWpm
+  if (!live || typeof live !== 'object') return false
+  if (typeof live.focus !== 'boolean' || live.focus !== sanitized.showLiveWpm.focus) return false
+  if (typeof live.real_life !== 'boolean' || live.real_life !== sanitized.showLiveWpm.real_life) return false
+  if (typeof live.competitive !== 'boolean' || live.competitive !== sanitized.showLiveWpm.competitive) return false
+
+  const keys: (keyof Preferences)[] = [
+    'soundEnabled',
+    'volume',
+    'bellOnCompletion',
+    'ambientEnabled',
+    'ambientCategory',
+    'ambientVolume',
+    'ambientPauseOnTyping',
+    'fontScale',
+    'screenReaderMode',
+    'reducedMotion',
+    'focusMinimalHud',
+    'competitiveSprintDurationMs',
+    'competitiveGhostEnabled',
+  ]
+  for (const key of keys) {
+    if (input[key] !== sanitized[key]) return false
+  }
+  return true
+}
+
+export function loadPreferences(): Preferences {
+  ensureStorageKeysMigrated()
+  const parsed = safeParse<Partial<Preferences>>(readStorage(KEY_PREFS))
+
+  if (parsed && isWellFormedPreferences(parsed)) {
+    const sanitized = sanitizePreferences(parsed)
+    const json = JSON.stringify(sanitized)
+    writeStorage(KEY_PREFS, json)
+    writeStorage(KEY_PREFS_LKG, json)
+    return sanitized
+  }
+
+  // A readable but illegal value is corrected in place. The backup stays the last good save.
+  if (parsed) {
+    const sanitized = sanitizePreferences(parsed)
+    writeStorage(KEY_PREFS, JSON.stringify(sanitized))
+    return sanitized
+  }
+
+  const backup = safeParse<Partial<Preferences>>(readStorage(KEY_PREFS_LKG))
+  if (backup) {
+    const sanitized = sanitizePreferences(backup)
+    writeStorage(KEY_PREFS, JSON.stringify(sanitized))
+    return sanitized
+  }
+
+  const fresh = sanitizePreferences(null)
+  const json = JSON.stringify(fresh)
+  writeStorage(KEY_PREFS, json)
+  writeStorage(KEY_PREFS_LKG, json)
+  return fresh
 }
 
 export function savePreferences(prefs: Preferences) {

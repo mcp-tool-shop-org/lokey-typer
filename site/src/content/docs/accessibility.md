@@ -19,11 +19,11 @@ When Screen Reader Mode is enabled, LoKey Typer automatically disables ambient s
 
 ## Reduced Motion
 
-When Reduced Motion is enabled, dynamic behavior is reduced or removed. Ambient macro evolution is disabled (micro drift only). The app stays conservative and predictable.
+When Reduced Motion is enabled, dynamic behavior is reduced or removed. The ambient soundscape stays on the current track instead of rotating. The app stays conservative and predictable.
 
 ## Font scale
 
-The text display supports three font scale options: 90%, 100% (default), and 110%. This is set in preferences and applies to the typing area.
+The text display supports three sizes: smaller, default, and larger. Settings offers all three, and the choice applies to the typing area. Screen reader mode and reduced motion are in that same panel.
 
 ## Screen reader exercise filter
 

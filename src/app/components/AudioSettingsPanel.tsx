@@ -1,17 +1,34 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { usePreferences } from '@app/providers/PreferencesProvider'
-import { AMBIENT_CATEGORIES, AMBIENT_CATEGORY_LABELS, type AmbientCategory } from '@lib-internal/ambientManifest'
+import {
+  AMBIENT_CATEGORY_LABELS,
+  ambientCategoriesInTracks,
+  fetchAmbientManifest,
+  type AmbientCategory,
+} from '@lib-internal/ambientManifest'
+import type { Preferences } from '@lib-internal/storage'
 
-function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label: string }) {
+function Toggle({
+  checked,
+  onChange,
+  label,
+  disabled = false,
+}: {
+  checked: boolean
+  onChange: (v: boolean) => void
+  label: string
+  disabled?: boolean
+}) {
   return (
-    <label className="flex items-center justify-between gap-3 py-1.5">
+    <label className={`flex items-center justify-between gap-3 py-1.5 ${disabled ? 'opacity-60' : ''}`}>
       <span className="text-sm text-zinc-400">{label}</span>
       <button
         type="button"
         role="switch"
         aria-checked={checked}
+        disabled={disabled}
         onClick={() => onChange(!checked)}
-        className={`relative h-5 w-9 shrink-0 rounded-full transition ${checked ? 'bg-emerald-600' : 'bg-zinc-700'}`}
+        className={`relative h-5 w-9 shrink-0 rounded-full transition ${checked ? 'bg-emerald-600' : 'bg-zinc-700'} ${disabled ? 'cursor-not-allowed' : ''}`}
       >
         <span
           className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition ${checked ? 'translate-x-4' : ''}`}
@@ -44,9 +61,28 @@ function Slider({ value, onChange, label }: { value: number; onChange: (v: numbe
   )
 }
 
+const FONT_SCALES: { value: Preferences['fontScale']; label: string }[] = [
+  { value: 0.9, label: 'Smaller' },
+  { value: 1, label: 'Default' },
+  { value: 1.1, label: 'Larger' },
+]
+
 export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { prefs, patchPrefs } = usePreferences()
   const panelRef = useRef<HTMLDivElement>(null)
+  const [offeredCategories, setOfferedCategories] = useState<AmbientCategory[] | null>(null)
+
+  useEffect(() => {
+    if (!open) return
+    let cancelled = false
+    void fetchAmbientManifest().then((manifest) => {
+      if (cancelled || !manifest) return
+      setOfferedCategories(ambientCategoriesInTracks(manifest.tracks))
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [open])
 
   useEffect(() => {
     if (!open) return
@@ -77,9 +113,9 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-label="Audio Settings"
+        aria-label="Settings"
         data-aiui-goal="audio_settings_open"
-        className="fixed right-4 top-20 z-50 w-80 rounded-2xl border border-zinc-800/50 bg-zinc-900 p-5 shadow-2xl"
+        className="fixed right-4 top-20 z-50 max-h-[calc(100vh-6rem)] w-80 overflow-y-auto rounded-2xl border border-zinc-800/50 bg-zinc-900 p-5 shadow-2xl"
       >
         {/* Keystroke Sounds */}
         <h3 className="mb-3 text-sm font-semibold text-zinc-200">Keystroke Sounds</h3>
@@ -109,9 +145,13 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
         <div className="space-y-0.5">
           <Toggle
             checked={prefs.ambientEnabled}
+            disabled={prefs.screenReaderMode}
             onChange={(v) => patchPrefs({ ambientEnabled: v })}
             label="Ambient sounds"
           />
+          {prefs.screenReaderMode ? (
+            <p className="py-1 text-xs leading-relaxed text-zinc-500">Screen reader mode keeps the soundscape off.</p>
+          ) : null}
           <Slider
             value={prefs.ambientVolume}
             onChange={(v) => patchPrefs({ ambientVolume: v })}
@@ -120,13 +160,17 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
           <label className="flex flex-col gap-1.5 py-1.5">
             <span className="text-sm text-zinc-400">Category</span>
             <select
-              value={prefs.ambientCategory}
+              value={
+                prefs.ambientCategory === 'all' || (offeredCategories ?? []).includes(prefs.ambientCategory)
+                  ? prefs.ambientCategory
+                  : 'all'
+              }
               onChange={(e) => patchPrefs({ ambientCategory: e.target.value as AmbientCategory | 'all' })}
               className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50"
               aria-label="Ambient category"
             >
               <option value="all">All categories</option>
-              {AMBIENT_CATEGORIES.map((cat) => (
+              {(offeredCategories ?? []).map((cat) => (
                 <option key={cat} value={cat}>
                   {AMBIENT_CATEGORY_LABELS[cat]}
                 </option>
@@ -138,6 +182,41 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
             onChange={(v) => patchPrefs({ ambientPauseOnTyping: v })}
             label="Pause while typing"
           />
+        </div>
+
+        <div className="my-4 h-px bg-zinc-800/50" />
+
+        <h3 className="mb-3 text-sm font-semibold text-zinc-200">Reading</h3>
+        <div className="space-y-0.5">
+          <Toggle
+            checked={prefs.screenReaderMode}
+            onChange={(v) => patchPrefs({ screenReaderMode: v })}
+            label="Screen reader mode"
+          />
+          <Toggle
+            checked={prefs.reducedMotion}
+            onChange={(v) => patchPrefs({ reducedMotion: v })}
+            label="Reduced motion"
+          />
+          <div className="flex flex-col gap-1.5 py-1.5">
+            <span className="text-sm text-zinc-400">Text size</span>
+            <div className="grid grid-cols-3 gap-1" role="group" aria-label="Text size">
+              {FONT_SCALES.map((scale) => {
+                const selected = prefs.fontScale === scale.value
+                return (
+                  <button
+                    key={scale.value}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => patchPrefs({ fontScale: scale.value })}
+                    className={`rounded-lg px-2 py-1.5 text-xs ${selected ? 'bg-zinc-700 text-zinc-100' : 'bg-zinc-800 text-zinc-400 hover:text-zinc-200'}`}
+                  >
+                    {scale.label}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Close */}

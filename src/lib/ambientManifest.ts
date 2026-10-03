@@ -54,6 +54,12 @@ export type AmbientManifestV3 = {
   tracks: AmbientTrack[]
 }
 
+/** Categories that currently have a track. Empty names stay in the type so an old save still parses. */
+export function ambientCategoriesInTracks(tracks: readonly { category: AmbientCategory }[]): AmbientCategory[] {
+  const present = new Set(tracks.map((track) => track.category))
+  return AMBIENT_CATEGORIES.filter((category) => present.has(category))
+}
+
 function isCategory(x: unknown): x is AmbientCategory {
   return typeof x === 'string' && (AMBIENT_CATEGORIES as string[]).includes(x)
 }

@@ -5,7 +5,7 @@ The player reads version 3 of `manifest.json`. Each entry is a track.
 ## Track fields
 
 - `id` and `title`
-- `category`: one of the categories in `src/lib/ambientManifest.ts`
+- `category`: one of the categories in `src/lib/ambientManifest.ts`. Settings only offers a category that has a track in the live manifest.
 - `path`: a site path beginning with `/audio/ambient/`
 - `duration_sec`
 - `lufs_i`: integrated loudness, accepted about −35 to −29
