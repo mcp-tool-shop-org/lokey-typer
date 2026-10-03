@@ -6,15 +6,20 @@ type Passage = {
   template?: string
 }
 
-function isNewlineTag(tag: string): boolean {
-  return tag === 'multiline' || tag === 'newlines'
+// Packs say `newlines` and `dash`. The skill model records `multiline` and `dashes`.
+const TAG_ALIASES: Readonly<Record<string, string>> = {
+  multiline: 'newlines',
+  newlines: 'multiline',
+  dash: 'dashes',
+  dashes: 'dash',
 }
 
-/** Packs tag multiline copy `newlines`. The skill model records `multiline`. */
+/** Exact pack tag wins. `dash`/`dashes` and `multiline`/`newlines` are the only aliases. */
 export function tagMatches(packTags: readonly string[], skillTag: string): boolean {
   if (packTags.includes(skillTag)) return true
-  if (!isNewlineTag(skillTag)) return false
-  return packTags.includes('multiline') || packTags.includes('newlines')
+  const other = TAG_ALIASES[skillTag]
+  if (other == null) return false
+  return packTags.includes(other)
 }
 
 export function weaknessForTag(
@@ -24,8 +29,9 @@ export function weaknessForTag(
   if (!weakness) return 0
   const direct = weakness[tag]
   if (Number.isFinite(direct) && direct > 0) return direct
-  if (!isNewlineTag(tag)) return 0
-  const other = weakness[tag === 'newlines' ? 'multiline' : 'newlines']
+  const otherName = TAG_ALIASES[tag]
+  if (otherName == null) return 0
+  const other = weakness[otherName]
   return Number.isFinite(other) && other > 0 ? other : 0
 }
 
