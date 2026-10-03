@@ -30,7 +30,7 @@ Todos os dados permanecem no seu dispositivo. Não são necessários contas. Nã
 
 ## Características
 
-- Paisagens sonoras ambientais projetadas para promover a concentração (42 faixas, sem ritmo).
+- Paisagens sonoras ambientais projetadas para promover a concentração. As configurações listam apenas as categorias que têm uma faixa.
 - Sons de máquina de escrever (opcional).
 - Exercícios diários personalizados com base nas sessões recentes.
 - Suporte completo offline após o primeiro carregamento.

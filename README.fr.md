@@ -30,7 +30,7 @@ Toutes les données restent sur votre appareil. Pas de comptes, pas de stockage 
 
 ## Caractéristiques
 
-- Paysages sonores conçus pour favoriser la concentration (42 pistes, non rythmiques).
+- Paysages sonores conçus pour favoriser la concentration. Les réglages n'affichent une catégorie que lorsqu'elle a une piste.
 - Sons de frappe de machine à écrire (optionnel).
 - Exercices quotidiens personnalisés basés sur les séances précédentes.
 - Fonctionnement hors ligne complet après le premier chargement.

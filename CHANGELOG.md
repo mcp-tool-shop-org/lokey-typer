@@ -5,6 +5,9 @@
 ### Added
 - Template render test suite (7 tests): slot replacement, deterministic seeding, empty slot fallback, repeated slot consistency
 
+### Note
+- The current ambient catalog is `public/audio/ambient/manifest.json`. The 42-track line under 1.0.0 describes that release, not the library in this tree.
+
 ## 1.0.0 — 2026-02-07
 
 Initial release.

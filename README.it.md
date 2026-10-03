@@ -30,7 +30,7 @@ Tutti i dati rimangono sul tuo dispositivo. Nessun account. Nessun servizio clou
 
 ## Caratteristiche
 
-- Paesaggi sonori ambient progettati per favorire la concentrazione prolungata (42 tracce, non ritmiche).
+- Paesaggi sonori ambient progettati per favorire la concentrazione prolungata. Le impostazioni elencano solo le categorie che hanno una traccia.
 - Suoni di battitura di una macchina da scrivere (opzionale).
 - Esercizi giornalieri personalizzati in base alle sessioni precedenti.
 - Funzionalità completa offline dopo il primo caricamento.

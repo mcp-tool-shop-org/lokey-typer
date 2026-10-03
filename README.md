@@ -126,11 +126,11 @@ See `modular.md` for architecture contracts and import boundaries.
 
 ## Security & Data Scope
 
-LoKey Typer is a **fully offline** typing practice web app (PWA + Microsoft Store).
+LoKey Typer is a typing practice web app (PWA + Microsoft Store) with no accounts and no telemetry.
 
 - **Data accessed:** Browser localStorage (preferences, run history, personal bests)
 - **Data NOT accessed:** No cloud sync. No telemetry. No analytics. No accounts. No tracking
-- **Network:** Only for initial page load and service worker cache. Zero runtime network calls
+- **Network:** The app loads its own pages and audio from the same origin. It does not call an account service, a telemetry endpoint, or any third-party API.
 - **No telemetry** is collected or sent
 
 Full policy: [SECURITY.md](SECURITY.md)

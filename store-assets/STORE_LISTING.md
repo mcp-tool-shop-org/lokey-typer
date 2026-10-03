@@ -40,7 +40,7 @@ LoKey Typer is a progressive web app that works offline after the first load.
 
 ## What's New (v1.0.0)
 
-Initial release.
+Initial release. The 42-track line is that release. The current catalog is `public/audio/ambient/manifest.json`, and settings lists a category only when that file has a track for it.
 
 - Four practice modes with curated content packs
 - Ambient sound system with 42 soundscape tracks

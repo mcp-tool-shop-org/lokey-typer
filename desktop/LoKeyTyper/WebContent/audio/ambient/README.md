@@ -1,22 +1,17 @@
 # Ambient audio assets
 
-Phase 3.4 uses a **manifest-driven** ambient system.
+The player reads version 3 of `manifest.json`. Each entry is a track. This packaged copy matches that. It is not a layer engine, and the minified app bundles were not rebuilt for this note.
 
-- Manifest: `public/audio/ambient/manifest.json`
-- Runtime loads stems from manifest paths.
+## Track fields
 
-## Expected stem fields
-
-Each stem entry in the manifest should include:
-
-- `id`: stable stem id (string)
-- `mode`: `focus` | `competitive` (optionally `real_life` treated as focus)
-- `profile`: e.g. `focus_soft`, `focus_warm`, `competitive_clean`, `nature_air`
-- `layer`: `low_bed` | `mid_texture` | `mid_presence` | `air` | `room`
-- `path`: public URL path (e.g. `audio/ambient/focus/.../file.wav`)
+- `id` and `title`
+- `category`: settings lists a category only when the manifest has a track for it
+- `path`: a path to one whole track
+- `duration_sec`
+- `lufs_i`
+- `tags`
 
 ## Notes
 
-- Missing/invalid assets should fail-safe to silence (no crash).
-- Accessibility: Screen Reader Mode forces ambient off; Reduced Motion disables macro evolutions (micro drift only).
-- For debugging: set `localStorage.lkt_ambient_debug = "1"` and watch console logs.
+- A missing or invalid file stays silent.
+- Screen reader mode keeps the soundscape off. Reduced motion keeps the current track.

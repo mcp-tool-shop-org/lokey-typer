@@ -24,7 +24,7 @@ Instead, it evolves gradually over time — subtle enough that you may not notic
 ## Typing always comes first
 
 Keystroke feedback matters.
-That’s why ambient sound is mixed to never mask typing sounds, and never reacts to your typing rhythm.
+Ambient sound is mixed so it does not cover the keystrokes. It does not follow your cadence or speed. The optional Pause while typing control ducks the soundscape while you type and restores it when you pause.
 
 The soundscape supports the work — it doesn’t compete with it.
 
@@ -37,10 +37,9 @@ If sound ever becomes tiring, distracting, or unnecessary, it can be turned off 
 
 ## Accessibility is built in
 
-When accessibility settings are enabled:
-
-- ambient sound is reduced or disabled automatically
-- no information is conveyed only through audio
+- Screen reader mode keeps the soundscape off.
+- Reduced motion keeps the current track. It does not turn the soundscape off.
+- No information is conveyed only through audio.
 
 Sound is optional. The app remains fully usable without it.
 

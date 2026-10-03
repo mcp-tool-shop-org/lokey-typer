@@ -30,7 +30,7 @@ Todos los datos permanecen en su dispositivo. No requiere cuentas. No utiliza la
 
 ## Características
 
-- Paisajes sonoros diseñados para fomentar la concentración prolongada (42 pistas, no rítmicas).
+- Paisajes sonoros diseñados para favorecer la concentración prolongada. Los ajustes muestran solo las categorías que tienen una pista.
 - Sonido de las teclas de una máquina de escribir mecánica (opcional).
 - Ejercicios diarios personalizados basados en sesiones recientes.
 - Soporte completo sin conexión después de la primera carga.

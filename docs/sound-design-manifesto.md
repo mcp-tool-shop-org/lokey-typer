@@ -2,6 +2,8 @@
 
 **Version**: v1.0 — Ambient-first architecture
 
+**This build.** The player crossfades whole tracks. It does not swap one layer at a time, drift a filter cutoff, or change stereo width. A track change takes 6 to 8 seconds, and the next track is chosen after 5 to 10 minutes. Reduced motion keeps the current track. Sections below that describe layer swaps, filter drift, and stereo width are the earlier design, not the player in this tree.
+
 ## 1. Purpose
 
 Sound in LoKey Typer is not decoration, motivation, or entertainment. It is part of the interaction substrate.
@@ -136,9 +138,9 @@ Ambient sound must not interfere with keystroke perception.
 
 ### 5.2 Temporal independence
 
-Ambient sound must not react to typing cadence, speed, or accuracy.
+Ambient sound does not follow typing cadence, speed, or accuracy.
 
-No reactive audio. No feedback coupling.
+The optional Pause while typing control ducks the soundscape while keys are coming and restores it on a pause. That is a volume duck, not a rhythm follower.
 
 ## 6. Accessibility Guarantees
 

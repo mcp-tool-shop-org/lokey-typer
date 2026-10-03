@@ -90,8 +90,7 @@ For sustained attention tasks, **loudness stability** matters as much as (or mor
 
 **Implementation checks**
 
-- Crossfades are long and smooth (no hard cuts).
-- Macro swaps change one layer at a time.
+- The player crossfades a whole track over 6 to 8 seconds. It does not cut, and it does not swap layers.
 
 **Defensible claim**
 
@@ -107,9 +106,9 @@ No sudden changes, sharp onsets, or identifiable “moments.”
 
 **Audit checklist**
 
-- Macro crossfades are long (engine uses multi-second fades; keep ≥ 12s for swaps).
-- Never swap more than one layer at a time.
-- Do not evolve near task boundaries (the engine avoids evolutions in the final ~20s of an exercise when remaining time is known).
+- A track change crossfades for 6 to 8 seconds.
+- The player does not swap layers. One whole track replaces the current one.
+- Rotation does not watch the exercise clock. It waits 5 to 10 minutes, then crossfades.
 
 **Defensible claim**
 

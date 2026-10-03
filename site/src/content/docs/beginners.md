@@ -42,13 +42,13 @@ Personal bests are recorded only when your accuracy is 95% or above. This encour
 Open the settings panel from any mode page to adjust:
 
 - **Sound** -- Toggle keystroke audio on or off. Adjust volume.
-- **Ambient sound** -- Enable or disable ambient soundscapes. Choose a category (Rain, Forest, Ocean, and 8 others) or leave it on All. Adjust ambient volume separately.
+- **Ambient sound** -- Enable or disable ambient soundscapes. Settings lists a category only when the catalog has a track for it. Campfire, café, and night stay hidden until a track arrives. Adjust ambient volume separately.
 - **Font scale** -- Choose 90%, 100%, or 110% text size.
 - **Live WPM** -- Show or hide the live WPM counter per mode.
 - **Sprint duration** (Competitive only) -- 30 seconds, 60 seconds, or 120 seconds.
 - **Ghost indicator** (Competitive only) -- Shows your pace relative to your personal best.
 - **Screen Reader Mode** -- Disables ambient sound and filters exercises for screen reader compatibility.
-- **Reduced Motion** -- Disables ambient macro evolution (subtle environmental changes over time).
+- **Reduced Motion** -- Stops on-screen motion and keeps the current track playing. It does not turn the soundscape off.
 
 All settings are saved locally and persist between sessions.
 
