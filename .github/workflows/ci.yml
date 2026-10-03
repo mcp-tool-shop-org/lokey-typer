@@ -12,6 +12,12 @@ on:
       - 'scripts/**'
       - 'msix-package/**'
       - '.github/workflows/**'
+      - 'public/**'
+      - 'site/**'
+      - 'eslint.config.js'
+      - 'tailwind.config.js'
+      - 'postcss.config.js'
+      - 'index.html'
   pull_request:
     paths:
       - 'src/**'
@@ -23,6 +29,12 @@ on:
       - 'scripts/**'
       - 'msix-package/**'
       - '.github/workflows/**'
+      - 'public/**'
+      - 'site/**'
+      - 'eslint.config.js'
+      - 'tailwind.config.js'
+      - 'postcss.config.js'
+      - 'index.html'
   workflow_dispatch:
 
 concurrency:
@@ -39,6 +51,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run validate:content
+      - run: npm run qa:ambient:assets
+      - run: npm run qa:sound-design
       - run: npm run typecheck
       - run: npm run build
       - run: npm test
