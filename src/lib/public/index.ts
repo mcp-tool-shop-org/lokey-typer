@@ -33,7 +33,7 @@ export {
 
 // preferredQuickstartMode is now re-exported from ../mode (via export * above)
 
-export { updateSkillModelFromRun } from '../skillModel'
+export { noteMistake, updateSkillModelFromRun, type MistakeCounts } from '../skillModel'
 
 export {
   getNextRecommendations,
