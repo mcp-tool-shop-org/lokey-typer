@@ -29,11 +29,20 @@ export function weaknessForTag(
   return Number.isFinite(other) && other > 0 ? other : 0
 }
 
+function fieldHasNewline(value: string | undefined): boolean {
+  return typeof value === 'string' && value.includes('\n')
+}
+
 export function isMultilinePassage(ex: Passage): boolean {
   const tags = ex.tags ?? []
   if (tags.includes('multiline') || tags.includes('newlines')) return true
-  const text = [ex.text, ex.text_short, ex.text_long, ex.template].filter(Boolean).join('\n')
-  return text.includes('\n')
+  // Each field on its own. Joining them with a newline marks every copied line as multiline.
+  return (
+    fieldHasNewline(ex.template) ||
+    fieldHasNewline(ex.text) ||
+    fieldHasNewline(ex.text_short) ||
+    fieldHasNewline(ex.text_long)
+  )
 }
 
 export function isScreenReaderSafePassage(ex: Passage & { estimated_seconds: number }): boolean {
