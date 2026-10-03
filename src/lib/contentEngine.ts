@@ -1,5 +1,6 @@
 import type { Exercise, Mode } from '@content'
 import { loadExercisesByMode } from '@content'
+import { keyboardPassage } from './keyboardPassage'
 import { isTemplateExercise, renderTemplateExercise } from './templateRender'
 import { isScreenReaderSafePassage, tagMatches, weaknessForTag } from './passageShape'
 import { repeatPassage } from './repeatPassage'
@@ -98,7 +99,12 @@ function pickWeighted<T>(items: T[], weight: (x: T) => number, rand: () => numbe
 
 
 
-function resolveText(exercise: Exercise, userId: string, mode: Mode): { text: string; seed: string } {
+function resolveText(
+  exercise: Exercise,
+  userId: string,
+  mode: Mode,
+  screenReaderMode: boolean,
+): { text: string; seed: string } {
   const seed = `${userId}|${exercise.id}|${Date.now()}`
 
   let text: string
@@ -108,8 +114,10 @@ function resolveText(exercise: Exercise, userId: string, mode: Mode): { text: st
     text = exercise.text_short ?? exercise.text ?? exercise.text_long ?? ''
   }
 
-  // Competitive mode: ensure enough text for sprint
-  if (mode === 'competitive') {
+  text = keyboardPassage(text)
+
+  // Sprint padding is a long repeat. Screen reader stays on the one folded copy.
+  if (mode === 'competitive' && !screenReaderMode) {
     text = repeatPassage(text, 1800)
   }
 
@@ -135,10 +143,27 @@ export function pickNextExercise(params: {
 
   const recents = loadRecents().byMode[mode] ?? []
   const recentSet = new Set(recents)
+  const screenReaderMode = prefs.screenReaderMode
 
-  // Partition into unseen and seen
-  const unseen = allExercises.filter((ex) => !recentSet.has(ex.id))
-  const pool = unseen.length > 0 ? unseen : allExercises
+  // Unseen first. Screen reader never leaves the safe set: novelty relaxes inside it.
+  let pool: Exercise[]
+  let noveltyRelaxed = false
+  if (screenReaderMode) {
+    const safe = allExercises.filter((ex) => isScreenReaderSafePassage(ex))
+    const unseenSafe = safe.filter((ex) => !recentSet.has(ex.id))
+    if (unseenSafe.length > 0) {
+      pool = unseenSafe
+    } else if (safe.length > 0) {
+      pool = safe
+      noveltyRelaxed = true
+    } else {
+      throw new Error('No screen-reader-safe exercise for this mode')
+    }
+  } else {
+    const unseen = allExercises.filter((ex) => !recentSet.has(ex.id))
+    noveltyRelaxed = unseen.length === 0
+    pool = noveltyRelaxed ? allExercises : unseen
+  }
 
   // Build the rand function
   const seedStr = `${userId}|${mode}|${Date.now()}`
@@ -148,15 +173,6 @@ export function pickNextExercise(params: {
   const bandCenter = bandCenterFromSkill(skill, mode)
   const weakTags = skill?.weak_tags ?? []
   const weakness = skill?.weakness_by_tag ?? {}
-
-  // Screen reader safety filter
-  const srSafe = prefs.screenReaderMode
-  const candidates = srSafe
-    ? pool.filter((ex) => isScreenReaderSafePassage(ex))
-    : pool
-
-  // If screen reader filtered everything, fall back to full pool
-  const finalPool = candidates.length > 0 ? candidates : pool
 
   function weight(ex: Exercise): number {
     let w = 1
@@ -178,7 +194,7 @@ export function pickNextExercise(params: {
     if (ex.type === 'template') w *= 1.15
 
     // If we're in the "seen pool" fallback, deprioritize most-recently-played
-    if (unseen.length === 0 && recentSet.has(ex.id)) {
+    if (noveltyRelaxed && recentSet.has(ex.id)) {
       const idx = recents.indexOf(ex.id)
       if (idx >= 0) {
         // Exponential decay: most recent (idx=0) gets lowest weight
@@ -189,10 +205,10 @@ export function pickNextExercise(params: {
     return w
   }
 
-  const picked = pickWeighted(finalPool, weight, rand)
-  const exercise = picked ?? finalPool[0]
+  const picked = pickWeighted(pool, weight, rand)
+  const exercise = picked ?? pool[0]
 
-  const { text, seed } = resolveText(exercise, userId, mode)
+  const { text, seed } = resolveText(exercise, userId, mode, screenReaderMode)
 
   return { exercise, renderedText: text, seed }
 }

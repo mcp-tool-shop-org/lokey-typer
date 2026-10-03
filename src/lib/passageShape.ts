@@ -29,11 +29,16 @@ export function weaknessForTag(
   return Number.isFinite(other) && other > 0 ? other : 0
 }
 
+/** Body the loader shows. Variant copies of one line are not extra lines. */
+function passageBody(ex: Passage): string {
+  if (ex.template != null) return ex.template
+  return ex.text_short ?? ex.text ?? ex.text_long ?? ''
+}
+
 export function isMultilinePassage(ex: Passage): boolean {
   const tags = ex.tags ?? []
   if (tags.includes('multiline') || tags.includes('newlines')) return true
-  const text = [ex.text, ex.text_short, ex.text_long, ex.template].filter(Boolean).join('\n')
-  return text.includes('\n')
+  return passageBody(ex).includes('\n')
 }
 
 export function isScreenReaderSafePassage(ex: Passage & { estimated_seconds: number }): boolean {
