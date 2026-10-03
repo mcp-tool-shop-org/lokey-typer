@@ -32,4 +32,40 @@ describe('passage shape', () => {
       }),
     ).toBe(false)
   })
+
+  it('keeps a passage when text, text_short, and text_long are the same single line', () => {
+    expect(
+      isScreenReaderSafePassage({
+        tags: ['sentences'],
+        text: 'Slow is smooth.',
+        text_short: 'Slow is smooth.',
+        text_long: 'Slow is smooth.',
+        estimated_seconds: 45,
+      }),
+    ).toBe(true)
+  })
+
+  it('drops a body that itself contains a newline', () => {
+    expect(
+      isScreenReaderSafePassage({
+        tags: ['sentences'],
+        text: 'Slow is smooth.',
+        text_short: 'Slow is smooth.',
+        text_long: 'Slow is smooth.\nSmooth is fast.',
+        estimated_seconds: 45,
+      }),
+    ).toBe(false)
+  })
+
+  it('still rejects a newlines tag when every body is one line', () => {
+    expect(
+      isScreenReaderSafePassage({
+        tags: ['newlines'],
+        text: 'Slow is smooth.',
+        text_short: 'Slow is smooth.',
+        text_long: 'Slow is smooth.',
+        estimated_seconds: 45,
+      }),
+    ).toBe(false)
+  })
 })
