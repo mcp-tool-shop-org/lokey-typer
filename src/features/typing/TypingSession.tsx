@@ -10,9 +10,11 @@ import {
   getPersonalBest,
   loadSkillModel,
   maybeUpdatePersonalBest,
+  noteMistake,
   pushRecent,
   saveLastMode,
   saveSkillModel,
+  type MistakeCounts,
   type Preferences,
   type SprintDurationMs,
   typewriterAudio,
@@ -64,6 +66,13 @@ function computeTagsHit(params: { exercise: Exercise; targetText: string }): str
   return Array.from(tags)
 }
 
+function singleInsertedChar(prev: string, next: string): { index: number; ch: string } | null {
+  if (next.length !== prev.length + 1) return null
+  let index = 0
+  while (index < prev.length && prev[index] === next[index]) index++
+  return { index, ch: next[index] }
+}
+
 function formatMs(ms: number) {
   const totalSeconds = Math.floor(ms / 1000)
   const minutes = Math.floor(totalSeconds / 60)
@@ -105,6 +114,7 @@ export function TypingSession(props: {
 
   const inputRef = useRef<HTMLTextAreaElement | null>(null)
   const endOnceRef = useRef(false)
+  const mistakesRef = useRef<MistakeCounts>({} as MistakeCounts)
 
   const timeLimitMs = props.sprintDurationMs
 
@@ -182,6 +192,7 @@ export function TypingSession(props: {
         exercise: props.exercise,
         targetText,
         typedText: typed,
+        mistakes: mistakesRef.current,
       })
       saveSkillModel(next)
     } catch {
@@ -458,6 +469,14 @@ export function TypingSession(props: {
             if (isComplete) return
             const next = e.target.value
             if (!acceptTypingEdit(typed, next)) return
+            const inserted = singleInsertedChar(typed, next)
+            if (inserted) {
+              const expected = inserted.index < targetText.length ? targetText[inserted.index] : null
+              if (inserted.ch !== expected) {
+                const noted = noteMistake(mistakesRef.current, expected)
+                if (noted) mistakesRef.current = noted
+              }
+            }
             setTyped(next)
 
             if (next.length !== typed.length) noteTypingActivity()
