@@ -408,9 +408,9 @@ export function TypingSession(props: {
     <div className="space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <div className="text-xs font-medium text-zinc-500">{props.exercise.pack}</div>
+          <div className="text-xs font-medium text-zinc-400">{props.exercise.pack}</div>
           <h1 className="mt-1 text-xl font-semibold tracking-tight text-zinc-50">{props.exercise.title}</h1>
-          <div className="mt-1 text-sm text-zinc-500">
+          <div className="mt-1 text-sm text-zinc-400">
             Difficulty {props.exercise.difficulty} • Est. {props.exercise.estimated_seconds}s
           </div>
         </div>

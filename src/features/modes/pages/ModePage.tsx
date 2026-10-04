@@ -15,6 +15,33 @@ import { usePreferences } from '@app'
 import { Icon } from '@app/components/Icon'
 import { TypingSession } from '@features/typing'
 
+const SPRINT_LENGTHS = [30_000, 60_000, 120_000] as const
+
+function otherLengthsWithRuns(selectedMs: SprintDurationMs): SprintDurationMs[] {
+  return SPRINT_LENGTHS.filter(
+    (duration) => duration !== selectedMs && topCompetitiveRuns({ durationMs: duration, limit: 1 }).length > 0,
+  )
+}
+
+function otherLengthsLine(durations: readonly SprintDurationMs[]): string | null {
+  if (durations.length === 0) return null
+  const names = durations.map((duration) => `${duration / 1000}s`)
+  if (names.length === 1) return `${names[0]} has runs.`
+  return `${names[0]} and ${names[1]} have runs.`
+}
+
+function EmptyBoard({ selectedMs }: { selectedMs: SprintDurationMs }) {
+  const other = otherLengthsLine(otherLengthsWithRuns(selectedMs))
+  return (
+    <>
+      <div className="mt-2 text-center text-zinc-400">
+        No {selectedMs / 1000}s runs yet — finish a sprint to get on the board.
+      </div>
+      {other ? <div className="mt-1 text-center text-zinc-400">{other}</div> : null}
+    </>
+  )
+}
+
 export function ModePage({ mode }: { mode: Mode }) {
   const [search, setSearch] = useSearchParams()
   const { prefs, setPrefs } = usePreferences()
@@ -189,20 +216,18 @@ export function ModePage({ mode }: { mode: Mode }) {
                     const medalIcon = i === 0 ? 'medal-gold' as const : i === 1 ? 'medal-silver' as const : 'medal-bronze' as const
                     return (
                       <div key={`${r.timestamp}-${i}`} className="flex items-center justify-between rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-zinc-800/40">
-                        <div className="flex items-center gap-1.5 text-zinc-500">
+                        <div className="flex items-center gap-1.5 text-zinc-400">
                           <Icon name={medalIcon} size={14} className="shrink-0" />
                           #{i + 1}
                         </div>
                         <div className="text-zinc-200">{Math.round(r.wpm)} WPM</div>
-                        <div className="text-zinc-500">{Math.round(r.accuracy * 1000) / 10}%</div>
+                        <div className="text-zinc-400">{Math.round(r.accuracy * 1000) / 10}%</div>
                       </div>
                     )
                   })}
                 </div>
               ) : (
-                <div className="mt-2 text-center text-zinc-500">
-                  No runs yet — finish a sprint to get on the board.
-                </div>
+                <EmptyBoard selectedMs={sprintDurationMs} />
               )}
             </div>
           </div>
