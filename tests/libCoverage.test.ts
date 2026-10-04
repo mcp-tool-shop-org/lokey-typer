@@ -350,13 +350,21 @@ describe('buildFeedback', () => {
       baseFeedback({
         mode: 'competitive',
         is_personal_best_accuracy: true,
-        accuracy: 0.9,
+        accuracy: 0.95,
         duration_ms: 20_000,
       }).primary,
     ).toBe('New PB accuracy. Clean run.')
     expect(baseFeedback({ mode: 'competitive', accuracy: 0.99 }).primary).toBe(
       'Elite accuracy. Plenty of control.',
     )
+    expect(
+      baseFeedback({
+        mode: 'competitive',
+        is_personal_best_accuracy: true,
+        accuracy: 0.99,
+        duration_ms: 19_999,
+      }).primary,
+    ).toBe('Elite accuracy. Plenty of control.')
     expect(baseFeedback({ mode: 'competitive', wpm: 60, accuracy: 0.97 }).primary).toBe(
       'Fast and clean. That\u2019s the zone.',
     )
@@ -390,6 +398,14 @@ describe('buildFeedback', () => {
 
     const pb = baseFeedback({ mode: 'competitive', is_personal_best_wpm: true, is_personal_best_accuracy: true, accuracy: 0.99 })
     expect(pb.isNewPb).toBe(true)
+    expect(
+      baseFeedback({
+        mode: 'competitive',
+        is_personal_best_accuracy: true,
+        accuracy: 0.9,
+        duration_ms: 20_000,
+      }).primary,
+    ).toBe('Accuracy dipped. A cleaner run is available.')
   })
 })
 
