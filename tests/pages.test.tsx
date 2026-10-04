@@ -324,6 +324,12 @@ describe('routes and shell', () => {
     expect(document.activeElement).toBe(document.body)
     expect(screen.getByRole('heading', { name: /LoKey Typer/ })).toBeTruthy()
     expect(screen.getByText(/Your stats will appear here after your first session/)).toBeTruthy()
+    const nav = screen.getByRole('navigation', { name: 'Main navigation' })
+    const settings = screen.getByRole('button', { name: 'Settings' })
+    expect(nav.contains(settings)).toBe(false)
+    expect(nav.parentElement?.contains(settings)).toBe(true)
+    expect(screen.getByText('Speed • Accuracy • Consistency').className).toContain('text-zinc-400')
+    expect(screen.getByText(/Starting in/).className).toContain('text-zinc-400')
   })
 
   it('follows daily, mode, legacy, and unknown routes', async () => {
@@ -333,9 +339,11 @@ describe('routes and shell', () => {
     await user.click(screen.getByRole('link', { name: 'Daily' }))
     expect(screen.getByRole('heading', { name: /Today.s exercises/ })).toBeTruthy()
     expect(screen.getByRole('button', { name: 'Begin' })).toBeTruthy()
+    expect(screen.getByText(/\d+ exercises •/).className).toContain('text-zinc-400')
 
     await user.click(screen.getByRole('link', { name: 'Focus' }))
     expect(screen.getByRole('link', { name: 'Focus' }).getAttribute('aria-current')).toBe('page')
+    expect(screen.getByText(/\d+ of \d+ exercises left/).className).toContain('text-zinc-400')
     expect(screen.getByText(/\d+ of \d+ exercises left/).textContent).not.toMatch(/starting fresh/)
 
     await user.click(screen.getByRole('link', { name: 'Real-Life' }))
@@ -380,7 +388,7 @@ describe('routes and shell', () => {
     expect(mocks.ambientPlayer.start).toHaveBeenCalledTimes(1)
 
     await user.click(screen.getByRole('button', { name: 'Mute ambient' }))
-    expect(screen.getByRole('button', { name: 'Unmute ambient' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Unmute ambient' }).className).toContain('text-zinc-400')
     expect(loadPreferences().ambientEnabled).toBe(false)
     expect(mocks.ambientPlayer.setPreferences).toHaveBeenCalledWith(
       expect.objectContaining({ enabled: false, category: 'all' }),
@@ -442,7 +450,10 @@ describe('audio settings', () => {
     expect(document.documentElement.classList.contains('reduce-motion')).toBe(true)
     await user.click(within(dialog).getByRole('switch', { name: 'Screen reader mode' }))
 
-    expect(within(dialog).getByText(/Screen reader mode keeps the soundscape off/)).toBeTruthy()
+    expect(within(dialog).getByText(/Screen reader mode keeps the soundscape off/).className).toContain('text-zinc-400')
+    for (const readout of within(dialog).getAllByText(/^\d+%$/)) {
+      expect(readout.className).toContain('text-zinc-400')
+    }
     expect((within(dialog).getByRole('switch', { name: 'Ambient sounds' }) as HTMLButtonElement).disabled).toBe(true)
     const saved = loadPreferences()
     expect(saved.volume).toBeCloseTo(0.25)
@@ -1015,6 +1026,7 @@ describe('daily set', () => {
     expect(screen.getByRole('link', { name: 'Short set' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Standard set' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Long set' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Back to Home' }).parentElement?.className).toContain('gap-4')
     await user.click(screen.getByRole('link', { name: 'Long set' }))
     expect(await screen.findByRole('button', { name: 'Begin' })).toBeTruthy()
     expect(screen.queryByRole('heading', { name: /Daily Set Complete/ })).toBeNull()
