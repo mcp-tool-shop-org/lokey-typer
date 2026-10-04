@@ -142,6 +142,8 @@ export function TypingSession(props: {
   const typedRef = useRef('')
   const composingRef = useRef(false)
   const compositionBaseRef = useRef('')
+  const srTimerRef = useRef<number | null>(null)
+  const [srNotice, setSrNotice] = useState<string | null>(null)
 
   const timeLimitMs = props.sprintDurationMs
 
@@ -151,6 +153,51 @@ export function TypingSession(props: {
     const id = window.setTimeout(() => inputRef.current?.focus(), 50)
     return () => window.clearTimeout(id)
   }, [])
+
+  useEffect(() => {
+    return () => {
+      if (srTimerRef.current != null) window.clearTimeout(srTimerRef.current)
+    }
+  }, [])
+
+  function clearSrTimer() {
+    if (srTimerRef.current != null) {
+      window.clearTimeout(srTimerRef.current)
+      srTimerRef.current = null
+    }
+  }
+
+  function scheduleSr(message: string) {
+    clearSrTimer()
+    srTimerRef.current = window.setTimeout(() => {
+      srTimerRef.current = null
+      setSrNotice(message)
+    }, 400)
+  }
+
+  function noteScreenReader(prev: string, next: string) {
+    if (!props.prefs.screenReaderMode) return
+    const added = addedSpan(prev, next)
+    const graphemes = graphemesOf(added.text)
+    if (graphemes.length !== 1) return
+    const targetGraphemes = graphemesOf(targetText)
+    const index = graphemesOf(next.slice(0, added.index)).length
+    const expected = targetGraphemes[index]
+    if (expected == null) {
+      scheduleSr('That is past the end of the passage.')
+      return
+    }
+    if (graphemes[0] !== expected) {
+      scheduleSr(`Expected ${expected}.`)
+      return
+    }
+    const spokenLength = index + 1
+    if (spokenLength % 20 === 0) {
+      scheduleSr(`${spokenLength} of ${targetGraphemes.length}.`)
+      return
+    }
+    clearSrTimer()
+  }
 
   useEffect(() => {
     const t = window.setInterval(() => {
@@ -533,6 +580,7 @@ export function TypingSession(props: {
               graphemesOf(added.text),
             )
             if (commit.length !== base.length) noteTypingActivity()
+            noteScreenReader(base, commit)
             const started = startedAtMs ?? (commit.length > 0 ? Date.now() : null)
             if (startedAtMs == null && started != null) setStartedAtMs(started)
             if (timeLimitMs != null && started != null && Date.now() - started >= timeLimitMs) {
@@ -568,6 +616,7 @@ export function TypingSession(props: {
             }
             typedRef.current = next
             setTyped(next)
+            noteScreenReader(prev, next)
 
             if (next.length !== prev.length) noteTypingActivity()
 
@@ -587,6 +636,7 @@ export function TypingSession(props: {
         />
 
         <div id={helpTextId} className="mt-4 text-xs leading-relaxed text-zinc-400" aria-live="polite" aria-atomic="true">
+          <span className="sr-only">{targetText}</span>
           {isComplete ? (
             saveFailed ? (
               <div className="font-medium text-zinc-200">This finish didn't save. Restart to try again.</div>
@@ -624,6 +674,9 @@ export function TypingSession(props: {
               All characters supported. Backspace allowed (counted). Esc to exit.
             </div>
           )}
+        </div>
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {srNotice}
         </div>
       </div>
 
