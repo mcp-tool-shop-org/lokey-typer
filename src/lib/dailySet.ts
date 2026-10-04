@@ -1,5 +1,5 @@
-import type { Exercise, Mode } from '@content'
-import { loadExercisesByMode } from '@content'
+import { findExercise, loadExercisesByMode, type Exercise, type Mode } from '@content'
+import { passageKey } from '@content/catalog'
 import { isScreenReaderSafePassage, tagMatches } from './passageShape'
 import type { UserSkillModel } from './storage'
 
@@ -77,12 +77,15 @@ export type DailyProgress = {
   finishedAt?: number
 }
 
-function todayKey() {
-  const now = new Date()
+export function localDateKey(now = new Date()): string {
   const year = now.getFullYear()
   const month = String(now.getMonth() + 1).padStart(2, '0')
   const day = String(now.getDate()).padStart(2, '0')
   return `${year}-${month}-${day}`
+}
+
+function todayKey() {
+  return localDateKey()
 }
 
 function itemCount(sessionType: DailySessionType) {
@@ -130,6 +133,29 @@ function getCachedDailySet(params: {
     return parsed
   } catch {
     return null
+  }
+}
+
+function dailySetDate(key: string): string | null {
+  if (!key.startsWith(`${DAILY_SET_CACHE_PREFIX}|`)) return null
+  const dateKey = key.split('|')[2] ?? ''
+  return /^\d{4}-\d{2}-\d{2}$/.test(dateKey) ? dateKey : null
+}
+
+function pruneStaleDailySetCache(activeDate: string) {
+  try {
+    if (typeof localStorage === 'undefined') return
+    const keep = new Set([todayKey(), activeDate])
+    const stale: string[] = []
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i)
+      if (!key || !key.startsWith(`${DAILY_SET_CACHE_PREFIX}|`)) continue
+      const dateKey = dailySetDate(key)
+      if (dateKey == null || !keep.has(dateKey)) stale.push(key)
+    }
+    for (const key of stale) localStorage.removeItem(key)
+  } catch {
+    // ignore
   }
 }
 
@@ -207,6 +233,13 @@ function exerciseWeight(params: {
   return w
 }
 
+function rememberRecentPassage(ids: readonly string[] | undefined, avoid: Set<string>) {
+  for (const id of ids?.slice(0, 20) ?? []) {
+    const found = findExercise(id)
+    avoid.add(found ? passageKey(found) : id)
+  }
+}
+
 function pickExercise(params: {
   mode: Mode
   kind: DailySetItemKind
@@ -218,7 +251,7 @@ function pickExercise(params: {
   screenReaderMode: boolean
 }): Exercise | null {
   const pool = loadExercisesByMode(params.mode).filter((ex) => {
-    if (params.excludeIds.has(ex.id)) return false
+    if (params.excludeIds.has(ex.id) || params.excludeIds.has(passageKey(ex))) return false
     if (params.screenReaderMode && !isScreenReaderSafePassage(ex)) return false
     return true
   })
@@ -275,6 +308,7 @@ export function generateDailySet(params: {
 }): DailySet {
   const dateKey = params.dateKey ?? todayKey()
   const screenReaderMode = Boolean(params.screenReaderMode)
+  pruneStaleDailySetCache(dateKey)
 
   const cached = getCachedDailySet({
     userId: params.userId,
@@ -298,9 +332,9 @@ export function generateDailySet(params: {
   const avoid = new Set<string>()
   const novelty = params.skill?.recent_exercise_ids_by_mode
   if (novelty) {
-    for (const id of novelty.focus?.slice(0, 20) ?? []) avoid.add(id)
-    for (const id of novelty.real_life?.slice(0, 20) ?? []) avoid.add(id)
-    for (const id of novelty.competitive?.slice(0, 20) ?? []) avoid.add(id)
+    rememberRecentPassage(novelty.focus, avoid)
+    rememberRecentPassage(novelty.real_life, avoid)
+    rememberRecentPassage(novelty.competitive, avoid)
   }
 
   const items: DailySetItem[] = []

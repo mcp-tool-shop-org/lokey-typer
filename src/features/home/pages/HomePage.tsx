@@ -4,6 +4,7 @@ import type { Mode } from '@content'
 import {
   loadRuns,
   loadSkillModel,
+  localDateKey,
   modeLabel,
   modeToPath,
   preferredQuickstartMode,
@@ -18,8 +19,7 @@ const STAT_ICONS: IconName[] = ['stat-speed', 'stat-accuracy', 'stat-sessions', 
 function computeDaysPracticed(runs: ReturnType<typeof loadRuns>) {
   const days = new Set<string>()
   for (const r of runs) {
-    const d = new Date(r.timestamp * 1000).toISOString().slice(0, 10)
-    days.add(d)
+    days.add(localDateKey(new Date(r.timestamp * 1000)))
   }
   return days.size
 }

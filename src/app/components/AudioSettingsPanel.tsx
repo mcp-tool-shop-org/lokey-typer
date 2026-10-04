@@ -78,7 +78,7 @@ function focusableControls(root: HTMLElement): HTMLElement[] {
 }
 
 export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { prefs, patchPrefs } = usePreferences()
+  const { prefs, patchPrefs, preferenceStatus } = usePreferences()
   const panelRef = useRef<HTMLDivElement>(null)
   const [offeredCategories, setOfferedCategories] = useState<AmbientCategory[] | null>(null)
 
@@ -155,6 +155,12 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
         data-aiui-goal="audio_settings_open"
         className="fixed right-4 top-20 z-50 max-h-[calc(100vh-6rem)] w-80 overflow-y-auto rounded-2xl border border-zinc-800/50 bg-zinc-900 p-5 shadow-2xl"
       >
+        {preferenceStatus ? (
+          <p role="status" className="mb-3 text-sm text-zinc-300">
+            {preferenceStatus}
+          </p>
+        ) : null}
+
         {/* Keystroke Sounds */}
         <h3 className="mb-3 text-sm font-semibold text-zinc-200">Keystroke Sounds</h3>
         <div className="space-y-0.5">

@@ -25,9 +25,12 @@ function NavItem({ to, label }: { to: string; label: string }) {
 const ICON_BTN =
   'rounded-lg p-2 transition duration-150 outline-none active:scale-95 focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950'
 
+const SOUNDSCAPE_LOCK = 'Screen reader mode keeps the soundscape off.'
+
 export function AppShell() {
-  const { prefs, patchPrefs } = usePreferences()
-  const { skipTrack } = useAmbient()
+  const { prefs, patchPrefs, preferenceStatus } = usePreferences()
+  const { skipTrack, unlockFailed } = useAmbient()
+  const soundscapeLocked = Boolean(prefs.screenReaderMode)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const settingsOpenerRef = useRef<HTMLElement | null>(null)
   const settingsWasOpenRef = useRef(false)
@@ -46,6 +49,7 @@ export function AppShell() {
   }, [settingsOpen])
 
   function handleMuteToggle() {
+    if (soundscapeLocked) return
     patchPrefs({ ambientEnabled: !prefs.ambientEnabled })
   }
 
@@ -85,10 +89,18 @@ export function AppShell() {
             {/* Skip to random ambient track */}
             <button
               type="button"
-              onClick={skipTrack}
-              className={`${ICON_BTN} text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200`}
-              aria-label="Random ambient track"
-              title="Random ambient track"
+              onClick={soundscapeLocked ? undefined : skipTrack}
+              disabled={soundscapeLocked}
+              aria-disabled={soundscapeLocked || undefined}
+              className={`${ICON_BTN} text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200 disabled:cursor-not-allowed disabled:opacity-40`}
+              aria-label={soundscapeLocked ? `Random ambient track. ${SOUNDSCAPE_LOCK}` : 'Random ambient track'}
+              title={
+                unlockFailed && !soundscapeLocked
+                  ? "Sound couldn't start. Click to try again."
+                  : soundscapeLocked
+                    ? SOUNDSCAPE_LOCK
+                    : 'Random ambient track'
+              }
             >
               <Icon name="shuffle" size={18} />
             </button>
@@ -96,10 +108,26 @@ export function AppShell() {
             {/* Mute / unmute ambient */}
             <button
               type="button"
-              onClick={handleMuteToggle}
-              className={`${ICON_BTN} ${prefs.ambientEnabled ? 'text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200' : 'text-zinc-600 hover:bg-zinc-900/50 hover:text-zinc-300'}`}
-              aria-label={prefs.ambientEnabled ? 'Mute ambient' : 'Unmute ambient'}
-              title={prefs.ambientEnabled ? 'Mute ambient' : 'Unmute ambient'}
+              onClick={soundscapeLocked ? undefined : handleMuteToggle}
+              disabled={soundscapeLocked}
+              aria-disabled={soundscapeLocked || undefined}
+              className={`${ICON_BTN} ${prefs.ambientEnabled ? 'text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200' : 'text-zinc-600 hover:bg-zinc-900/50 hover:text-zinc-300'} disabled:cursor-not-allowed disabled:opacity-40`}
+              aria-label={
+                soundscapeLocked
+                  ? `Ambient sound. ${SOUNDSCAPE_LOCK}`
+                  : prefs.ambientEnabled
+                    ? 'Mute ambient'
+                    : 'Unmute ambient'
+              }
+              title={
+                soundscapeLocked
+                  ? SOUNDSCAPE_LOCK
+                  : unlockFailed
+                    ? "Sound couldn't start. Click to try again."
+                    : prefs.ambientEnabled
+                      ? 'Mute ambient'
+                      : 'Unmute ambient'
+              }
             >
               <Icon name={prefs.ambientEnabled ? 'sound-on' : 'sound-off'} size={18} />
             </button>
@@ -122,7 +150,18 @@ export function AppShell() {
 
       <AudioSettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
 
+      {unlockFailed ? (
+        <p role="status" className="sr-only">
+          Sound couldn't start. Click or press a key to try again.
+        </p>
+      ) : null}
+
       <main id="main-content" inert={settingsOpen ? true : undefined} className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-16">
+        {preferenceStatus && !settingsOpen ? (
+          <p role="status" className="mb-6 text-sm text-zinc-300">
+            {preferenceStatus}
+          </p>
+        ) : null}
         <Outlet />
       </main>
 

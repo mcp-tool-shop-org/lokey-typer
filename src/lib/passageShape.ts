@@ -14,12 +14,20 @@ const TAG_ALIASES: Readonly<Record<string, string>> = {
   dashes: 'dash',
 }
 
-/** Exact pack tag wins. `dash`/`dashes` and `multiline`/`newlines` are the only aliases. */
+// Runs store `punctuation`. Packs tag the same misses as comma, colon, or semicolon.
+const PUNCTUATION_PACK_TAGS: ReadonlySet<string> = new Set(['comma', 'colon', 'semicolon'])
+
+function positiveScore(value: unknown): number {
+  return typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : 0
+}
+
+/** Exact pack tag wins. `punctuation` also matches pack tags comma, colon, and semicolon. */
 export function tagMatches(packTags: readonly string[], skillTag: string): boolean {
   if (packTags.includes(skillTag)) return true
   const other = TAG_ALIASES[skillTag]
-  if (other == null) return false
-  return packTags.includes(other)
+  if (other != null && packTags.includes(other)) return true
+  if (skillTag === 'punctuation') return packTags.some((tag) => PUNCTUATION_PACK_TAGS.has(tag))
+  return false
 }
 
 export function weaknessForTag(
@@ -27,12 +35,24 @@ export function weaknessForTag(
   tag: string,
 ): number {
   if (!weakness) return 0
-  const direct = weakness[tag]
-  if (Number.isFinite(direct) && direct > 0) return direct
+  const direct = positiveScore(weakness[tag])
+  if (direct > 0) return direct
   const otherName = TAG_ALIASES[tag]
-  if (otherName == null) return 0
-  const other = weakness[otherName]
-  return Number.isFinite(other) && other > 0 ? other : 0
+  if (otherName != null) {
+    const other = positiveScore(weakness[otherName])
+    if (other > 0) return other
+  }
+  if (PUNCTUATION_PACK_TAGS.has(tag)) {
+    const punct = positiveScore(weakness.punctuation)
+    if (punct > 0) return punct
+  }
+  if (tag === 'punctuation') {
+    for (const packTag of PUNCTUATION_PACK_TAGS) {
+      const score = positiveScore(weakness[packTag])
+      if (score > 0) return score
+    }
+  }
+  return 0
 }
 
 function fieldHasNewline(value: string | undefined): boolean {

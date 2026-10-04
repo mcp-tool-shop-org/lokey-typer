@@ -1,16 +1,33 @@
-import { createContext, useCallback, useContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { loadPreferences, sanitizePreferences, savePreferences, type Preferences } from '@lib-internal/storage'
+
+const PREFS_NOT_KEPT = 'That change was not kept. The previous settings are still in effect.'
 
 type PreferencesContextValue = {
   prefs: Preferences
+  preferenceStatus: string | null
   setPrefs: (next: Preferences) => void
   patchPrefs: (patch: Partial<Preferences>) => void
 }
 
 const PreferencesContext = createContext<PreferencesContextValue | null>(null)
 
+function mergePreferences(prev: Preferences, patch: Partial<Preferences>): Preferences {
+  return sanitizePreferences({
+    ...prev,
+    ...patch,
+    showLiveWpm: {
+      ...prev.showLiveWpm,
+      ...(patch.showLiveWpm ?? {}),
+    },
+  })
+}
+
 export function PreferencesProvider({ children }: { children: React.ReactNode }) {
   const [prefs, setPrefsState] = useState<Preferences>(() => loadPreferences())
+  const [preferenceStatus, setPreferenceStatus] = useState<string | null>(null)
+  const prefsRef = useRef(prefs)
+  prefsRef.current = prefs
 
   useEffect(() => {
     const root = document.documentElement
@@ -21,30 +38,25 @@ export function PreferencesProvider({ children }: { children: React.ReactNode })
     }
   }, [prefs.reducedMotion])
 
-  const setPrefs = useCallback((next: Preferences) => {
-    const sanitized = sanitizePreferences(next)
-    setPrefsState(sanitized)
-    savePreferences(sanitized)
+  const commit = useCallback((next: Preferences) => {
+    if (!savePreferences(next)) {
+      setPreferenceStatus(PREFS_NOT_KEPT)
+      return
+    }
+    setPreferenceStatus(null)
+    prefsRef.current = next
+    setPrefsState(next)
   }, [])
+
+  const setPrefs = useCallback((next: Preferences) => {
+    commit(sanitizePreferences(next))
+  }, [commit])
 
   const patchPrefs = useCallback((patch: Partial<Preferences>) => {
-    setPrefsState((prev) => {
-      const next: Preferences = {
-        ...prev,
-        ...patch,
-        showLiveWpm: {
-          ...prev.showLiveWpm,
-          ...(((patch as Partial<Preferences>).showLiveWpm as Partial<Preferences['showLiveWpm']> | undefined) ?? {}),
-        },
-      }
+    commit(mergePreferences(prefsRef.current, patch))
+  }, [commit])
 
-      const sanitized = sanitizePreferences(next)
-      savePreferences(sanitized)
-      return sanitized
-    })
-  }, [])
-
-  const value = { prefs, setPrefs, patchPrefs }
+  const value = { prefs, preferenceStatus, setPrefs, patchPrefs }
   return <PreferencesContext.Provider value={value}>{children}</PreferencesContext.Provider>
 }
 

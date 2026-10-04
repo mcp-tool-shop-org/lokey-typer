@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useRef } from 'react'
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { ambientPlayer } from '@lib-internal/ambient'
 import { ambientCategoriesInTracks, fetchAmbientManifest } from '@lib-internal/ambientManifest'
 import { resumeAudioContext } from '@lib-internal/audioContext'
@@ -8,16 +8,26 @@ import { usePreferences } from './PreferencesProvider'
 type AmbientContextValue = {
   noteTypingActivity: () => void
   skipTrack: () => void
+  unlockFailed: boolean
 }
 
 const AmbientContext = createContext<AmbientContextValue>({
   noteTypingActivity: () => {},
   skipTrack: () => {},
+  unlockFailed: false,
 })
+
+function playbackMarkedStarted(): boolean {
+  const player = ambientPlayer as { isStarted?: () => boolean }
+  if (typeof player.isStarted !== 'function') return true
+  return player.isStarted()
+}
 
 export function AmbientProvider({ children }: { children: React.ReactNode }) {
   const { prefs, patchPrefs } = usePreferences()
   const startedRef = useRef(false)
+  const unlockingRef = useRef(false)
+  const [unlockFailed, setUnlockFailed] = useState(false)
 
   // A saved category that the library does not ship (campfire, café, night) falls back to the whole library.
   useEffect(() => {
@@ -46,24 +56,36 @@ export function AmbientProvider({ children }: { children: React.ReactNode }) {
     })
   }, [prefs])
 
-  // One-time user gesture unlock: first click, tap, or keypress starts ambient.
+  // First click, tap, or key starts ambient. A failed resume stays armed for the next gesture.
   useEffect(() => {
     if (startedRef.current) return
-
-    const unlock = async () => {
-      if (startedRef.current) return
-      startedRef.current = true
-      console.log('[ambient] unlock triggered — user gesture received')
-      // Resume audio context inside the user gesture, then start ambient.
-      await resumeAudioContext()
-      await ambientPlayer.start()
-      cleanup()
-    }
 
     const cleanup = () => {
       window.removeEventListener('click', unlock)
       window.removeEventListener('keydown', unlock)
       window.removeEventListener('touchstart', unlock)
+    }
+
+    const unlock = async () => {
+      if (startedRef.current || unlockingRef.current) return
+      unlockingRef.current = true
+      console.log('[ambient] unlock triggered — user gesture received')
+      try {
+        await resumeAudioContext()
+        await ambientPlayer.start()
+        if (!playbackMarkedStarted()) {
+          setUnlockFailed(true)
+          return
+        }
+        startedRef.current = true
+        setUnlockFailed(false)
+        cleanup()
+      } catch (err) {
+        console.warn('[ambient] unlock failed', err)
+        setUnlockFailed(true)
+      } finally {
+        unlockingRef.current = false
+      }
     }
 
     window.addEventListener('click', unlock)
@@ -82,7 +104,7 @@ export function AmbientProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   return (
-    <AmbientContext.Provider value={{ noteTypingActivity, skipTrack }}>
+    <AmbientContext.Provider value={{ noteTypingActivity, skipTrack, unlockFailed }}>
       {children}
     </AmbientContext.Provider>
   )

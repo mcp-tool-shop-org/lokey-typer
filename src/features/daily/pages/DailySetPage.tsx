@@ -7,6 +7,7 @@ import {
   getOrCreateUserId,
   isTemplateExercise,
   loadDailyProgress,
+  localDateKey,
   loadRuns,
   loadSkillModel,
   renderTemplateExercise,
@@ -51,21 +52,27 @@ function sessionLabel(type: DailySessionType) {
 function computeDaysPracticed(runs: ReturnType<typeof loadRuns>) {
   const days = new Set<string>()
   for (const r of runs) {
-    const d = new Date(r.timestamp * 1000).toISOString().slice(0, 10)
-    days.add(d)
+    days.add(localDateKey(new Date(r.timestamp * 1000)))
   }
   return days
 }
 
+function calendarDayIndex(key: string): number {
+  const [year, month, day] = key.split('-').map(Number)
+  if (!year || !month || !day) return Number.NaN
+  return Math.floor(Date.UTC(year, month - 1, day) / 86_400_000)
+}
+
 function computeBestWeek(days: Set<string>) {
-  const sorted = Array.from(days).sort()
-  if (sorted.length === 0) return 0
-  const msPerDay = 24 * 60 * 60 * 1000
-  const dayMs = sorted.map((d) => new Date(d).getTime())
+  const dayNumbers = Array.from(days)
+    .map(calendarDayIndex)
+    .filter((day) => Number.isFinite(day))
+    .sort((a, b) => a - b)
+  if (dayNumbers.length === 0) return 0
   let best = 1
   let i = 0
-  for (let j = 0; j < dayMs.length; j++) {
-    while (dayMs[j] - dayMs[i] > 6 * msPerDay) i++
+  for (let j = 0; j < dayNumbers.length; j++) {
+    while (dayNumbers[j] - dayNumbers[i] > 6) i++
     best = Math.max(best, j - i + 1)
   }
   return best
@@ -135,37 +142,43 @@ export function DailySetPage() {
     }
   })
 
-  // Reset progress if session type changes (different set = different exercises).
-  useEffect(() => {
-    const existing = loadDailyProgress(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
-    if (existing && existing.sessionType === sessionType) {
-      setProgress(existing)
-    } else {
-      setProgress({
-        dateKey: daily.dateKey,
-        userId,
-        sessionType,
-        completedItems: [],
-        startedAt: Date.now(),
-      })
-    }
-  }, [daily.dateKey, userId, sessionType, prefs.screenReaderMode])
-
-  // ---- Phase state ----
-
   const currentIndex = progress.completedItems.length
   const isFinished = currentIndex >= daily.items.length
 
   const [progressSaveFailed, setProgressSaveFailed] = useState(false)
 
-  const [phase, setPhase] = useState<PagePhase>(() => {
-    if (isFinished) return 'summary'
-    return 'idle'
-  })
+  const [phase, setPhase] = useState<PagePhase>(() => (isFinished ? 'summary' : 'idle'))
 
-  // Sync phase if progress loads as finished (e.g. page reload after completing).
+  const ritualKey = `${daily.dateKey}|${userId}|${sessionType}|${prefs.screenReaderMode ? 'sr' : 'std'}`
+  const ritualKeyRef = useRef(ritualKey)
+
+  // A different day, session type, or screen-reader set is not the attempt on screen.
   useEffect(() => {
-    if (isFinished && phase !== 'summary') setPhase('summary')
+    const existing = loadDailyProgress(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
+    const next: DailyProgress =
+      existing && existing.sessionType === sessionType
+        ? existing
+        : {
+            dateKey: daily.dateKey,
+            userId,
+            sessionType,
+            completedItems: [],
+            startedAt: Date.now(),
+          }
+    setProgress(next)
+    if (ritualKeyRef.current === ritualKey) return
+    ritualKeyRef.current = ritualKey
+    const finished = next.completedItems.length >= daily.items.length
+    setPhase(finished ? 'summary' : 'idle')
+  }, [daily.dateKey, daily.items.length, userId, sessionType, prefs.screenReaderMode, ritualKey])
+
+  // Summary only belongs to a finished set. An unfinished reload must be able to start.
+  useEffect(() => {
+    if (isFinished) {
+      if (phase !== 'summary') setPhase('summary')
+      return
+    }
+    if (phase === 'summary') setPhase('idle')
   }, [isFinished, phase])
 
   const [sessionKey, setSessionKey] = useState(0)
@@ -441,7 +454,7 @@ export function DailySetPage() {
           </div>
 
           <TypingSession
-            key={`daily-${currentIndex}-${sessionKey}`}
+            key={`daily-${currentExercise.id}-${sessionKey}-${prefs.screenReaderMode ? 'sr' : 'std'}`}
             mode={currentItem.mode}
             exercise={currentExercise}
             targetText={resolveExerciseText(
