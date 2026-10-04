@@ -764,6 +764,41 @@ describe('TypingSession', () => {
     await waitFor(() => expect(screen.getByText('Corrections were frequent.')).toBeTruthy())
     expect(statValue('Backspaces')).toBe('15')
   })
+
+  it('reads the passage from the field and speaks a miss or a beat in screen reader mode', async () => {
+    vi.useFakeTimers()
+    const quiet = renderSession({ targetText: 'ab' })
+    const quietBy = quiet.input.getAttribute('aria-describedby') ?? ''
+    expect(quietBy.startsWith('typing-help-')).toBe(true)
+    expect(quietBy.includes(' ')).toBe(false)
+    expect(document.getElementById(quietBy)?.textContent).toContain('ab')
+    expect(document.getElementById(quietBy)?.textContent).toContain('All characters supported')
+    fireEvent.input(quiet.input, { target: { value: 'z' } })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(400)
+    })
+    expect(screen.queryByText('Expected a.')).toBeNull()
+    quiet.unmount()
+
+    const missed = renderSession({ targetText: 'ab', prefs: { screenReaderMode: true } })
+    expect(passage().getAttribute('aria-hidden')).toBe('true')
+    const describedBy = missed.input.getAttribute('aria-describedby') ?? ''
+    expect(describedBy.startsWith('typing-help-')).toBe(true)
+    expect(document.getElementById(describedBy)?.textContent).toContain('ab')
+    fireEvent.input(missed.input, { target: { value: 'z' } })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(400)
+    })
+    expect(screen.getByText('Expected a.')).toBeTruthy()
+    missed.unmount()
+
+    const beat = renderSession({ targetText: 'a'.repeat(20), prefs: { screenReaderMode: true } })
+    typeAll(beat.input, 'a'.repeat(20))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(400)
+    })
+    expect(screen.getByText('20 of 20.')).toBeTruthy()
+  })
 })
 
 describe('TypingOverlay', () => {

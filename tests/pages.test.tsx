@@ -288,6 +288,7 @@ beforeEach(() => {
   mocks.fetchMock.mockImplementation(defaultFetch)
   mocks.ambientPlayer.setPreferences.mockClear()
   mocks.ambientPlayer.start.mockClear()
+  delete (mocks.ambientPlayer as { isStarted?: unknown }).isStarted
   mocks.ambientPlayer.skipTrack.mockClear()
   mocks.ambientPlayer.noteTypingActivity.mockClear()
   mocks.typewriterAudio.play.mockClear()
@@ -1002,6 +1003,22 @@ describe('daily set', () => {
     expect(screen.getByText('11')).toBeTruthy()
     expect(screen.getAllByText('50.0%').length).toBeGreaterThan(0)
   })
+
+  it('keeps Short and Long available after the standard set is finished', async () => {
+    const user = setupUser()
+    seedUser()
+    seedDailySet('mix', [{ kind: 'confidence', mode: 'focus', exerciseId: 'focus_calm_01_001' }])
+    seedDailyProgress('mix', [{ wpm: 40, accuracy: 1, durationMs: 1000 }])
+    renderApp(['/daily'])
+    expect(screen.getByRole('heading', { name: /Daily Set Complete/ })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: /Standard set/ })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Short set' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Standard set' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Long set' })).toBeTruthy()
+    await user.click(screen.getByRole('link', { name: 'Long set' }))
+    expect(await screen.findByRole('button', { name: 'Begin' })).toBeTruthy()
+    expect(screen.queryByRole('heading', { name: /Daily Set Complete/ })).toBeNull()
+  })
 })
 
 describe('providers, boundary, and bootstrap', () => {
@@ -1078,6 +1095,17 @@ describe('providers, boundary, and bootstrap', () => {
     window.dispatchEvent(new Event('click'))
     await Promise.resolve()
     expect(mocks.ambientPlayer.start).not.toHaveBeenCalled()
+  })
+
+  it('keeps the sound retry when start does not begin a track', async () => {
+    ;(mocks.ambientPlayer as { isStarted?: () => boolean }).isStarted = () => false
+    renderApp()
+    window.dispatchEvent(new Event('touchstart'))
+    expect(await screen.findByText("Sound didn't start. Try again.")).toBeTruthy()
+    expect(screen.getByRole('button', { name: "Sound couldn't start. Click to try again." })).toBeTruthy()
+    expect(screen.queryByRole('button', { name: 'Mute ambient' })).toBeNull()
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }))
+    await waitFor(() => expect(mocks.ambientPlayer.start).toHaveBeenCalledTimes(2))
   })
 
   it('cancels a category lookup that finishes after unmount', async () => {
