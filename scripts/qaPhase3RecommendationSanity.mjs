@@ -118,6 +118,10 @@ console.log(`Novelty window: ${noveltyWindow}`)
 console.log(`Repeats inside window: ${repeats}`)
 console.log(`Weak-tag hits: ${weakHits} (${picks ? ((weakHits / picks) * 100).toFixed(1) : '0'}%)`)
 
-if (picks > 0 && repeats > 0) {
+if (picks === 0) {
+  console.warn('WARN: Recommendation produced zero picks.')
+  process.exitCode = 1
+} else if (repeats > 0) {
   console.warn('WARN: Repeats occurred inside novelty window (pool may be small).')
+  process.exitCode = 1
 }

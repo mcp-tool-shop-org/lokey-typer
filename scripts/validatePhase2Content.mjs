@@ -121,7 +121,7 @@ function checkExerciseCommon(file, ex, pack) {
 
   if (!isNonEmptyString(ex.pack)) pushErr(`${file}:${ex.id}`, 'exercise.pack must be a non-empty string')
   if (isNonEmptyString(pack?.pack_id) && ex.pack !== pack.pack_id) {
-    pushWarn(`${file}:${ex.id}`, `exercise.pack ('${ex.pack}') != pack.pack_id ('${pack.pack_id}')`)
+    pushErr(`${file}:${ex.id}`, `exercise.pack ('${ex.pack}') != pack.pack_id ('${pack.pack_id}')`)
   }
 
   if (!Number.isInteger(ex.difficulty) || ex.difficulty < 1 || ex.difficulty > 5) {
@@ -229,6 +229,25 @@ for (const filePath of packFiles) {
   if (pack) packs.push(pack)
 }
 
+const knownPackIds = new Set(packs.map((p) => p.pack_id).filter((id) => isNonEmptyString(id)))
+const quickstartModes = ['focus', 'real_life', 'competitive']
+
+function checkPackIdList(where, label, list) {
+  if (!Array.isArray(list)) {
+    pushErr(where, `${label} must be an array of pack ids`)
+    return
+  }
+  if (list.length === 0) {
+    pushErr(where, `${label} must not be empty`)
+    return
+  }
+  for (const id of list) {
+    if (!isNonEmptyString(id) || !knownPackIds.has(id)) {
+      pushErr(where, `${label} entry does not match a pack_id under src/content/packs: '${id}'`)
+    }
+  }
+}
+
 // Validate phase2 extras if present
 const extras = {
   presets: path.join(phase2Dir, 'accessibility_presets.json'),
@@ -260,7 +279,17 @@ for (const [key, p] of Object.entries(extras)) {
   }
 
   if (key === 'index') {
-    if (!Array.isArray(data?.packs)) pushErr(path.relative(root, p), 'content_index.packs must be an array of pack ids')
+    const where = path.relative(root, p)
+    checkPackIdList(where, 'content_index.packs', data?.packs)
+    const quick = data?.recommended_quickstart
+    if (quick == null || typeof quick !== 'object' || Array.isArray(quick)) {
+      pushErr(where, 'content_index.recommended_quickstart must list pack ids for each mode')
+    } else {
+      const modes = new Set([...quickstartModes, ...Object.keys(quick)])
+      for (const mode of modes) {
+        checkPackIdList(where, `recommended_quickstart.${mode}`, quick[mode])
+      }
+    }
   }
 }
 

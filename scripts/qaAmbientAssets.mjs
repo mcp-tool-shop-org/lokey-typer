@@ -5,8 +5,50 @@ const ROOT = process.cwd()
 const PUBLIC_DIR = path.join(ROOT, 'public')
 const MANIFEST_PATH = path.join(PUBLIC_DIR, 'audio', 'ambient', 'manifest.json')
 
+const strict = process.argv.includes('--strict')
+
 function publicRel(file) {
   return String(file ?? '').replace(/\\/g, '/').replace(/^\/+/, '')
+}
+
+function rawTrackLocation(track) {
+  const pathValue = typeof track?.path === 'string' ? track.path.trim() : ''
+  const urlValue = typeof track?.url === 'string' ? track.url.trim() : ''
+  if (pathValue) return pathValue
+  if (urlValue) return urlValue
+  return ''
+}
+
+function resolvePublicFile(raw) {
+  const original = String(raw ?? '').trim()
+  if (!original) return { ok: false, file: '' }
+
+  const slashed = original.replace(/\\/g, '/')
+  // Catalog paths are site URLs (/audio/...). A drive letter or UNC path is absolute.
+  if (/^[a-zA-Z]:/.test(slashed) || slashed.startsWith('//')) {
+    return { ok: false, file: publicRel(slashed) || original }
+  }
+
+  const rel = publicRel(slashed)
+  if (!rel || /^[a-zA-Z]:/.test(rel) || rel.startsWith('//')) {
+    return { ok: false, file: rel || original }
+  }
+
+  const abs = path.resolve(PUBLIC_DIR, rel)
+  const fromPublic = path.relative(PUBLIC_DIR, abs)
+  const portable = fromPublic.split(path.sep).join('/')
+  if (!portable || portable === '.' || portable.startsWith('..') || path.isAbsolute(fromPublic)) {
+    return { ok: false, file: portable || rel }
+  }
+
+  let stat
+  try {
+    stat = fs.statSync(abs)
+  } catch {
+    return { ok: false, file: portable }
+  }
+  if (!stat.isFile()) return { ok: false, file: portable }
+  return { ok: true, file: portable }
 }
 
 function loadManifest() {
@@ -42,10 +84,6 @@ function relFromPublic(absPath) {
   return rel.split(path.sep).join('/')
 }
 
-function existsPublic(relPath) {
-  return fs.existsSync(path.join(PUBLIC_DIR, relPath))
-}
-
 console.log('--- QA: Ambient Asset Inventory ---')
 console.log(`Public dir: ${PUBLIC_DIR}`)
 
@@ -70,12 +108,15 @@ if (hasManifestError) {
 }
 
 const expectedFromManifest = hasManifest && manifest.tracks
-  ? manifest.tracks
-      .map((s) => ({
+  ? manifest.tracks.map((s) => {
+      const raw = rawTrackLocation(s)
+      const resolved = raw ? resolvePublicFile(raw) : { ok: false, file: '' }
+      return {
         profile: String(s.category ?? s.id ?? 'track'),
-        file: publicRel(s.path ?? s.url ?? ''),
-      }))
-      .filter((e) => e.file.length > 0)
+        file: resolved.file,
+        ok: resolved.ok,
+      }
+    })
   : []
 
 const expectedAll = expectedFromManifest
@@ -83,13 +124,12 @@ const expectedAll = expectedFromManifest
 const missing = []
 const presentByProfile = new Map()
 
-for (const { profile, file } of expectedAll) {
-  const ok = existsPublic(file)
+for (const { profile, file, ok } of expectedAll) {
   if (!presentByProfile.has(profile)) presentByProfile.set(profile, { present: 0, total: 0 })
   const agg = presentByProfile.get(profile)
   agg.total += 1
   if (ok) agg.present += 1
-  else missing.push({ profile, file })
+  else missing.push({ profile, file: file || '(no path or url)' })
 }
 
 for (const [profile, agg] of presentByProfile.entries()) {
@@ -99,7 +139,7 @@ for (const [profile, agg] of presentByProfile.entries()) {
 if (missing.length) {
   console.log('\nMissing expected files (engine will fall back safely):')
   for (const m of missing) console.log(`- [${m.profile}] ${m.file}`)
-} else {
+} else if (!hasManifestError) {
   console.log('\nOK: All expected ambient files are present.')
 }
 
@@ -110,7 +150,11 @@ const found = walk(ambientDir)
   .map(relFromPublic)
   .sort()
 
-const expectedSet = new Set(expectedAll.map((e) => e.file))
+const expectedSet = new Set(
+  expectedAll
+    .map((e) => e.file)
+    .filter((file) => file && !file.startsWith('..') && !path.isAbsolute(file)),
+)
 const unexpected = expectedSet.size === 0 ? [] : found.filter((f) => !expectedSet.has(f))
 
 if (unexpected.length) {

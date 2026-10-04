@@ -96,13 +96,16 @@ function exerciseToText(ex, dateKey) {
   return ex.text ?? ex.text_short ?? ex.text_long ?? ''
 }
 
+let failed = false
+
 function runQuickstart(mode, runs) {
   const packList = packIds?.[mode] ?? []
   const pool = packList
     .flatMap((pid) => exercisesForPackId(pid))
     .filter((ex) => ex?.mode === mode)
   if (pool.length === 0) {
-    console.log(`No pool for mode '${mode}'`) 
+    console.error(`No pool for mode '${mode}'`)
+    failed = true
     return
   }
 
@@ -172,3 +175,5 @@ console.log('')
 runQuickstart('focus', 30)
 runQuickstart('real_life', 30)
 runQuickstart('competitive', 30)
+
+if (failed) process.exitCode = 1
