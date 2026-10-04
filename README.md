@@ -31,7 +31,7 @@ All data stays on your device. No accounts. No cloud. No tracking.
 ## Features
 
 - Ambient soundscapes designed for sustained focus. Settings lists only categories that have a track.
-- Mechanical typewriter keystroke audio (optional)
+- Mechanical typewriter keystroke audio (optional), plus Clicky, Tick, and Muted. The keyboard you pick stays on that recording. Mechanical is the default.
 - Personalized daily exercises based on recent sessions
 - Full offline support after first load
 - Accessible: screen reader mode, reduced motion, sound-optional

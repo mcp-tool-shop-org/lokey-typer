@@ -1,5 +1,9 @@
 import { attackOffsetSamples } from './attackOffset'
 import { getAudioContext, resumeAudioContext } from './audioContext'
+import { isKeyboardVoice, type KeyboardVoice } from './keyboardVoice'
+
+export type { KeyboardVoice } from './keyboardVoice'
+export { KEYBOARD_VOICES, KEYBOARD_VOICE_CHOICES, isKeyboardVoice } from './keyboardVoice'
 
 export type TypewriterSound =
   | 'key'
@@ -12,19 +16,33 @@ export type AudioSettings = {
   enabled: boolean
   volume: number // 0..1
   modeGain: number // per-mode multiplier
+  keyboardVoice?: KeyboardVoice
 }
 
 type BufferMap = Partial<Record<string, AudioBuffer>>
 
 const base = import.meta.env.BASE_URL
 
+// One locked recording per keyboard. key_3 is the long, warm strike.
+const KEY_FILE: Record<KeyboardVoice, string> = {
+  mechanical: 'key_3.wav',
+  clicky: 'key_2.wav',
+  tick: 'key_1.wav',
+  muted: 'key_4.wav',
+}
+
 const SAMPLE_URLS = {
-  key: [`${base}audio/key_1.wav`, `${base}audio/key_2.wav`, `${base}audio/key_3.wav`, `${base}audio/key_4.wav`],
+  key: (Object.keys(KEY_FILE) as KeyboardVoice[]).map((voice) => `${base}audio/${KEY_FILE[voice]}`),
   spacebar: [`${base}audio/spacebar.wav`],
   backspace: [`${base}audio/backspace.wav`],
   return_bell: [`${base}audio/return_bell.wav`],
   error: [`${base}audio/error.wav`],
 } as const
+
+function sampleUrl(kind: TypewriterSound, voice: KeyboardVoice): string {
+  if (kind === 'key') return `${base}audio/${KEY_FILE[voice]}`
+  return SAMPLE_URLS[kind][0]
+}
 
 export class TypewriterAudio {
   private buffers: BufferMap = {}
@@ -115,15 +133,15 @@ export class TypewriterAudio {
     }
 
     const tryBuffer = () => {
-      const urls = SAMPLE_URLS[kind]
-      const url = urls[Math.floor(Math.random() * urls.length)]
+      const voice = isKeyboardVoice(settings.keyboardVoice) ? settings.keyboardVoice : 'mechanical'
+      const url = sampleUrl(kind, voice)
       const key = `${kind}:${url}`
       const buf = this.buffers[key]
       if (!buf) return null
 
       const src = ctx.createBufferSource()
       src.buffer = buf
-      src.playbackRate.value = 0.98 + Math.random() * 0.06
+      src.playbackRate.value = 1
       src.connect(gain)
       const offsetSamples = attackOffsetSamples(buf.getChannelData(0))
       const offset = Math.min(offsetSamples / buf.sampleRate, Math.max(0, buf.duration - 0.02))
@@ -158,7 +176,7 @@ export class TypewriterAudio {
     }
 
     src.buffer = buffer
-    src.playbackRate.value = 0.98 + Math.random() * 0.06
+    src.playbackRate.value = 1
     src.connect(gain)
     src.start()
     arm(src, dur)

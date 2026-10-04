@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { usePreferences } from '@app/providers/PreferencesProvider'
+import { KEYBOARD_VOICE_CHOICES, typewriterAudio, type KeyboardVoice } from '@lib'
 import {
   AMBIENT_CATEGORY_LABELS,
   ambientCategoriesInTracks,
@@ -141,6 +142,19 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
 
   if (!open) return null
 
+  function chooseKeyboard(voice: KeyboardVoice) {
+    patchPrefs({ keyboardVoice: voice })
+    const preview = {
+      enabled: true,
+      volume: prefs.volume,
+      modeGain: 1,
+      keyboardVoice: voice,
+    }
+    void typewriterAudio.ensureReady().then(() => typewriterAudio.resume()).then(() => {
+      typewriterAudio.play('key', preview)
+    })
+  }
+
   return (
     <>
       {/* Backdrop */}
@@ -174,6 +188,28 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
             onChange={(v) => patchPrefs({ volume: v })}
             label="Keystroke volume"
           />
+          <div className="flex flex-col gap-1.5 py-1.5">
+            <span className="text-sm text-zinc-400">Keyboard</span>
+            <div className="grid grid-cols-2 gap-1" role="radiogroup" aria-label="Keyboard">
+              {KEYBOARD_VOICE_CHOICES.map((choice) => {
+                const selected = prefs.keyboardVoice === choice.id
+                return (
+                  <button
+                    key={choice.id}
+                    type="button"
+                    role="radio"
+                    aria-checked={selected}
+                    aria-label={`${choice.label}. ${choice.hint}`}
+                    onClick={() => chooseKeyboard(choice.id)}
+                    className={`rounded-lg px-2 py-1.5 text-left text-xs outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50 ${selected ? 'bg-zinc-700 text-zinc-100' : 'bg-zinc-800 text-zinc-400 hover:text-zinc-200'}`}
+                  >
+                    <span className="block">{choice.label}</span>
+                    <span className="block">{choice.hint}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
           <Toggle
             checked={prefs.bellOnCompletion}
             onChange={(v) => patchPrefs({ bellOnCompletion: v })}

@@ -19,6 +19,7 @@ class FakeBuffer {
   readonly length: number
   readonly sampleRate: number
   readonly duration: number
+  url = ''
   private readonly channels: Float32Array[]
 
   constructor(numberOfChannels: number, length: number, sampleRate: number) {
@@ -124,6 +125,7 @@ class FakeAudioContext {
     const url = bytesForUrl.get(bytes) ?? ''
     if (classify(url) === 'decode') throw new Error('decode failed')
     const buffer = new FakeBuffer(1, 44100, 44100)
+    buffer.url = url
     const data = buffer.getChannelData(0)
     if (url.endsWith('audio/key_1.wav')) data[data.length - 1] = 1
     else data[0] = 1
@@ -186,7 +188,7 @@ async function drain() {
   for (let i = 0; i < 10; i += 1) await Promise.resolve()
 }
 
-const sound = (over: Partial<{ enabled: boolean; volume: number; modeGain: number }> = {}) => ({
+const sound = (over: Partial<{ enabled: boolean; volume: number; modeGain: number; keyboardVoice: string }> = {}) => ({
   enabled: true,
   volume: 1,
   modeGain: 1,
@@ -229,8 +231,9 @@ describe('TypewriterAudio', () => {
     expect(context.created).toHaveLength(0)
     expect(context.resumeCalls).toBe(1)
     expect(context.sources[0]?.buffer?.length).toBe(44100)
-    expect(context.sources[0]?.startArgs?.offset).toBeCloseTo(0.98, 5)
-    expect(context.sources[0]?.playbackRate.value).toBeCloseTo(0.98, 5)
+    expect(context.sources[0]?.buffer?.url.endsWith('audio/key_3.wav')).toBe(true)
+    expect(context.sources[0]?.startArgs?.offset).toBe(0)
+    expect(context.sources[0]?.playbackRate.value).toBe(1)
     expect(context.sources[1]?.startArgs?.offset).toBe(0)
     expect(context.gains[0]?.gain.value).toBeCloseTo(1, 5)
     expect(context.gains[1]?.gain.value).toBeCloseTo(0.2, 5)
@@ -298,19 +301,33 @@ describe('TypewriterAudio', () => {
     },
   )
 
-  it('uses a loaded key sample and synthesizes when the chosen take is missing', async () => {
-    classify = (url) => (url.endsWith('audio/key_1.wav') || url.endsWith('audio/spacebar.wav') ? 'ok' : 'status')
+  it('locks a keyboard to one recording and synthesizes only when that file is missing', async () => {
+    classify = (url) => (url.endsWith('audio/key_3.wav') || url.endsWith('audio/key_1.wav') || url.endsWith('audio/spacebar.wav') ? 'ok' : 'status')
     const { audio } = await load()
     await audio.ensureReady()
 
     audio.play('key', sound())
-    expect(ctx().sources[0]?.buffer?.length).toBe(44100)
+    audio.play('key', sound())
+    const mechanical = ctx().sources[0]?.buffer
+    expect(mechanical?.url.endsWith('audio/key_3.wav')).toBe(true)
+    expect(ctx().sources[1]?.buffer).toBe(mechanical)
+    expect(ctx().sources[0]?.playbackRate.value).toBe(1)
+    expect(ctx().sources[1]?.playbackRate.value).toBe(1)
     expect(ctx().created).toHaveLength(0)
 
-    vi.spyOn(Math, 'random').mockReturnValueOnce(0.75).mockReturnValue(0)
-    audio.play('key', sound())
-    expect(ctx().created).toHaveLength(1)
+    audio.play('key', sound({ keyboardVoice: 'tick' }))
+    expect(ctx().sources[2]?.buffer?.url.endsWith('audio/key_1.wav')).toBe(true)
+    expect(ctx().sources[2]?.startArgs?.offset).toBeCloseTo(0.98, 5)
+    expect(ctx().sources[2]?.playbackRate.value).toBe(1)
+
+    audio.play('key', sound({ keyboardVoice: 'clicky' }))
+    audio.play('key', sound({ keyboardVoice: 'muted' }))
+    audio.play('key', sound({ keyboardVoice: 'electric' }))
+    expect(ctx().created).toHaveLength(2)
     expect(ctx().created[0]?.length).toBe(Math.floor(44100 * 0.03))
+    expect(ctx().created[1]?.length).toBe(Math.floor(44100 * 0.03))
+    expect(ctx().sources[5]?.buffer).toBe(mechanical)
+    expect(ctx().created).toHaveLength(2)
   })
 
   it('shares one preload when ensureReady overlaps', async () => {

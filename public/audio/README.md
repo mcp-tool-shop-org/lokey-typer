@@ -1,13 +1,12 @@
-Place optional typewriter sound samples here.
+Letter recordings are four locked keyboards. The app preloads all four and plays only the one that was chosen. It does not rotate them.
 
-The app will try to preload these files:
-- key_1.wav, key_2.wav, key_3.wav, key_4.wav
-- spacebar.wav
-- backspace.wav
-- return_bell.wav
-- error.wav
+- key_3.wav — Mechanical, the default. Rich, old switch.
+- key_2.wav — Clicky. Bright snap.
+- key_1.wav — Tick. Short click.
+- key_4.wav — Muted. Quiet strike.
+- spacebar.wav, backspace.wav, return_bell.wav, and error.wav are shared by every keyboard.
 
-If files are missing, the app uses a low-latency synthesized fallback (Web Audio) so sound still works.
+If a file is missing, that one sound uses a short synthesized fallback.
 
 ## Ambient tracks
 

@@ -42,6 +42,7 @@ Personal bests are recorded only when your accuracy is 95% or above. This encour
 Open the settings panel from any mode page to adjust:
 
 - **Sound** -- Toggle keystroke audio on or off. Adjust volume.
+- **Keyboard** -- Choose the keybed. Mechanical is the default: a rich, old switch. Clicky, Tick, and Muted are the other recordings. The choice stays until you change it.
 - **Ambient sound** -- Enable or disable ambient soundscapes. Settings lists a category only when the catalog has a track for it. Campfire, café, and night stay hidden until a track arrives. Adjust ambient volume separately.
 - **Font scale** -- Choose 90%, 100%, or 110% text size.
 - **Live WPM** -- Show or hide the live WPM counter per mode.

@@ -519,6 +519,7 @@ describe('audio settings', () => {
     expect(saved.ambientVolume).toBeCloseTo(0.8)
     expect(saved.ambientCategory).toBe('rain')
     expect(saved.soundEnabled).toBe(false)
+    expect(saved.keyboardVoice).toBe('mechanical')
     expect(saved.bellOnCompletion).toBe(false)
     expect(saved.ambientPauseOnTyping).toBe(true)
     expect(saved.fontScale).toBe(1.1)
@@ -538,6 +539,36 @@ describe('audio settings', () => {
     expect(loadPreferences().fontScale).toBe(0.9)
     await user.click(within(dialog).getByRole('button', { name: 'Close' }))
     expect(screen.queryByRole('dialog')).toBeNull()
+  })
+
+  it('keeps the chosen keyboard and previews that voice', async () => {
+    const user = setupUser()
+    renderApp()
+    await user.click(screen.getByRole('button', { name: 'Settings' }))
+    const dialog = await screen.findByRole('dialog', { name: 'Settings' })
+    expect(within(dialog).getByRole('radio', { name: 'Mechanical. Rich, old switch' }).getAttribute('aria-checked')).toBe('true')
+    expect(loadPreferences().keyboardVoice).toBe('mechanical')
+
+    await user.click(within(dialog).getByRole('radio', { name: 'Clicky. Bright snap' }))
+    expect(loadPreferences().keyboardVoice).toBe('clicky')
+    await waitFor(() =>
+      expect(mocks.typewriterAudio.play).toHaveBeenCalledWith(
+        'key',
+        expect.objectContaining({ keyboardVoice: 'clicky', enabled: true }),
+      ),
+    )
+    expect(within(dialog).getByRole('radio', { name: 'Clicky. Bright snap' }).getAttribute('aria-checked')).toBe('true')
+
+    await user.click(within(dialog).getByRole('button', { name: 'Close' }))
+    await user.click(screen.getByRole('button', { name: 'Settings' }))
+    const again = await screen.findByRole('dialog', { name: 'Settings' })
+    expect(within(again).getByRole('radio', { name: 'Clicky. Bright snap' }).getAttribute('aria-checked')).toBe('true')
+    await user.click(within(again).getByRole('radio', { name: 'Tick. Short click' }))
+    expect(loadPreferences().keyboardVoice).toBe('tick')
+    await user.click(within(again).getByRole('radio', { name: 'Muted. Quiet strike' }))
+    expect(loadPreferences().keyboardVoice).toBe('muted')
+    await user.click(within(again).getByRole('radio', { name: 'Mechanical. Rich, old switch' }))
+    expect(loadPreferences().keyboardVoice).toBe('mechanical')
   })
 
   it('lists a category only after a track exists and closes from the backdrop', async () => {

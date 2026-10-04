@@ -9,6 +9,7 @@ export * from '../typingMetrics'
 
 export { ambientPlayer } from '../ambient'
 export { typewriterAudio } from '../audio'
+export { KEYBOARD_VOICE_CHOICES, type KeyboardVoice } from '../keyboardVoice'
 
 export { isTemplateExercise, renderTemplateExercise } from '../templateRender'
 

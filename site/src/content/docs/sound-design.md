@@ -31,7 +31,7 @@ The tracks are non-rhythmic. They are not music. If you forget the sound is ther
 
 ## Typewriter keystrokes
 
-Optional mechanical typewriter keystroke audio is available. It is mixed to never compete with ambient sound and never reacts to your typing rhythm.
+Optional mechanical typewriter keystroke audio is available. It is mixed to never compete with ambient sound and never reacts to your typing rhythm. The letter strike is the keyboard you picked, and it does not change from key to key. Mechanical is the default.
 
 ## Accessibility
 

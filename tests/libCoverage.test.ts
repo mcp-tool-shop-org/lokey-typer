@@ -965,6 +965,7 @@ describe('preference and run storage', () => {
     expect(broken.competitiveGhostEnabled).toBe(false)
     expect(broken.ambientPauseOnTyping).toBe(true)
     expect(broken.showLiveWpm.focus).toBe(true)
+    expect(broken.keyboardVoice).toBe('mechanical')
 
     const edged = sanitizePreferences({
       fontScale: 0.9,
@@ -984,6 +985,12 @@ describe('preference and run storage', () => {
     expect(sanitizePreferences(null).volume).toBe(0.5)
     expect(sanitizePreferences(undefined).ambientCategory).toBe('all')
     expect(sanitizePreferences({ volume: undefined, ambientVolume: undefined }).volume).toBe(0.5)
+    expect(sanitizePreferences(null).keyboardVoice).toBe('mechanical')
+    expect(sanitizePreferences({ keyboardVoice: 'nope' as Preferences['keyboardVoice'], volume: 0.2 })).toMatchObject({
+      keyboardVoice: 'mechanical',
+      volume: 0.2,
+    })
+    expect(sanitizePreferences({ keyboardVoice: 'tick', volume: 0.2 }).keyboardVoice).toBe('tick')
   })
 
   it('repairs a bad live document without touching the backup, and restores from the backup', () => {

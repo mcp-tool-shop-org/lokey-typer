@@ -306,6 +306,7 @@ export function TypingSession(props: {
         enabled: props.prefs.soundEnabled,
         volume: props.prefs.volume,
         modeGain: props.mode === 'focus' ? 0.7 : props.mode === 'competitive' ? 1.0 : 0.85,
+        keyboardVoice: props.prefs.keyboardVoice,
       })
     }
 
@@ -325,6 +326,7 @@ export function TypingSession(props: {
     props.exercise,
     props.mode,
     props.prefs.bellOnCompletion,
+    props.prefs.keyboardVoice,
     props.prefs.soundEnabled,
     props.prefs.volume,
     props.onComplete,
@@ -512,49 +514,35 @@ export function TypingSession(props: {
             noteTypingActivity()
 
             const modeGain = props.mode === 'focus' ? 0.7 : props.mode === 'competitive' ? 1.0 : 0.85
+            const stroke = (volume = props.prefs.volume) => ({
+              enabled: props.prefs.soundEnabled,
+              volume,
+              modeGain,
+              keyboardVoice: props.prefs.keyboardVoice,
+            })
 
             if (e.key === 'Backspace') {
               setBackspaces((v) => v + 1)
-              typewriterAudio.play('backspace', {
-                enabled: props.prefs.soundEnabled,
-                volume: props.prefs.volume,
-                modeGain,
-              })
+              typewriterAudio.play('backspace', stroke())
               return
             }
 
             if (e.key === ' ') {
-              typewriterAudio.play('spacebar', {
-                enabled: props.prefs.soundEnabled,
-                volume: props.prefs.volume,
-                modeGain,
-              })
+              typewriterAudio.play('spacebar', stroke())
               return
             }
 
             if (e.key === 'Enter') {
-              typewriterAudio.play('key', {
-                enabled: props.prefs.soundEnabled,
-                volume: props.prefs.volume,
-                modeGain,
-              })
+              typewriterAudio.play('key', stroke())
               return
             }
 
             if (e.key.length === 1) {
               const expected = targetText[typed.length] ?? null
               if (expected != null && e.key !== expected) {
-                typewriterAudio.play('error', {
-                  enabled: props.prefs.soundEnabled,
-                  volume: props.prefs.volume * 0.6,
-                  modeGain,
-                })
+                typewriterAudio.play('error', stroke(props.prefs.volume * 0.6))
               } else {
-                typewriterAudio.play('key', {
-                  enabled: props.prefs.soundEnabled,
-                  volume: props.prefs.volume,
-                  modeGain,
-                })
+                typewriterAudio.play('key', stroke())
               }
             }
           }}

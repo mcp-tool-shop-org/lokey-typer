@@ -1,12 +1,14 @@
 import type { Mode } from '@content'
 import { enforceAccessibilityLocks } from './effectivePrefs'
 import { AMBIENT_CATEGORIES, type AmbientCategory } from './ambientManifest'
+import { isKeyboardVoice, type KeyboardVoice } from './keyboardVoice'
 
 export type SprintDurationMs = 30_000 | 60_000 | 120_000
 
 export type Preferences = {
   soundEnabled: boolean
   volume: number // 0..1
+  keyboardVoice: KeyboardVoice
   bellOnCompletion: boolean
   ambientEnabled: boolean
   ambientCategory: AmbientCategory | 'all'
@@ -109,6 +111,7 @@ function ensureStorageKeysMigrated() {
 const DEFAULT_PREFS: Preferences = {
   soundEnabled: true,
   volume: 0.5,
+  keyboardVoice: 'mechanical',
   bellOnCompletion: true,
   ambientEnabled: true,
   ambientCategory: 'all',
@@ -146,6 +149,8 @@ export function sanitizePreferences(input: Partial<Preferences> | null | undefin
 
   merged.volume = clamp(Number(merged.volume), 0, 1)
   if (!Number.isFinite(merged.volume)) merged.volume = DEFAULT_PREFS.volume
+
+  if (!isKeyboardVoice(merged.keyboardVoice)) merged.keyboardVoice = DEFAULT_PREFS.keyboardVoice
 
   merged.ambientVolume = clamp(Number(merged.ambientVolume), 0, 1)
   if (!Number.isFinite(merged.ambientVolume)) merged.ambientVolume = DEFAULT_PREFS.ambientVolume
@@ -489,6 +494,7 @@ function isWellFormedPreferences(input: Partial<Preferences>): boolean {
   const keys: (keyof Preferences)[] = [
     'soundEnabled',
     'volume',
+    'keyboardVoice',
     'bellOnCompletion',
     'ambientEnabled',
     'ambientCategory',

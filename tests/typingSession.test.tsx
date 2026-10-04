@@ -397,7 +397,12 @@ describe('TypingSession', () => {
     fireEvent.keyDown(input, { key: 'a', metaKey: true })
     fireEvent.keyDown(input, { key: 'a', altKey: true })
 
-    expect(play).toHaveBeenCalledWith('key', expect.objectContaining({ modeGain: 0.7, volume: 0.5 }))
+    expect(play).toHaveBeenCalledWith('key', expect.objectContaining({ modeGain: 0.7, volume: 0.5, keyboardVoice: 'mechanical' }))
+    const letterStrikes = play.mock.calls.filter((call) => call[0] === 'key')
+    expect(letterStrikes.length).toBeGreaterThan(1)
+    for (const call of letterStrikes) {
+      expect(call[1]).toEqual(expect.objectContaining({ keyboardVoice: 'mechanical' }))
+    }
     expect(play).toHaveBeenCalledWith('error', expect.objectContaining({ modeGain: 0.7, volume: 0.3 }))
     expect(play).toHaveBeenCalledWith('spacebar', expect.objectContaining({ modeGain: 0.7 }))
     expect(play).toHaveBeenCalledWith('key', expect.objectContaining({ modeGain: 0.7 }))
@@ -409,6 +414,16 @@ describe('TypingSession', () => {
     fireEvent.keyDown(competitive.input, { key: 'a' })
     expect(play).toHaveBeenCalledWith('key', expect.objectContaining({ modeGain: 1 }))
     expect(screen.getByText(/Personal bests require/)).toBeTruthy()
+  })
+
+  it('keeps the saved keyboard on every letter', () => {
+    const { input } = renderSession({ targetText: 'ab', prefs: { keyboardVoice: 'clicky' } })
+    fireEvent.keyDown(input, { key: 'a' })
+    fireEvent.keyDown(input, { key: 'Enter' })
+    const letterStrikes = play.mock.calls.filter((call) => call[0] === 'key')
+    expect(letterStrikes).toHaveLength(2)
+    expect(letterStrikes[0]?.[1]).toEqual(expect.objectContaining({ keyboardVoice: 'clicky' }))
+    expect(letterStrikes[1]?.[1]).toEqual(expect.objectContaining({ keyboardVoice: 'clicky' }))
   })
 
   it('exits on Escape and restarts from the button without reloading', async () => {

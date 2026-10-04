@@ -66,6 +66,21 @@ describe('preference backup', () => {
     expect(JSON.parse(store.get(LKG) ?? '{}').volume).toBe(0.25)
     expect(JSON.parse(store.get(KEY) ?? '{}').volume).toBe(1)
   })
+
+  it('fills a missing keyboard with the mechanical voice and leaves the backup', () => {
+    savePreferences(sanitizePreferences({ volume: 0.25, keyboardVoice: 'clicky' }))
+    const live = JSON.parse(store.get(KEY) ?? '{}') as { keyboardVoice?: string; volume: number }
+    delete live.keyboardVoice
+    store.set(KEY, JSON.stringify(live))
+
+    const loaded = loadPreferences()
+
+    expect(loaded.keyboardVoice).toBe('mechanical')
+    expect(loaded.volume).toBe(0.25)
+    expect(JSON.parse(store.get(LKG) ?? '{}').keyboardVoice).toBe('clicky')
+    expect(JSON.parse(store.get(LKG) ?? '{}').volume).toBe(0.25)
+    expect(JSON.parse(store.get(KEY) ?? '{}').keyboardVoice).toBe('mechanical')
+  })
 })
 
 describe('accessibility locks', () => {
