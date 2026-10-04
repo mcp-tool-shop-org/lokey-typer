@@ -25,11 +25,15 @@ from pathlib import Path
 import librosa
 import numpy as np
 
+CENTROID_CAP = 1500.0
+HIGH_CAP = 0.20
+LOW_CAP = 0.15
 
-def analyze(path: Path) -> dict[str, float]:
+
+def analyze(path: Path) -> dict[str, float] | None:
     y, sr = librosa.load(path, sr=None, mono=True)
     if y.size == 0:
-        return {"centroid": 0.0, "high_ratio": 0.0, "low_ratio": 0.0}
+        return None
 
     S = np.abs(librosa.stft(y))
     freqs = librosa.fft_frequencies(sr=sr)
@@ -58,29 +62,42 @@ def main(folder: str) -> int:
 
     wavs = sorted(root.rglob("*.wav"))
     if not wavs:
-        print("FAIL no .wav files found")
+        print(f"FAIL no .wav files found in {root}")
         return 1
 
     failed = False
 
     for wav in wavs:
         r = analyze(wav)
+        if r is None:
+            failed = True
+            print(
+                f"FAIL {wav.as_posix()}: empty buffer. "
+                "The stem was not measured, so it is not inside the harsh-highs or low-rumble caps."
+            )
+            continue
+
         problems = []
 
-        if r["centroid"] > 1500:
-            problems.append(f"centroid {r['centroid']:.0f}Hz")
+        if r["centroid"] > CENTROID_CAP:
+            problems.append("harsh highs")
 
-        if r["high_ratio"] > 0.20:
-            problems.append(f">4kHz {r['high_ratio'] * 100:.1f}%")
+        if r["high_ratio"] > HIGH_CAP:
+            problems.append("harsh highs")
 
-        if r["low_ratio"] > 0.15:
-            problems.append(f"<80Hz {r['low_ratio'] * 100:.1f}%")
+        if r["low_ratio"] > LOW_CAP:
+            problems.append("low rumble")
 
+        report = (
+            f"centroid {r['centroid']:.0f} Hz (cap {CENTROID_CAP:.0f} Hz, harsh highs), "
+            f">4 kHz {r['high_ratio']:.2f} (cap {HIGH_CAP:.2f}, harsh highs), "
+            f"<80 Hz {r['low_ratio']:.2f} (cap {LOW_CAP:.2f}, low rumble)"
+        )
         if problems:
             failed = True
-            print(f"FAIL {wav.as_posix()}: {', '.join(problems)}")
+            print(f"FAIL {wav.as_posix()}: {report}")
         else:
-            print(f"OK   {wav.as_posix()}")
+            print(f"OK   {wav.as_posix()}: {report}")
 
     return 1 if failed else 0
 

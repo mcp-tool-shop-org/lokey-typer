@@ -23,7 +23,7 @@
 
 ## B. Error Handling
 
-- [x] `[all]` Errors follow the Structured Error Shape: `code`, `message`, `hint`, `cause?`, `retryable?` (2026-02-27)
+- [ ] `[all]` Errors follow the Structured Error Shape: `code`, `message`, `hint`, `cause?`, `retryable?` (unchecked 2026-10-04 — the app does not use that shape)
 - [ ] `[cli]` SKIP: not a CLI tool
 - [ ] `[cli]` SKIP: not a CLI tool
 - [ ] `[mcp]` SKIP: not an MCP server
@@ -43,7 +43,7 @@
 
 ## D. Shipping Hygiene
 
-- [x] `[all]` `verify` script exists (test + build + smoke in one command) (2026-02-27) — `npm run build`
+- [ ] `[all]` `verify` script exists (test + build + smoke in one command) (unchecked 2026-10-04 — there is no verify script)
 - [x] `[all]` Version in manifest matches git tag (2026-02-27)
 - [x] `[all]` Dependency scanning runs in CI (ecosystem-appropriate) (2026-02-27)
 - [x] `[all]` Automated dependency update mechanism exists (2026-02-27)

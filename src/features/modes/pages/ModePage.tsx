@@ -5,6 +5,7 @@ import {
   getOrCreateUserId,
   getPoolStatus,
   loadSkillModel,
+  modeLabel,
   pickNextExercise,
   saveLastMode,
   topCompetitiveRuns,
@@ -13,6 +14,7 @@ import {
 } from '@lib'
 import { usePreferences } from '@app'
 import { Icon } from '@app/components/Icon'
+import { useDocumentTitle } from '@app/useDocumentTitle'
 import { TypingSession } from '@features/typing'
 
 const SPRINT_LENGTHS = [30_000, 60_000, 120_000] as const
@@ -30,6 +32,27 @@ function otherLengthsLine(durations: readonly SprintDurationMs[]): string | null
   return `${names[0]} and ${names[1]} have runs.`
 }
 
+function startFailureCopy(err: unknown): string {
+  const message = err instanceof Error ? err.message : ''
+  if (
+    message === 'No screen-reader-safe exercise for this mode' ||
+    message.startsWith('No exercises available for mode')
+  ) {
+    return 'No exercise is available for this mode. Try again, or switch mode.'
+  }
+  return 'Couldn\u2019t load an exercise. Try again.'
+}
+
+function StartError({ message }: { message: string | null }) {
+  if (!message) return null
+  return (
+    <div role="status" className="flex items-center gap-3 rounded-2xl bg-rose-950/40 px-5 py-4 text-sm text-rose-400">
+      <Icon name="info" size={16} className="shrink-0" />
+      {message}
+    </div>
+  )
+}
+
 function EmptyBoard({ selectedMs }: { selectedMs: SprintDurationMs }) {
   const other = otherLengthsLine(otherLengthsWithRuns(selectedMs))
   return (
@@ -44,7 +67,7 @@ function EmptyBoard({ selectedMs }: { selectedMs: SprintDurationMs }) {
 
 export function ModePage({ mode }: { mode: Mode }) {
   const [search, setSearch] = useSearchParams()
-  const { prefs, setPrefs } = usePreferences()
+  const { prefs, setPrefs, patchPrefs } = usePreferences()
   const userId = useMemo(() => getOrCreateUserId(), [])
 
   // Session state
@@ -74,9 +97,13 @@ export function ModePage({ mode }: { mode: Mode }) {
       setSessionKey((k) => k + 1)
     } catch (err) {
       console.error('[ModePage] startSession failed:', err)
-      setStartError('Couldn\u2019t load an exercise. Try refreshing the page.')
+      setStartError(startFailureCopy(err))
     }
   }, [mode, userId, prefs])
+
+  useDocumentTitle(
+    session ? `${session.exercise.title} — LoKey Typer` : `${modeLabel(mode)} — LoKey Typer`,
+  )
 
   // Handle ?autostart=<timestamp> from HomePage.
   // HomePage sends a unique timestamp each click, so we can detect re-navigation.
@@ -108,6 +135,7 @@ export function ModePage({ mode }: { mode: Mode }) {
 
     return (
       <div className="mx-auto max-w-3xl space-y-14">
+        <StartError message={startError} />
         <TypingSession
           key={`${session.exercise.id}-${sessionKey}`}
           mode={mode}
@@ -141,6 +169,7 @@ export function ModePage({ mode }: { mode: Mode }) {
 
   return (
     <div className="mx-auto max-w-3xl space-y-14">
+      <h1 className="text-center text-xl font-semibold tracking-tight text-zinc-100">{modeLabel(mode)}</h1>
       {/* CTA — same position as every other tab */}
       <div className="text-center">
         <button
@@ -158,13 +187,7 @@ export function ModePage({ mode }: { mode: Mode }) {
         </div>
       </div>
 
-      {/* Error banner */}
-      {startError ? (
-        <div className="flex items-center gap-3 rounded-2xl bg-rose-950/40 px-5 py-4 text-sm text-rose-400">
-          <Icon name="info" size={16} className="shrink-0" />
-          {startError}
-        </div>
-      ) : null}
+      <StartError message={startError} />
 
       {/* Competitive: inline sprint config */}
       {mode === 'competitive' ? (
@@ -175,12 +198,13 @@ export function ModePage({ mode }: { mode: Mode }) {
                 <Icon name="timer" size={14} className="shrink-0 text-zinc-500" />
                 Sprint duration
               </div>
-              <div className="mt-2 flex gap-2">
+              <div className="mt-2 flex gap-2" role="group" aria-label="Sprint duration">
                 {([30_000, 60_000, 120_000] as const).map((d) => (
                   <button
                     key={d}
                     type="button"
-                    onClick={() => setPrefs({ ...prefs, competitiveSprintDurationMs: d as SprintDurationMs })}
+                    aria-pressed={sprintDurationMs === d}
+                    onClick={() => patchPrefs({ competitiveSprintDurationMs: d as SprintDurationMs })}
                     className={
                       'min-h-10 rounded-full border px-4 py-2.5 text-sm font-semibold outline-none transition-all duration-150 hover:scale-[1.02] active:scale-95 focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ' +
                       (sprintDurationMs === d

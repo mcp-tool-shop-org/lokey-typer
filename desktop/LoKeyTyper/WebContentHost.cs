@@ -25,13 +25,16 @@ public readonly record struct NavigationOutcome(
     bool Unsubscribe,
     bool CollapseSplash,
     bool FallbackPanelRequired,
-    string? Subtitle);
+    string? Subtitle,
+    string? Detail);
 
 public readonly record struct LaunchPanel(
     string Title,
     string Guidance,
     string Detail,
     bool PointsAtRuntimeDownload);
+
+public readonly record struct ExternalLaunchNotice(bool StayOnPage, string? Message);
 
 public static class WebContentHost
 {
@@ -43,6 +46,26 @@ public static class WebContentHost
     /// </summary>
     public const string UnregisterWorkersScript =
         "navigator.serviceWorker&&navigator.serviceWorker.getRegistrations().then(function(list){list.forEach(function(registration){registration.unregister()})})";
+
+    public const string SplashRetryLead =
+        "Try again reloads LoKey Typer. If it fails again, reinstall the app.";
+
+    public const string WebView2DownloadPage =
+        "https://developer.microsoft.com/en-us/microsoft-edge/webview2/";
+
+    public const string RuntimeNextStep =
+        "Install the WebView2 Runtime, then reopen LoKey Typer.";
+
+    public const string LaunchNextStep =
+        "Reinstall LoKey Typer, or try the launch again.";
+
+    public static string ExternalLinkNotice(string address) =>
+        "The link could not be opened. " + address;
+
+    public static ExternalLaunchNotice DescribeExternalLaunch(bool opened, string address) =>
+        opened
+            ? new ExternalLaunchNotice(true, null)
+            : new ExternalLaunchNotice(true, ExternalLinkNotice(address));
 
     public static QuietBrowser QuietBrowserSettings() => new(
         AcceleratorKeys: false,
@@ -153,24 +176,21 @@ public static class WebContentHost
     {
         // WebView2 uses 0 when it has no code. Only 400 and above fails the document.
         if (httpStatus >= 400)
-        {
-            return new NavigationOutcome(
-                false,
-                false,
-                true,
-                "The page did not load. HTTP " + httpStatus);
-        }
+            return FailedNavigation("HTTP " + httpStatus);
 
         if (isSuccess)
-            return new NavigationOutcome(true, true, false, null);
+            return new NavigationOutcome(true, true, false, null, null);
 
         var status = string.IsNullOrWhiteSpace(webErrorStatus) ? "Unknown" : webErrorStatus.Trim();
-        return new NavigationOutcome(
-            false,
-            false,
-            true,
-            "The page did not load. " + status);
+        return FailedNavigation(status);
     }
+
+    private static NavigationOutcome FailedNavigation(string detail) => new(
+        false,
+        false,
+        true,
+        SplashRetryLead,
+        detail);
 
     public static LaunchPanel DescribeLaunchFailure(string? exceptionTypeName, string? message)
     {
@@ -180,15 +200,15 @@ public static class WebContentHost
         {
             return new LaunchPanel(
                 "WebView2 Runtime Required",
-                "Please install the Microsoft Edge WebView2 Runtime from:\nhttps://developer.microsoft.com/en-us/microsoft-edge/webview2/",
+                RuntimeNextStep,
                 detail,
                 true);
         }
 
         return new LaunchPanel(
             "LoKey Typer could not start",
+            LaunchNextStep,
             detail,
-            typeName,
             false);
     }
 

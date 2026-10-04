@@ -66,6 +66,8 @@ export type DailyItemResult = {
   accuracy: number
   durationMs: number
   completedAt: number
+  exerciseId?: string
+  skipped?: boolean
 }
 
 export type DailyProgress = {
@@ -134,6 +136,28 @@ function getCachedDailySet(params: {
   } catch {
     return null
   }
+}
+
+function cachedDailySetUsable(set: DailySet, screenReaderMode: boolean): boolean {
+  if (!screenReaderMode) return true
+  return (
+    set.items.length > 0 &&
+    set.items.every((item) => {
+      const exercise = findExercise(item.exerciseId)
+      return exercise != null && isScreenReaderSafePassage(exercise)
+    })
+  )
+}
+
+/** Tagged results count only for their exercise. A rebuilt set does not inherit another passage. */
+export function dailyResumeIndex(items: DailySetItem[], results: DailyItemResult[]): number {
+  if (results.length === 0) return 0
+  const tagged = results.every((result) => typeof result.exerciseId === 'string' && result.exerciseId.length > 0)
+  if (!tagged) return results.length
+  const done = new Set(results.map((result) => result.exerciseId))
+  let index = 0
+  while (index < items.length && done.has(items[index]?.exerciseId)) index += 1
+  return index
 }
 
 function dailySetDate(key: string): string | null {
@@ -316,7 +340,7 @@ export function generateDailySet(params: {
     sessionType: params.sessionType,
     screenReaderMode,
   })
-  if (cached) return cached
+  if (cached && cachedDailySetUsable(cached, screenReaderMode)) return cached
 
   const seedStr = screenReaderMode
     ? `${params.userId}|${dateKey}|${params.sessionType}|sr`
@@ -496,6 +520,8 @@ export function loadDailyProgress(
     if (legacyRaw == null) return null
     const legacy = readDailyProgress(legacyRaw)
     if (!legacy || !progressMatches(legacy, dateKey, userId, sessionType)) return null
+    // Screen reader progress is its own ritual. Do not copy the plain blob onto it, and do not delete it.
+    if (screenReaderMode) return null
     localStorage.setItem(key, legacyRaw)
     localStorage.removeItem(LEGACY_DAILY_PROGRESS_KEY)
     return legacy

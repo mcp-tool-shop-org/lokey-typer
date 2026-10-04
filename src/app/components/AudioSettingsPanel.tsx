@@ -82,14 +82,30 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
   const { prefs, patchPrefs, preferenceStatus } = usePreferences()
   const panelRef = useRef<HTMLDivElement>(null)
   const [offeredCategories, setOfferedCategories] = useState<AmbientCategory[] | null>(null)
+  const [categoryLoad, setCategoryLoad] = useState<'loading' | 'ready' | 'failed'>('loading')
+  const wasOpen = useRef(false)
+  if (wasOpen.current !== open) {
+    wasOpen.current = open
+    if (open) setCategoryLoad('loading')
+  }
 
   useEffect(() => {
     if (!open) return
     let cancelled = false
-    void fetchAmbientManifest().then((manifest) => {
-      if (cancelled || !manifest) return
-      setOfferedCategories(ambientCategoriesInTracks(manifest.tracks))
-    })
+    setCategoryLoad('loading')
+    void fetchAmbientManifest()
+      .then((manifest) => {
+        if (cancelled) return
+        if (!manifest) {
+          setCategoryLoad('failed')
+          return
+        }
+        setOfferedCategories(ambientCategoriesInTracks(manifest.tracks))
+        setCategoryLoad('ready')
+      })
+      .catch(() => {
+        if (!cancelled) setCategoryLoad('failed')
+      })
     return () => {
       cancelled = true
     }
@@ -237,26 +253,39 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
             onChange={(v) => patchPrefs({ ambientVolume: v })}
             label="Ambient volume"
           />
-          <label className="flex flex-col gap-1.5 py-1.5">
+          <div className="flex flex-col gap-1.5 py-1.5">
             <span className="text-sm text-zinc-400">Category</span>
-            <select
-              value={
-                prefs.ambientCategory === 'all' || (offeredCategories ?? []).includes(prefs.ambientCategory)
-                  ? prefs.ambientCategory
-                  : 'all'
-              }
-              onChange={(e) => patchPrefs({ ambientCategory: e.target.value as AmbientCategory | 'all' })}
-              className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50"
-              aria-label="Ambient category"
-            >
-              <option value="all">All categories</option>
-              {(offeredCategories ?? []).map((cat) => (
-                <option key={cat} value={cat}>
-                  {AMBIENT_CATEGORY_LABELS[cat]}
-                </option>
-              ))}
-            </select>
-          </label>
+            {categoryLoad === 'loading' ? (
+              <p className="text-sm text-zinc-300">Loading categories</p>
+            ) : categoryLoad === 'failed' ? (
+              <>
+                <p className="text-sm text-zinc-200">
+                  {prefs.ambientCategory === 'all' ? 'All categories' : AMBIENT_CATEGORY_LABELS[prefs.ambientCategory]}
+                </p>
+                <p className="text-xs leading-relaxed text-zinc-300">
+                  The category list did not load. Close settings and open it again to try.
+                </p>
+              </>
+            ) : (
+              <select
+                value={
+                  prefs.ambientCategory === 'all' || (offeredCategories ?? []).includes(prefs.ambientCategory)
+                    ? prefs.ambientCategory
+                    : 'all'
+                }
+                onChange={(e) => patchPrefs({ ambientCategory: e.target.value as AmbientCategory | 'all' })}
+                className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50"
+                aria-label="Ambient category"
+              >
+                <option value="all">All categories</option>
+                {(offeredCategories ?? []).map((cat) => (
+                  <option key={cat} value={cat}>
+                    {AMBIENT_CATEGORY_LABELS[cat]}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
           <Toggle
             checked={prefs.ambientPauseOnTyping}
             onChange={(v) => patchPrefs({ ambientPauseOnTyping: v })}

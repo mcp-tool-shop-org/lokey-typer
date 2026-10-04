@@ -11,6 +11,7 @@ import {
   saveLastMode,
 } from '@lib'
 import { Icon, type IconName } from '@app/components/Icon'
+import { useDocumentTitle } from '@app/useDocumentTitle'
 
 const MODES: Mode[] = ['focus', 'real_life', 'competitive']
 
@@ -41,6 +42,8 @@ export function HomePage() {
   const skill = useMemo(() => loadSkillModel(), [])
   const daysPracticed = useMemo(() => computeDaysPracticed(loadRuns()), [])
   const hasHistory = skill.total_runs > 0
+  const modeName = modeLabel(selectedMode)
+  useDocumentTitle('Home — LoKey Typer')
 
   function handleStart() {
     saveLastMode(selectedMode)
@@ -63,18 +66,21 @@ export function HomePage() {
         <button
           type="button"
           onClick={handleStart}
+          aria-label={`Start typing in ${modeName}`}
           className="group inline-flex items-center gap-2.5 rounded-2xl border border-zinc-700/50 bg-zinc-800/80 px-12 py-4 text-base font-semibold text-zinc-300 transition-all duration-150 hover:bg-zinc-700 hover:border-zinc-600 hover:scale-[1.01] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
         >
           <Icon name="play" size={20} className="text-slate-400 transition-transform duration-150 group-hover:translate-x-0.5" />
           Start typing
         </button>
         <div className="mt-3 text-xs text-zinc-400">
-          Starting in{' '}
-          <span className="font-medium text-zinc-300">{modeLabel(selectedMode)}</span>
+          <span aria-live="polite" className="text-zinc-400">
+            Starting in <span className="font-medium text-zinc-300">{modeName}</span>
+          </span>
           {' · '}
           <button
             type="button"
             onClick={cycleMode}
+            aria-label={`Change mode, currently ${modeName}`}
             className="rounded text-zinc-400 underline underline-offset-2 outline-none transition duration-150 hover:text-zinc-200 focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
           >
             change

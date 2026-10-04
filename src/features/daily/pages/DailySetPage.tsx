@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { findExercise } from '@content'
 import type { Exercise } from '@content'
 import {
+  dailyResumeIndex,
   generateDailySet,
   getOrCreateUserId,
   isTemplateExercise,
@@ -21,6 +22,7 @@ import {
 import { usePreferences } from '@app'
 import { Icon, type IconName } from '@app/components/Icon'
 import { keyboardPassage } from '@lib-internal/keyboardPassage'
+import { useDocumentTitle } from '@app/useDocumentTitle'
 import { TypingSession } from '@features/typing'
 
 // ---------------------------------------------------------------------------
@@ -125,6 +127,14 @@ function resolveExerciseText(exercise: Exercise, seed: string): string {
   return keyboardPassage(raw)
 }
 
+function resultForSlot(exerciseId: string, index: number, results: DailyItemResult[]) {
+  const byId = results.find((result) => result.exerciseId === exerciseId)
+  if (byId) return byId
+  const positional = results[index]
+  if (positional && !positional.exerciseId) return positional
+  return undefined
+}
+
 function formatDuration(ms: number): string {
   const totalSec = Math.round(ms / 1000)
   const min = Math.floor(totalSec / 60)
@@ -176,7 +186,7 @@ export function DailySetPage() {
   )
   const [seenIdentity, setSeenIdentity] = useState(progressIdentity)
 
-  const currentIndex = progress.completedItems.length
+  const currentIndex = dailyResumeIndex(daily.items, progress.completedItems)
   const isFinished = currentIndex >= daily.items.length
 
   const [progressSaveFailed, setProgressSaveFailed] = useState(false)
@@ -212,6 +222,9 @@ export function DailySetPage() {
 
   const currentItem = daily.items[currentIndex] ?? null
   const currentExercise = currentItem ? findExercise(currentItem.exerciseId) : null
+  useDocumentTitle(
+    phase === 'typing' && currentExercise ? `${currentExercise.title} — LoKey Typer` : 'Daily — LoKey Typer',
+  )
 
   // ---- Stats (for idle phase) ----
 
@@ -225,12 +238,14 @@ export function DailySetPage() {
   }, [])
 
   const handleComplete = useCallback(
-    (result: { wpm: number; accuracy: number; durationMs: number }) => {
+    (result: { wpm: number; accuracy: number; durationMs: number; skipped?: boolean }) => {
       const item: DailyItemResult = {
         wpm: result.wpm,
         accuracy: result.accuracy,
         durationMs: result.durationMs,
         completedAt: Date.now(),
+        ...(currentItem ? { exerciseId: currentItem.exerciseId } : {}),
+        ...(result.skipped ? { skipped: true } : {}),
       }
 
       const nextCompleted = [...progress.completedItems, item]
@@ -255,7 +270,7 @@ export function DailySetPage() {
         setPhase('transition')
       }
     },
-    [progress, daily.items.length, prefs.screenReaderMode],
+    [progress, daily.items.length, prefs.screenReaderMode, currentItem],
   )
 
   const handleExit = useCallback(() => {
@@ -371,7 +386,8 @@ export function DailySetPage() {
               {daily.items.map((it, idx) => {
                 const ex = findExercise(it.exerciseId)
                 if (!ex) return null
-                const done = idx < progress.completedItems.length
+                const done = idx < currentIndex
+                const result = resultForSlot(it.exerciseId, idx, progress.completedItems)
                 return (
                   <div
                     key={`${daily.dateKey}-${idx}`}
@@ -398,7 +414,7 @@ export function DailySetPage() {
                     </div>
                     {done ? (
                       <div className="text-xs tabular-nums text-zinc-500">
-                        {Math.round(progress.completedItems[idx].wpm)} wpm
+                        {result?.skipped ? 'Skipped' : `${Math.round(result?.wpm ?? 0)} wpm`}
                       </div>
                     ) : null}
                   </div>
@@ -422,8 +438,7 @@ export function DailySetPage() {
           <button
             type="button"
             onClick={() => {
-              // Skip this exercise and advance
-              handleComplete({ wpm: 0, accuracy: 0, durationMs: 0 })
+              handleComplete({ wpm: 0, accuracy: 0, durationMs: 0, skipped: true })
             }}
             className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-700/50 bg-zinc-800/80 px-5 py-2.5 text-sm font-semibold text-zinc-300 transition duration-150 hover:bg-zinc-700 hover:border-zinc-600 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
           >
@@ -483,10 +498,10 @@ export function DailySetPage() {
 
       {/* ---- SUMMARY PHASE ---- */}
       {phase === 'summary' ? (() => {
-        const items = progress.completedItems
-        const avgWpm = items.length > 0 ? Math.round(items.reduce((s, r) => s + r.wpm, 0) / items.length) : 0
-        const avgAccuracy = items.length > 0 ? items.reduce((s, r) => s + r.accuracy, 0) / items.length : 0
-        const totalMs = items.reduce((s, r) => s + r.durationMs, 0)
+        const typedItems = progress.completedItems.filter((result) => !result.skipped)
+        const avgWpm = typedItems.length > 0 ? Math.round(typedItems.reduce((s, r) => s + r.wpm, 0) / typedItems.length) : null
+        const avgAccuracy = typedItems.length > 0 ? typedItems.reduce((s, r) => s + r.accuracy, 0) / typedItems.length : null
+        const totalMs = typedItems.reduce((s, r) => s + r.durationMs, 0)
 
         return (
           <div ref={phaseRef} className="mx-auto max-w-3xl space-y-14 animate-fade-in">
@@ -497,12 +512,12 @@ export function DailySetPage() {
               <div className="mt-2 flex flex-wrap justify-center gap-6 text-sm">
                 <div>
                   <div className="text-xs font-medium text-zinc-400">Avg WPM</div>
-                  <div className="mt-1 text-2xl font-semibold leading-tight tabular-nums text-zinc-100">{avgWpm}</div>
+                  <div className="mt-1 text-2xl font-semibold leading-tight tabular-nums text-zinc-100">{avgWpm == null ? '\u2014' : avgWpm}</div>
                 </div>
                 <div>
                   <div className="text-xs font-medium text-zinc-400">Avg Accuracy</div>
                   <div className="mt-1 text-2xl font-semibold leading-tight tabular-nums text-zinc-100">
-                    {(avgAccuracy * 100).toFixed(1)}%
+                    {avgAccuracy == null ? '\u2014' : `${(avgAccuracy * 100).toFixed(1)}%`}
                   </div>
                 </div>
                 <div>
@@ -518,8 +533,8 @@ export function DailySetPage() {
               <div className="mt-5 grid gap-1.5">
                 {daily.items.map((it, idx) => {
                   const ex = findExercise(it.exerciseId)
-                  const result = items[idx]
-                  if (!ex || !result) return null
+                  const result = resultForSlot(it.exerciseId, idx, progress.completedItems)
+                  if (!result) return null
                   return (
                     <div
                       key={`summary-${idx}`}
@@ -533,12 +548,16 @@ export function DailySetPage() {
                           <Icon name={kindIcon(it.kind)} size={14} className="shrink-0 text-zinc-500" />
                           {kindLabel(it.kind)}
                         </div>
-                        <div className="mt-0.5 truncate text-sm text-zinc-300">{ex.title}</div>
+                        <div className="mt-0.5 truncate text-sm text-zinc-300">{ex?.title ?? it.exerciseId}</div>
                       </div>
-                      <div className="flex gap-4 text-xs tabular-nums text-zinc-400">
-                        <span>{Math.round(result.wpm)} wpm</span>
-                        <span>{(result.accuracy * 100).toFixed(1)}%</span>
-                      </div>
+                      {result.skipped ? (
+                        <div className="text-xs text-zinc-300">This exercise was not available and was skipped.</div>
+                      ) : (
+                        <div className="flex gap-4 text-xs tabular-nums text-zinc-400">
+                          <span>{Math.round(result.wpm)} wpm</span>
+                          <span>{(result.accuracy * 100).toFixed(1)}%</span>
+                        </div>
+                      )}
                     </div>
                   )
                 })}

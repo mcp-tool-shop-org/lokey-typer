@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { findExercise } from '../src/content/loadPacks'
-import { generateDailySet, loadDailyProgress, saveDailyProgress } from '../src/lib/dailySet'
+import { dailyResumeIndex, generateDailySet, loadDailyProgress, saveDailyProgress } from '../src/lib/dailySet'
 import { isScreenReaderSafePassage } from '../src/lib/passageShape'
 
 function installMemoryStorage() {
@@ -107,6 +107,88 @@ describe('daily progress', () => {
 
     const versionedKey = `lkt_daily_progress_v1|${legacy.userId}|${legacy.dateKey}|${legacy.sessionType}`
     expect(JSON.parse(store.get(versionedKey) ?? 'null')).toEqual(legacy)
+  })
+
+  it('leaves a matching legacy blob in place for screen reader mode', () => {
+    const legacy = {
+      dateKey: '2026-10-03',
+      userId: 'daily-legacy-sr',
+      sessionType: 'reset' as const,
+      completedItems: [{ wpm: 40, accuracy: 0.98, durationMs: 1000, completedAt: 1 }],
+      startedAt: 1,
+    }
+    store.set('lkt_daily_progress', JSON.stringify(legacy))
+
+    expect(loadDailyProgress(legacy.dateKey, legacy.userId, legacy.sessionType, true)).toBeNull()
+    expect(store.get('lkt_daily_progress')).toBe(JSON.stringify(legacy))
+    expect(store.has(`lkt_daily_progress_v1|${legacy.userId}|${legacy.dateKey}|${legacy.sessionType}|sr`)).toBe(
+      false,
+    )
+  })
+})
+
+describe('screen reader daily cache', () => {
+  let store: Map<string, string>
+
+  beforeEach(() => {
+    store = installMemoryStorage()
+  })
+
+  it('rebuilds a screen-reader cache that holds an unsafe item and keeps a plain sentinel', () => {
+    const userId = 'sr-cache-rebuild'
+    const dateKey = '2026-10-04'
+    const srKey = `lkt_daily_set_v1|${userId}|${dateKey}|mix|sr`
+    store.set(
+      srKey,
+      JSON.stringify({
+        dateKey,
+        userId,
+        sessionType: 'mix',
+        items: [{ kind: 'mix', mode: 'focus', exerciseId: 'not-a-real-exercise' }],
+      }),
+    )
+
+    const rebuilt = generateDailySet({ userId, dateKey, sessionType: 'mix', screenReaderMode: true })
+    expect(rebuilt.items.some((item) => item.exerciseId === 'not-a-real-exercise')).toBe(false)
+    for (const item of rebuilt.items) {
+      const exercise = findExercise(item.exerciseId)
+      expect(exercise && isScreenReaderSafePassage(exercise)).toBe(true)
+    }
+    expect(JSON.parse(store.get(srKey) ?? '{}').items).toEqual(rebuilt.items)
+
+    const plainKey = `lkt_daily_set_v1|${userId}|${dateKey}|reset`
+    const sentinel = {
+      dateKey,
+      userId,
+      sessionType: 'reset',
+      items: [{ kind: 'mix', mode: 'focus', exerciseId: 'sentinel-id' }],
+    }
+    store.set(plainKey, JSON.stringify(sentinel))
+    expect(
+      generateDailySet({ userId, dateKey, sessionType: 'reset', screenReaderMode: false }).items,
+    ).toEqual(sentinel.items)
+  })
+})
+
+describe('dailyResumeIndex', () => {
+  const items = [
+    { kind: 'mix' as const, mode: 'focus' as const, exerciseId: 'a' },
+    { kind: 'mix' as const, mode: 'focus' as const, exerciseId: 'b' },
+    { kind: 'mix' as const, mode: 'focus' as const, exerciseId: 'c' },
+  ]
+  const row = (exerciseId?: string) => ({
+    wpm: 1,
+    accuracy: 1,
+    durationMs: 1,
+    completedAt: 1,
+    ...(exerciseId ? { exerciseId } : {}),
+  })
+
+  it('walks tagged results by exercise and keeps an untagged list positional', () => {
+    expect(dailyResumeIndex(items, [])).toBe(0)
+    expect(dailyResumeIndex(items, [row(), row()])).toBe(2)
+    expect(dailyResumeIndex(items, [row('a'), row('c')])).toBe(1)
+    expect(dailyResumeIndex(items, [row('c'), row()])).toBe(2)
   })
 })
 

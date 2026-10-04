@@ -39,6 +39,7 @@ public static class WebContentHostTests
             FailedNavigationRequiresFallback();
             SuccessfulNavigationClearsSplash();
             LaunchTitleFollowsTheException();
+            ExternalLinkStaysOnThePage();
             QuietBrowserDropsChrome();
             StartupDropsAPackagedWorker();
             OpenInsideStreamsAPackageFile(root, outside);
@@ -148,20 +149,22 @@ public static class WebContentHostTests
         Check.That(outcome.FallbackPanelRequired, "failed navigation requires the fallback panel");
         Check.That(!outcome.Unsubscribe, "failed navigation keeps the completion handler");
         Check.That(!outcome.CollapseSplash, "failed navigation leaves the splash up");
-        Check.That(outcome.Subtitle == "The page did not load. ConnectionAborted",
-            "failed navigation includes WebErrorStatus");
+        Check.That(outcome.Subtitle == WebContentHost.SplashRetryLead,
+            "failed navigation leads with the retry sentence");
+        Check.That(outcome.Detail == "ConnectionAborted",
+            "failed navigation keeps WebErrorStatus as detail");
 
         var missing = WebContentHost.OnNavigationCompleted(true, "Unknown", 404);
         Check.That(missing.FallbackPanelRequired && !missing.Unsubscribe && !missing.CollapseSplash,
             "HTTP 404 requires the fallback panel");
-        Check.That(missing.Subtitle == "The page did not load. HTTP 404",
-            "HTTP 404 names the status");
+        Check.That(missing.Subtitle == WebContentHost.SplashRetryLead && missing.Detail == "HTTP 404",
+            "HTTP 404 names the status under the retry sentence");
 
         var broken = WebContentHost.OnNavigationCompleted(true, "Unknown", 500);
         Check.That(broken.FallbackPanelRequired && !broken.Unsubscribe && !broken.CollapseSplash,
             "HTTP 500 requires the fallback panel");
-        Check.That(broken.Subtitle == "The page did not load. HTTP 500",
-            "HTTP 500 names the status");
+        Check.That(broken.Subtitle == WebContentHost.SplashRetryLead && broken.Detail == "HTTP 500",
+            "HTTP 500 names the status under the retry sentence");
     }
 
     private static void SuccessfulNavigationClearsSplash()
@@ -170,8 +173,8 @@ public static class WebContentHostTests
         var succeeded = WebContentHost.OnNavigationCompleted(true, "Unknown", 0);
         var loaded = WebContentHost.OnNavigationCompleted(true, "Unknown", 200);
         Check.That(failed.FallbackPanelRequired && !failed.Unsubscribe, "a failure still listens");
-        Check.That(failed.Subtitle == "The page did not load. FileNotFound",
-            "a status of 0 keeps the WebErrorStatus subtitle");
+        Check.That(failed.Subtitle == WebContentHost.SplashRetryLead && failed.Detail == "FileNotFound",
+            "a status of 0 keeps WebErrorStatus as the secondary detail");
         Check.That(succeeded.Unsubscribe && succeeded.CollapseSplash && !succeeded.FallbackPanelRequired,
             "a later success clears the splash");
         Check.That(loaded.Unsubscribe && loaded.CollapseSplash && !loaded.FallbackPanelRequired,
@@ -185,18 +188,36 @@ public static class WebContentHostTests
             "Couldn't find a compatible WebView2 Runtime installation.");
         Check.That(missing.Title == "WebView2 Runtime Required", "missing runtime keeps the runtime title");
         Check.That(missing.PointsAtRuntimeDownload, "missing runtime points at the download");
+        Check.That(missing.Guidance == WebContentHost.RuntimeNextStep,
+            "missing runtime says to install it and reopen LoKey Typer");
+        Check.That(missing.Detail.Contains("compatible WebView2 Runtime", StringComparison.Ordinal),
+            "missing runtime keeps the exception as detail");
 
         var denied = WebContentHost.DescribeLaunchFailure("UnauthorizedAccessException", "Access is denied.");
         Check.That(denied.Title == "LoKey Typer could not start", "other failures do not say the runtime is required");
         Check.That(!denied.PointsAtRuntimeDownload, "other failures do not send the user to the runtime download");
-        Check.That(denied.Guidance == "Access is denied.", "other failures show the real message");
+        Check.That(denied.Guidance == WebContentHost.LaunchNextStep,
+            "other failures add a reinstall or try-again step");
+        Check.That(denied.Detail == "Access is denied.", "other failures keep the real message as detail");
 
         var folder = WebContentHost.DescribeLaunchFailure(
             "COMException",
             "The WebView2 user data folder could not be created.");
         Check.That(folder.Title == "LoKey Typer could not start", "a user-data failure is not a runtime title");
-        Check.That(folder.Guidance.Contains("user data folder", StringComparison.Ordinal),
-            "a user-data failure shows its own message");
+        Check.That(folder.Guidance == WebContentHost.LaunchNextStep, "a user-data failure still has a next step");
+        Check.That(folder.Detail.Contains("user data folder", StringComparison.Ordinal),
+            "a user-data failure keeps its own message as detail");
+    }
+
+    private static void ExternalLinkStaysOnThePage()
+    {
+        var opened = WebContentHost.DescribeExternalLaunch(true, "https://example.com/help");
+        Check.That(opened.StayOnPage && opened.Message is null, "a link that opens leaves no notice");
+
+        var blocked = WebContentHost.DescribeExternalLaunch(false, "https://example.com/help");
+        Check.That(blocked.StayOnPage, "a link that does not open stays on the page");
+        Check.That(blocked.Message == "The link could not be opened. https://example.com/help",
+            "a failed link names the address");
     }
 
     private static void QuietBrowserDropsChrome()

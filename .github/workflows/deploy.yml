@@ -41,7 +41,16 @@ jobs:
       - run: npm run validate:content
       - run: npm run qa:ambient:assets
       - run: npm run qa:sound-design
-      - run: npm test
+      - run: npm run test:coverage
+      - name: Audio loudness and spectrum
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/audio-venv"
+          "$RUNNER_TEMP/audio-venv/bin/pip" install -r scripts/audio/requirements.txt
+          "$RUNNER_TEMP/audio-venv/bin/python" scripts/audio/check_bed_policy.py public/audio/ambient
+          "$RUNNER_TEMP/audio-venv/bin/python" scripts/audio/check_loudness.py public/audio/ambient
+          "$RUNNER_TEMP/audio-venv/bin/python" scripts/audio/check_spectrum.py public/audio/ambient
       - run: npm run build
 
       - name: Build handbook

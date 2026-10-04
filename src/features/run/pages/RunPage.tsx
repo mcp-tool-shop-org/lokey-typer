@@ -14,6 +14,7 @@ import { Icon } from '@app/components/Icon'
 import { TypingSession } from '@features/typing'
 import { keyboardPassage } from '@lib-internal/keyboardPassage'
 import { competitiveMinLength, repeatPassage } from '@lib-internal/repeatPassage'
+import { useDocumentTitle } from '@app/useDocumentTitle'
 
 function modeHome(mode: Mode): string {
   if (mode === 'real_life') return '/real-life'
@@ -76,6 +77,8 @@ export function RunPage({ mode }: { mode: Mode }) {
     mode === 'competitive' && boardEpoch >= 0
       ? topCompetitiveRuns({ durationMs: sprintDurationMs ?? 60_000, limit: 3 })
       : []
+
+  useDocumentTitle(exercise ? `${exercise.title} — LoKey Typer` : 'Exercise not found — LoKey Typer')
 
   if (!exercise) {
     return (

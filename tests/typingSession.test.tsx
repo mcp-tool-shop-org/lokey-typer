@@ -292,14 +292,17 @@ describe('TypingSession', () => {
     fireEvent.input(input, { target: { value: `aSlow is smooth; smooth is fast.` } })
     expect(input.value).toBe('a')
     expect(graphemesOf(input.value).length).toBeLessThanOrEqual(1)
+    expect(screen.getByText('That input was not kept. Type one character at a time. Paste is off.')).toBeTruthy()
 
     const dropped = createEvent.drop(input)
     fireEvent(input, dropped)
     expect(dropped.defaultPrevented).toBe(true)
     expect(input.value).toBe('a')
+    expect(screen.getByText('That input was not kept. Type one character at a time. Paste is off.')).toBeTruthy()
     expect(onComplete).not.toHaveBeenCalled()
 
     fireEvent.input(input, { target: { value: 'z' } })
+    expect(screen.queryByText('That input was not kept. Type one character at a time. Paste is off.')).toBeNull()
     expect(passage().querySelector('.text-rose-400').textContent).toBe('z')
     expect(passage().querySelector('.text-rose-400')?.className).toContain('underline')
     expect(passage().querySelector('.text-zinc-400').textContent).toBe('b')
@@ -778,6 +781,59 @@ describe('TypingSession', () => {
     })
     expect(onComplete).not.toHaveBeenCalled()
     expect(screen.getByRole('button', { name: 'Restart' })).toBeTruthy()
+  })
+
+  async function finishShortRun() {
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date('2026-01-01T00:00:00.000Z'))
+    const view = renderSession({
+      targetText: 'ab',
+      prefs: { bellOnCompletion: false, focusMinimalHud: false },
+    })
+    fireEvent.input(view.input, { target: { value: 'a' }, isComposing: false })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1_000)
+    })
+    fireEvent.input(view.input, { target: { value: 'ab' }, isComposing: false })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
+  }
+
+  function blockStorageKey(keyName: string) {
+    const storage = globalThis.localStorage
+    const write = storage.setItem.bind(storage)
+    storage.setItem = (key: string, value: string) => {
+      if (key === keyName) throw new Error('quota')
+      write(key, value)
+    }
+  }
+
+  it('keeps a saved run when the personal best write does not land', async () => {
+    seedPersonalBest('ex-1', 1)
+    blockStorageKey('lkt_pbs_v1')
+    await finishShortRun()
+    expect(screen.getByText('The run was saved, but personal best did not save.')).toBeTruthy()
+    expect(screen.queryByText('New personal best, and you kept it clean.')).toBeNull()
+    const stored = JSON.parse(localStorage.getItem('lkt_pbs_v1') ?? '{}') as {
+      byKey: Record<string, { wpm: number }>
+    }
+    expect(stored.byKey['ex-1|0']?.wpm).toBe(1)
+    expect(localStorage.getItem('lkt_runs_v1')).not.toBeNull()
+  })
+
+  it('keeps a saved run when the recent-exercises write does not land', async () => {
+    blockStorageKey('lkt_recents_v1')
+    await finishShortRun()
+    expect(screen.getByText('The run was saved, but recent exercises did not save.')).toBeTruthy()
+    expect(localStorage.getItem('lkt_runs_v1')).not.toBeNull()
+  })
+
+  it('keeps a saved run when the skill write does not land', async () => {
+    blockStorageKey('lkt_skill_v1')
+    await finishShortRun()
+    expect(screen.getByText('The run was saved, but skill did not save.')).toBeTruthy()
+    expect(localStorage.getItem('lkt_runs_v1')).not.toBeNull()
   })
 
   it('mentions frequent corrections after many backspaces', async () => {

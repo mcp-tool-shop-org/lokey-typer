@@ -25,6 +25,23 @@ TARGET_MIN = -35.0
 TARGET_MAX = -29.0
 
 _I_RE = re.compile(r"\bI:\s*(-?\d+(?:\.\d+)?)\s*LUFS\b")
+_FRAME_RE = re.compile(r"\bt:\s*\d")
+
+
+def _unreadable(returncode: int, stderr: str) -> str:
+    """Return code plus error or summary lines. The per-frame log is noise."""
+    kept: list[str] = []
+    for line in stderr.splitlines():
+        text = line.strip()
+        if not text or _FRAME_RE.search(text):
+            continue
+        kept.append(text)
+    tail = "\n".join(kept[-20:])
+    lead = (
+        f"Could not read integrated LUFS. ffmpeg exit {returncode}. "
+        "The stem was not measured, so it is not known to be inside the fatigue window."
+    )
+    return f"{lead}\n{tail}" if tail else lead
 
 
 def measure_lufs(path: Path) -> tuple[float | None, str]:
@@ -45,7 +62,10 @@ def measure_lufs(path: Path) -> tuple[float | None, str]:
     try:
         proc = subprocess.run(cmd, stderr=subprocess.PIPE, stdout=subprocess.DEVNULL, text=True, check=False)
     except FileNotFoundError:
-        return None, "ffmpeg not found on PATH"
+        return None, (
+            "ffmpeg not found on PATH. "
+            "The stem was not measured, so it is not known to be inside the fatigue window."
+        )
 
     lufs = None
     for line in proc.stderr.splitlines():
@@ -57,7 +77,7 @@ def measure_lufs(path: Path) -> tuple[float | None, str]:
                 pass
 
     if lufs is None:
-        return None, "Could not read integrated LUFS from ffmpeg output"
+        return None, _unreadable(proc.returncode, proc.stderr)
 
     return lufs, f"{lufs:.1f} LUFS"
 
@@ -81,7 +101,7 @@ def main(folder: str) -> int:
 
     wavs = sorted(root.rglob("*.wav"))
     if not wavs:
-        print("FAIL no .wav files found")
+        print(f"FAIL no .wav files found in {root}")
         return 1
 
     failed = False

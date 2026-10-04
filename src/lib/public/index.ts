@@ -14,6 +14,7 @@ export { KEYBOARD_VOICE_CHOICES, type KeyboardVoice } from '../keyboardVoice'
 export { isTemplateExercise, renderTemplateExercise } from '../templateRender'
 
 export {
+  dailyResumeIndex,
   generateDailySet,
   loadDailyProgress,
   localDateKey,

@@ -26,12 +26,14 @@ const ICON_BTN =
   'rounded-lg p-2 transition duration-150 outline-none active:scale-95 focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950'
 
 const SOUNDSCAPE_LOCK = 'Screen reader mode keeps the soundscape off.'
+const SHUFFLE_MUTED = 'The soundscape is muted. Unmute to change tracks.'
 
 export function AppShell() {
   const { prefs, patchPrefs, preferenceStatus } = usePreferences()
   const { skipTrack, unlockFailed } = useAmbient()
   const [settingsOpen, setSettingsOpen] = useState(false)
   const soundscapeLocked = Boolean(prefs.screenReaderMode)
+  const shuffleHeld = soundscapeLocked || !prefs.ambientEnabled
   const soundFailed = unlockFailed && !soundscapeLocked
   const settingsOpenerRef = useRef<HTMLElement | null>(null)
   const settingsWasOpenRef = useRef(false)
@@ -55,7 +57,7 @@ export function AppShell() {
   }
 
   function handleShuffle() {
-    if (soundscapeLocked) return
+    if (soundscapeLocked || !prefs.ambientEnabled) return
     skipTrack()
   }
 
@@ -97,16 +99,24 @@ export function AppShell() {
             <button
               type="button"
               onClick={handleShuffle}
-              disabled={soundscapeLocked}
-              aria-disabled={soundscapeLocked || undefined}
+              disabled={shuffleHeld}
+              aria-disabled={shuffleHeld || undefined}
               className={`${ICON_BTN} text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200 disabled:cursor-not-allowed disabled:opacity-40`}
-              aria-label={soundscapeLocked ? `Random ambient track. ${SOUNDSCAPE_LOCK}` : 'Random ambient track'}
-              title={
-                unlockFailed && !soundscapeLocked
-                  ? "Sound couldn't start. Click to try again."
-                  : soundscapeLocked
-                    ? SOUNDSCAPE_LOCK
+              aria-label={
+                soundscapeLocked
+                  ? `Random ambient track. ${SOUNDSCAPE_LOCK}`
+                  : shuffleHeld
+                    ? `Random ambient track. ${SHUFFLE_MUTED}`
                     : 'Random ambient track'
+              }
+              title={
+                soundscapeLocked
+                  ? SOUNDSCAPE_LOCK
+                  : shuffleHeld
+                    ? SHUFFLE_MUTED
+                    : unlockFailed
+                      ? "Sound couldn't start. Click to try again."
+                      : 'Random ambient track'
               }
             >
               <Icon name="shuffle" size={18} />

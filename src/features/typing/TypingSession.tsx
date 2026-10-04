@@ -88,6 +88,8 @@ function isNativeComposing(event: Event): boolean {
   return 'isComposing' in event && (event as InputEvent).isComposing === true
 }
 
+const INPUT_NOT_KEPT = 'That input was not kept. Type one character at a time. Paste is off.'
+
 function formatRecordList(items: string[]): string {
   if (items.length <= 1) return items[0] ?? ''
   if (items.length === 2) return `${items[0]} and ${items[1]}`
@@ -144,6 +146,7 @@ export function TypingSession(props: {
   const compositionBaseRef = useRef('')
   const srTimerRef = useRef<number | null>(null)
   const [srNotice, setSrNotice] = useState<string | null>(null)
+  const [inputStatus, setInputStatus] = useState<string | null>(null)
 
   const timeLimitMs = props.sprintDurationMs
 
@@ -542,8 +545,14 @@ export function TypingSession(props: {
               typewriterAudio.play('key', stroke())
             }
           }}
-          onPaste={(e) => e.preventDefault()}
-          onDrop={(e) => e.preventDefault()}
+          onPaste={(e) => {
+            e.preventDefault()
+            setInputStatus(INPUT_NOT_KEPT)
+          }}
+          onDrop={(e) => {
+            e.preventDefault()
+            setInputStatus(INPUT_NOT_KEPT)
+          }}
           onCompositionStart={(e) => {
             if (isComplete) return
             composingRef.current = true
@@ -587,7 +596,11 @@ export function TypingSession(props: {
               return
             }
             const prev = typedRef.current
-            if (!acceptTypingEdit(prev, next)) return
+            if (!acceptTypingEdit(prev, next)) {
+              setInputStatus(INPUT_NOT_KEPT)
+              return
+            }
+            setInputStatus(null)
             const added = addedSpan(prev, next)
             const graphemes = graphemesOf(added.text)
             if (graphemes.length === 1) {
@@ -653,9 +666,12 @@ export function TypingSession(props: {
             </div>
             )
           ) : (
-            <div className="flex items-center gap-1.5">
-              <Icon name="keyboard" size={14} className="shrink-0 text-zinc-500" />
-              All characters supported. Backspace allowed (counted). Esc to exit.
+            <div className="space-y-1">
+              {inputStatus ? <div className="font-medium text-zinc-200">{inputStatus}</div> : null}
+              <div className="flex items-center gap-1.5">
+                <Icon name="keyboard" size={14} className="shrink-0 text-zinc-500" />
+                All characters supported. Backspace allowed (counted). Esc to exit.
+              </div>
             </div>
           )}
         </div>

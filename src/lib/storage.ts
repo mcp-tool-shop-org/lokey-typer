@@ -358,6 +358,20 @@ function isIdList(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === 'string')
 }
 
+function healNumberMap(value: unknown): { map: Record<string, number>; healed: boolean } {
+  if (value == null || typeof value !== 'object' || Array.isArray(value)) {
+    return { map: {}, healed: true }
+  }
+  const raw = value as Record<string, unknown>
+  const map: Record<string, number> = {}
+  let healed = false
+  for (const [key, entry] of Object.entries(raw)) {
+    if (isFiniteNumber(entry)) map[key] = entry
+    else healed = true
+  }
+  return { map, healed }
+}
+
 function healRecents(
   value: unknown,
   base: UserSkillModel['recent_exercise_ids_by_mode'],
@@ -421,6 +435,16 @@ function skillModelFromV2(parsed: Partial<UserSkillModel>): UserSkillModel {
   const recent = healRecents(model.recent_exercise_ids_by_mode, base.recent_exercise_ids_by_mode)
   if (recent.healed) {
     model.recent_exercise_ids_by_mode = recent.recent
+    healed = true
+  }
+  const errors = healNumberMap(model.errors_by_class)
+  if (errors.healed) {
+    model.errors_by_class = errors.map
+    healed = true
+  }
+  const weakness = healNumberMap(model.weakness_by_tag)
+  if (weakness.healed) {
+    model.weakness_by_tag = weakness.map
     healed = true
   }
 

@@ -22,7 +22,19 @@
                            Text="Speed · Accuracy · Consistency"
                            FontSize="14"
                            Foreground="#a1a1aa"
+                           TextWrapping="Wrap"
+                           MaxWidth="420"
+                           TextAlignment="Center"
                            HorizontalAlignment="Center"/>
+                <TextBlock x:Name="SplashDetail"
+                           Text=""
+                           FontSize="12"
+                           Foreground="#71717a"
+                           TextWrapping="Wrap"
+                           MaxWidth="420"
+                           TextAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"/>
                 <ProgressRing x:Name="SplashProgress"
                               IsActive="True" Width="32" Height="32"
                               Foreground="#a1a1aa"
@@ -34,5 +46,15 @@
                         HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>
+        <TextBlock x:Name="LinkNotice"
+                   Text=""
+                   FontSize="14"
+                   Foreground="#fafafa"
+                   TextWrapping="Wrap"
+                   MaxWidth="640"
+                   Margin="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Visibility="Collapsed"/>
     </Grid>
 </Window>

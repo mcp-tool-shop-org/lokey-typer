@@ -4,7 +4,10 @@ using System.Text;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.Web.WebView2.Core;
+using Windows.Foundation;
 using Windows.Storage;
 using WinRT.Interop;
 
@@ -22,6 +25,9 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        AutomationProperties.SetLiveSetting(SplashSubtitle, AutomationLiveSetting.Polite);
+        AutomationProperties.SetLiveSetting(SplashDetail, AutomationLiveSetting.Polite);
+        AutomationProperties.SetLiveSetting(LinkNotice, AutomationLiveSetting.Polite);
         ExtendsContentIntoTitleBar = true;
         _appWindow = ResolveAppWindow();
         RestorePlacement();
@@ -131,11 +137,43 @@ public sealed partial class MainWindow : Window
             && !uri.Host.Equals("lokey.local", StringComparison.OrdinalIgnoreCase);
     }
 
-    private static void LaunchOutside(Uri uri)
+    private void LaunchOutside(Uri uri)
     {
         // Starts immediately. The WebView handler must not await this.
+        var address = uri.AbsoluteUri;
         var launch = Windows.System.Launcher.LaunchUriAsync(uri);
-        _ = launch.Status;
+        launch.Completed = (operation, status) =>
+        {
+            var opened = false;
+            if (status == AsyncStatus.Completed)
+            {
+                try
+                {
+                    opened = operation.GetResults();
+                }
+                catch (Exception)
+                {
+                    opened = false;
+                }
+            }
+
+            var notice = WebContentHost.DescribeExternalLaunch(opened, address);
+            var message = notice.Message;
+            DispatcherQueue.TryEnqueue(() => ShowLinkNotice(message));
+        };
+    }
+
+    private void ShowLinkNotice(string? message)
+    {
+        if (string.IsNullOrEmpty(message))
+        {
+            LinkNotice.Text = "";
+            LinkNotice.Visibility = Visibility.Collapsed;
+            return;
+        }
+
+        LinkNotice.Text = message;
+        LinkNotice.Visibility = Visibility.Visible;
     }
 
     private static void ApplyQuietBrowser(CoreWebView2Settings settings)
@@ -296,8 +334,11 @@ public sealed partial class MainWindow : Window
         }
 
         SplashProgress.IsActive = false;
-        SplashSubtitle.Text = outcome.Subtitle ?? "The page did not load.";
+        SplashSubtitle.Text = outcome.Subtitle ?? WebContentHost.SplashRetryLead;
+        SplashDetail.Text = outcome.Detail ?? "";
+        SplashDetail.Visibility = string.IsNullOrEmpty(outcome.Detail) ? Visibility.Collapsed : Visibility.Visible;
         SplashRetry.Visibility = Visibility.Visible;
+        SplashRetry.Focus(FocusState.Programmatic);
     }
 
     private void OnSplashRetry(object sender, RoutedEventArgs e)
@@ -307,6 +348,8 @@ public sealed partial class MainWindow : Window
 
         SplashProgress.IsActive = true;
         SplashRetry.Visibility = Visibility.Collapsed;
+        SplashDetail.Visibility = Visibility.Collapsed;
+        SplashDetail.Text = "";
         SplashSubtitle.Text = "Loading again";
         AppWebView.CoreWebView2.Navigate("https://lokey.local/index.html");
     }
@@ -346,14 +389,31 @@ public sealed partial class MainWindow : Window
         {
             Text = panel.Detail,
             FontSize = 11,
+            IsTextSelectionEnabled = true,
             Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(
                 Microsoft.UI.Colors.Gray),
             TextWrapping = Microsoft.UI.Xaml.TextWrapping.Wrap,
             MaxWidth = 500
         });
 
+        Microsoft.UI.Xaml.Controls.Button? download = null;
+        if (panel.PointsAtRuntimeDownload)
+        {
+            download = new Microsoft.UI.Xaml.Controls.Button
+            {
+                Content = "Download WebView2 Runtime",
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
+            download.Click += (_, _) =>
+            {
+                _ = Windows.System.Launcher.LaunchUriAsync(new Uri(WebContentHost.WebView2DownloadPage));
+            };
+            errorPanel.Children.Add(download);
+        }
+
         RootGrid.Children.Clear();
         RootGrid.Children.Add(errorPanel);
+        download?.Focus(FocusState.Programmatic);
     }
 
     private AppWindow? ResolveAppWindow()

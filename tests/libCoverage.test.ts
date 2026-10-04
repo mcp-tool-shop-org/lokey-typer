@@ -1525,6 +1525,44 @@ describe('preference and run storage', () => {
     expect(loadPreferences().volume).toBe(0.5)
     expect(loadSkillModel().version).toBe(2)
   })
+
+  it('heals a skill map that is not a map of finite numbers and writes it back', () => {
+    const base = skillShell()
+    for (const bad of [4, true, ['letters']]) {
+      store.set('lkt_skill_v1', JSON.stringify({ ...base, errors_by_class: bad }))
+      expect(loadSkillModel().errors_by_class).toEqual({})
+      expect(JSON.parse(store.get('lkt_skill_v1') ?? '{}').errors_by_class).toEqual({})
+    }
+
+    store.set('lkt_skill_v1', JSON.stringify({ ...base, weakness_by_tag: false }))
+    expect(loadSkillModel().weakness_by_tag).toEqual({})
+    expect(JSON.parse(store.get('lkt_skill_v1') ?? '{}').weakness_by_tag).toEqual({})
+
+    store.set(
+      'lkt_skill_v1',
+      JSON.stringify({ ...base, errors_by_class: { letters: 1, broken: 'nope' } }),
+    )
+    expect(loadSkillModel().errors_by_class).toEqual({ letters: 1 })
+    expect(JSON.parse(store.get('lkt_skill_v1') ?? '{}').errors_by_class).toEqual({ letters: 1 })
+
+    const storage = globalThis.localStorage
+    const record = storage.setItem.bind(storage)
+    let writes = 0
+    storage.setItem = (key: string, value: string) => {
+      writes += 1
+      record(key, value)
+    }
+    store.set(
+      'lkt_skill_v1',
+      JSON.stringify({ ...base, errors_by_class: {}, weakness_by_tag: { calm: 0 } }),
+    )
+    writes = 0
+    const kept = loadSkillModel()
+    expect(kept.errors_by_class).toEqual({})
+    expect(kept.weakness_by_tag).toEqual({ calm: 0 })
+    expect(writes).toBe(0)
+    storage.setItem = record
+  })
 })
 
 describe('recommendations', () => {

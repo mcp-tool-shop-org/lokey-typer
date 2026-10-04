@@ -5,8 +5,6 @@ const ROOT = process.cwd()
 const PUBLIC_DIR = path.join(ROOT, 'public')
 const MANIFEST_PATH = path.join(PUBLIC_DIR, 'audio', 'ambient', 'manifest.json')
 
-const strict = process.argv.includes('--strict')
-
 function publicRel(file) {
   return String(file ?? '').replace(/\\/g, '/').replace(/^\/+/, '')
 }
@@ -51,6 +49,16 @@ function resolvePublicFile(raw) {
   return { ok: true, file: portable }
 }
 
+function describeParseError(error) {
+  const message = error instanceof Error ? error.message : String(error)
+  const match = /position\s+(\d+)/i.exec(message)
+  const position =
+    match?.[1] ??
+    (error && typeof error === 'object' && error.position != null ? String(error.position) : null)
+  if (position && !message.includes(position)) return `${message}\nposition ${position}`
+  return message
+}
+
 function loadManifest() {
   if (!fs.existsSync(MANIFEST_PATH)) return null
   try {
@@ -88,17 +96,17 @@ console.log('--- QA: Ambient Asset Inventory ---')
 console.log(`Public dir: ${PUBLIC_DIR}`)
 
 const manifest = loadManifest()
-const hasManifest = manifest != null && !('error' in manifest)
-const hasManifestError = manifest != null && 'error' in manifest
 
-if (hasManifestError) {
+if (manifest != null && 'error' in manifest) {
   console.log(`Manifest: ERROR reading/parsing ${relFromPublic(MANIFEST_PATH)}`)
-  if (strict) {
-    console.log('\nSTRICT: failing due to manifest parse error.')
-    process.exitCode = 1
-    process.exit()
-  }
-} else if (hasManifest && manifest.tracks) {
+  console.log(describeParseError(manifest.error))
+  console.log('\nFAIL: the ambient manifest could not be parsed.')
+  process.exit(1)
+}
+
+const hasManifest = manifest != null
+
+if (hasManifest && manifest.tracks) {
   console.log(`Manifest: ${relFromPublic(MANIFEST_PATH)}`)
   console.log(`Manifest tracks: ${manifest.tracks.length}`)
 } else if (hasManifest) {
@@ -137,9 +145,9 @@ for (const [profile, agg] of presentByProfile.entries()) {
 }
 
 if (missing.length) {
-  console.log('\nMissing expected files (engine will fall back safely):')
+  console.log('\nMissing files. The soundscape stays silent for these paths, so this step is failing:')
   for (const m of missing) console.log(`- [${m.profile}] ${m.file}`)
-} else if (!hasManifestError) {
+} else {
   console.log('\nOK: All expected ambient files are present.')
 }
 
@@ -163,7 +171,11 @@ if (unexpected.length) {
 }
 
 // The catalog is the product. A green run requires the version 3 tracks and their files.
-if (!hasManifest || !manifest.tracks) {
+// A parse error already exited above. This sentence is only for a file that parsed without tracks.
+if (!hasManifest) {
+  console.log('\nFAIL: ambient manifest was not found.')
+  process.exitCode = 1
+} else if (!manifest.tracks) {
   console.log('\nFAIL: ambient manifest must be version 3 with a tracks array.')
   process.exitCode = 1
 } else if (expectedFromManifest.length === 0) {

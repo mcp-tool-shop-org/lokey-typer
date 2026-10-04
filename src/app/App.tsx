@@ -2,8 +2,10 @@ import { Link, Navigate, Route, Routes } from 'react-router-dom'
 import { AppShell } from '@app/shell'
 import { DailySetPage, HomePage, ModePage, RunPage } from '@features'
 import { Icon } from '@app/components/Icon'
+import { useDocumentTitle } from '@app/useDocumentTitle'
 
 function NotFoundPage() {
+  useDocumentTitle('Page not found — LoKey Typer')
   return (
     <div className="flex flex-col items-center gap-4 rounded-3xl bg-zinc-900/40 px-6 py-8 text-center animate-fade-in sm:px-8 sm:py-12">
       <Icon name="search" size={28} className="text-zinc-500" />

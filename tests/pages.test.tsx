@@ -7,6 +7,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { findExercise, loadExercisesByMode } from '@content'
 import { keyboardPassage } from '../src/lib/keyboardPassage'
 import { competitiveMinLength, repeatPassage } from '../src/lib/repeatPassage'
+import { getPoolStatus } from '@lib'
 import {
   appendRun,
   loadPreferences,
@@ -583,11 +584,11 @@ describe('audio settings', () => {
     renderApp()
     await user.click(screen.getByRole('button', { name: 'Settings' }))
     const dialog = await screen.findByRole('dialog', { name: 'Settings' })
-    const select = within(dialog).getByRole('combobox', { name: 'Ambient category' })
-    expect(within(select).getAllByRole('option')).toHaveLength(1)
-    expect(within(select).getByRole('option', { name: 'All categories' })).toBeTruthy()
+    expect(within(dialog).getByText('Loading categories')).toBeTruthy()
+    expect(within(dialog).queryByRole('combobox', { name: 'Ambient category' })).toBeNull()
 
     resolveFetch(jsonResponse({ version: 3, tracks: [RAIN_TRACK] }))
+    const select = await within(dialog).findByRole('combobox', { name: 'Ambient category' })
     expect(await within(select).findByRole('option', { name: 'Rain' })).toBeTruthy()
     expect(within(select).queryByRole('option', { name: 'Ocean' })).toBeNull()
 
@@ -603,8 +604,10 @@ describe('audio settings', () => {
     const failed = renderApp()
     await user.click(screen.getByRole('button', { name: 'Settings' }))
     const dialog = await screen.findByRole('dialog', { name: 'Settings' })
-    await waitFor(() => expect(mocks.fetchMock).toHaveBeenCalled())
-    expect(within(dialog).queryByRole('option', { name: 'Rain' })).toBeNull()
+    expect(await within(dialog).findByText(/The category list did not load/)).toBeTruthy()
+    expect(within(dialog).getByText(/Close settings and open it again to try/)).toBeTruthy()
+    expect(within(dialog).queryByRole('combobox', { name: 'Ambient category' })).toBeNull()
+    expect(within(dialog).queryByRole('option', { name: 'All categories' })).toBeNull()
     failed.unmount()
 
     let resolveFetch: (value: unknown) => void = () => {}
@@ -655,21 +658,46 @@ describe('audio settings', () => {
     await user.keyboard('{Tab}')
     expect(document.activeElement).toBe(dialog)
   })
+
+  it('holds the header sound controls after screen reader mode is closed', async () => {
+    const user = setupUser()
+    renderApp()
+    await user.click(screen.getByRole('button', { name: 'Settings' }))
+    const dialog = await screen.findByRole('dialog', { name: 'Settings' })
+    await user.click(within(dialog).getByRole('switch', { name: 'Screen reader mode' }))
+    await user.click(within(dialog).getByRole('button', { name: 'Close' }))
+
+    const shuffle = screen.getByRole('button', {
+      name: 'Random ambient track. Screen reader mode keeps the soundscape off.',
+    })
+    const mute = screen.getByRole('button', {
+      name: 'Ambient sound. Screen reader mode keeps the soundscape off.',
+    })
+    expect((shuffle as HTMLButtonElement).disabled).toBe(true)
+    expect((mute as HTMLButtonElement).disabled).toBe(true)
+    fireEvent.click(shuffle)
+    fireEvent.click(mute)
+    expect(mocks.ambientPlayer.skipTrack).not.toHaveBeenCalled()
+    expect(loadPreferences().screenReaderMode).toBe(true)
+    expect(loadPreferences().ambientEnabled).toBe(false)
+  })
 })
 
 describe('home', () => {
   it('cycles the quick start and opens that mode', async () => {
     const user = setupUser()
     renderApp()
+    expect(document.title).toBe('Home — LoKey Typer')
     expect(document.body.textContent).toMatch(/Starting in\s+Focus/)
-    await user.click(screen.getByRole('button', { name: 'change' }))
+    expect(screen.getByRole('button', { name: 'Start typing in Focus' })).toBeTruthy()
+    await user.click(screen.getByRole('button', { name: 'Change mode, currently Focus' }))
     expect(document.body.textContent).toMatch(/Starting in\s+Real-Life/)
-    await user.click(screen.getByRole('button', { name: 'change' }))
+    await user.click(screen.getByRole('button', { name: 'Change mode, currently Real-Life' }))
     expect(document.body.textContent).toMatch(/Starting in\s+Competitive/)
-    await user.click(screen.getByRole('button', { name: 'change' }))
+    await user.click(screen.getByRole('button', { name: 'Change mode, currently Competitive' }))
     expect(document.body.textContent).toMatch(/Starting in\s+Focus/)
-    await user.click(screen.getByRole('button', { name: 'change' }))
-    await user.click(screen.getByRole('button', { name: 'Start typing' }))
+    await user.click(screen.getByRole('button', { name: 'Change mode, currently Focus' }))
+    await user.click(screen.getByRole('button', { name: 'Start typing in Real-Life' }))
     expect(await screen.findByRole('button', { name: 'Next exercise' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Real-Life' }).getAttribute('aria-current')).toBe('page')
     expect(screen.queryByText(/autostart/)).toBeNull()
@@ -698,14 +726,16 @@ describe('home', () => {
     }
     renderApp()
     expect(document.body.textContent).toMatch(/Starting in\s+Competitive/)
+    expect(screen.getByRole('button', { name: 'Change mode, currently Competitive' })).toBeTruthy()
     expect(screen.getByText('42')).toBeTruthy()
     expect(screen.getByText('99%')).toBeTruthy()
     expect(screen.getByText('7')).toBeTruthy()
     expect(screen.getByText('Avg WPM')).toBeTruthy()
     expect(screen.getByText('Days practiced')).toBeTruthy()
     expect(screen.getByText('4')).toBeTruthy()
-    await user.click(screen.getByRole('button', { name: 'change' }))
+    await user.click(screen.getByRole('button', { name: 'Change mode, currently Competitive' }))
     expect(document.body.textContent).toMatch(/Starting in\s+Focus/)
+    expect(screen.getByRole('button', { name: 'Start typing in Focus' })).toBeTruthy()
   })
 
   it('paints the line under the empty home stats in quiet type', () => {
@@ -872,6 +902,46 @@ describe('mode pages', () => {
       error.mockRestore()
     }
   })
+
+  it('shows the screen-reader pool on the Real-Life idle line', () => {
+    withPrefs({ screenReaderMode: true })
+    renderApp(['/real-life'])
+    const safe = getPoolStatus('real_life', { screenReaderMode: true })
+    const open = getPoolStatus('real_life')
+    expect(safe.total).toBeLessThan(open.total)
+    expect(screen.getByText(`${safe.remaining} of ${safe.total} exercises left`)).toBeTruthy()
+  })
+
+  it('keeps the previous settings when a sound switch or a sprint length cannot be saved', async () => {
+    const user = setupUser()
+    renderApp(['/competitive'])
+    const before = loadPreferences()
+    const storage = globalThis.localStorage
+    const write = storage.setItem.bind(storage)
+    storage.setItem = (key: string, value: string) => {
+      if (key === 'lkt_prefs_v1' || key === 'lkt_prefs_v1_lkg') throw new Error('quota')
+      write(key, value)
+    }
+
+    await user.click(screen.getByRole('button', { name: 'Settings' }))
+    const dialog = await screen.findByRole('dialog', { name: 'Settings' })
+    const sound = within(dialog).getByRole('switch', { name: 'Keystroke sounds' })
+    expect(sound.getAttribute('aria-checked')).toBe('true')
+    await user.click(sound)
+    expect(
+      within(dialog).getByText('That change was not kept. The previous settings are still in effect.'),
+    ).toBeTruthy()
+    expect(sound.getAttribute('aria-checked')).toBe('true')
+    await user.click(within(dialog).getByRole('button', { name: 'Close' }))
+
+    const sprint = screen.getByRole('group', { name: 'Sprint duration' })
+    expect(within(sprint).getByRole('button', { name: '60s' }).getAttribute('aria-pressed')).toBe('true')
+    await user.click(within(sprint).getByRole('button', { name: '30s' }))
+    expect(within(sprint).getByRole('button', { name: '60s' }).getAttribute('aria-pressed')).toBe('true')
+    expect(within(sprint).getByRole('button', { name: '30s' }).getAttribute('aria-pressed')).toBe('false')
+    expect(screen.getByText('That change was not kept. The previous settings are still in effect.')).toBeTruthy()
+    expect(loadPreferences()).toEqual(before)
+  })
 })
 
 describe('run pages', () => {
@@ -1037,6 +1107,27 @@ describe('run pages', () => {
     } finally {
       vi.useRealTimers()
     }
+  })
+
+  it('starts the competitive passage over when screen reader mode turns on', async () => {
+    const user = setupUser()
+    const id = 'competitive_mixed_01_001'
+    renderApp([`/competitive/run/${id}?duration=60000`])
+    const input = screen.getByRole('textbox', { name: 'Typing input' }) as HTMLTextAreaElement
+    await user.type(input, 'a')
+    expect(input.value).toBe('a')
+    expect(passageText().length).toBeGreaterThanOrEqual(1800)
+
+    await user.click(screen.getByRole('button', { name: 'Settings' }))
+    const dialog = await screen.findByRole('dialog', { name: 'Settings' })
+    await user.click(within(dialog).getByRole('switch', { name: 'Screen reader mode' }))
+    await user.click(within(dialog).getByRole('button', { name: 'Close' }))
+
+    const next = screen.getByRole('textbox', { name: 'Typing input' }) as HTMLTextAreaElement
+    expect(next.value).toBe('')
+    const shortLine = foldedExercise(id)
+    expect(passageText()).toBe(shortLine)
+    expect(passageText().length).toBeLessThan(1800)
   })
 })
 
@@ -1208,7 +1299,9 @@ describe('daily set', () => {
     await user.click(screen.getByRole('button', { name: 'Skip to next' }))
     expect(await screen.findByRole('heading', { name: /Daily Set Complete/ })).toBeTruthy()
     expect(screen.getByText('0s')).toBeTruthy()
-    expect(screen.getByText('0.0%')).toBeTruthy()
+    expect(screen.getByText('This exercise was not available and was skipped.')).toBeTruthy()
+    expect(screen.queryByText('0.0%')).toBeNull()
+    expect(screen.queryByText('0 wpm')).toBeNull()
     expect(screen.getByText(/Daily set complete/)).toBeTruthy()
     expect(loadTokens).toContain('text-zinc-400')
     expect(loadTokens).not.toContain('text-zinc-500')
@@ -1287,6 +1380,30 @@ describe('daily set', () => {
     expect(classTokens(bullet)).toContain('text-zinc-400')
     expect(classTokens(bullet)).not.toContain('text-zinc-600')
     expect(classTokens(bullet)).not.toContain('text-zinc-500')
+  })
+
+  it('opens the next daily item on a short line when screen reader mode turns on', async () => {
+    const user = setupUser()
+    seedUser()
+    seedDailySet('mix', [{ kind: 'confidence', mode: 'focus', exerciseId: 'focus_calm_01_001' }])
+    renderApp(['/daily?type=mix'])
+    await user.click(screen.getByRole('button', { name: 'Begin' }))
+    const input = (await screen.findByRole('textbox', { name: 'Typing input' })) as HTMLTextAreaElement
+    await user.type(input, 'a')
+    expect(input.value).toBe('a')
+
+    await user.click(screen.getByRole('button', { name: 'Settings' }))
+    const dialog = await screen.findByRole('dialog', { name: 'Settings' })
+    await user.click(within(dialog).getByRole('switch', { name: 'Screen reader mode' }))
+    await user.click(within(dialog).getByRole('button', { name: 'Close' }))
+
+    // A screen-reader set is a different ritual, so the page returns to the idle card.
+    await user.click(screen.getByRole('button', { name: 'Begin' }))
+    const next = (await screen.findByRole('textbox', { name: 'Typing input' })) as HTMLTextAreaElement
+    expect(next.value).toBe('')
+    const text = passageText()
+    expect(text.length).toBeLessThanOrEqual(160)
+    expect(text.includes('\n')).toBe(false)
   })
 })
 
@@ -1383,6 +1500,20 @@ describe('providers, boundary, and bootstrap', () => {
     expect(screen.queryByRole('button', { name: 'Mute ambient' })).toBeNull()
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }))
     await waitFor(() => expect(mocks.ambientPlayer.start).toHaveBeenCalledTimes(2))
+  })
+
+  it('clears both sound-start notices after a later gesture begins playback', async () => {
+    mocks.ambientPlayer.start.mockRejectedValueOnce(new Error('no output'))
+    renderApp()
+    window.dispatchEvent(new Event('touchstart'))
+    expect(await screen.findByText("Sound didn't start. Try again.")).toBeTruthy()
+    expect(screen.getByText("Sound couldn't start. Click or press a key to try again.")).toBeTruthy()
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }))
+    await waitFor(() => {
+      expect(screen.queryByText("Sound didn't start. Try again.")).toBeNull()
+      expect(screen.queryByText("Sound couldn't start. Click or press a key to try again.")).toBeNull()
+    })
   })
 
   it('cancels a category lookup that finishes after unmount', async () => {
