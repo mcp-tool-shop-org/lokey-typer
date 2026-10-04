@@ -122,11 +122,28 @@ const ICONS: Record<string, string> = {
   <line x1="9" y1="12" x2="20" y2="12" />
   <circle cx="5" cy="17" r="1" fill="currentColor" stroke="none" />
   <line x1="9" y1="17" x2="20" y2="17" />`,
-  'logo-mark': `<rect x="5" y="5" width="14" height="14" rx="3.5" />
-  <circle cx="12" cy="12" r="2" />`,
-  'logo': `<rect x="4" y="4" width="16" height="16" rx="4" opacity="0.3" />
-  <rect x="6" y="6" width="12" height="12" rx="3" />
-  <circle cx="12" cy="12" r="1.5" />`,
+  'logo-mark': `<rect x="1.5" y="5" width="14.5" height="14" rx="3.6" />
+  <circle cx="5" cy="12" r="0.7" fill="currentColor" stroke="none" />
+  <line x1="7.6" y1="8.6" x2="7.6" y2="15.4" />
+  <line x1="10.2" y1="7.2" x2="10.2" y2="16.8" />
+  <line x1="12.8" y1="9.6" x2="12.8" y2="14.4" />
+  <circle cx="15.2" cy="12" r="0.7" fill="currentColor" stroke="none" />
+  <path d="M16 16.4 C18.2 14.8 20 12 21.2 8.2" />
+  <path d="M17.4 14.6 L19.6 12.8" />
+  <path d="M18.6 13 L20.8 12.2" />
+  <path d="M19.4 11 L21.2 10.6" />
+  <path d="M17.2 15.6 L19 17.2" />`,
+  'logo': `<rect x="1.5" y="5" width="14.5" height="14" rx="3.6" />
+  <circle cx="5" cy="12" r="0.7" fill="currentColor" stroke="none" />
+  <line x1="7.6" y1="8.6" x2="7.6" y2="15.4" />
+  <line x1="10.2" y1="7.2" x2="10.2" y2="16.8" />
+  <line x1="12.8" y1="9.6" x2="12.8" y2="14.4" />
+  <circle cx="15.2" cy="12" r="0.7" fill="currentColor" stroke="none" />
+  <path d="M16 16.4 C18.2 14.8 20 12 21.2 8.2" />
+  <path d="M17.4 14.6 L19.6 12.8" />
+  <path d="M18.6 13 L20.8 12.2" />
+  <path d="M19.4 11 L21.2 10.6" />
+  <path d="M17.2 15.6 L19 17.2" />`,
   'medal-bronze': `<circle cx="12" cy="10" r="6" />
   <path d="M9.5 7.5 L14 7.5 L11.5 10 C13 10 14.5 10.5 14.5 12 C14.5 13.5 13 14 12 14 C10.5 14 9.5 13 9.5 12" />
   <line x1="8" y1="15" x2="6" y2="21" />
