@@ -88,6 +88,12 @@ function isNativeComposing(event: Event): boolean {
   return 'isComposing' in event && (event as InputEvent).isComposing === true
 }
 
+function formatRecordList(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? ''
+  if (items.length === 2) return `${items[0]} and ${items[1]}`
+  return `${items.slice(0, -1).join(', ')}, and ${items[items.length - 1]}`
+}
+
 function formatMs(ms: number) {
   const totalSeconds = Math.floor(ms / 1000)
   const minutes = Math.floor(totalSeconds / 60)
@@ -130,6 +136,8 @@ export function TypingSession(props: {
   const inputRef = useRef<HTMLTextAreaElement | null>(null)
   const endOnceRef = useRef(false)
   const [saveFailed, setSaveFailed] = useState(false)
+  const [bestRecordFailed, setBestRecordFailed] = useState(false)
+  const [followUpGap, setFollowUpGap] = useState<string | null>(null)
   const mistakesRef = useRef<MistakeCounts>({} as MistakeCounts)
   const typedRef = useRef('')
   const composingRef = useRef(false)
@@ -150,7 +158,8 @@ export function TypingSession(props: {
       setNowMs(n)
 
       if (timeLimitMs != null && startedAtMs != null && endedAtMs == null) {
-        if (n - startedAtMs >= timeLimitMs) setEndedAtMs(startedAtMs + timeLimitMs)
+        // An open preedit is not the committed run. Seal from compositionend.
+        if (n - startedAtMs >= timeLimitMs && !composingRef.current) setEndedAtMs(startedAtMs + timeLimitMs)
       }
     }, 100)
     return () => window.clearInterval(t)
@@ -206,10 +215,12 @@ export function TypingSession(props: {
       return
     }
 
-    pushRecent(props.mode, props.exercise.id)
+    const missed: string[] = []
+    if (!pushRecent(props.mode, props.exercise.id)) missed.push('recent exercises')
     saveLastMode(props.mode)
 
     // Phase 3: update local skill model (adaptive selection foundation).
+    let skillSaved = false
     try {
       const prev = loadSkillModel()
       const next = updateSkillModelFromRun({
@@ -220,19 +231,26 @@ export function TypingSession(props: {
         typedText: typed,
         mistakes: mistakesRef.current,
       })
-      saveSkillModel(next)
+      skillSaved = saveSkillModel(next)
     } catch {
-      // ignore
+      skillSaved = false
     }
+    if (!skillSaved) missed.push('skill')
 
     // PB update (competitive only, but harmless)
-    maybeUpdatePersonalBest({
+    const bestWrite = maybeUpdatePersonalBest({
       exerciseId: props.exercise.id,
       sprintDurationMs: timeLimitMs as SprintDurationMs | undefined,
       wpm: run.wpm,
       accuracy: run.accuracy,
       timestamp,
     })
+    const bestMissed = 'saved' in bestWrite && bestWrite.saved === false
+    if (bestMissed) missed.push('personal best')
+    setBestRecordFailed(bestMissed)
+    setFollowUpGap(
+      missed.length > 0 ? `The run was saved, but ${formatRecordList(missed)} did not save.` : null,
+    )
 
     if (props.prefs.bellOnCompletion) {
       typewriterAudio.play('return_bell', {
@@ -297,6 +315,7 @@ export function TypingSession(props: {
     const durationMs = timeLimitMs ?? elapsedMs
 
     const isPersonalBestWpm =
+      !bestRecordFailed &&
       (props.mode === 'competitive' ? live.accuracy >= 0.95 : true) &&
       (bestWpm == null || live.wpm > bestWpm)
 
@@ -320,6 +339,7 @@ export function TypingSession(props: {
   }, [
     backspaces,
     bestAccuracy,
+    bestRecordFailed,
     bestWpm,
     elapsedMs,
     live.accuracy,
@@ -512,7 +532,13 @@ export function TypingSession(props: {
             )
             if (commit.length !== base.length) noteTypingActivity()
             if (startedAtMs == null && commit.length > 0) setStartedAtMs(Date.now())
-            if (timeLimitMs == null && commit === targetText) setEndedAtMs(Date.now())
+            if (timeLimitMs == null && commit === targetText) {
+              setEndedAtMs(Date.now())
+              return
+            }
+            if (timeLimitMs != null && startedAtMs != null && Date.now() - startedAtMs >= timeLimitMs) {
+              setEndedAtMs(startedAtMs + timeLimitMs)
+            }
           }}
           onChange={(e) => {
             if (isComplete) return
@@ -569,6 +595,7 @@ export function TypingSession(props: {
                 <Icon name={feedback.isNewPb ? 'personal-best' : 'checkmark-circle'} size={14} className={`shrink-0 ${feedback.isNewPb ? 'text-zinc-300' : 'text-zinc-400'}`} />
                 {feedback.primary}
               </div>
+              {followUpGap ? <div className="text-zinc-300">{followUpGap}</div> : null}
               {feedback.secondary ? <div className="text-zinc-300">{feedback.secondary}</div> : null}
               {props.mode === 'competitive' && pb ? (
                 <div className="flex items-center gap-1.5">

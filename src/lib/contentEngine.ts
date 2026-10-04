@@ -254,8 +254,11 @@ export function pickNextExercise(params: {
 // Pool status
 // ---------------------------------------------------------------------------
 
-export function getPoolStatus(mode: Mode): PoolStatus {
-  const pool = loadExercisesByMode(mode)
+export function getPoolStatus(mode: Mode, options?: { screenReaderMode?: boolean }): PoolStatus {
+  const exercises = loadExercisesByMode(mode)
+  const pool = options?.screenReaderMode
+    ? exercises.filter((exercise) => isScreenReaderSafePassage(exercise))
+    : exercises
   const { seenKeys } = resolveModeRecents(mode)
   let seen = 0
   for (const exercise of pool) {

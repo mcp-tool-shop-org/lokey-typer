@@ -4,6 +4,7 @@ import { findExercise, type Mode } from '@content'
 import {
   getOrCreateUserId,
   isTemplateExercise,
+  localDateKey,
   renderTemplateExercise,
   topCompetitiveRuns,
   type SprintDurationMs,
@@ -46,7 +47,7 @@ export function RunPage({ mode }: { mode: Mode }) {
     if (!exercise) return ''
 
     const userId = getOrCreateUserId()
-    const dateKey = new Date().toISOString().slice(0, 10)
+    const dateKey = localDateKey()
 
     const base = isTemplateExercise(exercise)
       ? renderTemplateExercise(exercise, { dateKey, seed: `${userId}|${exercise.id}|${dateKey}` })
@@ -134,7 +135,7 @@ export function RunPage({ mode }: { mode: Mode }) {
       ) : null}
 
       <TypingSession
-        key={`${exercise.id}-${sessionKey}`}
+        key={`${exercise.id}-${sessionKey}-${prefs.screenReaderMode ? 'sr' : 'std'}`}
         mode={mode}
         exercise={exercise}
         targetText={targetText}

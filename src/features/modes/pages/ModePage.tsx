@@ -27,8 +27,11 @@ export function ModePage({ mode }: { mode: Mode }) {
   // Tracks the autostart value we last handled (to detect re-navigation to same route).
   const handledAutostart = useRef<string | null>(null)
 
-  // Pool status (recomputed when session changes)
-  const pool = useMemo(() => getPoolStatus(mode), [mode, sessionKey])
+  // sessionKey moves before the finish is stored. Refresh when the attempt closes.
+  const pool = useMemo(
+    () => getPoolStatus(mode, { screenReaderMode: prefs.screenReaderMode }),
+    [mode, session, prefs.screenReaderMode],
+  )
 
   // Competitive sprint config (inline on this page)
   const sprintDurationMs = prefs.competitiveSprintDurationMs

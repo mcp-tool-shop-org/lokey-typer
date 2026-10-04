@@ -140,6 +140,11 @@ export class AmbientPlayerV3 {
     this.scheduleRotation()
   }
 
+  /** True after start() has armed playback, including an intentional no-op while ambient is off. */
+  isStarted(): boolean {
+    return this.started
+  }
+
   /** Fade out and disconnect everything. */
   stop(): void {
     this.playbackGeneration += 1

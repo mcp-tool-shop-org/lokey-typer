@@ -303,6 +303,74 @@ function isLengthBucket(value: unknown): value is LengthBucket {
   )
 }
 
+function isFiniteNumber(value: unknown): value is number {
+  return typeof value === 'number' && Number.isFinite(value)
+}
+
+function isEmaShape(value: unknown): value is UserSkillModel['ema'] {
+  if (value == null || typeof value !== 'object') return false
+  const ema = value as Partial<UserSkillModel['ema']>
+  return isFiniteNumber(ema.wpm) && isFiniteNumber(ema.accuracy) && isFiniteNumber(ema.backspace_rate)
+}
+
+function isModeRow(value: unknown): value is UserSkillModel['by_mode']['focus'] {
+  if (value == null || typeof value !== 'object') return false
+  const row = value as Partial<UserSkillModel['by_mode']['focus']>
+  return (
+    isFiniteNumber(row.ema_wpm) &&
+    isFiniteNumber(row.ema_accuracy) &&
+    isFiniteNumber(row.ema_backspace_rate) &&
+    isFiniteNumber(row.runs)
+  )
+}
+
+const SKILL_MODES = ['focus', 'real_life', 'competitive'] as const
+
+function healByMode(
+  value: unknown,
+  base: UserSkillModel['by_mode'],
+): { byMode: UserSkillModel['by_mode']; healed: boolean } {
+  if (value == null || typeof value !== 'object' || Array.isArray(value)) {
+    return { byMode: base, healed: true }
+  }
+  const raw = value as Record<string, unknown>
+  let healed = false
+  const byMode = { ...base }
+  for (const mode of SKILL_MODES) {
+    if (isModeRow(raw[mode])) byMode[mode] = raw[mode]
+    else healed = true
+  }
+  return { byMode, healed }
+}
+
+function healWeakTags(value: unknown): { tags: string[]; healed: boolean } {
+  if (!Array.isArray(value)) return { tags: [], healed: true }
+  if (value.every((tag) => typeof tag === 'string')) return { tags: value, healed: false }
+  return { tags: value.filter((tag): tag is string => typeof tag === 'string'), healed: true }
+}
+
+function isIdList(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item) => typeof item === 'string')
+}
+
+function healRecents(
+  value: unknown,
+  base: UserSkillModel['recent_exercise_ids_by_mode'],
+): { recent: UserSkillModel['recent_exercise_ids_by_mode']; healed: boolean } {
+  if (value == null || typeof value !== 'object' || Array.isArray(value)) {
+    return { recent: base, healed: true }
+  }
+  const raw = value as Record<string, unknown>
+  let healed = false
+  const recent = { ...base }
+  for (const mode of SKILL_MODES) {
+    const list = raw[mode]
+    if (isIdList(list)) recent[mode] = list
+    else healed = true
+  }
+  return { recent, healed }
+}
+
 function skillModelFromV2(parsed: Partial<UserSkillModel>): UserSkillModel {
   const base = defaultSkillModel()
   const stored = parsed.performance_by_length
@@ -330,7 +398,28 @@ function skillModelFromV2(parsed: Partial<UserSkillModel>): UserSkillModel {
     performance_by_length,
   } as UserSkillModel
 
-  if (repaired) {
+  let healed = repaired
+  if (!isEmaShape(model.ema)) {
+    model.ema = base.ema
+    healed = true
+  }
+  const byMode = healByMode(model.by_mode, base.by_mode)
+  if (byMode.healed) {
+    model.by_mode = byMode.byMode
+    healed = true
+  }
+  const weak = healWeakTags(model.weak_tags)
+  if (weak.healed) {
+    model.weak_tags = weak.tags
+    healed = true
+  }
+  const recent = healRecents(model.recent_exercise_ids_by_mode, base.recent_exercise_ids_by_mode)
+  if (recent.healed) {
+    model.recent_exercise_ids_by_mode = recent.recent
+    healed = true
+  }
+
+  if (healed) {
     try {
       writeStorage(KEY_SKILL, JSON.stringify(model))
     } catch {
@@ -368,12 +457,8 @@ export function loadSkillModel(): UserSkillModel {
   return fresh
 }
 
-export function saveSkillModel(model: UserSkillModel) {
-  try {
-    localStorage.setItem(KEY_SKILL, JSON.stringify(model))
-  } catch {
-    // ignore
-  }
+export function saveSkillModel(model: UserSkillModel): boolean {
+  return writeStorage(KEY_SKILL, JSON.stringify(model))
 }
 
 function readStorage(key: string): string | null {
@@ -640,7 +725,9 @@ export function maybeUpdatePersonalBest(params: {
   timestamp: number
 }) {
   // PB guard: best WPM at accuracy >= 95%
-  if (params.accuracy < 0.95) return { updated: false as const, previous: getPersonalBest(params.exerciseId, params.sprintDurationMs) }
+  if (params.accuracy < 0.95) {
+    return { updated: false as const, previous: getPersonalBest(params.exerciseId, params.sprintDurationMs) }
+  }
 
   const store = loadPersonalBests()
   const key = pbKey(params.exerciseId, params.sprintDurationMs)
@@ -654,11 +741,11 @@ export function maybeUpdatePersonalBest(params: {
       accuracy: params.accuracy,
       timestamp: params.timestamp,
     }
-    writeStorage(KEY_PBS, JSON.stringify(store))
-    return { updated: true as const, previous: prev ?? null }
+    const saved = writeStorage(KEY_PBS, JSON.stringify(store))
+    return { updated: saved, saved, previous: prev ?? null }
   }
 
-  return { updated: false as const, previous: prev ?? null }
+  return { updated: false as const, saved: true as const, previous: prev ?? null }
 }
 
 export function topCompetitiveRuns(params: { durationMs: SprintDurationMs; limit: number }) {

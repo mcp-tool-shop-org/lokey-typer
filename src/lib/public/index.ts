@@ -15,6 +15,7 @@ export { isTemplateExercise, renderTemplateExercise } from '../templateRender'
 export {
   generateDailySet,
   loadDailyProgress,
+  localDateKey,
   saveDailyProgress,
   type DailyItemResult,
   type DailyProgress,
