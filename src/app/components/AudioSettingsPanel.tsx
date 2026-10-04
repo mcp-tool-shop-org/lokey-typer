@@ -44,7 +44,7 @@ function Slider({ value, onChange, label }: { value: number; onChange: (v: numbe
     <label className="flex flex-col gap-1.5 py-1.5">
       <div className="flex items-center justify-between">
         <span className="text-sm text-zinc-400">{label}</span>
-        <span className="text-xs tabular-nums text-zinc-600">{pct}%</span>
+        <span className="text-xs tabular-nums text-zinc-400">{pct}%</span>
       </div>
       <input
         type="range"
@@ -194,7 +194,7 @@ export function AudioSettingsPanel({ open, onClose }: { open: boolean; onClose: 
             label="Ambient sounds"
           />
           {prefs.screenReaderMode ? (
-            <p className="py-1 text-xs leading-relaxed text-zinc-500">Screen reader mode keeps the soundscape off.</p>
+            <p className="py-1 text-xs leading-relaxed text-zinc-400">Screen reader mode keeps the soundscape off.</p>
           ) : null}
           <Slider
             value={prefs.ambientVolume}

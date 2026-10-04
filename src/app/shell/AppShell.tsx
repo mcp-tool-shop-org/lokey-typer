@@ -75,21 +75,21 @@ export function AppShell() {
         Skip to content
       </a>
       <header inert={settingsOpen ? true : undefined} className="border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 overflow-x-auto px-4 py-4 sm:px-6 sm:py-5">
+        <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-4 sm:gap-4 sm:px-6 sm:py-5">
           <Link to="/" aria-label="LoKey Typer" className="flex shrink-0 items-center gap-2.5 transition duration-200 hover:opacity-80">
             <Icon name="logo-mark" size={22} className="text-zinc-400" />
             <div className="hidden text-base font-medium tracking-tight text-zinc-200 sm:block">LoKey Typer</div>
-            <div className="hidden text-xs text-zinc-600 md:block">·</div>
-            <div className="hidden text-xs text-zinc-600 md:block">Speed • Accuracy • Consistency</div>
+            <div className="hidden text-xs text-zinc-400 md:block">·</div>
+            <div className="hidden text-xs text-zinc-400 md:block">Speed • Accuracy • Consistency</div>
           </Link>
-          <nav aria-label="Main navigation" className="flex shrink-0 items-center gap-1 sm:gap-2.5">
+          <nav aria-label="Main navigation" className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto sm:gap-2.5">
             <NavItem to="/" label="Home" />
             <NavItem to="/daily" label="Daily" />
             <NavItem to="/focus" label="Focus" />
             <NavItem to="/real-life" label="Real-Life" />
             <NavItem to="/competitive" label="Competitive" />
-
-            {/* Divider */}
+          </nav>
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2.5">
             <div className="mx-0.5 h-5 w-px bg-zinc-800/50" />
 
             {/* Skip to random ambient track */}
@@ -117,7 +117,7 @@ export function AppShell() {
               onClick={handleMuteToggle}
               disabled={soundscapeLocked}
               aria-disabled={soundscapeLocked || undefined}
-              className={`${ICON_BTN} ${prefs.ambientEnabled ? 'text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200' : 'text-zinc-600 hover:bg-zinc-900/50 hover:text-zinc-300'} disabled:cursor-not-allowed disabled:opacity-40`}
+              className={`${ICON_BTN} ${prefs.ambientEnabled ? 'text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200' : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-zinc-200'} disabled:cursor-not-allowed disabled:opacity-40`}
               aria-label={
                 soundscapeLocked
                   ? `Ambient sound. ${SOUNDSCAPE_LOCK}`
@@ -156,8 +156,7 @@ export function AppShell() {
               <Icon name="settings" size={18} />
               <span className="sr-only">Settings</span>
             </button>
-
-          </nav>
+          </div>
         </div>
       </header>
 

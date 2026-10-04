@@ -124,7 +124,7 @@ export function ModePage({ mode }: { mode: Mode }) {
           <Icon name="play" size={20} className="text-slate-400 transition-transform duration-150 group-hover:translate-x-0.5" />
           Start typing
         </button>
-        <div className="mt-3 text-xs leading-relaxed text-zinc-500/80">
+        <div className="mt-3 text-xs leading-relaxed text-zinc-400">
           {pool.remaining > 0
             ? `${pool.remaining} of ${pool.total} exercises left`
             : `All ${pool.total} exercises done — starting fresh`}
