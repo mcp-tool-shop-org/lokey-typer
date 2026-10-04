@@ -611,6 +611,7 @@ describe('AmbientPlayerV3', () => {
     const { player } = await boot()
     player.setPreferences(prefs({ volume: 1, screenReaderMode: true }))
     await player.start()
+    expect(player.isStarted()).toBe(true)
     expect(FakeAudioContext.contexts[0]?.sources ?? []).toHaveLength(0)
     expect(lastRamp(master().gain).value).toBe(0)
     await player.start()
@@ -654,8 +655,11 @@ describe('AmbientPlayerV3', () => {
     controls.manifestMode = mode
     await expect(player.start()).resolves.toBeUndefined()
     expect(context().sources).toHaveLength(0)
+    expect(player.isStarted()).toBe(false)
     await player.start()
     expect(context().sources).toHaveLength(0)
+    expect(player.isStarted()).toBe(false)
+    expect(manifestFetches()).toBeGreaterThan(1)
   })
 
   it('stays silent when the manifest has no tracks', async () => {
@@ -663,6 +667,7 @@ describe('AmbientPlayerV3', () => {
     controls.tracks = []
     await expect(player.start()).resolves.toBeUndefined()
     expect(context().sources).toHaveLength(0)
+    expect(player.isStarted()).toBe(false)
   })
 
   it.each(['throw', 'status', 'decode', 'body'] as const)(
@@ -674,9 +679,58 @@ describe('AmbientPlayerV3', () => {
       expect(context().sources.filter((source) => source.startArgs)).toHaveLength(0)
       const fetches = controls.fetched.length
       await player.start()
-      expect(controls.fetched.length).toBe(fetches)
+      expect(controls.fetched.length).toBeGreaterThan(fetches)
+      expect(player.isStarted()).toBe(false)
     },
   )
+
+  it('ignores a second start while the first is still loading the manifest', async () => {
+    const { player } = await boot()
+    controls.manifestMode = 'defer'
+    const first = player.start()
+    await until(() => controls.manifestWaiters.length > 0)
+    const second = player.start()
+    await second
+    expect(player.isStarted()).toBe(false)
+    expect(context().sources).toHaveLength(0)
+    controls.manifestWaiters.shift()?.()
+    await first
+    await drain()
+    expect(liveSources()).toHaveLength(1)
+    expect(player.isStarted()).toBe(true)
+  })
+
+  it('keeps the last manifest when a later fetch fails and still crossfades', async () => {
+    const { player } = await boot()
+    let now = 1_700_000_000_000
+    vi.spyOn(Date, 'now').mockImplementation(() => now)
+    await player.start()
+    await drain()
+    expect(player.isStarted()).toBe(true)
+    expect(context().sources).toHaveLength(1)
+    now += 60_000
+    controls.manifestMode = 'throw'
+    await player.skipTrack()
+    await drain()
+    expect(context().sources.length).toBeGreaterThan(1)
+    expect(liveSources()).toHaveLength(1)
+    expect(player.isStarted()).toBe(true)
+  })
+
+  it('does not cache a failed refresh of an empty catalog', async () => {
+    const { player } = await boot()
+    let now = 1_700_000_000_000
+    vi.spyOn(Date, 'now').mockImplementation(() => now)
+    controls.tracks = []
+    await player.start()
+    expect(player.isStarted()).toBe(false)
+    now += 60_000
+    controls.manifestMode = 'throw'
+    const fetches = manifestFetches()
+    await player.start()
+    expect(manifestFetches()).toBeGreaterThan(fetches)
+    expect(player.isStarted()).toBe(false)
+  })
 
   it('does not start twice after a successful start, and retries when resume itself fails', async () => {
     const { player } = await boot()
