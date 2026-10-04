@@ -726,7 +726,7 @@ describe('mode pages', () => {
 
     await user.click(screen.getByRole('button', { name: 'Exit' }))
     await user.click(screen.getByRole('link', { name: 'Competitive' }))
-    expect(screen.getByText(/No runs yet/)).toBeTruthy()
+    expect(screen.getByText('No 60s runs yet — finish a sprint to get on the board.')).toBeTruthy()
     await user.click(screen.getByRole('button', { name: '30s' }))
     expect(loadPreferences().competitiveSprintDurationMs).toBe(30_000)
     await user.click(screen.getByRole('button', { name: '120s' }))
@@ -748,12 +748,12 @@ describe('mode pages', () => {
     renderApp(['/competitive'])
     expect(loadPreferences().competitiveSprintDurationMs).toBe(60_000)
     expect(screen.queryByText('44 WPM')).toBeNull()
-    expect(screen.getByText(/No runs yet/)).toBeTruthy()
-    expect(classTokens(screen.getByText(/No runs yet/))).toContain('text-zinc-400')
-    expect(screen.getByText('No 60s runs yet — finish a sprint to get on the board.')).toBeTruthy()
+    const emptyBoard = screen.getByText('No 60s runs yet — finish a sprint to get on the board.')
+    expect(classTokens(emptyBoard)).toContain('text-zinc-400')
+    expect(screen.getByText('30s has runs.')).toBeTruthy()
     await user.click(screen.getByRole('button', { name: '30s' }))
     expect(screen.getByText('44 WPM')).toBeTruthy()
-    expect(screen.queryByText(/No runs yet/)).toBeNull()
+    expect(screen.queryByText(/No \d+s runs yet/)).toBeNull()
   })
 
   it('paints rank and accuracy on a competitive row in quiet type', () => {
