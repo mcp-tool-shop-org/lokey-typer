@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { ReactNode } from 'react'
@@ -205,6 +205,12 @@ function exerciseTitle(id: string) {
   return title
 }
 
+function classTokens(node: Element | null | undefined) {
+  const raw = node instanceof Element ? node.className : ''
+  const value = typeof raw === 'string' ? raw : ''
+  return value.split(/\s+/).filter(Boolean)
+}
+
 function spyOnReload() {
   const reload = vi.fn()
   const descriptor = Object.getOwnPropertyDescriptor(window.location, 'reload')
@@ -310,6 +316,7 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup()
+  vi.useRealTimers()
   document.querySelectorAll('[data-test-outside]').forEach((node) => node.remove())
   document.documentElement.classList.remove('reduce-motion')
 })
@@ -323,13 +330,50 @@ describe('routes and shell', () => {
     expect(screen.queryByRole('dialog')).toBeNull()
     expect(document.activeElement).toBe(document.body)
     expect(screen.getByRole('heading', { name: /LoKey Typer/ })).toBeTruthy()
-    expect(screen.getByText(/Your stats will appear here after your first session/)).toBeTruthy()
+    const emptyStats = screen.getByText(/Your stats will appear here after your first session/)
+    expect(classTokens(emptyStats)).toContain('text-zinc-400')
     const nav = screen.getByRole('navigation', { name: 'Main navigation' })
     const settings = screen.getByRole('button', { name: 'Settings' })
+    const shuffle = screen.getByRole('button', { name: 'Random ambient track' })
+    const mute = screen.getByRole('button', { name: 'Mute ambient' })
     expect(nav.contains(settings)).toBe(false)
+    expect(nav.contains(shuffle)).toBe(false)
+    expect(nav.contains(mute)).toBe(false)
     expect(nav.parentElement?.contains(settings)).toBe(true)
-    expect(screen.getByText('Speed • Accuracy • Consistency').className).toContain('text-zinc-400')
+    expect(nav.parentElement?.contains(shuffle)).toBe(true)
+    expect(nav.parentElement?.contains(mute)).toBe(true)
+    const cluster = settings.parentElement
+    expect(cluster).toBe(shuffle.parentElement)
+    expect(cluster).toBe(mute.parentElement)
+    expect(cluster).not.toBe(nav)
+    expect(classTokens(cluster)).toContain('shrink-0')
+    expect(classTokens(nav)).toContain('min-w-0')
+    expect(classTokens(nav)).toContain('overflow-x-auto')
+    expect(classTokens(nav)).not.toContain('shrink-0')
+    expect(classTokens(nav.parentElement)).not.toContain('overflow-x-auto')
+    const tagline = screen.getByText('Speed • Accuracy • Consistency')
+    expect(classTokens(tagline)).toContain('text-zinc-400')
+    const dot = tagline.previousElementSibling
+    expect(dot?.textContent).toBe('·')
+    expect(classTokens(dot)).toContain('text-zinc-400')
+    expect(classTokens(dot)).not.toContain('text-zinc-600')
     expect(screen.getByText(/Starting in/).className).toContain('text-zinc-400')
+  })
+
+  it('keeps each mode name on one line', () => {
+    renderApp()
+    const nav = screen.getByRole('navigation', { name: 'Main navigation' })
+    for (const name of ['Home', 'Daily', 'Focus', 'Real-Life', 'Competitive']) {
+      const tokens = classTokens(within(nav).getByRole('link', { name }))
+      expect(tokens).toContain('whitespace-nowrap')
+      expect(tokens).toContain('shrink-0')
+    }
+  })
+
+  it('marks the scrolled mode names with a hint inside the nav', () => {
+    renderApp()
+    const nav = screen.getByRole('navigation', { name: 'Main navigation' })
+    expect(nav.querySelector('[data-nav-more]')).toBeTruthy()
   })
 
   it('follows daily, mode, legacy, and unknown routes', async () => {
@@ -421,6 +465,11 @@ describe('routes and shell', () => {
     await user.keyboard('{Escape}')
     await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull())
     expect(document.activeElement).toBe(opener)
+  })
+
+  it('paints the missing-page sentence in quiet type', () => {
+    renderApp(['/nowhere-at-all'])
+    expect(classTokens(screen.getByText('Nothing here. It may have been moved or removed.'))).toContain('text-zinc-400')
   })
 })
 
@@ -617,6 +666,33 @@ describe('home', () => {
     await user.click(screen.getByRole('button', { name: 'change' }))
     expect(document.body.textContent).toMatch(/Starting in\s+Focus/)
   })
+
+  it('paints the line under the empty home stats in quiet type', () => {
+    renderApp()
+    expect(classTokens(screen.getByText(/above to begin/))).toContain('text-zinc-400')
+  })
+
+  it('paints the home stat labels in quiet type', () => {
+    const skill = loadSkillModel()
+    skill.total_runs = 1
+    skill.ema.wpm = 10
+    skill.ema.accuracy = 1
+    saveSkillModel(skill)
+    appendRun({
+      exercise_id: 'focus_calm_01_001',
+      timestamp: 1_700_000_000,
+      mode: 'focus',
+      wpm: 10,
+      accuracy: 1,
+      errors: 0,
+      backspaces: 0,
+      duration_ms: 1000,
+    })
+    renderApp()
+    for (const label of ['Avg WPM', 'Accuracy', 'Sessions', 'Days practiced']) {
+      expect(classTokens(screen.getByText(label))).toContain('text-zinc-400')
+    }
+  })
 })
 
 describe('mode pages', () => {
@@ -650,7 +726,7 @@ describe('mode pages', () => {
 
     await user.click(screen.getByRole('button', { name: 'Exit' }))
     await user.click(screen.getByRole('link', { name: 'Competitive' }))
-    expect(screen.getByText(/No runs yet/)).toBeTruthy()
+    expect(screen.getByText('No 60s runs yet — finish a sprint to get on the board.')).toBeTruthy()
     await user.click(screen.getByRole('button', { name: '30s' }))
     expect(loadPreferences().competitiveSprintDurationMs).toBe(30_000)
     await user.click(screen.getByRole('button', { name: '120s' }))
@@ -664,6 +740,27 @@ describe('mode pages', () => {
     await user.click(screen.getByRole('button', { name: 'Start typing' }))
     expect(await screen.findByText(/Personal bests require/)).toBeTruthy()
     expect(screen.getByText('Remaining')).toBeTruthy()
+  })
+
+  it('names the empty 60s board and keeps a 30s run off it', async () => {
+    const user = setupUser()
+    seedCompetitiveRun(44, 30_000, 1_700_000_099)
+    renderApp(['/competitive'])
+    expect(loadPreferences().competitiveSprintDurationMs).toBe(60_000)
+    expect(screen.queryByText('44 WPM')).toBeNull()
+    const emptyBoard = screen.getByText('No 60s runs yet — finish a sprint to get on the board.')
+    expect(classTokens(emptyBoard)).toContain('text-zinc-400')
+    expect(screen.getByText('30s has runs.')).toBeTruthy()
+    await user.click(screen.getByRole('button', { name: '30s' }))
+    expect(screen.getByText('44 WPM')).toBeTruthy()
+    expect(screen.queryByText(/No \d+s runs yet/)).toBeNull()
+  })
+
+  it('paints rank and accuracy on a competitive row in quiet type', () => {
+    seedCompetitiveRun(81, 60_000, 1_700_000_001)
+    renderApp(['/competitive'])
+    expect(classTokens(screen.getByText('#1'))).toContain('text-zinc-400')
+    expect(classTokens(screen.getByText('95.6%'))).toContain('text-zinc-400')
   })
 
   it('starts from an autostart link and says when every exercise is done', async () => {
@@ -838,6 +935,47 @@ describe('run pages', () => {
     expect(screen.getByRole('link', { name: 'Competitive' }).getAttribute('aria-current')).toBe('page')
     expect(screen.getByText('Sprint duration')).toBeTruthy()
     expect(screen.queryByRole('heading', { name: /Today.s exercises/ })).toBeNull()
+  })
+
+  it('paints the pack name on a typing surface in quiet type', () => {
+    renderApp(['/focus/run/focus_calm_01_001'])
+    const pack = findExercise('focus_calm_01_001')?.pack
+    expect(pack).toBeTruthy()
+    expect(classTokens(screen.getByText(pack ?? ''))).toContain('text-zinc-400')
+  })
+
+  it('paints rank and accuracy on a direct-run row in quiet type', () => {
+    seedCompetitiveRun(61, 60_000, 1_700_000_010)
+    renderApp(['/competitive/run/competitive_mixed_01_001?duration=60000'])
+    expect(classTokens(screen.getByText('#1'))).toContain('text-zinc-400')
+    expect(classTokens(screen.getByText('95.6%'))).toContain('text-zinc-400')
+  })
+
+  it('puts a finished direct sprint on the board without restarting', async () => {
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date('2026-01-01T00:00:00.000Z'))
+    try {
+      renderApp(['/competitive/run/competitive_mixed_01_001?duration=30000'])
+      expect(screen.getByText('No runs yet — finish a sprint to get on the board.')).toBeTruthy()
+      const input = screen.getByRole('textbox', { name: 'Typing input' }) as HTMLTextAreaElement
+      const first = passageText()[0] ?? ''
+      expect(first).not.toBe('')
+      fireEvent.keyDown(input, { key: first })
+      fireEvent.input(input, { target: { value: first }, isComposing: false })
+      expect(input.value).toBe(first)
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(30_000)
+      })
+      expect(screen.getByText('Remaining').parentElement?.textContent).toContain('0:00')
+      expect(input.value).toBe(first)
+      expect(screen.getByRole('button', { name: 'Restart' })).toBeTruthy()
+      expect(screen.getByText('0 WPM')).toBeTruthy()
+      expect(screen.queryByText('No runs yet — finish a sprint to get on the board.')).toBeNull()
+      fireEvent.click(screen.getByRole('button', { name: 'Restart' }))
+      expect((screen.getByRole('textbox', { name: 'Typing input' }) as HTMLTextAreaElement).value).toBe('')
+    } finally {
+      vi.useRealTimers()
+    }
   })
 })
 
@@ -1028,10 +1166,47 @@ describe('daily set', () => {
     expect(screen.getByRole('link', { name: 'Short set' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Standard set' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Long set' })).toBeTruthy()
-    expect(screen.getByRole('button', { name: 'Back to Home' }).parentElement?.className).toContain('gap-4')
+    expect(classTokens(screen.getByText('Avg WPM'))).toContain('text-zinc-400')
+    const backHome = screen.getByRole('button', { name: 'Back to Home' })
+    const homeParent = backHome.parentElement
+    const homeTokens = classTokens(homeParent)
+    // Token, not a substring: sm:gap-4 does not count as gap-4.
+    expect(homeTokens).toContain('flex')
+    expect(homeTokens).toContain('flex-col')
+    expect(homeTokens).toContain('gap-4')
+    const lengthRow = screen.getByRole('link', { name: 'Short set' }).parentElement
+    expect(lengthRow?.parentElement).toBe(homeParent)
+    expect(lengthRow?.nextElementSibling).toBe(backHome)
     await user.click(screen.getByRole('link', { name: 'Long set' }))
     expect(await screen.findByRole('button', { name: 'Begin' })).toBeTruthy()
     expect(screen.queryByRole('heading', { name: /Daily Set Complete/ })).toBeNull()
+  })
+
+  it('paints the daily stat captions in quiet type', () => {
+    seedUser()
+    seedDailySet('mix', [{ kind: 'confidence', mode: 'focus', exerciseId: 'focus_calm_01_001' }])
+    renderApp(['/daily'])
+    expect(classTokens(screen.getByText('Days practiced'))).toContain('text-zinc-400')
+    expect(classTokens(screen.getByText('Every day you show up counts.'))).toContain('text-zinc-400')
+  })
+
+  it('paints the best-week caption in quiet type', () => {
+    seedUser()
+    seedDailySet('mix', [{ kind: 'confidence', mode: 'focus', exerciseId: 'focus_calm_01_001' }])
+    renderApp(['/daily'])
+    expect(classTokens(screen.getByText('Most days typed in any 7-day window.'))).toContain('text-zinc-400')
+  })
+
+  it('paints the open daily exercise title in quiet type', async () => {
+    const user = setupUser()
+    seedUser()
+    seedDailySet('mix', [{ kind: 'confidence', mode: 'focus', exerciseId: 'focus_calm_01_001' }])
+    renderApp(['/daily'])
+    await user.click(screen.getByRole('button', { name: 'Begin' }))
+    const title = exerciseTitle('focus_calm_01_001')
+    expect(await screen.findByRole('heading', { name: title })).toBeTruthy()
+    const caption = screen.getAllByText(title).find((node) => node.tagName !== 'H1')
+    expect(classTokens(caption)).toContain('text-zinc-400')
   })
 })
 
@@ -1115,8 +1290,16 @@ describe('providers, boundary, and bootstrap', () => {
     ;(mocks.ambientPlayer as { isStarted?: () => boolean }).isStarted = () => false
     renderApp()
     window.dispatchEvent(new Event('touchstart'))
-    expect(await screen.findByText("Sound didn't start. Try again.")).toBeTruthy()
-    expect(screen.getByRole('button', { name: "Sound couldn't start. Click to try again." })).toBeTruthy()
+    const status = await screen.findByText("Sound didn't start. Try again.")
+    const retry = screen.getByRole('button', { name: "Sound couldn't start. Click to try again." })
+    const nav = screen.getByRole('navigation', { name: 'Main navigation' })
+    const settings = screen.getByRole('button', { name: 'Settings' })
+    expect(nav.contains(status)).toBe(false)
+    expect(nav.contains(retry)).toBe(false)
+    expect(status.parentElement).toBe(settings.parentElement)
+    expect(retry.parentElement).toBe(settings.parentElement)
+    expect(status.parentElement).not.toBe(nav)
+    expect(classTokens(settings.parentElement)).toContain('shrink-0')
     expect(screen.queryByRole('button', { name: 'Mute ambient' })).toBeNull()
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }))
     await waitFor(() => expect(mocks.ambientPlayer.start).toHaveBeenCalledTimes(2))
