@@ -235,6 +235,16 @@ function passage() {
   return node
 }
 
+function expectSolidGhost(node: Element | null) {
+  // A slash token such as bg-zinc-400/25 is not the solid caret.
+  expect(node).toBeTruthy()
+  const raw = typeof node?.className === 'string' ? node.className : ''
+  const tokens = raw.split(/\s+/).filter(Boolean)
+  expect(tokens).toContain('bg-zinc-400')
+  expect(tokens.some((token) => token.startsWith('bg-zinc-400/'))).toBe(false)
+  expect(raw).not.toContain('bg-zinc-50')
+}
+
 describe('TypingSession', () => {
   let play: ReturnType<typeof vi.spyOn>
   let user: ReturnType<typeof userEvent.setup>
@@ -586,10 +596,7 @@ describe('TypingSession', () => {
     })
     expect(document.querySelector('[title="Ghost (PB pace)"]')).toBeNull()
     fireEvent.input(idle.input, { target: { value: 'h' } })
-    const ghost = document.querySelector('[title="Ghost (PB pace)"]')
-    expect(ghost).toBeTruthy()
-    expect(ghost?.className).toContain('bg-zinc-400')
-    expect(ghost?.className).not.toContain('bg-zinc-50')
+    expectSolidGhost(document.querySelector('[title="Ghost (PB pace)"]'))
     const caret = document.querySelector('.cursor-blink')
     expect(caret?.className).toContain('bg-zinc-300/70')
     idle.unmount()
@@ -863,7 +870,7 @@ describe('TypingOverlay', () => {
   it('draws a ghost in the passage and past the end', () => {
     const middle = view({ target: 'abcd', typed: '', ghostIndex: 1, fontScale: 1.1 })
     expect(middle.style.fontSize).toBe('calc(0.9625rem)')
-    expect(middle.querySelector('[title="Ghost (PB pace)"]')).toBeTruthy()
+    expectSolidGhost(middle.querySelector('[title="Ghost (PB pace)"]'))
     const pending = [...middle.querySelectorAll('.text-zinc-400')].map((node) => node.textContent)
     expect(pending).toEqual(['a', 'bcd'])
     middle.remove()
@@ -873,11 +880,12 @@ describe('TypingOverlay', () => {
     const tail = [...done.children].map((node) => node.getAttribute('title') ?? node.className)
     expect(tail.at(-2)).toContain('Ghost')
     expect(tail.at(-1)).toContain('cursor-blink')
+    expectSolidGhost(done.querySelector('[title="Ghost (PB pace)"]'))
     done.remove()
 
     const blank = view({ target: '', typed: '', showCursor: true, ghostIndex: 0 })
     expect(blank.querySelector('.cursor-blink')).toBeTruthy()
-    expect(blank.querySelector('[title="Ghost (PB pace)"]')).toBeTruthy()
+    expectSolidGhost(blank.querySelector('[title="Ghost (PB pace)"]'))
     expect(blank.textContent).toBe('')
   })
 })
