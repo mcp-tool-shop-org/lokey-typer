@@ -123,8 +123,14 @@ public static class WebContentHostTests
         var failed = WebContentHost.FailurePage();
         Check.That(IsDarkPage(missing.HtmlBody) && missing.HtmlBody!.Contains("Not found.", StringComparison.Ordinal),
             "a missing file is a dark page");
+        Check.That(missing.HtmlBody!.Contains("Not found. Reinstall LoKey Typer if this file should be in the package.", StringComparison.Ordinal)
+            && missing.HtmlBody.Contains("Reinstall LoKey Typer", StringComparison.Ordinal),
+            "a body that is only Not found. fails");
         Check.That(IsDarkPage(failed.HtmlBody) && failed.HtmlBody!.Contains("The page could not be loaded.", StringComparison.Ordinal),
             "a failed load is a dark page");
+        Check.That(failed.HtmlBody!.Contains("The page could not be loaded. Try again. If it still fails, reinstall LoKey Typer.", StringComparison.Ordinal)
+            && failed.HtmlBody.Contains("Try again.", StringComparison.Ordinal),
+            "a failed load says to try again");
     }
 
     private static bool IsDarkPage(string? html) =>
@@ -134,21 +140,38 @@ public static class WebContentHostTests
 
     private static void FailedNavigationRequiresFallback()
     {
-        var outcome = WebContentHost.OnNavigationCompleted(false, "ConnectionAborted");
+        var outcome = WebContentHost.OnNavigationCompleted(false, "ConnectionAborted", 0);
         Check.That(outcome.FallbackPanelRequired, "failed navigation requires the fallback panel");
         Check.That(!outcome.Unsubscribe, "failed navigation keeps the completion handler");
         Check.That(!outcome.CollapseSplash, "failed navigation leaves the splash up");
-        Check.That(outcome.Subtitle is not null && outcome.Subtitle.Contains("ConnectionAborted", StringComparison.Ordinal),
+        Check.That(outcome.Subtitle == "The page did not load. ConnectionAborted",
             "failed navigation includes WebErrorStatus");
+
+        var missing = WebContentHost.OnNavigationCompleted(true, "Unknown", 404);
+        Check.That(missing.FallbackPanelRequired && !missing.Unsubscribe && !missing.CollapseSplash,
+            "HTTP 404 requires the fallback panel");
+        Check.That(missing.Subtitle == "The page did not load. HTTP 404",
+            "HTTP 404 names the status");
+
+        var broken = WebContentHost.OnNavigationCompleted(true, "Unknown", 500);
+        Check.That(broken.FallbackPanelRequired && !broken.Unsubscribe && !broken.CollapseSplash,
+            "HTTP 500 requires the fallback panel");
+        Check.That(broken.Subtitle == "The page did not load. HTTP 500",
+            "HTTP 500 names the status");
     }
 
     private static void SuccessfulNavigationClearsSplash()
     {
-        var failed = WebContentHost.OnNavigationCompleted(false, "FileNotFound");
-        var succeeded = WebContentHost.OnNavigationCompleted(true, "Unknown");
+        var failed = WebContentHost.OnNavigationCompleted(false, "FileNotFound", 0);
+        var succeeded = WebContentHost.OnNavigationCompleted(true, "Unknown", 0);
+        var loaded = WebContentHost.OnNavigationCompleted(true, "Unknown", 200);
         Check.That(failed.FallbackPanelRequired && !failed.Unsubscribe, "a failure still listens");
+        Check.That(failed.Subtitle == "The page did not load. FileNotFound",
+            "a status of 0 keeps the WebErrorStatus subtitle");
         Check.That(succeeded.Unsubscribe && succeeded.CollapseSplash && !succeeded.FallbackPanelRequired,
             "a later success clears the splash");
+        Check.That(loaded.Unsubscribe && loaded.CollapseSplash && !loaded.FallbackPanelRequired,
+            "HTTP 200 clears the splash");
     }
 
     private static void LaunchTitleFollowsTheException()

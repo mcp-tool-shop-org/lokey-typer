@@ -79,14 +79,14 @@ public static class WebContentHost
         404,
         "Not Found",
         "Not found",
-        "Not found.");
+        "Not found. Reinstall LoKey Typer if this file should be in the package.");
 
     public static HostedResource FailurePage() => ErrorDocument(
         HostedResourceKind.Error,
         500,
         "Internal Server Error",
         "Error",
-        "The page could not be loaded.");
+        "The page could not be loaded. Try again. If it still fails, reinstall LoKey Typer.");
 
     private static HostedResource ErrorDocument(
         HostedResourceKind kind,
@@ -120,8 +120,18 @@ public static class WebContentHost
         }
     }
 
-    public static NavigationOutcome OnNavigationCompleted(bool isSuccess, string? webErrorStatus)
+    public static NavigationOutcome OnNavigationCompleted(bool isSuccess, string? webErrorStatus, int httpStatus)
     {
+        // WebView2 uses 0 when it has no code. Only 400 and above fails the document.
+        if (httpStatus >= 400)
+        {
+            return new NavigationOutcome(
+                false,
+                false,
+                true,
+                "The page did not load. HTTP " + httpStatus);
+        }
+
         if (isSuccess)
             return new NavigationOutcome(true, true, false, null);
 
