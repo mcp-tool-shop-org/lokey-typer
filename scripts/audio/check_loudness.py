@@ -72,8 +72,8 @@ def main(folder: str) -> int:
 
     wavs = sorted(root.rglob("*.wav"))
     if not wavs:
-        print("WARN no .wav files found (nothing to check)")
-        return 0
+        print("FAIL no .wav files found")
+        return 1
 
     failed = False
     for wav in wavs:

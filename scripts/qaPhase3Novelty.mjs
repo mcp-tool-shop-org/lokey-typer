@@ -150,7 +150,10 @@ console.log(`Total items: ${totalItems}`)
 console.log(`Duplicate (normalized text) count: ${duplicateSigs}`)
 console.log(`Duplicate rate: ${(dupRate * 100).toFixed(1)}%`)
 
-// Not a hard fail: content pools can be small, but keep an eye on this number.
-if (dupRate > 0.35) {
+if (totalItems === 0) {
+  console.warn('WARN: Daily set produced zero items, so the duplicate rate is not a rotation check.')
+  process.exitCode = 1
+} else if (dupRate > 0.35) {
   console.warn('WARN: Duplicate rate is high; consider increasing novelty constraints or pool diversity.')
+  process.exitCode = 1
 }

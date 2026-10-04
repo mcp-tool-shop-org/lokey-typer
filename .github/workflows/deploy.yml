@@ -11,6 +11,10 @@ on:
       - 'site/**'
       - 'tests/**'
       - '.github/workflows/deploy.yml'
+      - 'index.html'
+      - 'vite.config.ts'
+      - 'tailwind.config.js'
+      - 'postcss.config.js'
   workflow_dispatch:
 
 permissions:
@@ -20,7 +24,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:

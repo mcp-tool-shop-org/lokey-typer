@@ -18,6 +18,8 @@ on:
       - 'tailwind.config.js'
       - 'postcss.config.js'
       - 'index.html'
+      - 'desktop/**'
+      - 'LoKeyTyper.appinstaller'
   pull_request:
     paths:
       - 'src/**'
@@ -35,7 +37,12 @@ on:
       - 'tailwind.config.js'
       - 'postcss.config.js'
       - 'index.html'
+      - 'desktop/**'
+      - 'LoKeyTyper.appinstaller'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -56,7 +63,20 @@ jobs:
       - run: npm run qa:sound-design
       - run: npm run typecheck
       - run: npm run build
+      - name: Build handbook
+        working-directory: site
+        run: |
+          npm ci
+          npm run build
       - run: npm run test:coverage
+      - name: Audio loudness and spectrum
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/audio-venv"
+          "$RUNNER_TEMP/audio-venv/bin/pip" install -r scripts/audio/requirements.txt
+          "$RUNNER_TEMP/audio-venv/bin/python" scripts/audio/check_loudness.py public/audio/ambient
+          "$RUNNER_TEMP/audio-venv/bin/python" scripts/audio/check_spectrum.py public/audio/ambient
       - name: Upload coverage to Codecov
         continue-on-error: true
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
@@ -65,3 +85,13 @@ jobs:
           disable_search: true
           fail_ci_if_error: false
           token: ${{ secrets.CODECOV_TOKEN }}
+
+  build-winui:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+        with:
+          dotnet-version: 9.0.x
+      - name: Build desktop shell
+        run: dotnet build desktop/LoKeyTyper.sln --configuration Release -p:Platform=x64 -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
