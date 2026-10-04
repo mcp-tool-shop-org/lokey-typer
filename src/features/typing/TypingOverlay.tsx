@@ -60,6 +60,7 @@ export function TypingOverlay({
     <div
       className="font-mono text-sm leading-6 whitespace-pre-wrap break-words"
       style={{ fontSize: `calc(0.875rem * ${fontScale})` }}
+      aria-hidden="true"
     >
       {parts.map((p, idx) => {
         if (p.kind === 'cursor') {

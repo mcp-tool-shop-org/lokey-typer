@@ -49,6 +49,29 @@ function sessionLabel(type: DailySessionType) {
   return 'Standard set'
 }
 
+const SESSION_LENGTHS: DailySessionType[] = ['reset', 'mix', 'deep']
+
+function LengthLinks({ sessionType }: { sessionType: DailySessionType }) {
+  return (
+    <div className="mt-4 flex flex-wrap justify-center gap-2">
+      {SESSION_LENGTHS.map((key) => (
+        <Link
+          key={key}
+          to={`/daily?type=${key}`}
+          className={
+            'no-underline rounded-full border px-4 py-2 text-xs font-semibold outline-none transition-all duration-150 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ' +
+            (sessionType === key
+              ? 'border-slate-600/70 bg-zinc-900 text-zinc-50'
+              : 'border-zinc-800 bg-zinc-950 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200')
+          }
+        >
+          {sessionLabel(key)}
+        </Link>
+      ))}
+    </div>
+  )
+}
+
 function computeDaysPracticed(runs: ReturnType<typeof loadRuns>) {
   const days = new Set<string>()
   for (const r of runs) {
@@ -290,28 +313,7 @@ export function DailySetPage() {
           <div className="mt-3 text-xs text-zinc-500/80">
             {daily.items.length} exercises • {sessionLabel(sessionType)}
           </div>
-          <div className="mt-4 flex flex-wrap justify-center gap-2">
-            {(
-              [
-                { key: 'reset' as const, label: sessionLabel('reset') },
-                { key: 'mix' as const, label: sessionLabel('mix') },
-                { key: 'deep' as const, label: sessionLabel('deep') },
-              ]
-            ).map((t) => (
-              <Link
-                key={t.key}
-                to={`/daily?type=${t.key}`}
-                className={
-                  'no-underline rounded-full border px-4 py-2 text-xs font-semibold outline-none transition-all duration-150 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ' +
-                  (sessionType === t.key
-                    ? 'border-slate-600/70 bg-zinc-900 text-zinc-50'
-                    : 'border-zinc-800 bg-zinc-950 text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200')
-                }
-              >
-                {t.label}
-              </Link>
-            ))}
-          </div>
+          <LengthLinks sessionType={sessionType} />
         </div>
       ) : null}
 
@@ -491,7 +493,7 @@ export function DailySetPage() {
             {/* Summary header */}
             <div className="flex flex-col items-center gap-3 rounded-3xl bg-zinc-900/40 px-6 py-10 text-center sm:px-8 sm:py-14">
               <Icon name="trophy" size={28} className="text-slate-400" />
-              <h1 className="text-xl font-semibold text-zinc-100">Daily Set Complete!</h1>
+              <h1 className="text-xl font-semibold text-zinc-100">Daily Set Complete — {sessionLabel(sessionType)}</h1>
               <div className="mt-2 flex flex-wrap justify-center gap-6 text-sm">
                 <div>
                   <div className="text-xs font-medium text-zinc-400">Avg WPM</div>
@@ -543,8 +545,9 @@ export function DailySetPage() {
               </div>
             </div>
 
-            {/* Back to home */}
+            {/* Other lengths stay reachable after this one is finished. */}
             <div className="text-center">
+              <LengthLinks sessionType={sessionType} />
               <button
                 type="button"
                 onClick={() => navigate('/')}

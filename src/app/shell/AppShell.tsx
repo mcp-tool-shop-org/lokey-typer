@@ -32,6 +32,7 @@ export function AppShell() {
   const { skipTrack, unlockFailed } = useAmbient()
   const [settingsOpen, setSettingsOpen] = useState(false)
   const soundscapeLocked = Boolean(prefs.screenReaderMode)
+  const soundFailed = unlockFailed && !soundscapeLocked
   const settingsOpenerRef = useRef<HTMLElement | null>(null)
   const settingsWasOpenRef = useRef(false)
 
@@ -120,9 +121,11 @@ export function AppShell() {
               aria-label={
                 soundscapeLocked
                   ? `Ambient sound. ${SOUNDSCAPE_LOCK}`
-                  : prefs.ambientEnabled
-                    ? 'Mute ambient'
-                    : 'Unmute ambient'
+                  : soundFailed
+                    ? "Sound couldn't start. Click to try again."
+                    : prefs.ambientEnabled
+                      ? 'Mute ambient'
+                      : 'Unmute ambient'
               }
               title={
                 soundscapeLocked
@@ -134,7 +137,7 @@ export function AppShell() {
                       : 'Unmute ambient'
               }
             >
-              <Icon name={prefs.ambientEnabled ? 'sound-on' : 'sound-off'} size={18} />
+              <Icon name={prefs.ambientEnabled && !soundFailed ? 'sound-on' : 'sound-off'} size={18} />
             </button>
             {unlockFailed && !soundscapeLocked ? (
               <span role="status" className="max-w-[9rem] text-xs leading-snug text-zinc-400">
