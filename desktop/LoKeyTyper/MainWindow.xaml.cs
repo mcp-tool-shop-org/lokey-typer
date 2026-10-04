@@ -168,7 +168,8 @@ public sealed partial class MainWindow : Window
 
     private void OnNavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
     {
-        var outcome = WebContentHost.OnNavigationCompleted(args.IsSuccess, args.WebErrorStatus.ToString());
+        var outcome = WebContentHost.OnNavigationCompleted(
+            args.IsSuccess, args.WebErrorStatus.ToString(), args.HttpStatusCode);
         if (outcome.Unsubscribe)
             sender.NavigationCompleted -= OnNavigationCompleted;
 
