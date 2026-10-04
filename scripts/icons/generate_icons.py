@@ -132,17 +132,11 @@ def icon_external():
 
 
 def icon_settings():
-    """Settings — a single gear, minimal teeth."""
-    # Outer gear shape via path
-    body = circle(12, 12, 3)
-    # Simplified gear: 6 small lines radiating out
-    for angle_deg in range(0, 360, 60):
-        a = math.radians(angle_deg)
-        x1 = 12 + 5.5 * math.cos(a)
-        y1 = 12 + 5.5 * math.sin(a)
-        x2 = 12 + 7.5 * math.cos(a)
-        y2 = 12 + 7.5 * math.sin(a)
-        body += line(round(x1, 1), round(y1, 1), round(x2, 1), round(y2, 1))
+    """Settings — a gear. Teeth stay on the hub so it does not read as a sun."""
+    body = path(
+        'M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'
+    )
+    body += circle(12, 12, 3)
     save('settings', body)
 
 

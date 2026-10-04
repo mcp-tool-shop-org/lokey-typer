@@ -4,7 +4,8 @@ Letter recordings are four locked keyboards. The app preloads all four and plays
 - key_2.wav — Clicky. Bright snap.
 - key_1.wav — Tick. Short click.
 - key_4.wav — Muted. Quiet strike.
-- spacebar.wav, backspace.wav, return_bell.wav, and error.wav are shared by every keyboard.
+- spacebar.wav, backspace.wav, and return_bell.wav are shared by every keyboard.
+- A missed letter plays the chosen keyboard. error.wav is not that strike.
 
 If a file is missing, that one sound uses a short synthesized fallback.
 

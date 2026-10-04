@@ -538,12 +538,8 @@ export function TypingSession(props: {
             }
 
             if (e.key.length === 1) {
-              const expected = targetText[typed.length] ?? null
-              if (expected != null && e.key !== expected) {
-                typewriterAudio.play('error', stroke(props.prefs.volume * 0.6))
-              } else {
-                typewriterAudio.play('key', stroke())
-              }
+              // A miss stays on the chosen recording. The settings preview never plays error.wav.
+              typewriterAudio.play('key', stroke())
             }
           }}
           onPaste={(e) => e.preventDefault()}

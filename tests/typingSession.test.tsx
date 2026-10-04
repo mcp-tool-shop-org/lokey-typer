@@ -380,7 +380,7 @@ describe('TypingSession', () => {
     )
   })
 
-  it('plays key, error, space, and enter without playing for modifiers', () => {
+  it('plays the chosen keyboard for a hit and a miss, plus space and enter, and skips modifiers', () => {
     const fresh = renderSession({ targetText: 'ab' })
     fireEvent.keyDown(fresh.input, { key: 'Shift' })
     fireEvent.keyDown(fresh.input, { key: 'Enter' })
@@ -403,7 +403,7 @@ describe('TypingSession', () => {
     for (const call of letterStrikes) {
       expect(call[1]).toEqual(expect.objectContaining({ keyboardVoice: 'mechanical' }))
     }
-    expect(play).toHaveBeenCalledWith('error', expect.objectContaining({ modeGain: 0.7, volume: 0.3 }))
+    expect(play).not.toHaveBeenCalledWith('error', expect.anything())
     expect(play).toHaveBeenCalledWith('spacebar', expect.objectContaining({ modeGain: 0.7 }))
     expect(play).toHaveBeenCalledWith('key', expect.objectContaining({ modeGain: 0.7 }))
     expect(play).not.toHaveBeenCalledWith('key', expect.objectContaining({ enabled: false }))
