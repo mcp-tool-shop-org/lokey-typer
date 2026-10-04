@@ -586,7 +586,12 @@ describe('TypingSession', () => {
     })
     expect(document.querySelector('[title="Ghost (PB pace)"]')).toBeNull()
     fireEvent.input(idle.input, { target: { value: 'h' } })
-    expect(document.querySelector('[title="Ghost (PB pace)"]')).toBeTruthy()
+    const ghost = document.querySelector('[title="Ghost (PB pace)"]')
+    expect(ghost).toBeTruthy()
+    expect(ghost?.className).toContain('bg-zinc-400')
+    expect(ghost?.className).not.toContain('bg-zinc-50')
+    const caret = document.querySelector('.cursor-blink')
+    expect(caret?.className).toContain('bg-zinc-300/70')
     idle.unmount()
 
     const focus = renderSession({ mode: 'focus', ghostEnabled: true, targetText: 'hello' })
