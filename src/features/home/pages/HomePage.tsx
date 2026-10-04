@@ -68,7 +68,7 @@ export function HomePage() {
           <Icon name="play" size={20} className="text-slate-400 transition-transform duration-150 group-hover:translate-x-0.5" />
           Start typing
         </button>
-        <div className="mt-3 text-xs text-zinc-500/80">
+        <div className="mt-3 text-xs text-zinc-400">
           Starting in{' '}
           <span className="font-medium text-zinc-300">{modeLabel(selectedMode)}</span>
           {' · '}

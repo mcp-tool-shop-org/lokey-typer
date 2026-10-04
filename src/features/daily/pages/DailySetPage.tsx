@@ -310,7 +310,7 @@ export function DailySetPage() {
             <Icon name="play" size={20} className="text-slate-400 transition-transform duration-150 group-hover:translate-x-0.5" />
             {currentIndex > 0 ? 'Continue' : 'Begin'}
           </button>
-          <div className="mt-3 text-xs text-zinc-500/80">
+          <div className="mt-3 text-xs text-zinc-400">
             {daily.items.length} exercises • {sessionLabel(sessionType)}
           </div>
           <LengthLinks sessionType={sessionType} />
@@ -546,7 +546,7 @@ export function DailySetPage() {
             </div>
 
             {/* Other lengths stay reachable after this one is finished. */}
-            <div className="text-center">
+            <div className="flex flex-col items-center gap-4 text-center">
               <LengthLinks sessionType={sessionType} />
               <button
                 type="button"
