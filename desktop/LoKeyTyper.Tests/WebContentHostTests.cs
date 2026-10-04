@@ -35,6 +35,7 @@ public static class WebContentHostTests
             MissingSubresourceIsNotTheSpa(root);
             ServiceWorkerFileStaysInside(root);
             BadUriIs500();
+            MissingPagesUseTheDarkShell();
             FailedNavigationRequiresFallback();
             SuccessfulNavigationClearsSplash();
             LaunchTitleFollowsTheException();
@@ -112,7 +113,24 @@ public static class WebContentHostTests
         Check.That(decision.Kind == HostedResourceKind.Error, "bad uri is an error page");
         Check.That(decision.StatusCode == 500, "bad uri is 500");
         Check.That(!string.IsNullOrEmpty(decision.HtmlBody), "bad uri has a body");
+        Check.That(decision.HtmlBody!.Contains("background:#09090b", StringComparison.Ordinal),
+            "bad uri page uses the dark shell");
     }
+
+    private static void MissingPagesUseTheDarkShell()
+    {
+        var missing = WebContentHost.NotFoundPage();
+        var failed = WebContentHost.FailurePage();
+        Check.That(IsDarkPage(missing.HtmlBody) && missing.HtmlBody!.Contains("Not found.", StringComparison.Ordinal),
+            "a missing file is a dark page");
+        Check.That(IsDarkPage(failed.HtmlBody) && failed.HtmlBody!.Contains("The page could not be loaded.", StringComparison.Ordinal),
+            "a failed load is a dark page");
+    }
+
+    private static bool IsDarkPage(string? html) =>
+        html is not null
+        && html.Contains("background:#09090b", StringComparison.Ordinal)
+        && html.Contains("color:#fafafa", StringComparison.Ordinal);
 
     private static void FailedNavigationRequiresFallback()
     {

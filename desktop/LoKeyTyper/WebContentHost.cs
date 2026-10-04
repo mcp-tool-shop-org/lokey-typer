@@ -74,21 +74,34 @@ public static class WebContentHost
         }
     }
 
-    public static HostedResource NotFoundPage() => new(
+    public static HostedResource NotFoundPage() => ErrorDocument(
         HostedResourceKind.NotFound,
-        null,
         404,
         "Not Found",
-        "Content-Type: text/html; charset=utf-8",
-        "<!doctype html><title>Not found</title><p>Not found.</p>");
+        "Not found",
+        "Not found.");
 
-    public static HostedResource FailurePage() => new(
+    public static HostedResource FailurePage() => ErrorDocument(
         HostedResourceKind.Error,
-        null,
         500,
         "Internal Server Error",
+        "Error",
+        "The page could not be loaded.");
+
+    private static HostedResource ErrorDocument(
+        HostedResourceKind kind,
+        int statusCode,
+        string reasonPhrase,
+        string title,
+        string message) => new(
+        kind,
+        null,
+        statusCode,
+        reasonPhrase,
         "Content-Type: text/html; charset=utf-8",
-        "<!doctype html><title>Error</title><p>The page could not be loaded.</p>");
+        "<!doctype html><html><head><meta charset=\"utf-8\"><title>" + title +
+        "</title><style>html,body{margin:0;min-height:100%;background:#09090b;color:#fafafa;font:16px/1.5 'Segoe UI',sans-serif}main{max-width:36rem;margin:4rem auto;padding:0 1.5rem}</style></head><body><main><p>" +
+        message + "</p></main></body></html>");
 
     public static bool IsInsideContentRoot(string? webContentPath, string? candidatePath)
     {
