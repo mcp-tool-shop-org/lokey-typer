@@ -29,6 +29,8 @@ dist-ssr
 # .NET build output
 desktop/LoKeyTyper/bin/
 desktop/LoKeyTyper/obj/
+desktop/LoKeyTyper.Tests/bin/
+desktop/LoKeyTyper.Tests/obj/
 
 # Keep the sln and WebContent in the desktop project
 !desktop/LoKeyTyper.sln

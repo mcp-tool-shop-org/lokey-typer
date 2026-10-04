@@ -95,3 +95,5 @@ jobs:
           dotnet-version: 9.0.x
       - name: Build desktop shell
         run: dotnet build desktop/LoKeyTyper.sln --configuration Release -p:Platform=x64 -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
+      - name: Run desktop host tests
+        run: dotnet run --project desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj --configuration Release

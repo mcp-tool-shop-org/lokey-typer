@@ -1,14 +1,14 @@
-Place optional typewriter sound samples here.
+Letter recordings are four locked keyboards. The app preloads all four and plays only the one that was chosen. It does not rotate them.
 
-The app will try to preload these files:
-- key_1.wav, key_2.wav, key_3.wav, key_4.wav
-- spacebar.wav
-- backspace.wav
-- return_bell.wav
-- error.wav
+- key_3.wav — Mechanical, the default. Rich, old switch.
+- key_2.wav — Clicky. Bright snap.
+- key_1.wav — Tick. Short click.
+- key_4.wav — Muted. Quiet strike.
+- spacebar.wav, backspace.wav, and return_bell.wav are shared by every keyboard.
+- A missed letter plays the chosen keyboard. error.wav is not that strike.
 
-If files are missing, the app uses a low-latency synthesized fallback (Web Audio) so sound still works.
+If a file is missing, that one sound uses a short synthesized fallback.
 
 ## Ambient tracks
 
-The player does not swap layers. It reads `audio/ambient/manifest.json` (version 3). Each entry is one whole track. See `audio/ambient/README.md`. A missing file stays silent. This note is the packaged copy of the same correction. The minified app bundles were not rebuilt for it.
+The player does not swap layers. It reads `audio/ambient/manifest.json` (version 3). Each entry is one whole track. See `audio/ambient/README.md`. A missing file stays silent.
