@@ -350,7 +350,12 @@ describe('routes and shell', () => {
     expect(classTokens(nav)).toContain('min-w-0')
     expect(classTokens(nav)).toContain('overflow-x-auto')
     expect(classTokens(nav)).not.toContain('shrink-0')
-    expect(classTokens(nav.parentElement)).not.toContain('overflow-x-auto')
+    // Prefixed tokens count. max-sm:overflow-x-auto is still an overflow token. The nav keeps its own.
+    expect(
+      classTokens(nav.parentElement).some(
+        (token) => token.includes('overflow-x-auto') || token.includes('overflow-x-scroll'),
+      ),
+    ).toBe(false)
     const tagline = screen.getByText('Speed • Accuracy • Consistency')
     expect(classTokens(tagline)).toContain('text-zinc-400')
     const dot = tagline.previousElementSibling
@@ -373,7 +378,12 @@ describe('routes and shell', () => {
   it('marks the scrolled mode names with a hint inside the nav', () => {
     renderApp()
     const nav = screen.getByRole('navigation', { name: 'Main navigation' })
-    expect(nav.querySelector('[data-nav-more]')).toBeTruthy()
+    const more = nav.querySelector('[data-nav-more]')
+    expect(more).toBe(nav.lastElementChild)
+    const tokens = classTokens(more)
+    expect(tokens).toContain('sticky')
+    expect(tokens).toContain('right-0')
+    expect(tokens).toContain('bg-gradient-to-l')
   })
 
   it('follows daily, mode, legacy, and unknown routes', async () => {
@@ -729,8 +739,12 @@ describe('mode pages', () => {
     expect(screen.getByText('No 60s runs yet — finish a sprint to get on the board.')).toBeTruthy()
     await user.click(screen.getByRole('button', { name: '30s' }))
     expect(loadPreferences().competitiveSprintDurationMs).toBe(30_000)
+    expect(screen.getByText('No 30s runs yet — finish a sprint to get on the board.')).toBeTruthy()
+    expect(screen.queryByText('No 60s runs yet — finish a sprint to get on the board.')).toBeNull()
     await user.click(screen.getByRole('button', { name: '120s' }))
     expect(loadPreferences().competitiveSprintDurationMs).toBe(120_000)
+    expect(screen.getByText('No 120s runs yet — finish a sprint to get on the board.')).toBeTruthy()
+    expect(screen.queryByText('No 60s runs yet — finish a sprint to get on the board.')).toBeNull()
     await user.click(screen.getByRole('button', { name: '60s' }))
     expect(loadPreferences().competitiveSprintDurationMs).toBe(60_000)
     const ghost = screen.getByRole('checkbox', { name: /Race your best/ }) as HTMLInputElement
@@ -754,6 +768,15 @@ describe('mode pages', () => {
     await user.click(screen.getByRole('button', { name: '30s' }))
     expect(screen.getByText('44 WPM')).toBeTruthy()
     expect(screen.queryByText(/No \d+s runs yet/)).toBeNull()
+  })
+
+  it('names both other lengths when the 60s board is empty', () => {
+    seedCompetitiveRun(44, 30_000, 1_700_000_099)
+    seedCompetitiveRun(55, 120_000, 1_700_000_100)
+    renderApp(['/competitive'])
+    expect(loadPreferences().competitiveSprintDurationMs).toBe(60_000)
+    expect(screen.getByText('No 60s runs yet — finish a sprint to get on the board.')).toBeTruthy()
+    expect(screen.getByText('30s and 120s have runs.')).toBeTruthy()
   })
 
   it('paints rank and accuracy on a competitive row in quiet type', () => {
@@ -917,7 +940,8 @@ describe('run pages', () => {
     const focus = renderApp(['/daily', '/focus/run/missing-id'], 1)
     expect(screen.getByRole('heading', { name: 'Exercise not found' })).toBeTruthy()
     expect(screen.getByText(/missing-id/)).toBeTruthy()
-    expect(screen.getByText(/doesn.t exist or was removed/)).toBeTruthy()
+    const missing = screen.getByText(/doesn.t exist or was removed/)
+    const missingTokens = classTokens(missing)
     await user.click(screen.getByRole('button', { name: 'Go back' }))
     expect(screen.getByRole('link', { name: 'Focus' }).getAttribute('aria-current')).toBe('page')
     expect(screen.queryByRole('heading', { name: /Today.s exercises/ })).toBeNull()
@@ -935,13 +959,19 @@ describe('run pages', () => {
     expect(screen.getByRole('link', { name: 'Competitive' }).getAttribute('aria-current')).toBe('page')
     expect(screen.getByText('Sprint duration')).toBeTruthy()
     expect(screen.queryByRole('heading', { name: /Today.s exercises/ })).toBeNull()
+    expect(missingTokens).toContain('text-zinc-400')
+    expect(missingTokens).not.toContain('text-zinc-500')
   })
 
   it('paints the pack name on a typing surface in quiet type', () => {
     renderApp(['/focus/run/focus_calm_01_001'])
-    const pack = findExercise('focus_calm_01_001')?.pack
-    expect(pack).toBeTruthy()
-    expect(classTokens(screen.getByText(pack ?? ''))).toContain('text-zinc-400')
+    const exercise = findExercise('focus_calm_01_001')
+    expect(exercise?.pack).toBeTruthy()
+    expect(classTokens(screen.getByText(exercise?.pack ?? ''))).toContain('text-zinc-400')
+    const difficulty = screen.getByText(
+      `Difficulty ${exercise?.difficulty} • Est. ${exercise?.estimated_seconds}s`,
+    )
+    expect(classTokens(difficulty)).toContain('text-zinc-400')
   })
 
   it('paints rank and accuracy on a direct-run row in quiet type', () => {
@@ -1088,12 +1118,23 @@ describe('daily set', () => {
     expect(passage.length).toBeLessThan(400)
     await user.type(screen.getByRole('textbox', { name: 'Typing input' }), passage)
     expect(await screen.findByText('Nice!')).toBeTruthy()
-    expect(screen.getByText(/Next up:/)).toBeTruthy()
+    const nextUp = screen.getByText(/Next up:/)
+    const kind = within(nextUp).getByText('Mix')
+    expect(classTokens(kind)).toContain('text-zinc-300')
+    const upcoming = within(nextUp).getByText(secondTitle)
+    const dash = upcoming.previousElementSibling
+    expect(dash?.textContent).toContain('\u2014')
+    const dashTokens = classTokens(dash)
+    const titleTokens = classTokens(upcoming)
     expect(screen.getByText(/Exercise complete/)).toBeTruthy()
     expect(await screen.findByRole('heading', { name: secondTitle }, { timeout: 4000 })).toBeTruthy()
     expect(screen.queryByText('Nice!')).toBeNull()
     await user.click(screen.getByRole('button', { name: 'Exit' }))
     expect(screen.getByRole('heading', { name: /LoKey Typer/ })).toBeTruthy()
+    expect(dashTokens).toContain('text-zinc-400')
+    expect(dashTokens).not.toContain('text-zinc-600')
+    expect(titleTokens).toContain('text-zinc-400')
+    expect(titleTokens).not.toContain('text-zinc-500')
   }, 20_000)
 
   it("stays on the exercise when today's progress cannot be stored", async () => {
@@ -1132,11 +1173,14 @@ describe('daily set', () => {
     await user.click(screen.getByRole('button', { name: 'Begin' }))
     expect(await screen.findByText('Exercise unavailable')).toBeTruthy()
     expect(screen.getByText(/missing-daily-item/)).toBeTruthy()
+    const loadTokens = classTokens(screen.getByText(/Couldn't load exercise/))
     await user.click(screen.getByRole('button', { name: 'Skip to next' }))
     expect(await screen.findByRole('heading', { name: /Daily Set Complete/ })).toBeTruthy()
     expect(screen.getByText('0s')).toBeTruthy()
     expect(screen.getByText('0.0%')).toBeTruthy()
     expect(screen.getByText(/Daily set complete/)).toBeTruthy()
+    expect(loadTokens).toContain('text-zinc-400')
+    expect(loadTokens).not.toContain('text-zinc-500')
   })
 
   it('formats a seconds-only summary', () => {
@@ -1207,6 +1251,11 @@ describe('daily set', () => {
     expect(await screen.findByRole('heading', { name: title })).toBeTruthy()
     const caption = screen.getAllByText(title).find((node) => node.tagName !== 'H1')
     expect(classTokens(caption)).toContain('text-zinc-400')
+    const bullet = caption?.previousElementSibling
+    expect(bullet?.textContent).toBe('•')
+    expect(classTokens(bullet)).toContain('text-zinc-400')
+    expect(classTokens(bullet)).not.toContain('text-zinc-600')
+    expect(classTokens(bullet)).not.toContain('text-zinc-500')
   })
 })
 
