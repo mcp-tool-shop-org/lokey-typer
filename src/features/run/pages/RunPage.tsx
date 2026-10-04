@@ -27,6 +27,7 @@ export function RunPage({ mode }: { mode: Mode }) {
   const [search] = useSearchParams()
   const { prefs } = usePreferences()
   const [sessionKey, setSessionKey] = useState(0)
+  const [boardEpoch, setBoardEpoch] = useState(0)
 
   const exerciseId = params.exerciseId ?? ''
   const exercise = findExercise(exerciseId)
@@ -70,8 +71,9 @@ export function RunPage({ mode }: { mode: Mode }) {
     setAttempt({ identity: attemptIdentity, text: targetText })
   }
   const attemptText = attempt.identity === attemptIdentity ? attempt.text : targetText
+  // boardEpoch changes after a saved finish. The read stays in render, and the attempt is not remounted.
   const topRuns =
-    mode === 'competitive'
+    mode === 'competitive' && boardEpoch >= 0
       ? topCompetitiveRuns({ durationMs: sprintDurationMs ?? 60_000, limit: 3 })
       : []
 
@@ -135,12 +137,12 @@ export function RunPage({ mode }: { mode: Mode }) {
                   const medalIcon = i === 0 ? 'medal-gold' as const : i === 1 ? 'medal-silver' as const : 'medal-bronze' as const
                   return (
                     <div key={`${r.timestamp}-${i}`} className="flex items-center justify-between rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-zinc-800/40">
-                      <div className="flex items-center gap-1.5 text-zinc-500">
+                      <div className="flex items-center gap-1.5 text-zinc-400">
                         <Icon name={medalIcon} size={14} className="shrink-0" />
                         #{i + 1}
                       </div>
                       <div className="text-zinc-200">{Math.round(r.wpm)} WPM</div>
-                      <div className="text-zinc-500">{Math.round(r.accuracy * 1000) / 10}%</div>
+                      <div className="text-zinc-400">{Math.round(r.accuracy * 1000) / 10}%</div>
                     </div>
                   )
                 })}
@@ -161,6 +163,9 @@ export function RunPage({ mode }: { mode: Mode }) {
         ghostEnabled={ghost}
         onExit={() => navigate(modeHome(mode))}
         onRestart={() => setSessionKey((key) => key + 1)}
+        onComplete={
+          mode === 'competitive' ? () => setBoardEpoch((epoch) => epoch + 1) : undefined
+        }
       />
     </div>
   )

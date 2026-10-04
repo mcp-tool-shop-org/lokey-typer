@@ -29,7 +29,7 @@ function StatCard({ value, label, icon }: { value: string; label: string; icon: 
     <div className="rounded-2xl bg-zinc-900/40 px-5 py-4 text-center transition-transform duration-200 ease-out hover:-translate-y-0.5">
       <Icon name={icon} size={18} className="mx-auto text-zinc-500" />
       <div className="mt-1.5 text-lg font-semibold leading-tight tabular-nums text-zinc-50">{value}</div>
-      <div className="mt-0.5 text-xs font-medium text-zinc-500">{label}</div>
+      <div className="mt-0.5 text-xs font-medium text-zinc-400">{label}</div>
     </div>
   )
 }
@@ -96,7 +96,7 @@ export function HomePage() {
           <p className="text-sm text-zinc-400">
             Your stats will appear here after your first session.
           </p>
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-zinc-400">
             Press <span className="font-medium text-zinc-300">Start typing</span> above to begin.
           </p>
         </div>

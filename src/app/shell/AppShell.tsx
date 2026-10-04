@@ -12,7 +12,7 @@ function NavItem({ to, label }: { to: string; label: string }) {
       end={to === '/'}
       className={({ isActive }) =>
         [
-          'rounded-lg px-2 py-1.5 text-xs font-medium transition duration-150 outline-none sm:px-3 sm:py-2 sm:text-sm focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950',
+          'whitespace-nowrap shrink-0 rounded-lg px-2 py-1.5 text-xs font-medium transition duration-150 outline-none sm:px-3 sm:py-2 sm:text-sm focus-visible:ring-2 focus-visible:ring-slate-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950',
           isActive ? 'bg-slate-800/40 text-zinc-200' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50',
         ].join(' ')
       }
@@ -88,6 +88,7 @@ export function AppShell() {
             <NavItem to="/focus" label="Focus" />
             <NavItem to="/real-life" label="Real-Life" />
             <NavItem to="/competitive" label="Competitive" />
+            <span aria-hidden="true" data-nav-more="" className="pointer-events-none sticky right-0 h-8 w-6 shrink-0 bg-gradient-to-l from-zinc-950 to-transparent" />
           </nav>
           <div className="flex shrink-0 items-center gap-1 sm:gap-2.5">
             <div className="mx-0.5 h-5 w-px bg-zinc-800/50" />

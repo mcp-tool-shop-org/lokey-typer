@@ -350,7 +350,7 @@ export function DailySetPage() {
               <div>
                 <div className="text-xs font-medium text-zinc-400">Days practiced</div>
                 <div className="mt-1 text-lg font-semibold leading-tight text-zinc-50 tabular-nums">{daysPracticed.size}</div>
-                <div className="mt-1 text-xs leading-relaxed text-zinc-500">Every day you show up counts.</div>
+                <div className="mt-1 text-xs leading-relaxed text-zinc-400">Every day you show up counts.</div>
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-2xl bg-zinc-900/40 p-6 text-sm text-zinc-300">
@@ -358,7 +358,7 @@ export function DailySetPage() {
               <div>
                 <div className="text-xs font-medium text-zinc-400">Best week</div>
                 <div className="mt-1 text-lg font-semibold leading-tight text-zinc-50 tabular-nums">{bestWeek}/7 days</div>
-                <div className="mt-1 text-xs leading-relaxed text-zinc-500">Most days typed in any 7-day window.</div>
+                <div className="mt-1 text-xs leading-relaxed text-zinc-400">Most days typed in any 7-day window.</div>
               </div>
             </div>
           </div>
@@ -439,8 +439,8 @@ export function DailySetPage() {
           <div className="flex items-center gap-2 text-sm text-zinc-400">
             <Icon name={kindIcon(currentItem.kind)} size={16} className="shrink-0 text-zinc-500" />
             <span className="font-medium">{kindLabel(currentItem.kind)}</span>
-            <span className="text-zinc-600">•</span>
-            <span className="text-zinc-500">{currentExercise.title}</span>
+            <span className="text-zinc-400">•</span>
+            <span className="text-zinc-400">{currentExercise.title}</span>
           </div>
 
           <TypingSession
