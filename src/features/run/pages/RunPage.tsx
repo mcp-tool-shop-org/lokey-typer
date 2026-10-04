@@ -70,6 +70,10 @@ export function RunPage({ mode }: { mode: Mode }) {
     setAttempt({ identity: attemptIdentity, text: targetText })
   }
   const attemptText = attempt.identity === attemptIdentity ? attempt.text : targetText
+  const topRuns =
+    mode === 'competitive'
+      ? topCompetitiveRuns({ durationMs: sprintDurationMs ?? 60_000, limit: 3 })
+      : []
 
   if (!exercise) {
     return (
@@ -123,21 +127,25 @@ export function RunPage({ mode }: { mode: Mode }) {
               <Icon name="trophy" size={14} className="shrink-0 text-zinc-500" />
               Leaderboard (local) — top WPM for this duration:
             </div>
-            <div className="mt-2 grid gap-1">
-              {topCompetitiveRuns({ durationMs: sprintDurationMs ?? 60_000, limit: 3 }).map((r, i) => {
-                const medalIcon = i === 0 ? 'medal-gold' as const : i === 1 ? 'medal-silver' as const : 'medal-bronze' as const
-                return (
-                  <div key={`${r.timestamp}-${i}`} className="flex items-center justify-between rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-zinc-800/40">
-                    <div className="flex items-center gap-1.5 text-zinc-500">
-                      <Icon name={medalIcon} size={14} className="shrink-0" />
-                      #{i + 1}
+            {topRuns.length === 0 ? (
+              <div className="mt-2">No runs yet — finish a sprint to get on the board.</div>
+            ) : (
+              <div className="mt-2 grid gap-1">
+                {topRuns.map((r, i) => {
+                  const medalIcon = i === 0 ? 'medal-gold' as const : i === 1 ? 'medal-silver' as const : 'medal-bronze' as const
+                  return (
+                    <div key={`${r.timestamp}-${i}`} className="flex items-center justify-between rounded-lg px-2 py-1 transition-colors duration-200 hover:bg-zinc-800/40">
+                      <div className="flex items-center gap-1.5 text-zinc-500">
+                        <Icon name={medalIcon} size={14} className="shrink-0" />
+                        #{i + 1}
+                      </div>
+                      <div className="text-zinc-200">{Math.round(r.wpm)} WPM</div>
+                      <div className="text-zinc-500">{Math.round(r.accuracy * 1000) / 10}%</div>
                     </div>
-                    <div className="text-zinc-200">{Math.round(r.wpm)} WPM</div>
-                    <div className="text-zinc-500">{Math.round(r.accuracy * 1000) / 10}%</div>
-                  </div>
-                )
-              })}
-            </div>
+                  )
+                })}
+              </div>
+            )}
           </div>
         </div>
       ) : null}

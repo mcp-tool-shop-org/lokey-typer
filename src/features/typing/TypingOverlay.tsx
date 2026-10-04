@@ -76,7 +76,7 @@ export function TypingOverlay({
           return (
             <span
               key={`g-${idx}`}
-              className="inline-block w-[2px] -mb-1 h-[1.2em] align-middle bg-zinc-50/25 ring-1 ring-zinc-400/30"
+              className="inline-block w-[2px] -mb-1 h-[1.2em] align-middle bg-zinc-400"
               title="Ghost (PB pace)"
             />
           )
