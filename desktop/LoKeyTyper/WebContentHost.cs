@@ -37,6 +37,35 @@ public static class WebContentHost
 {
     public const string VirtualHost = "lokey.local";
 
+    /// <summary>
+    /// Packaged pages must not keep a service worker. An older precache can
+    /// shadow the files in the package. The script file itself stays on disk.
+    /// </summary>
+    public const string UnregisterWorkersScript =
+        "navigator.serviceWorker&&navigator.serviceWorker.getRegistrations().then(function(list){list.forEach(function(registration){registration.unregister()})})";
+
+    public static QuietBrowser QuietBrowserSettings() => new(
+        AcceleratorKeys: false,
+        DevTools: false,
+        DefaultContextMenus: false,
+        StatusBar: false,
+        SwipeNavigation: false,
+        Zoom: true);
+
+    public static FileStream? OpenInside(string? webContentPath, string? candidatePath)
+    {
+        if (!IsInsideContentRoot(webContentPath, candidatePath) || candidatePath is null)
+            return null;
+
+        return new FileStream(
+            candidatePath,
+            FileMode.Open,
+            FileAccess.Read,
+            FileShare.Read,
+            4096,
+            FileOptions.Asynchronous | FileOptions.SequentialScan);
+    }
+
     public static HostedResource OnWebResourceRequested(string? webContentPath, string? requestUri, bool isDocument)
     {
         try

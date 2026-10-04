@@ -1,9 +1,11 @@
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.Web.WebView2.Core;
+using Windows.Storage;
 using WinRT.Interop;
 
 namespace LoKeyTyper;
@@ -11,15 +13,34 @@ namespace LoKeyTyper;
 public sealed partial class MainWindow : Window
 {
     private string _webContentPath = "";
+    private AppWindow? _appWindow;
+    private bool _restoringPlacement;
+
+    [DllImport("user32.dll")]
+    private static extern uint GetDpiForWindow(IntPtr hwnd);
 
     public MainWindow()
     {
         InitializeComponent();
         ExtendsContentIntoTitleBar = true;
-        SetWindowSize(1200, 800);
+        _appWindow = ResolveAppWindow();
+        RestorePlacement();
+        if (_appWindow is not null)
+            _appWindow.Changed += OnAppWindowChanged;
 
         // Initialize WebView2 once the window is ready
         AppWebView.Loaded += OnWebViewLoaded;
+    }
+
+    public void BringToFront()
+    {
+        var appWindow = _appWindow ?? ResolveAppWindow();
+        if (appWindow?.Presenter is OverlappedPresenter presenter
+            && presenter.State == OverlappedPresenterState.Minimized)
+            presenter.Restore();
+
+        appWindow?.Show();
+        Activate();
     }
 
     private async void OnWebViewLoaded(object sender, RoutedEventArgs e)
@@ -54,6 +75,7 @@ public sealed partial class MainWindow : Window
             // Only https://lokey.local stays in this WebView. Other http(s) leaves the app.
             AppWebView.CoreWebView2.NewWindowRequested += OnNewWindowRequested;
             AppWebView.CoreWebView2.NavigationStarting += OnNavigationStarting;
+            ApplyQuietBrowser(AppWebView.CoreWebView2.Settings);
 
             // Navigate to the bundled app
             AppWebView.CoreWebView2.Navigate("https://lokey.local/index.html");
@@ -116,6 +138,17 @@ public sealed partial class MainWindow : Window
         _ = launch.Status;
     }
 
+    private static void ApplyQuietBrowser(CoreWebView2Settings settings)
+    {
+        var quiet = WebContentHost.QuietBrowserSettings();
+        settings.AreBrowserAcceleratorKeysEnabled = quiet.AcceleratorKeys;
+        settings.AreDevToolsEnabled = quiet.DevTools;
+        settings.AreDefaultContextMenusEnabled = quiet.DefaultContextMenus;
+        settings.IsStatusBarEnabled = quiet.StatusBar;
+        settings.IsSwipeNavigationEnabled = quiet.SwipeNavigation;
+        settings.IsZoomControlEnabled = quiet.Zoom;
+    }
+
     private void OnWebResourceRequested(CoreWebView2 sender, CoreWebView2WebResourceRequestedEventArgs args)
     {
         try
@@ -126,7 +159,13 @@ public sealed partial class MainWindow : Window
             if (decision.Kind == HostedResourceKind.Ignore)
                 return;
 
-            args.Response = ToResponse(decision);
+            if (decision.Kind != HostedResourceKind.File)
+            {
+                args.Response = ToResponse(decision);
+                return;
+            }
+
+            StreamFileOffTheUiThread(args, decision);
         }
         catch (Exception)
         {
@@ -139,6 +178,75 @@ public sealed partial class MainWindow : Window
                 // Leave the response unset. Do not escape the event.
             }
         }
+    }
+
+    private void StreamFileOffTheUiThread(CoreWebView2WebResourceRequestedEventArgs args, HostedResource decision)
+    {
+        if (decision.Path is null || !WebContentHost.IsInsideContentRoot(_webContentPath, decision.Path))
+        {
+            args.Response = ToResponse(WebContentHost.NotFoundPage());
+            return;
+        }
+
+        var deferral = args.GetDeferral();
+        var path = decision.Path;
+        var headers = decision.Headers;
+        var status = decision.StatusCode;
+        var reason = decision.ReasonPhrase;
+        var environment = AppWebView.CoreWebView2.Environment;
+        var queue = DispatcherQueue;
+        var root = _webContentPath;
+
+        // The open happens off this call. The response object is attached on the
+        // UI thread, because it belongs to the view. Complete runs after that.
+        _ = Task.Run(() =>
+        {
+            FileStream? file = null;
+            try
+            {
+                file = WebContentHost.OpenInside(root, path);
+            }
+            catch (Exception)
+            {
+                file = null;
+            }
+
+            var attached = new ManualResetEventSlim(false);
+            var posted = queue.TryEnqueue(() =>
+            {
+                try
+                {
+                    if (file is null)
+                    {
+                        args.Response = ToResponse(WebContentHost.NotFoundPage());
+                    }
+                    else
+                    {
+                        args.Response = environment.CreateWebResourceResponse(
+                            file.AsRandomAccessStream(), status, reason, headers);
+                    }
+                }
+                catch (Exception)
+                {
+                    try { file?.Dispose(); } catch (Exception) { }
+                    try { args.Response = ToResponse(WebContentHost.FailurePage()); } catch (Exception) { }
+                }
+                finally
+                {
+                    attached.Set();
+                }
+            });
+
+            if (!posted)
+            {
+                try { file?.Dispose(); } catch (Exception) { }
+                deferral.Complete();
+                return;
+            }
+
+            attached.Wait();
+            deferral.Complete();
+        });
     }
 
     private CoreWebView2WebResourceResponse ToResponse(HostedResource decision)
@@ -176,6 +284,14 @@ public sealed partial class MainWindow : Window
         if (outcome.CollapseSplash)
         {
             SplashOverlay.Visibility = Visibility.Collapsed;
+            try
+            {
+                _ = sender.ExecuteScriptAsync(WebContentHost.UnregisterWorkersScript);
+            }
+            catch (Exception)
+            {
+                // An old worker is annoying. It is not a failed launch.
+            }
             return;
         }
 
@@ -240,11 +356,118 @@ public sealed partial class MainWindow : Window
         RootGrid.Children.Add(errorPanel);
     }
 
-    private void SetWindowSize(int width, int height)
+    private AppWindow? ResolveAppWindow()
     {
         var hwnd = WindowNative.GetWindowHandle(this);
         var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
-        var appWindow = AppWindow.GetFromWindowId(windowId);
-        appWindow.Resize(new Windows.Graphics.SizeInt32(width, height));
+        return AppWindow.GetFromWindowId(windowId);
+    }
+
+    private void RestorePlacement()
+    {
+        var appWindow = _appWindow;
+        if (appWindow is null)
+            return;
+
+        var hwnd = WindowNative.GetWindowHandle(this);
+        var dpi = GetDpiForWindow(hwnd);
+        var scale = dpi == 0 ? 1d : dpi / 96d;
+        var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
+        var work = DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Primary).WorkArea;
+        WindowLayout.TryDecode(ReadPlacement(), out var saved);
+        var placement = saved.Width > 0
+            ? WindowLayout.Clamp(saved, work.X, work.Y, work.Width, work.Height, scale)
+            : WindowLayout.First(work.X, work.Y, work.Width, work.Height, scale);
+
+        _restoringPlacement = true;
+        try
+        {
+            appWindow.Move(new Windows.Graphics.PointInt32(placement.X, placement.Y));
+            appWindow.Resize(new Windows.Graphics.SizeInt32(placement.Width, placement.Height));
+            if (placement.Maximized && appWindow.Presenter is OverlappedPresenter presenter)
+                presenter.Maximize();
+        }
+        finally
+        {
+            _restoringPlacement = false;
+        }
+    }
+
+    private void OnAppWindowChanged(AppWindow sender, AppWindowChangedEventArgs args)
+    {
+        if (_restoringPlacement)
+            return;
+        if (!args.DidPositionChange && !args.DidSizeChange && !args.DidPresenterChange)
+            return;
+
+        var maximized = false;
+        if (sender.Presenter is OverlappedPresenter presenter)
+        {
+            if (presenter.State == OverlappedPresenterState.Minimized)
+                return;
+            maximized = presenter.State == OverlappedPresenterState.Maximized;
+        }
+
+        var position = sender.Position;
+        var size = sender.Size;
+        if (size.Width < 1 || size.Height < 1)
+            return;
+
+        WritePlacement(WindowLayout.Encode(new WindowPlacement(
+            position.X, position.Y, size.Width, size.Height, maximized)));
+    }
+
+    private static string? ReadPlacement()
+    {
+        try
+        {
+            if (ApplicationData.Current.LocalSettings.Values[WindowLayout.SettingsKey] is string saved
+                && saved.Length > 0)
+                return saved;
+        }
+        catch (Exception)
+        {
+            // Unpackaged launch has no package settings.
+        }
+
+        try
+        {
+            var path = PlacementFile();
+            return File.Exists(path) ? File.ReadAllText(path) : null;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    private static void WritePlacement(string text)
+    {
+        try
+        {
+            ApplicationData.Current.LocalSettings.Values[WindowLayout.SettingsKey] = text;
+            return;
+        }
+        catch (Exception)
+        {
+            // Unpackaged launch has no package settings.
+        }
+
+        try
+        {
+            var path = PlacementFile();
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            File.WriteAllText(path, text);
+        }
+        catch (Exception)
+        {
+            // A missed save still leaves the window usable.
+        }
+    }
+
+    private static string PlacementFile()
+    {
+        var root = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        return Path.Combine(root, "LoKeyTyper", WindowLayout.SettingsKey + ".txt");
     }
 }

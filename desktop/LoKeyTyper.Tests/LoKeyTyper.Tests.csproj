@@ -9,5 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\LoKeyTyper\WebContentHost.cs" Link="WebContentHost.cs" />
+    <Compile Include="..\LoKeyTyper\WindowLayout.cs" Link="WindowLayout.cs" />
   </ItemGroup>
 </Project>

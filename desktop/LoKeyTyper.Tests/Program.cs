@@ -1,6 +1,7 @@
 using LoKeyTyper.Tests;
 
 WebContentHostTests.Run();
+WindowLayoutTests.Run();
 if (Check.Failures > 0)
 {
     Console.Error.WriteLine(Check.Failures + " failed");

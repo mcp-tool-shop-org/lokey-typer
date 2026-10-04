@@ -39,6 +39,10 @@ public static class WebContentHostTests
             FailedNavigationRequiresFallback();
             SuccessfulNavigationClearsSplash();
             LaunchTitleFollowsTheException();
+            QuietBrowserDropsChrome();
+            StartupDropsAPackagedWorker();
+            OpenInsideStreamsAPackageFile(root, outside);
+            PackagedDocumentDoesNotRegisterAWorker();
         }
         finally
         {
@@ -193,5 +197,58 @@ public static class WebContentHostTests
         Check.That(folder.Title == "LoKey Typer could not start", "a user-data failure is not a runtime title");
         Check.That(folder.Guidance.Contains("user data folder", StringComparison.Ordinal),
             "a user-data failure shows its own message");
+    }
+
+    private static void QuietBrowserDropsChrome()
+    {
+        var quiet = WebContentHost.QuietBrowserSettings();
+        Check.That(!quiet.AcceleratorKeys, "browser accelerator keys are off");
+        Check.That(!quiet.DevTools, "devtools are off");
+        Check.That(!quiet.DefaultContextMenus, "the default context menu is off");
+        Check.That(!quiet.StatusBar, "the status bar is off");
+        Check.That(!quiet.SwipeNavigation, "swipe navigation is off");
+        Check.That(quiet.Zoom, "zoom stays available");
+    }
+
+    private static void StartupDropsAPackagedWorker()
+    {
+        var script = WebContentHost.UnregisterWorkersScript;
+        Check.That(script.Contains("serviceWorker", StringComparison.Ordinal), "startup looks for a service worker");
+        Check.That(script.Contains("unregister", StringComparison.Ordinal), "startup unregisters a packaged worker");
+    }
+
+    private static void OpenInsideStreamsAPackageFile(string root, string outside)
+    {
+        using (var inside = WebContentHost.OpenInside(root, Path.Combine(root, "index.html")))
+        {
+            Check.That(inside is not null && inside.CanRead, "a package file opens as a stream");
+            Check.That(inside is not null && inside.ReadByte() >= 0, "the stream can be read off the caller");
+        }
+
+        Check.That(WebContentHost.OpenInside(root, outside) is null, "a path outside WebContent is not opened");
+    }
+
+    private static void PackagedDocumentDoesNotRegisterAWorker()
+    {
+        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        FileInfo? index = null;
+        while (dir is not null)
+        {
+            var candidate = Path.Combine(dir.FullName, "desktop", "LoKeyTyper", "WebContent", "index.html");
+            if (File.Exists(candidate))
+            {
+                index = new FileInfo(candidate);
+                break;
+            }
+            dir = dir.Parent;
+        }
+
+        Check.That(index is not null, "packaged index.html is in the tree");
+        if (index is null)
+            return;
+
+        var html = File.ReadAllText(index.FullName);
+        Check.That(!html.Contains("registerSW", StringComparison.Ordinal), "packaged index does not register a service worker");
+        Check.That(File.Exists(Path.Combine(index.DirectoryName!, "sw.js")), "sw.js stays on disk for a direct request");
     }
 }

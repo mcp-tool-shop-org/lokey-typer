@@ -75,6 +75,7 @@ jobs:
           sudo apt-get install -y ffmpeg python3-venv
           python3 -m venv "$RUNNER_TEMP/audio-venv"
           "$RUNNER_TEMP/audio-venv/bin/pip" install -r scripts/audio/requirements.txt
+          "$RUNNER_TEMP/audio-venv/bin/python" scripts/audio/check_bed_policy.py public/audio/ambient
           "$RUNNER_TEMP/audio-venv/bin/python" scripts/audio/check_loudness.py public/audio/ambient
           "$RUNNER_TEMP/audio-venv/bin/python" scripts/audio/check_spectrum.py public/audio/ambient
       - name: Upload coverage to Codecov

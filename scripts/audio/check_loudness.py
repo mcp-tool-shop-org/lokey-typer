@@ -27,7 +27,8 @@ TARGET_MAX = -29.0
 _I_RE = re.compile(r"\bI:\s*(-?\d+(?:\.\d+)?)\s*LUFS\b")
 
 
-def check_file(path: Path) -> tuple[bool, str]:
+def measure_lufs(path: Path) -> tuple[float | None, str]:
+    """Integrated loudness from the same ebur128 read the gate uses."""
     cmd = [
         "ffmpeg",
         "-hide_banner",
@@ -44,24 +45,32 @@ def check_file(path: Path) -> tuple[bool, str]:
     try:
         proc = subprocess.run(cmd, stderr=subprocess.PIPE, stdout=subprocess.DEVNULL, text=True, check=False)
     except FileNotFoundError:
-        return False, "ffmpeg not found on PATH"
+        return None, "ffmpeg not found on PATH"
 
     lufs = None
     for line in proc.stderr.splitlines():
-        m = _I_RE.search(line)
-        if m:
+        match = _I_RE.search(line)
+        if match:
             try:
-                lufs = float(m.group(1))
+                lufs = float(match.group(1))
             except ValueError:
                 pass
 
     if lufs is None:
-        return False, "Could not read integrated LUFS from ffmpeg output"
+        return None, "Could not read integrated LUFS from ffmpeg output"
+
+    return lufs, f"{lufs:.1f} LUFS"
+
+
+def check_file(path: Path) -> tuple[bool, str]:
+    lufs, detail = measure_lufs(path)
+    if lufs is None:
+        return False, detail
 
     if not (TARGET_MIN <= lufs <= TARGET_MAX):
         return False, f"{lufs:.1f} LUFS (out of range [{TARGET_MIN:.0f}, {TARGET_MAX:.0f}])"
 
-    return True, f"{lufs:.1f} LUFS"
+    return True, detail
 
 
 def main(folder: str) -> int:

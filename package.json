@@ -13,6 +13,7 @@
     "smoke:rotation": "node scripts/smokeRotation.mjs",
     "qa:ambient:assets": "node scripts/qaAmbientAssets.mjs",
     "qa:sound-design": "node scripts/qaSoundDesignManifesto.mjs",
+    "audio:master": "python scripts/audio/master_loudness.py",
     "qa:phase3:novelty": "node scripts/qaPhase3Novelty.mjs",
     "qa:phase3:recommendation": "node scripts/qaPhase3RecommendationSanity.mjs",
     "preview": "vite preview",
