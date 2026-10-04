@@ -27,6 +27,11 @@
                               IsActive="True" Width="32" Height="32"
                               Foreground="#a1a1aa"
                               Margin="0,8,0,0"/>
+                <Button x:Name="SplashRetry"
+                        Content="Try again"
+                        Visibility="Collapsed"
+                        Click="OnSplashRetry"
+                        HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -1,9 +1,9 @@
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.Web.WebView2.Core;
-using Windows.Storage.Streams;
 using WinRT.Interop;
 
 namespace LoKeyTyper;
@@ -41,12 +41,11 @@ public sealed partial class MainWindow : Window
                 _webContentPath,
                 CoreWebView2HostResourceAccessKind.Allow);
 
-            // SPA fallback: intercept requests for paths that don't map to
-            // real files (e.g. /focus, /competitive/run/123) and serve
-            // index.html so React Router can handle client-side routing.
+            // Virtual host mapping does not serve service-worker scripts.
+            // Answer every https://lokey.local resource from WebContent.
             AppWebView.CoreWebView2.AddWebResourceRequestedFilter(
                 "https://lokey.local/*",
-                CoreWebView2WebResourceContext.Document);
+                CoreWebView2WebResourceContext.All);
             AppWebView.CoreWebView2.WebResourceRequested += OnWebResourceRequested;
 
             // Hide splash only after a successful navigation.
@@ -61,8 +60,7 @@ public sealed partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            // If WebView2 runtime is missing, show a helpful message
-            ShowFallbackError(ex.Message);
+            ShowFallbackError(ex);
         }
     }
 
@@ -120,46 +118,85 @@ public sealed partial class MainWindow : Window
 
     private void OnWebResourceRequested(CoreWebView2 sender, CoreWebView2WebResourceRequestedEventArgs args)
     {
-        // Only handle document navigations on our virtual host
-        var uri = new Uri(args.Request.Uri);
-        if (!uri.Host.Equals("lokey.local", StringComparison.OrdinalIgnoreCase))
-            return;
-
-        // If the path maps to an actual file, let the default handler serve it
-        var relativePath = uri.AbsolutePath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar);
-        var fullPath = Path.Combine(_webContentPath, relativePath);
-        if (File.Exists(fullPath))
-            return;
-
-        // SPA fallback: serve index.html for any path that doesn't match a file
-        var indexPath = Path.Combine(_webContentPath, "index.html");
-        if (File.Exists(indexPath))
+        try
         {
-            var bytes = File.ReadAllBytes(indexPath);
-            var memStream = new MemoryStream(bytes);
-            var winStream = memStream.AsRandomAccessStream();
-            var response = AppWebView.CoreWebView2.Environment.CreateWebResourceResponse(
-                winStream, 200, "OK", "Content-Type: text/html; charset=utf-8");
-            args.Response = response;
+            var isDocument = args.ResourceContext == CoreWebView2WebResourceContext.Document;
+            var decision = WebContentHost.OnWebResourceRequested(
+                _webContentPath, args.Request.Uri, isDocument);
+            if (decision.Kind == HostedResourceKind.Ignore)
+                return;
+
+            args.Response = ToResponse(decision);
         }
+        catch (Exception)
+        {
+            try
+            {
+                args.Response = ToResponse(WebContentHost.FailurePage());
+            }
+            catch (Exception)
+            {
+                // Leave the response unset. Do not escape the event.
+            }
+        }
+    }
+
+    private CoreWebView2WebResourceResponse ToResponse(HostedResource decision)
+    {
+        if (decision.Kind == HostedResourceKind.File)
+        {
+            if (decision.Path is null || !WebContentHost.IsInsideContentRoot(_webContentPath, decision.Path))
+                decision = WebContentHost.NotFoundPage();
+            else
+            {
+                var bytes = File.ReadAllBytes(decision.Path);
+                return StreamResponse(bytes, decision);
+            }
+        }
+
+        var body = Encoding.UTF8.GetBytes(decision.HtmlBody ?? "");
+        return StreamResponse(body, decision);
+    }
+
+    private CoreWebView2WebResourceResponse StreamResponse(byte[] bytes, HostedResource decision)
+    {
+        var memStream = new MemoryStream(bytes);
+        var winStream = memStream.AsRandomAccessStream();
+        return AppWebView.CoreWebView2.Environment.CreateWebResourceResponse(
+            winStream, decision.StatusCode, decision.ReasonPhrase, decision.Headers);
     }
 
     private void OnNavigationCompleted(CoreWebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
     {
-        sender.NavigationCompleted -= OnNavigationCompleted;
+        var outcome = WebContentHost.OnNavigationCompleted(args.IsSuccess, args.WebErrorStatus.ToString());
+        if (outcome.Unsubscribe)
+            sender.NavigationCompleted -= OnNavigationCompleted;
 
-        if (!args.IsSuccess)
+        if (outcome.CollapseSplash)
         {
-            SplashProgress.IsActive = false;
-            SplashSubtitle.Text = "The page did not load.";
+            SplashOverlay.Visibility = Visibility.Collapsed;
             return;
         }
 
-        SplashOverlay.Visibility = Visibility.Collapsed;
+        SplashProgress.IsActive = false;
+        SplashSubtitle.Text = outcome.Subtitle ?? "The page did not load.";
+        SplashRetry.Visibility = Visibility.Visible;
     }
 
-    private void ShowFallbackError(string detail)
+    private void OnSplashRetry(object sender, RoutedEventArgs e)
     {
+        if (AppWebView.CoreWebView2 is null)
+            return;
+
+        SplashProgress.IsActive = true;
+        SplashRetry.Visibility = Visibility.Collapsed;
+        SplashSubtitle.Text = "Loading again";
+        AppWebView.CoreWebView2.Navigate("https://lokey.local/index.html");
+    }
+
+    private void ShowFallbackError(Exception ex)
+    {
+        var panel = WebContentHost.DescribeLaunchFailure(ex.GetType().Name, ex.Message);
         SplashOverlay.Visibility = Visibility.Collapsed;
 
         var errorPanel = new Microsoft.UI.Xaml.Controls.StackPanel
@@ -171,7 +208,7 @@ public sealed partial class MainWindow : Window
 
         errorPanel.Children.Add(new Microsoft.UI.Xaml.Controls.TextBlock
         {
-            Text = "WebView2 Runtime Required",
+            Text = panel.Title,
             FontSize = 20,
             FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
             Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(
@@ -180,7 +217,7 @@ public sealed partial class MainWindow : Window
 
         errorPanel.Children.Add(new Microsoft.UI.Xaml.Controls.TextBlock
         {
-            Text = "Please install the Microsoft Edge WebView2 Runtime from:\nhttps://developer.microsoft.com/en-us/microsoft-edge/webview2/",
+            Text = panel.Guidance,
             FontSize = 14,
             TextWrapping = Microsoft.UI.Xaml.TextWrapping.Wrap,
             Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(
@@ -190,7 +227,7 @@ public sealed partial class MainWindow : Window
 
         errorPanel.Children.Add(new Microsoft.UI.Xaml.Controls.TextBlock
         {
-            Text = detail,
+            Text = panel.Detail,
             FontSize = 11,
             Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(
                 Microsoft.UI.Colors.Gray),

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.0.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoKeyTyper", "LoKeyTyper\LoKeyTyper.csproj", "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoKeyTyper.Tests", "LoKeyTyper.Tests\LoKeyTyper.Tests.csproj", "{C4E8A1B2-7F63-4D90-8E15-2A6B9C0D4E71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|ARM64.Build.0 = Debug|ARM64
 		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|ARM64.ActiveCfg = Release|ARM64
 		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|ARM64.Build.0 = Release|ARM64
+		{C4E8A1B2-7F63-4D90-8E15-2A6B9C0D4E71}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C4E8A1B2-7F63-4D90-8E15-2A6B9C0D4E71}.Debug|x64.Build.0 = Debug|Any CPU
+		{C4E8A1B2-7F63-4D90-8E15-2A6B9C0D4E71}.Release|x64.ActiveCfg = Release|Any CPU
+		{C4E8A1B2-7F63-4D90-8E15-2A6B9C0D4E71}.Release|x64.Build.0 = Release|Any CPU
+		{C4E8A1B2-7F63-4D90-8E15-2A6B9C0D4E71}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{C4E8A1B2-7F63-4D90-8E15-2A6B9C0D4E71}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{C4E8A1B2-7F63-4D90-8E15-2A6B9C0D4E71}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{C4E8A1B2-7F63-4D90-8E15-2A6B9C0D4E71}.Release|ARM64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
