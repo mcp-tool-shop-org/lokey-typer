@@ -20,8 +20,16 @@ describe('passage shape', () => {
     expect(weaknessForTag({ dashes: 0.8 }, 'dash')).toBe(0.8)
     expect(weaknessForTag({ dash: 0.8 }, 'dashes')).toBe(0.8)
     expect(tagMatches(['punctuation'], 'dashes')).toBe(false)
-    expect(tagMatches(['comma'], 'punctuation')).toBe(false)
-    expect(weaknessForTag({ punctuation: 0.8 }, 'comma')).toBe(0)
+  })
+
+  it('treats comma, colon, and semicolon pack tags as punctuation', () => {
+    expect(tagMatches(['comma'], 'punctuation')).toBe(true)
+    expect(tagMatches(['colon'], 'punctuation')).toBe(true)
+    expect(tagMatches(['semicolon'], 'punctuation')).toBe(true)
+    expect(weaknessForTag({ punctuation: 0.8 }, 'comma')).toBe(0.8)
+    expect(weaknessForTag({ punctuation: 0.8 }, 'colon')).toBe(0.8)
+    expect(weaknessForTag({ semicolon: 0.8 }, 'punctuation')).toBe(0.8)
+    expect(weaknessForTag({ comma: 0.4 }, 'punctuation')).toBe(0.4)
   })
 
   it('keeps a short single-line passage', () => {

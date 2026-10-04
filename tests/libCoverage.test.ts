@@ -1336,7 +1336,8 @@ describe('preference and run storage', () => {
       accuracy: 0.99,
       timestamp: 6,
     })
-    expect(failedWrite.updated).toBe(true)
+    expect(failedWrite.updated).toBe(false)
+    expect(failedWrite).toMatchObject({ saved: false })
     expect(failedWrite.previous?.wpm).toBe(11)
     expect(getPersonalBest('sprint', 30_000)?.wpm).toBe(11)
   })
@@ -1970,6 +1971,11 @@ describe('daily set', () => {
     const partial = dailyFromFocusPool('novelty-hold-0', ['avoided-passage'], [heavy, light])
     expect(partial.focusLoads).toBe(1)
     expect(partial.set.items.map((item) => item.exerciseId)).toEqual(['kept-passage'])
+
+    const canonical = findExercise('focus_calm_03_001')
+    expect(canonical).not.toBeNull()
+    const aliased = dailyFromFocusPool('novelty-alias', ['focus_calm_01_001'], [canonical!, light])
+    expect(aliased.set.items.map((item) => item.exerciseId)).toEqual(['kept-passage'])
 
     const exhausted = dailyFromFocusPool('novelty-hold-3', ['avoided-passage', 'kept-passage'], [heavy, light])
     // The strict focus pick finds nothing, so the fallback has to load the pool again.
