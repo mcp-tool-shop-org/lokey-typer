@@ -44,7 +44,7 @@ function calmSecondary(i: MicroFeedbackInputs) {
 
 function competitivePrimary(i: MicroFeedbackInputs) {
   if (i.is_personal_best_wpm && i.accuracy >= 0.95) return 'New PB WPM. Still controlled.'
-  if (i.is_personal_best_accuracy && i.duration_ms >= 20_000) return 'New PB accuracy. Clean run.'
+  if (i.is_personal_best_accuracy && i.duration_ms >= 20_000 && i.accuracy >= 0.95) return 'New PB accuracy. Clean run.'
   if (i.accuracy >= 0.99) return 'Elite accuracy. Plenty of control.'
   if (i.wpm >= 60 && i.accuracy >= 0.97) return 'Fast and clean. That’s the zone.'
   if (i.wpm >= 60 && i.accuracy < 0.95) return 'Pace is there. Tighten accuracy to convert it.'
