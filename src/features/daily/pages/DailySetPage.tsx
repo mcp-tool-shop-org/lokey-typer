@@ -78,6 +78,23 @@ function computeBestWeek(days: Set<string>) {
   return best
 }
 
+function progressFor(
+  dateKey: string,
+  userId: string,
+  sessionType: DailySessionType,
+  screenReaderMode: boolean,
+): DailyProgress {
+  const existing = loadDailyProgress(dateKey, userId, sessionType, screenReaderMode)
+  if (existing && existing.sessionType === sessionType) return existing
+  return {
+    dateKey,
+    userId,
+    sessionType,
+    completedItems: [],
+    startedAt: Date.now(),
+  }
+}
+
 function resolveExerciseText(exercise: Exercise, seed: string): string {
   const raw = isTemplateExercise(exercise)
     ? renderTemplateExercise(exercise, { seed })
@@ -130,17 +147,11 @@ export function DailySetPage() {
 
   // ---- Progress persistence ----
 
-  const [progress, setProgress] = useState<DailyProgress>(() => {
-    const existing = loadDailyProgress(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
-    if (existing && existing.sessionType === sessionType) return existing
-    return {
-      dateKey: daily.dateKey,
-      userId,
-      sessionType,
-      completedItems: [],
-      startedAt: Date.now(),
-    }
-  })
+  const progressIdentity = `${daily.dateKey}|${userId}|${sessionType}|${prefs.screenReaderMode ? 'sr' : 'plain'}`
+  const [progress, setProgress] = useState<DailyProgress>(() =>
+    progressFor(daily.dateKey, userId, sessionType, prefs.screenReaderMode),
+  )
+  const [seenIdentity, setSeenIdentity] = useState(progressIdentity)
 
   const currentIndex = progress.completedItems.length
   const isFinished = currentIndex >= daily.items.length
@@ -149,37 +160,14 @@ export function DailySetPage() {
 
   const [phase, setPhase] = useState<PagePhase>(() => (isFinished ? 'summary' : 'idle'))
 
-  const ritualKey = `${daily.dateKey}|${userId}|${sessionType}|${prefs.screenReaderMode ? 'sr' : 'std'}`
-  const ritualKeyRef = useRef(ritualKey)
-
-  // A different day, session type, or screen-reader set is not the attempt on screen.
-  useEffect(() => {
-    const existing = loadDailyProgress(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
-    const next: DailyProgress =
-      existing && existing.sessionType === sessionType
-        ? existing
-        : {
-            dateKey: daily.dateKey,
-            userId,
-            sessionType,
-            completedItems: [],
-            startedAt: Date.now(),
-          }
-    setProgress(next)
-    if (ritualKeyRef.current === ritualKey) return
-    ritualKeyRef.current = ritualKey
+  // A different set (screen reader, session type, or day) must not keep the previous summary.
+  if (seenIdentity !== progressIdentity) {
+    const next = progressFor(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
     const finished = next.completedItems.length >= daily.items.length
+    setSeenIdentity(progressIdentity)
+    setProgress(next)
     setPhase(finished ? 'summary' : 'idle')
-  }, [daily.dateKey, daily.items.length, userId, sessionType, prefs.screenReaderMode, ritualKey])
-
-  // Summary only belongs to a finished set. An unfinished reload must be able to start.
-  useEffect(() => {
-    if (isFinished) {
-      if (phase !== 'summary') setPhase('summary')
-      return
-    }
-    if (phase === 'summary') setPhase('idle')
-  }, [isFinished, phase])
+  }
 
   const [sessionKey, setSessionKey] = useState(0)
   const phaseRef = useRef<HTMLDivElement>(null)
@@ -454,7 +442,7 @@ export function DailySetPage() {
           </div>
 
           <TypingSession
-            key={`daily-${currentExercise.id}-${sessionKey}-${prefs.screenReaderMode ? 'sr' : 'std'}`}
+            key={`daily-${currentExercise.id}-${currentIndex}-${sessionKey}-${prefs.screenReaderMode ? 'sr' : 'plain'}`}
             mode={currentItem.mode}
             exercise={currentExercise}
             targetText={resolveExerciseText(

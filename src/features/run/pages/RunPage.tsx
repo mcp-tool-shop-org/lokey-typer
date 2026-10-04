@@ -63,6 +63,14 @@ export function RunPage({ mode }: { mode: Mode }) {
     return folded
   }, [exercise, mode, variant, prefs.screenReaderMode, sprintDurationMs])
 
+  // A screen-reader toggle (or a restart) starts a fresh passage. The attempt keeps the text it opened with.
+  const attemptIdentity = `${exercise?.id ?? ''}|${mode}|${variant}|${sprintDurationMs ?? 0}|${sessionKey}|${prefs.screenReaderMode ? 'sr' : 'plain'}`
+  const [attempt, setAttempt] = useState({ identity: '', text: '' })
+  if (attempt.identity !== attemptIdentity) {
+    setAttempt({ identity: attemptIdentity, text: targetText })
+  }
+  const attemptText = attempt.identity === attemptIdentity ? attempt.text : targetText
+
   if (!exercise) {
     return (
       <div className="flex flex-col items-center gap-4 rounded-3xl bg-zinc-900/40 px-6 py-8 text-center sm:px-8 sm:py-12">
@@ -135,10 +143,10 @@ export function RunPage({ mode }: { mode: Mode }) {
       ) : null}
 
       <TypingSession
-        key={`${exercise.id}-${sessionKey}-${prefs.screenReaderMode ? 'sr' : 'std'}`}
+        key={attemptIdentity}
         mode={mode}
         exercise={exercise}
-        targetText={targetText}
+        targetText={attemptText}
         prefs={prefs}
         sprintDurationMs={mode === 'competitive' ? (sprintDurationMs as SprintDurationMs) : undefined}
         showCompetitiveHud={showCompetitiveHud}

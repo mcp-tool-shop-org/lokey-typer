@@ -56,9 +56,11 @@ export function AmbientProvider({ children }: { children: React.ReactNode }) {
     })
   }, [prefs])
 
-  // First click, tap, or key starts ambient. A failed resume stays armed for the next gesture.
+  // Gesture unlock stays armed until start() has marked the player started.
+  // A rejected resume, or a start() that returns before that, can be retried.
   useEffect(() => {
     if (startedRef.current) return
+    let cancelled = false
 
     const cleanup = () => {
       window.removeEventListener('click', unlock)
@@ -74,15 +76,16 @@ export function AmbientProvider({ children }: { children: React.ReactNode }) {
         await resumeAudioContext()
         await ambientPlayer.start()
         if (!playbackMarkedStarted()) {
-          setUnlockFailed(true)
+          if (!cancelled) setUnlockFailed(true)
           return
         }
+        if (cancelled) return
         startedRef.current = true
         setUnlockFailed(false)
         cleanup()
       } catch (err) {
         console.warn('[ambient] unlock failed', err)
-        setUnlockFailed(true)
+        if (!cancelled) setUnlockFailed(true)
       } finally {
         unlockingRef.current = false
       }
@@ -92,7 +95,10 @@ export function AmbientProvider({ children }: { children: React.ReactNode }) {
     window.addEventListener('keydown', unlock)
     window.addEventListener('touchstart', unlock)
 
-    return cleanup
+    return () => {
+      cancelled = true
+      cleanup()
+    }
   }, [])
 
   const noteTypingActivity = useCallback(() => {

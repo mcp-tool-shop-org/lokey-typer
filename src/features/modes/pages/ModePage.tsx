@@ -109,7 +109,7 @@ export function ModePage({ mode }: { mode: Mode }) {
     )
   }
 
-  // Idle state — show Go button
+  // Idle state. The pool above refreshes when the attempt closes.
   const top3 = mode === 'competitive' ? topCompetitiveRuns({ durationMs: sprintDurationMs, limit: 3 }) : []
 
   return (

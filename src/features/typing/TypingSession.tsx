@@ -188,6 +188,8 @@ export function TypingSession(props: {
 
   useEffect(() => {
     if (!isComplete || endedAtMs == null) return
+    // A timed seal waits until compositionend replaces the preedit.
+    if (composingRef.current) return
     if (endOnceRef.current) return
     endOnceRef.current = true
 
@@ -319,7 +321,7 @@ export function TypingSession(props: {
       (props.mode === 'competitive' ? live.accuracy >= 0.95 : true) &&
       (bestWpm == null || live.wpm > bestWpm)
 
-    const isPersonalBestAccuracy = bestAccuracy == null || live.accuracy > bestAccuracy
+    const isPersonalBestAccuracy = !bestRecordFailed && (bestAccuracy == null || live.accuracy > bestAccuracy)
 
     const deltaWpmVsBest = props.mode === 'competitive' && pb != null ? live.wpm - pb.wpm : 0
     const deltaAccuracyVsBest = bestAccuracy != null ? live.accuracy - bestAccuracy : 0
@@ -531,14 +533,13 @@ export function TypingSession(props: {
               graphemesOf(added.text),
             )
             if (commit.length !== base.length) noteTypingActivity()
-            if (startedAtMs == null && commit.length > 0) setStartedAtMs(Date.now())
-            if (timeLimitMs == null && commit === targetText) {
-              setEndedAtMs(Date.now())
+            const started = startedAtMs ?? (commit.length > 0 ? Date.now() : null)
+            if (startedAtMs == null && started != null) setStartedAtMs(started)
+            if (timeLimitMs != null && started != null && Date.now() - started >= timeLimitMs) {
+              setEndedAtMs(started + timeLimitMs)
               return
             }
-            if (timeLimitMs != null && startedAtMs != null && Date.now() - startedAtMs >= timeLimitMs) {
-              setEndedAtMs(startedAtMs + timeLimitMs)
-            }
+            if (timeLimitMs == null && commit === targetText) setEndedAtMs(Date.now())
           }}
           onChange={(e) => {
             if (isComplete) return

@@ -30,8 +30,8 @@ const SOUNDSCAPE_LOCK = 'Screen reader mode keeps the soundscape off.'
 export function AppShell() {
   const { prefs, patchPrefs, preferenceStatus } = usePreferences()
   const { skipTrack, unlockFailed } = useAmbient()
-  const soundscapeLocked = Boolean(prefs.screenReaderMode)
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const soundscapeLocked = Boolean(prefs.screenReaderMode)
   const settingsOpenerRef = useRef<HTMLElement | null>(null)
   const settingsWasOpenRef = useRef(false)
 
@@ -51,6 +51,11 @@ export function AppShell() {
   function handleMuteToggle() {
     if (soundscapeLocked) return
     patchPrefs({ ambientEnabled: !prefs.ambientEnabled })
+  }
+
+  function handleShuffle() {
+    if (soundscapeLocked) return
+    skipTrack()
   }
 
   function handleSettingsClick() {
@@ -89,7 +94,7 @@ export function AppShell() {
             {/* Skip to random ambient track */}
             <button
               type="button"
-              onClick={soundscapeLocked ? undefined : skipTrack}
+              onClick={handleShuffle}
               disabled={soundscapeLocked}
               aria-disabled={soundscapeLocked || undefined}
               className={`${ICON_BTN} text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200 disabled:cursor-not-allowed disabled:opacity-40`}
@@ -108,7 +113,7 @@ export function AppShell() {
             {/* Mute / unmute ambient */}
             <button
               type="button"
-              onClick={soundscapeLocked ? undefined : handleMuteToggle}
+              onClick={handleMuteToggle}
               disabled={soundscapeLocked}
               aria-disabled={soundscapeLocked || undefined}
               className={`${ICON_BTN} ${prefs.ambientEnabled ? 'text-zinc-500 hover:bg-zinc-900/50 hover:text-zinc-200' : 'text-zinc-600 hover:bg-zinc-900/50 hover:text-zinc-300'} disabled:cursor-not-allowed disabled:opacity-40`}
@@ -131,6 +136,11 @@ export function AppShell() {
             >
               <Icon name={prefs.ambientEnabled ? 'sound-on' : 'sound-off'} size={18} />
             </button>
+            {unlockFailed && !soundscapeLocked ? (
+              <span role="status" className="max-w-[9rem] text-xs leading-snug text-zinc-400">
+                Sound didn't start. Try again.
+              </span>
+            ) : null}
 
             {/* Audio settings */}
             <button
@@ -158,7 +168,7 @@ export function AppShell() {
 
       <main id="main-content" inert={settingsOpen ? true : undefined} className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-16">
         {preferenceStatus && !settingsOpen ? (
-          <p role="status" className="mb-6 text-sm text-zinc-300">
+          <p role="status" className="mb-6 text-center text-sm text-zinc-300">
             {preferenceStatus}
           </p>
         ) : null}
