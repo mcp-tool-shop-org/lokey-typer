@@ -415,7 +415,7 @@ export function DailySetPage() {
           <Icon name="search" size={28} className="text-zinc-500" />
           <div>
             <div className="text-sm font-semibold text-zinc-200">Exercise unavailable</div>
-            <div className="mt-1 text-xs text-zinc-500">
+            <div className="mt-1 text-xs text-zinc-400">
               Couldn't load exercise <span className="font-mono text-zinc-400">{currentItem.exerciseId}</span>.
             </div>
           </div>
@@ -473,8 +473,8 @@ export function DailySetPage() {
             {nextItem && nextExercise ? (
               <div className="text-sm text-zinc-400">
                 Next up: <span className="font-medium text-zinc-300">{kindLabel(nextItem.kind)}</span>
-                <span className="text-zinc-600"> — </span>
-                <span className="text-zinc-500">{nextExercise.title}</span>
+                <span className="text-zinc-400"> — </span>
+                <span className="text-zinc-400">{nextExercise.title}</span>
               </div>
             ) : null}
           </div>

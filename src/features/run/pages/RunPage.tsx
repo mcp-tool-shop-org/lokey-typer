@@ -83,7 +83,7 @@ export function RunPage({ mode }: { mode: Mode }) {
         <Icon name="search" size={28} className="text-zinc-500" />
         <div>
           <h1 className="text-sm font-semibold text-zinc-50">Exercise not found</h1>
-          <div className="mt-1 text-sm text-zinc-500">
+          <div className="mt-1 text-sm text-zinc-400">
             <span className="font-mono text-zinc-400">{exerciseId}</span> doesn't exist or was removed.
           </div>
         </div>
