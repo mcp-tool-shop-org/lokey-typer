@@ -93,6 +93,8 @@ export class AmbientPlayerV3 {
   private preloadedTrack: AmbientTrack | null = null
   private preloadedBuffer: AudioBuffer | null = null
   private started = false
+  /** Holds the guard while start() is still waiting on the context, the catalog, or a buffer. */
+  private starting = false
   private pausedByVisibility = false
   /** Bumped by stop and by turning ambient off, so an in-flight load cannot start. */
   private playbackGeneration = 0
@@ -112,35 +114,50 @@ export class AmbientPlayerV3 {
 
   /** Call once on first user gesture. Loads manifest, picks track, starts. */
   async start(): Promise<void> {
-    if (this.started) {
+    if (this.started || this.starting) {
       console.log('[ambient] start() skipped — already started')
       return
     }
     const generation = this.playbackGeneration
+    this.starting = true
     console.log('[ambient] start() — resuming audio context')
 
     try {
-      await resumeAudioContext()
-    } catch (err) {
-      console.warn('[ambient] audio context resume failed', err)
-      return
+      try {
+        await resumeAudioContext()
+      } catch (err) {
+        console.warn('[ambient] audio context resume failed', err)
+        return
+      }
+      if (generation !== this.playbackGeneration) return
+      if (!getAudioContext()) return
+
+      await this.ensureManifestLoaded()
+      const tracks = this.getFilteredTracks()
+      console.log('[ambient] manifest loaded, %d tracks, enabled=%s, shouldPlay=%s', tracks.length, this.enabled, this.shouldPlay())
+
+      if (generation !== this.playbackGeneration) return
+      // Off, hidden, or screen reader: armed, and silent on purpose.
+      if (!this.shouldPlay()) {
+        this.started = true
+        return
+      }
+
+      await this.playRandomTrack()
+      if (generation !== this.playbackGeneration) return
+      // Wanted a track and never got a slot. Leave started false so the retry stays up.
+      if (!this.currentSlot) return
+      this.started = true
+      this.scheduleRotation()
+    } finally {
+      this.starting = false
     }
-    if (generation !== this.playbackGeneration) return
-    if (!getAudioContext()) return
-
-    this.started = true
-    await this.ensureManifestLoaded()
-    const tracks = this.getFilteredTracks()
-    console.log('[ambient] manifest loaded, %d tracks, enabled=%s, shouldPlay=%s', tracks.length, this.enabled, this.shouldPlay())
-
-    if (generation !== this.playbackGeneration || !this.shouldPlay()) return
-
-    await this.playRandomTrack()
-    if (generation !== this.playbackGeneration) return
-    this.scheduleRotation()
   }
 
-  /** True after start() has armed playback, including an intentional no-op while ambient is off. */
+  /**
+   * True after start() has armed playback, including an intentional no-op while
+   * ambient is off. A wanted track that never got a slot leaves this false.
+   */
   isStarted(): boolean {
     return this.started
   }
@@ -304,8 +321,15 @@ export class AmbientPlayerV3 {
     if (this.manifest && this.manifestLoadedAtMs && nowMs - this.manifestLoadedAtMs < 60_000) return
 
     const m = await fetchAmbientManifest()
-    this.manifest = m ? { tracks: m.tracks } : { tracks: [] }
-    this.manifestLoadedAtMs = nowMs
+    if (m) {
+      // An empty catalog is a real answer. A failed fetch is not.
+      this.manifest = { tracks: m.tracks }
+      this.manifestLoadedAtMs = nowMs
+      return
+    }
+    if (this.manifest && this.manifest.tracks.length > 0) return
+    this.manifest = { tracks: [] }
+    this.manifestLoadedAtMs = null
   }
 
   private getFilteredTracks(): AmbientTrack[] {
