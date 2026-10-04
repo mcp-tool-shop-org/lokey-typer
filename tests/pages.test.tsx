@@ -11,6 +11,7 @@ import {
   appendRun,
   loadPreferences,
   loadSkillModel,
+  pushRecent,
   saveLastMode,
   savePreferences,
   saveSkillModel,
@@ -184,6 +185,12 @@ function passageText() {
   const node = document.querySelector('.whitespace-pre-wrap')
   if (!node?.textContent) throw new Error('passage text was not on screen')
   return node.textContent
+}
+
+function typingExerciseId() {
+  const describedBy = screen.getByRole('textbox', { name: 'Typing input' }).getAttribute('aria-describedby')
+  if (!describedBy?.startsWith('typing-help-')) throw new Error('typing exercise id was not on the field')
+  return describedBy.slice('typing-help-'.length)
 }
 
 function foldedExercise(id: string) {
@@ -607,13 +614,20 @@ describe('mode pages', () => {
     expect(screen.getByText(/\d+ of \d+ exercises left/).textContent).not.toMatch(/starting fresh/)
     await user.click(screen.getByRole('button', { name: 'Start typing' }))
     expect(await screen.findByRole('button', { name: 'Next exercise' })).toBeTruthy()
+    const title = screen.getByRole('heading', { level: 1 }).textContent
+    const passage = passageText()
+    const exerciseId = typingExerciseId()
     const input = screen.getByRole('textbox', { name: 'Typing input' })
     await user.type(input, 'ab')
     await user.click(screen.getByRole('button', { name: 'Restart' }))
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe(title)
+    expect(passageText()).toBe(passage)
+    expect(typingExerciseId()).toBe(exerciseId)
     expect((screen.getByRole('textbox', { name: 'Typing input' }) as HTMLTextAreaElement).value).toBe('')
+    expect(pushRecent('focus', exerciseId)).toBe(true)
     await user.type(screen.getByRole('textbox', { name: 'Typing input' }), 'z')
     await user.click(screen.getByRole('button', { name: 'Next exercise' }))
-    expect((screen.getByRole('textbox', { name: 'Typing input' }) as HTMLTextAreaElement).value).toBe('')
+    expect(typingExerciseId()).not.toBe(exerciseId)
     await user.click(screen.getByRole('button', { name: 'Exit' }))
     expect(screen.getByText(/\d+ of \d+ exercises left/)).toBeTruthy()
 
@@ -703,11 +717,16 @@ describe('run pages', () => {
     const reloadSpy = spyOnReload()
     try {
       renderApp(['/focus/run/focus_calm_01_001'])
-      expect(screen.getByRole('heading', { name: exerciseTitle('focus_calm_01_001') })).toBeTruthy()
-      expect(passageText()).toContain('Slow is smooth')
+      const title = exerciseTitle('focus_calm_01_001')
+      expect(screen.getByRole('heading', { name: title })).toBeTruthy()
+      const passage = passageText()
+      expect(passage).toContain('Slow is smooth')
       const input = screen.getByRole('textbox', { name: 'Typing input' })
       await user.type(input, 'S')
       await user.click(screen.getByRole('button', { name: 'Restart' }))
+      expect(screen.getByRole('heading', { name: title })).toBeTruthy()
+      expect(passageText()).toBe(passage)
+      expect(typingExerciseId()).toBe('focus_calm_01_001')
       expect((screen.getByRole('textbox', { name: 'Typing input' }) as HTMLTextAreaElement).value).toBe('')
       expect(reloadSpy.reload).not.toHaveBeenCalled()
       expect(document.body.isConnected).toBe(true)

@@ -1927,33 +1927,62 @@ describe('daily set', () => {
       expect(set.items.length).toBeGreaterThan(0)
     }
 
-    const safe = recExercise('safe-a', { text: 'Short line.', text_short: 'Short line.', difficulty: 1 })
-    const other = recExercise('safe-b', { difficulty: 5, tags: ['numbers'] })
-    const template = recExercise('daily-tpl', {
-      type: 'template',
-      template: 'Hi {name}',
-      slots: { name: ['Ada'] },
-      tags: ['calm'],
-      difficulty: 3,
+    const heavy = recExercise('avoided-passage', {
+      text: 'Heavy line.',
+      text_short: 'Heavy line.',
+      difficulty: 1,
     })
-    gates.override = () => [safe, other, template]
-    const relaxed = publicLib.generateDailySet({
-      userId: 'relax-user',
-      dateKey: '2026-01-16',
-      sessionType: 'reset',
-      weakTags: ['calm'],
-      skill: {
-        total_runs: 6,
-        ema: { wpm: 48, accuracy: 1, backspace_rate: 0 },
-        recent_exercise_ids_by_mode: {
-          focus: ['safe-a', 'safe-b', 'daily-tpl'],
-          real_life: undefined as unknown as string[],
-          competitive: [],
+    const light = recExercise('kept-passage', {
+      text: 'Light line.',
+      text_short: 'Light line.',
+      difficulty: 5,
+      tags: ['numbers'],
+    })
+    const dailySkill = {
+      total_runs: 6,
+      ema: { wpm: 48, accuracy: 1, backspace_rate: 0 },
+    }
+    // These ids make the confidence roll prefer difficulty 1, then the filler hits an empty mode
+    // before relaxation can repeat the focus passage.
+    function dailyFromFocusPool(userId: string, recentFocus: string[], pool: Exercise[]) {
+      let focusLoads = 0
+      gates.override = (mode: 'focus' | 'real_life' | 'competitive') => {
+        if (mode !== 'focus') return []
+        focusLoads += 1
+        return pool
+      }
+      const set = publicLib.generateDailySet({
+        userId,
+        dateKey: '2026-01-16',
+        sessionType: 'reset',
+        skill: {
+          ...dailySkill,
+          recent_exercise_ids_by_mode: {
+            focus: recentFocus,
+            real_life: undefined as unknown as string[],
+            competitive: [],
+          },
         },
-      },
-    })
-    expect(relaxed.items.length).toBeGreaterThan(0)
-    expect(relaxed.items.every((item) => ['safe-a', 'safe-b', 'daily-tpl'].includes(item.exerciseId))).toBe(true)
+      })
+      return { set, focusLoads }
+    }
+
+    const partial = dailyFromFocusPool('novelty-hold-0', ['avoided-passage'], [heavy, light])
+    expect(partial.focusLoads).toBe(1)
+    expect(partial.set.items.map((item) => item.exerciseId)).toEqual(['kept-passage'])
+
+    const exhausted = dailyFromFocusPool('novelty-hold-3', ['avoided-passage', 'kept-passage'], [heavy, light])
+    // The strict focus pick finds nothing, so the fallback has to load the pool again.
+    expect(exhausted.focusLoads).toBe(2)
+    expect(exhausted.set.items[0]).toMatchObject({ kind: 'confidence', exerciseId: 'avoided-passage' })
+    expect(exhausted.set.items.length).toBeGreaterThan(0)
+    expect(
+      exhausted.set.items.every(
+        (item) => item.exerciseId === 'avoided-passage' || item.exerciseId === 'kept-passage',
+      ),
+    ).toBe(true)
+
+    const safe = recExercise('safe-a', { text: 'Short line.', text_short: 'Short line.', difficulty: 1 })
 
     const unsafe = recExercise('unsafe-daily', { text: 'y'.repeat(180), text_short: 'y'.repeat(180) })
     gates.override = () => [safe, unsafe]
