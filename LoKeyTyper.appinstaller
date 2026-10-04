@@ -4,12 +4,12 @@
   Version="1.1.0.0"
   xmlns="http://schemas.microsoft.com/appx/appinstaller/2018">
 
-  <MainPackage
+  <!-- x64 and ARM64 ship next to each other inside this bundle. -->
+  <MainBundle
     Name="mcp-tool-shop.LoKeyTyper"
     Publisher="CN=5305D976-6952-4F00-9C21-3A5DB090359F"
     Version="1.1.0.0"
-    ProcessorArchitecture="x64"
-    Uri="https://github.com/mcp-tool-shop-org/lokey-typer/releases/latest/download/LoKeyTyper_1.1.0.0_x64.msix" />
+    Uri="https://github.com/mcp-tool-shop-org/lokey-typer/releases/latest/download/LoKeyTyper_1.1.0.0.msixbundle" />
 
   <UpdateSettings>
     <OnLaunch HoursBetweenUpdateChecks="24" ShowPrompt="false" UpdateBlocksActivation="false" />
