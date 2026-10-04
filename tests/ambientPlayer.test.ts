@@ -187,8 +187,13 @@ function markerFor(url: string) {
   return value
 }
 
-function makeTrack(id: string, category: AmbientCategory, path = `/audio/ambient/${id}.wav`): AmbientTrack {
-  return { id, title: id, category, tags: ['soft'], path, duration_sec: 180 }
+function makeTrack(
+  id: string,
+  category: AmbientCategory,
+  path = `/audio/ambient/${id}.wav`,
+  durationSec = 180,
+): AmbientTrack {
+  return { id, title: id, category, tags: ['soft'], path, duration_sec: durationSec }
 }
 
 function resolved(path: string) {
@@ -498,6 +503,36 @@ describe('AmbientPlayerV3', () => {
     await drain()
     expect(context().sources).toHaveLength(2)
     expect(liveSources()).toHaveLength(1)
+  })
+
+  it('hears a short bed once, then crossfades', async () => {
+    useClock()
+    const { player } = await boot()
+    controls.tracks = [
+      makeTrack('short-a', 'rain', '/audio/ambient/short-a.wav', 40),
+      makeTrack('short-b', 'rain', '/audio/ambient/short-b.wav', 45),
+    ]
+    await player.start()
+    await drain()
+    expect(context().sources).toHaveLength(1)
+    await vi.advanceTimersByTimeAsync(32_000 - 1)
+    await drain()
+    expect(context().sources).toHaveLength(1)
+    await vi.advanceTimersByTimeAsync(1)
+    await drain()
+    expect(context().sources).toHaveLength(2)
+  })
+
+  it('starts a reduced-motion visit on a long bed when the catalog has one', async () => {
+    const { player } = await boot()
+    controls.tracks = [
+      makeTrack('short-loop', 'ocean', '/audio/ambient/short-loop.wav', 45),
+      makeTrack('long-bed', 'ocean', '/audio/ambient/long-bed.wav', 180),
+    ]
+    player.setPreferences(prefs({ reducedMotion: true, volume: 0.5 }))
+    await player.start()
+    await drain()
+    expect(stampOf(liveSources()[0]!)).toBe(markerFor(resolved('/audio/ambient/long-bed.wav')))
   })
 
   it('skips automatic rotation while reduced motion is on, but still crossfades once for skip and category', async () => {

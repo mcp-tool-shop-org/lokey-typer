@@ -72,6 +72,8 @@ const CROSSFADE_SEC_MIN = 6
 const CROSSFADE_SEC_MAX = 8
 const ROTATION_MIN_MS = 5 * 60_000
 const ROTATION_MAX_MS = 10 * 60_000
+/** A bed this long can sit through the hold. A shorter one is heard once. */
+const LONG_BED_SEC = 180
 
 export class AmbientPlayerV3 {
   // Manifest
@@ -341,8 +343,14 @@ export class AmbientPlayerV3 {
   }
 
   private pickRandomTrack(): AmbientTrack | null {
-    const candidates = this.getFilteredTracks()
+    let candidates = this.getFilteredTracks()
     if (candidates.length === 0) return null
+
+    // Reduced motion keeps one recording for the whole visit, so it starts on a long bed when one exists.
+    if (this.reducedMotion) {
+      const longBeds = candidates.filter((t) => t.duration_sec >= LONG_BED_SEC)
+      if (longBeds.length > 0) candidates = longBeds
+    }
 
     const currentId = this.currentSlot?.track.id ?? null
 
@@ -561,7 +569,12 @@ export class AmbientPlayerV3 {
     this.clearRotationTimer()
     if (this.reducedMotion) return
 
-    const ms = ROTATION_MIN_MS + Math.random() * (ROTATION_MAX_MS - ROTATION_MIN_MS)
+    const durationSec = this.currentSlot?.track.duration_sec
+    const roll = Math.random()
+    const ms =
+      durationSec == null || durationSec >= LONG_BED_SEC
+        ? ROTATION_MIN_MS + roll * (ROTATION_MAX_MS - ROTATION_MIN_MS)
+        : Math.max(20_000, durationSec * 1000 - 8_000)
     const timerId = window.setTimeout(() => {
       // A fired timer is not live. Do not clear a timer that replaced this one.
       if (this.rotationTimer === timerId) this.rotationTimer = null

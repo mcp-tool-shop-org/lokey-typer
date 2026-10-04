@@ -13,4 +13,4 @@ The player reads version 3 of `manifest.json`. Each entry is a track.
 
 `scripts/audio/generate_ambient_stems.py` writes `manifest.generated.json` next to this file. It does not replace `manifest.json`.
 
-Screen reader mode forces ambient off. Reduced motion turns rotation off. A missing file fails safe to silence.
+Screen reader mode forces ambient off. A bed under three minutes is heard once, then the player moves on. A bed of three minutes or longer keeps the five-to-ten minute hold. Reduced motion starts on a long bed when the catalog has one, and it does not rotate on its own. A missing file fails safe to silence.
