@@ -15,11 +15,17 @@ const MODES: Mode[] = ['focus', 'real_life', 'competitive']
 
 const STAT_ICONS: IconName[] = ['stat-speed', 'stat-accuracy', 'stat-sessions', 'stat-days']
 
+function localDayKey(when: Date): string {
+  const year = when.getFullYear()
+  const month = String(when.getMonth() + 1).padStart(2, '0')
+  const day = String(when.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
 function computeDaysPracticed(runs: ReturnType<typeof loadRuns>) {
   const days = new Set<string>()
   for (const r of runs) {
-    const d = new Date(r.timestamp * 1000).toISOString().slice(0, 10)
-    days.add(d)
+    days.add(localDayKey(new Date(r.timestamp * 1000)))
   }
   return days.size
 }

@@ -27,9 +27,6 @@ export function ModePage({ mode }: { mode: Mode }) {
   // Tracks the autostart value we last handled (to detect re-navigation to same route).
   const handledAutostart = useRef<string | null>(null)
 
-  // Pool status (recomputed when session changes)
-  const pool = useMemo(() => getPoolStatus(mode), [mode, sessionKey])
-
   // Competitive sprint config (inline on this page)
   const sprintDurationMs = prefs.competitiveSprintDurationMs
   const ghostEnabled = prefs.competitiveGhostEnabled
@@ -106,7 +103,8 @@ export function ModePage({ mode }: { mode: Mode }) {
     )
   }
 
-  // Idle state — show Go button
+  // Idle state. Read the pool here, after a finish, not when the attempt starts.
+  const pool = getPoolStatus(mode)
   const top3 = mode === 'competitive' ? topCompetitiveRuns({ durationMs: sprintDurationMs, limit: 3 }) : []
 
   return (

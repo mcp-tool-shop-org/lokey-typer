@@ -14,6 +14,13 @@ import { TypingSession } from '@features/typing'
 import { keyboardPassage } from '@lib-internal/keyboardPassage'
 import { competitiveMinLength, repeatPassage } from '@lib-internal/repeatPassage'
 
+function localDayKey(when: Date): string {
+  const year = when.getFullYear()
+  const month = String(when.getMonth() + 1).padStart(2, '0')
+  const day = String(when.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
 function modeHome(mode: Mode): string {
   if (mode === 'real_life') return '/real-life'
   if (mode === 'competitive') return '/competitive'
@@ -46,7 +53,7 @@ export function RunPage({ mode }: { mode: Mode }) {
     if (!exercise) return ''
 
     const userId = getOrCreateUserId()
-    const dateKey = new Date().toISOString().slice(0, 10)
+    const dateKey = localDayKey(new Date())
 
     const base = isTemplateExercise(exercise)
       ? renderTemplateExercise(exercise, { dateKey, seed: `${userId}|${exercise.id}|${dateKey}` })
@@ -61,6 +68,14 @@ export function RunPage({ mode }: { mode: Mode }) {
     }
     return folded
   }, [exercise, mode, variant, prefs.screenReaderMode, sprintDurationMs])
+
+  // A screen-reader toggle (or a restart) starts a fresh passage. The attempt keeps the text it opened with.
+  const attemptIdentity = `${exercise?.id ?? ''}|${mode}|${variant}|${sprintDurationMs ?? 0}|${sessionKey}|${prefs.screenReaderMode ? 'sr' : 'plain'}`
+  const [attempt, setAttempt] = useState({ identity: '', text: '' })
+  if (attempt.identity !== attemptIdentity) {
+    setAttempt({ identity: attemptIdentity, text: targetText })
+  }
+  const attemptText = attempt.identity === attemptIdentity ? attempt.text : targetText
 
   if (!exercise) {
     return (
@@ -134,10 +149,10 @@ export function RunPage({ mode }: { mode: Mode }) {
       ) : null}
 
       <TypingSession
-        key={`${exercise.id}-${sessionKey}`}
+        key={attemptIdentity}
         mode={mode}
         exercise={exercise}
-        targetText={targetText}
+        targetText={attemptText}
         prefs={prefs}
         sprintDurationMs={mode === 'competitive' ? (sprintDurationMs as SprintDurationMs) : undefined}
         showCompetitiveHud={showCompetitiveHud}

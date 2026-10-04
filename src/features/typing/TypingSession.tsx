@@ -88,6 +88,14 @@ function isNativeComposing(event: Event): boolean {
   return 'isComposing' in event && (event as InputEvent).isComposing === true
 }
 
+function missedRecordsSentence(missed: string[]): string {
+  const body =
+    missed.length === 1
+      ? `${missed[0]} was not saved.`
+      : `${missed.slice(0, -1).join(', ')} and ${missed[missed.length - 1]} were not saved.`
+  return `This run is saved. ${body}`
+}
+
 function formatMs(ms: number) {
   const totalSeconds = Math.floor(ms / 1000)
   const minutes = Math.floor(totalSeconds / 60)
@@ -130,6 +138,8 @@ export function TypingSession(props: {
   const inputRef = useRef<HTMLTextAreaElement | null>(null)
   const endOnceRef = useRef(false)
   const [saveFailed, setSaveFailed] = useState(false)
+  const [followUpNote, setFollowUpNote] = useState<string | null>(null)
+  const [suppressNewPb, setSuppressNewPb] = useState(false)
   const mistakesRef = useRef<MistakeCounts>({} as MistakeCounts)
   const typedRef = useRef('')
   const composingRef = useRef(false)
@@ -149,7 +159,7 @@ export function TypingSession(props: {
       const n = Date.now()
       setNowMs(n)
 
-      if (timeLimitMs != null && startedAtMs != null && endedAtMs == null) {
+      if (timeLimitMs != null && startedAtMs != null && endedAtMs == null && !composingRef.current) {
         if (n - startedAtMs >= timeLimitMs) setEndedAtMs(startedAtMs + timeLimitMs)
       }
     }, 100)
@@ -179,6 +189,8 @@ export function TypingSession(props: {
 
   useEffect(() => {
     if (!isComplete || endedAtMs == null) return
+    // A timed seal waits until compositionend replaces the preedit.
+    if (composingRef.current) return
     if (endOnceRef.current) return
     endOnceRef.current = true
 
@@ -206,10 +218,12 @@ export function TypingSession(props: {
       return
     }
 
-    pushRecent(props.mode, props.exercise.id)
+    const missed: string[] = []
+    if (!pushRecent(props.mode, props.exercise.id)) missed.push('The recent-passage list')
     saveLastMode(props.mode)
 
     // Phase 3: update local skill model (adaptive selection foundation).
+    // saveSkillModel swallows a failed write, so the read-back is the result.
     try {
       const prev = loadSkillModel()
       const next = updateSkillModelFromRun({
@@ -221,18 +235,35 @@ export function TypingSession(props: {
         mistakes: mistakesRef.current,
       })
       saveSkillModel(next)
+      const stored = loadSkillModel()
+      if (stored.total_runs !== next.total_runs || stored.updated_at !== next.updated_at) {
+        missed.push('The skill record')
+      }
     } catch {
-      // ignore
+      missed.push('The skill record')
     }
 
-    // PB update (competitive only, but harmless)
-    maybeUpdatePersonalBest({
+    // PB update (competitive only, but harmless). updated:true can still mean the write failed.
+    const pbResult = maybeUpdatePersonalBest({
       exerciseId: props.exercise.id,
       sprintDurationMs: timeLimitMs as SprintDurationMs | undefined,
       wpm: run.wpm,
       accuracy: run.accuracy,
       timestamp,
     })
+    if (pbResult.updated) {
+      const storedBest = getPersonalBest(props.exercise.id, timeLimitMs as SprintDurationMs | undefined)
+      const bestKept =
+        storedBest != null &&
+        storedBest.wpm === run.wpm &&
+        storedBest.accuracy === run.accuracy &&
+        storedBest.timestamp === timestamp
+      if (!bestKept) {
+        missed.push('The personal best')
+        setSuppressNewPb(true)
+      }
+    }
+    if (missed.length > 0) setFollowUpNote(missedRecordsSentence(missed))
 
     if (props.prefs.bellOnCompletion) {
       typewriterAudio.play('return_bell', {
@@ -297,10 +328,11 @@ export function TypingSession(props: {
     const durationMs = timeLimitMs ?? elapsedMs
 
     const isPersonalBestWpm =
+      !suppressNewPb &&
       (props.mode === 'competitive' ? live.accuracy >= 0.95 : true) &&
       (bestWpm == null || live.wpm > bestWpm)
 
-    const isPersonalBestAccuracy = bestAccuracy == null || live.accuracy > bestAccuracy
+    const isPersonalBestAccuracy = !suppressNewPb && (bestAccuracy == null || live.accuracy > bestAccuracy)
 
     const deltaWpmVsBest = props.mode === 'competitive' && pb != null ? live.wpm - pb.wpm : 0
     const deltaAccuracyVsBest = bestAccuracy != null ? live.accuracy - bestAccuracy : 0
@@ -327,6 +359,7 @@ export function TypingSession(props: {
     live.wpm,
     pb,
     props.mode,
+    suppressNewPb,
     timeLimitMs,
   ])
 
@@ -511,7 +544,12 @@ export function TypingSession(props: {
               graphemesOf(added.text),
             )
             if (commit.length !== base.length) noteTypingActivity()
-            if (startedAtMs == null && commit.length > 0) setStartedAtMs(Date.now())
+            const started = startedAtMs ?? (commit.length > 0 ? Date.now() : null)
+            if (startedAtMs == null && started != null) setStartedAtMs(started)
+            if (timeLimitMs != null && started != null && Date.now() - started >= timeLimitMs) {
+              setEndedAtMs(started + timeLimitMs)
+              return
+            }
             if (timeLimitMs == null && commit === targetText) setEndedAtMs(Date.now())
           }}
           onChange={(e) => {
@@ -570,6 +608,7 @@ export function TypingSession(props: {
                 {feedback.primary}
               </div>
               {feedback.secondary ? <div className="text-zinc-300">{feedback.secondary}</div> : null}
+              {followUpNote ? <div className="text-zinc-300">{followUpNote}</div> : null}
               {props.mode === 'competitive' && pb ? (
                 <div className="flex items-center gap-1.5">
                   <Icon name="trophy" size={14} className="shrink-0 text-zinc-500" />

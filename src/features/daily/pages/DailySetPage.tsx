@@ -48,11 +48,22 @@ function sessionLabel(type: DailySessionType) {
   return 'Standard set'
 }
 
+function localDayKey(when: Date): string {
+  const year = when.getFullYear()
+  const month = String(when.getMonth() + 1).padStart(2, '0')
+  const day = String(when.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
+function localDayNumber(key: string): number {
+  const [year, month, day] = key.split('-').map(Number)
+  return Math.floor(Date.UTC(year, (month ?? 1) - 1, day ?? 1) / 86_400_000)
+}
+
 function computeDaysPracticed(runs: ReturnType<typeof loadRuns>) {
   const days = new Set<string>()
   for (const r of runs) {
-    const d = new Date(r.timestamp * 1000).toISOString().slice(0, 10)
-    days.add(d)
+    days.add(localDayKey(new Date(r.timestamp * 1000)))
   }
   return days
 }
@@ -60,15 +71,31 @@ function computeDaysPracticed(runs: ReturnType<typeof loadRuns>) {
 function computeBestWeek(days: Set<string>) {
   const sorted = Array.from(days).sort()
   if (sorted.length === 0) return 0
-  const msPerDay = 24 * 60 * 60 * 1000
-  const dayMs = sorted.map((d) => new Date(d).getTime())
+  const dayNumber = sorted.map(localDayNumber)
   let best = 1
   let i = 0
-  for (let j = 0; j < dayMs.length; j++) {
-    while (dayMs[j] - dayMs[i] > 6 * msPerDay) i++
+  for (let j = 0; j < dayNumber.length; j++) {
+    while (dayNumber[j] - dayNumber[i] > 6) i++
     best = Math.max(best, j - i + 1)
   }
   return best
+}
+
+function progressFor(
+  dateKey: string,
+  userId: string,
+  sessionType: DailySessionType,
+  screenReaderMode: boolean,
+): DailyProgress {
+  const existing = loadDailyProgress(dateKey, userId, sessionType, screenReaderMode)
+  if (existing && existing.sessionType === sessionType) return existing
+  return {
+    dateKey,
+    userId,
+    sessionType,
+    completedItems: [],
+    startedAt: Date.now(),
+  }
 }
 
 function resolveExerciseText(exercise: Exercise, seed: string): string {
@@ -123,33 +150,11 @@ export function DailySetPage() {
 
   // ---- Progress persistence ----
 
-  const [progress, setProgress] = useState<DailyProgress>(() => {
-    const existing = loadDailyProgress(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
-    if (existing && existing.sessionType === sessionType) return existing
-    return {
-      dateKey: daily.dateKey,
-      userId,
-      sessionType,
-      completedItems: [],
-      startedAt: Date.now(),
-    }
-  })
-
-  // Reset progress if session type changes (different set = different exercises).
-  useEffect(() => {
-    const existing = loadDailyProgress(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
-    if (existing && existing.sessionType === sessionType) {
-      setProgress(existing)
-    } else {
-      setProgress({
-        dateKey: daily.dateKey,
-        userId,
-        sessionType,
-        completedItems: [],
-        startedAt: Date.now(),
-      })
-    }
-  }, [daily.dateKey, userId, sessionType, prefs.screenReaderMode])
+  const progressIdentity = `${daily.dateKey}|${userId}|${sessionType}|${prefs.screenReaderMode ? 'sr' : 'plain'}`
+  const [progress, setProgress] = useState<DailyProgress>(() =>
+    progressFor(daily.dateKey, userId, sessionType, prefs.screenReaderMode),
+  )
+  const [seenIdentity, setSeenIdentity] = useState(progressIdentity)
 
   // ---- Phase state ----
 
@@ -163,10 +168,14 @@ export function DailySetPage() {
     return 'idle'
   })
 
-  // Sync phase if progress loads as finished (e.g. page reload after completing).
-  useEffect(() => {
-    if (isFinished && phase !== 'summary') setPhase('summary')
-  }, [isFinished, phase])
+  // A different set (screen reader, session type, or day) must not keep the previous summary.
+  if (seenIdentity !== progressIdentity) {
+    const next = progressFor(daily.dateKey, userId, sessionType, prefs.screenReaderMode)
+    const finished = next.completedItems.length >= daily.items.length
+    setSeenIdentity(progressIdentity)
+    setProgress(next)
+    setPhase(finished ? 'summary' : 'idle')
+  }
 
   const [sessionKey, setSessionKey] = useState(0)
   const phaseRef = useRef<HTMLDivElement>(null)
@@ -441,7 +450,7 @@ export function DailySetPage() {
           </div>
 
           <TypingSession
-            key={`daily-${currentIndex}-${sessionKey}`}
+            key={`daily-${currentExercise.id}-${currentIndex}-${sessionKey}-${prefs.screenReaderMode ? 'sr' : 'plain'}`}
             mode={currentItem.mode}
             exercise={currentExercise}
             targetText={resolveExerciseText(
