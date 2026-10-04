@@ -67,7 +67,13 @@ async function fetchDecode(ctx: AudioContext, url: string): Promise<AudioBuffer 
 // AmbientPlayerV3
 // ---------------------------------------------------------------------------
 
-const MAX_VOLUME = 0.7
+/**
+ * Full-slider gain. The files sit near −32 LUFS, so a gain of 1 is a whisper
+ * on a speaker set for ordinary listening. 4 brings a −32 bed to about −20.
+ */
+const MAX_VOLUME = 4
+/** Peak ceiling after that gain, in dB. Only the hottest beds reach it. */
+const LIMIT_THRESHOLD_DB = -1.5
 const CROSSFADE_SEC_MIN = 6
 const CROSSFADE_SEC_MAX = 8
 const ROTATION_MIN_MS = 5 * 60_000
@@ -90,6 +96,7 @@ export class AmbientPlayerV3 {
 
   // Playback state
   private masterGain: GainNode | null = null
+  private limiter: DynamicsCompressorNode | null = null
   private masterConnected = false
   private currentSlot: TrackSlot | null = null
   private preloadedTrack: AmbientTrack | null = null
@@ -286,12 +293,10 @@ export class AmbientPlayerV3 {
   }
 
   private effectiveVolume(): number {
-    // Quadratic curve for perceptual volume control.
-    // Human hearing is logarithmic, so a linear slider feels wrong.
-    // x^2 gives finer control at the quiet end while still being audible
-    // at typical default levels (0.35–0.5).
+    // The files are already quiet. A squared curve buried the midpoint
+    // another 12 dB, so the slider is linear and the cap above does the lift.
     const linear = clamp(this.desiredVolume, 0, 1)
-    return clamp(linear * linear * MAX_VOLUME, 0, MAX_VOLUME)
+    return clamp(linear * MAX_VOLUME, 0, MAX_VOLUME)
   }
 
   private ensureMasterGain(): { ctx: AudioContext; master: GainNode } | null {
@@ -303,8 +308,19 @@ export class AmbientPlayerV3 {
       this.masterGain.gain.value = 0
     }
 
+    if (!this.limiter) {
+      const limiter = ctx.createDynamicsCompressor()
+      limiter.threshold.value = LIMIT_THRESHOLD_DB
+      limiter.knee.value = 3
+      limiter.ratio.value = 12
+      limiter.attack.value = 0.005
+      limiter.release.value = 0.25
+      this.limiter = limiter
+    }
+
     if (!this.masterConnected) {
-      this.masterGain.connect(ctx.destination)
+      this.masterGain.connect(this.limiter)
+      this.limiter.connect(ctx.destination)
       this.masterConnected = true
     }
 

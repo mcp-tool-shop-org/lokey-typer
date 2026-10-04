@@ -61,6 +61,21 @@ class FakeGain {
   }
 }
 
+class FakeCompressor {
+  threshold = new FakeParam()
+  knee = new FakeParam()
+  ratio = new FakeParam()
+  attack = new FakeParam()
+  release = new FakeParam()
+  outputs: unknown[] = []
+
+  connect(dest: unknown) {
+    this.outputs.push(dest)
+  }
+
+  disconnect() {}
+}
+
 class FakeSource {
   buffer: FakeBuffer | null = null
   loop = false
@@ -108,6 +123,7 @@ class FakeAudioContext {
   resumeCalls = 0
   sources: FakeSource[] = []
   gains: FakeGain[] = []
+  compressors: FakeCompressor[] = []
   decoded: FakeBuffer[] = []
   created: FakeBuffer[] = []
 
@@ -126,6 +142,12 @@ class FakeAudioContext {
     const gain = new FakeGain()
     this.gains.push(gain)
     return gain
+  }
+
+  createDynamicsCompressor() {
+    const limiter = new FakeCompressor()
+    this.compressors.push(limiter)
+    return limiter
   }
 
   createBuffer(channels: number, length: number, sampleRate: number) {
@@ -322,9 +344,13 @@ function context() {
 }
 
 function master() {
-  const gain = context().gains.find((item) => item.outputs.includes(context().destination))
-  if (!gain) throw new Error('expected a master gain')
-  return gain
+  const dest = context().destination
+  const direct = context().gains.find((item) => item.outputs.includes(dest))
+  if (direct) return direct
+  const limiter = context().compressors.find((item) => item.outputs.includes(dest))
+  const via = limiter && context().gains.find((item) => item.outputs.includes(limiter))
+  if (!via) throw new Error('expected a master gain')
+  return via
 }
 
 function liveSources() {
@@ -360,7 +386,7 @@ function lastRamp(param: FakeParam) {
 
 function assertMasterCapped() {
   for (const event of master().gain.events) {
-    if (event.value != null) expect(event.value).toBeLessThanOrEqual(0.7 + 1e-9)
+    if (event.value != null) expect(event.value).toBeLessThanOrEqual(4 + 1e-9)
   }
 }
 
@@ -411,12 +437,12 @@ describe('AmbientPlayerV3', () => {
     FakeAudioContext.resumeMode = 'ok'
   })
 
-  it('keeps master volume at or below 0.7 and quieter in the low half of the slider', async () => {
+  it('lifts a full slider to the playback gain and keeps the midpoint at half', async () => {
     const { player } = await boot()
     const cases: Array<[number, number]> = [
-      [1, 0.7],
-      [2, 0.7],
-      [0.5, 0.175],
+      [1, 4],
+      [2, 4],
+      [0.5, 2],
       [0, 0],
       [-4, 0],
     ]
@@ -424,10 +450,14 @@ describe('AmbientPlayerV3', () => {
       player.setPreferences(prefs({ volume }))
       expect(lastRamp(master().gain).value).toBeCloseTo(expected, 5)
     }
+    const limiter = context().compressors[0]
+    expect(limiter?.threshold.value).toBeCloseTo(-1.5, 5)
+    expect(master().outputs).toContain(limiter)
+    expect(limiter?.outputs).toContain(context().destination)
     await player.start()
     expect(lastRamp(master().gain).value).toBeCloseTo(0, 5)
     player.setPreferences(prefs({ volume: 1 }))
-    expect(lastRamp(master().gain).value).toBeCloseTo(0.7, 5)
+    expect(lastRamp(master().gain).value).toBeCloseTo(4, 5)
     expect(liveSources()).toHaveLength(1)
     assertWholeTrack(liveSources()[0]!)
     expect(liveSources()[0]?.buffer).not.toBe(context().decoded[0])
@@ -603,7 +633,7 @@ describe('AmbientPlayerV3', () => {
     )
     await vi.advanceTimersByTimeAsync(1)
     const restored = lastRamp(master().gain)
-    expect(restored.value).toBeCloseTo(0.175, 5)
+    expect(restored.value).toBeCloseTo(2, 5)
     expect(restored.duration).toBeCloseTo(0.6, 5)
     expect(source?.stopCount).toBe(0)
     assertMasterCapped()
@@ -637,7 +667,7 @@ describe('AmbientPlayerV3', () => {
     expect(master().gain.events.length).toBe(hiddenEvents)
     expect(liveSources()[0]?.stopCount).toBe(0)
     player.setVisibilityPaused(false)
-    expect(lastRamp(master().gain).value).toBeCloseTo(0.7, 5)
+    expect(lastRamp(master().gain).value).toBeCloseTo(4, 5)
     expect(lastRamp(master().gain).duration).toBeCloseTo(0.8, 5)
     assertMasterCapped()
   })
@@ -877,7 +907,7 @@ describe('AmbientPlayerV3', () => {
 
     player.setVisibilityPaused(false)
     expect(source?.stopCount).toBe(0)
-    expect(lastRamp(master().gain).value).toBeCloseTo(0.7, 5)
+    expect(lastRamp(master().gain).value).toBeCloseTo(4, 5)
     expect(lastRamp(master().gain).duration).toBeCloseTo(0.8, 5)
     await vi.advanceTimersByTimeAsync(5 * 60_000 - 1)
     await drain()

@@ -48,8 +48,8 @@ if (!engine) {
       re: /const CROSSFADE_SEC_MIN = 6\b[\s\S]*const CROSSFADE_SEC_MAX = 8\b/,
     },
     {
-      name: 'Ambient master is capped at 0.7',
-      re: /const MAX_VOLUME = 0\.7\b/,
+      name: 'Ambient playback gain lifts a -32 LUFS bed',
+      re: /const MAX_VOLUME = 4\b/,
     },
     {
       name: 'Reduced motion skips rotation',

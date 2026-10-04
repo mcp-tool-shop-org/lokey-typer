@@ -189,7 +189,7 @@ These are engineering gates, not suggestions.
 ### A. Loudness & Mixing
 
 - **Integrated loudness per ambient stem**: –30 to –34 LUFS (±1 LUFS tolerance)
-- **Ambient master cap**: 0.7, applied in AmbientPlayerV3 after the quadratic volume curve. This is a cap on full scale, not a measurement against the typing bus.
+- **Ambient playback**: the slider is linear. Full scale is a gain of 4, so a −32 LUFS bed is about −20 LUFS at the top and about −26 at the default midpoint. A limiter after that gain holds peaks near −1.5 dB. The file loudness above is unchanged.
 - **Gain drift per layer**: ≤ ±2 dB, time constant ≥ 30 seconds
 
 ### B. Modulation & Evolution

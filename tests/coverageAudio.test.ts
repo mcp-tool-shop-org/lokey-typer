@@ -53,6 +53,17 @@ class FakeContext {
     this.gains.push(gain)
     return gain
   }
+  createDynamicsCompressor() {
+    return {
+      threshold: new FakeParam(),
+      knee: new FakeParam(),
+      ratio: new FakeParam(),
+      attack: new FakeParam(),
+      release: new FakeParam(),
+      connect() {},
+      disconnect() {},
+    }
+  }
   createBufferSource() {
     const source = new FakeSource()
     this.sources.push(source)
@@ -159,8 +170,8 @@ describe('ambient player', () => {
     expect(looped.length).toBeGreaterThan(0)
     expect(looped[0].started.length).toBe(1)
     const volumes = ctx.gains.flatMap((gain) => gain.gain.ramps.map((ramp) => ramp.value))
-    expect(volumes.some((value) => value > 0.7)).toBe(false)
-    expect(volumes.some((value) => Math.abs(value - 0.7) < 0.001)).toBe(true)
+    expect(volumes.some((value) => value > 4)).toBe(false)
+    expect(volumes.some((value) => Math.abs(value - 4) < 0.001)).toBe(true)
   })
 
   it('crossfades on skip and on a category change, and skips automatic rotation when motion is reduced', async () => {
