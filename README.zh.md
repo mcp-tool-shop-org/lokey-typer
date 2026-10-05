@@ -13,17 +13,17 @@
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
-一款具有环境音效、个性化每日练习和无需账户的平静的打字练习应用程序。
+一款具有环境音效、个性化每日练习和无需账户的平静打字练习应用程序。
 
 ## 它是什么
 
-LoKey Typer 是一款打字练习应用程序，专为希望进行安静、专注的练习，且不包含游戏化、排行榜或干扰功能的成年人设计。
+LoKey Typer 是一款打字练习应用程序，专为希望进行安静、专注的练习而无需游戏化、排行榜或干扰的成年人设计。
 
 所有数据都保存在您的设备上。无需账户。无需云服务。无需跟踪。
 
 ## 练习模式
 
-- **专注**——平静、精选的练习，旨在提高节奏感和准确性。
+- **专注**——平静、精选的练习，旨在培养节奏感和准确性。
 - **实际应用**——使用电子邮件、表格、消息、笔记和其他日常写作进行练习。
 - **竞赛**——限时冲刺，挑战个人最佳成绩。
 - **每日练习**——每天生成一组新的练习，并根据您最近的练习进行调整。
@@ -31,19 +31,27 @@ LoKey Typer 是一款打字练习应用程序，专为希望进行安静、专�
 
 ## 功能
 
-- 专为长时间保持专注而设计的环境音效。设置列表中仅显示包含音轨的类别。
-- 机械打字机按键音（可选），以及“咔哒”、“滴答”和“静音”选项。您选择的键盘将应用于该录音。默认设置为机械键盘。
+- 专为持续专注而设计的环境音效。设置列表中仅显示包含音轨的类别。
+- 机械打字机按键音（可选），以及“咔哒”、“嘀嗒”和“静音”选项。您选择的键盘将应用于该录音。默认设置为机械键盘。
 - 基于最近练习的个性化每日练习。
 - 首次加载后可完全离线使用。
 - 易于访问：屏幕阅读器模式、减少动画、可选声音。
 
 ## 安装
 
-**Microsoft Store**（推荐）：
+**Microsoft Store（推荐）：**
 [从 Microsoft Store 获取](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
 **浏览器：**
-运行 `npm run dev` 并打开本地地址。Pages 工作流会在 [Pages 网站](https://mcp-tool-shop-org.github.io/lokey-typer/) 上发布该应用程序。手册在该网站的 `/handbook/` 下提供。
+运行 `npm run dev` 并打开本地地址。Pages 工作流会在 [Pages 网站](https://mcp-tool-shop-org.github.io/lokey-typer/) 上发布该应用程序。手册在该网站的 `/handbook/` 处提供。
+
+**Docker（自托管）：**
+
+```bash
+docker run -d --name lokey-typer -p 8080:8080 --restart unless-stopped ghcr.io/mcp-tool-shop-org/lokey-typer:latest
+```
+
+然后打开 `http://localhost:8080/`。手册位于 `/lokey-typer/handbook/`。您的进度将由您的浏览器为该地址保存，而不是保存在容器内，因此停止、升级或替换容器不会影响进度。每次都打开相同的主机和端口；不同的地址将从头开始。
 
 ## 隐私
 
@@ -76,10 +84,10 @@ npm run preview
 - `npm run dev` — 开发服务器
 - `npm run build` — 类型检查 + 生产构建
 - `npm run verify` — 内容检查、声音验证、类型检查、覆盖率和生产构建
-- `npm run typecheck` — 仅进行 TypeScript 构建的类型检查
+- `npm run typecheck` — 仅进行 TypeScript 构建和类型检查
 - `npm run lint` — ESLint
 - `npm run preview` — 在本地预览生产构建
-- `npm run validate:content` — 所有内容包的架构 + 结构验证
+- `npm run validate:content` — 针对所有内容包进行架构 + 结构验证
 - `npm run gen:phase2-content` — 重新生成第二阶段包
 - `npm run smoke:rotation` — 新颖性/轮换测试
 - `npm run qa:ambient:assets` — 环境 WAV 资源检查
@@ -115,7 +123,7 @@ npm run preview
 - `/focus/run/:exerciseId`、`/real-life/run/:exerciseId`、`/competitive/run/:exerciseId` — 运行练习
 - `/practice` 重定向到 `/focus`。`/arcade` 重定向到 `/competitive`
 
-设置从页眉中打开。没有练习列表页面。
+设置从标题栏打开。没有练习列表页面。
 
 ### 文档
 
@@ -130,10 +138,10 @@ npm run preview
 
 ## 安全性和数据范围
 
-LoKey Typer 是一款打字练习 Web 应用程序（PWA + Microsoft Store），不含账户且不进行遥测。
+LoKey Typer 是一款打字练习 Web 应用程序（PWA + Microsoft Store），没有账户也没有遥测数据。
 
 - **访问的数据：** 浏览器 localStorage（偏好设置、运行历史记录、个人最佳成绩）和 IndexedDB 数据库 `lokey-study`（您在“学习”页面中添加的文本）
-- **未访问的数据：** 无云同步。无遥测。无分析。无账户。无跟踪。
+- **未访问的数据：** 没有云同步。没有遥测数据。没有分析。没有账户。没有跟踪。
 - **网络：** 应用程序从同一来源加载其页面和音频。它不会调用账户服务、遥测端点或任何第三方 API。
 - **不收集或发送任何遥测数据**
 
@@ -143,7 +151,7 @@ LoKey Typer 是一款打字练习 Web 应用程序（PWA + Microsoft Store），
 
 ## 评分表
 
-| 类别 | 得分 |
+| 类别 | 分数 |
 |----------|-------|
 | A. 安全性 | 10/10 |
 | B. 错误处理 | 10/10 |

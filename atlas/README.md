@@ -1,21 +1,25 @@
 # lokey-typer: how it works
 
-Mapped at 2026-10-05 from commit aae2f56.
+Mapped at 2026-10-05 from commit 6b47e2c.
 
 ## What this is
 
 LoKey Typer is a calm typing practice app: a browser client, a Windows shell for the Store package, and ambient audio that stays on the device. (written by a person)
 
-12 parts, mostly TypeScript (88 files). Work enters through 2 doors; the busiest is CI, which reaches 6 parts.
+12 parts, mostly TypeScript (88 files). Work enters through 3 doors; the busiest is CI, which reaches 6 parts. It publishes a container image.
 
-## What changed since 2026-10-05 (bf82ec4)
+## What changed since 2026-10-05 (aae2f56)
 
-Nothing structural changed since 2026-10-05; 2 files added, 2 removed and 58 changed content.
+- Docker (.github/workflows/docker.yml) is a new door. It starts when a release is published; or by hand. It runs no file this map can see.
+- package.json is now read by .github/workflows/docker.yml.
+- docker/nginx.conf is new and belongs to no part, so atlas check fails on it against the previous map.
+- 14 files added and 60 changed content, across 10 parts.
 
 ## What comes in
 
 1. **CI.** On a pull request touching 18 paths; on a push touching 18 paths; or by hand. Runs scripts/qaAmbientAssets.mjs, scripts/qaSoundDesignManifesto.mjs, scripts/validatePhase2Content.mjs and 3 more; checks desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj, desktop/LoKeyTyper.sln, scripts/audio/check_bed_policy.py and 5 more.
 2. **Deploy to GitHub Pages.** On a push to main touching 11 paths; or by hand. Runs scripts/qaAmbientAssets.mjs, scripts/qaSoundDesignManifesto.mjs, scripts/validatePhase2Content.mjs and 3 more; checks scripts/audio/check_bed_policy.py, scripts/audio/check_loudness.py, scripts/audio/check_spectrum.py and 3 more.
+3. **Docker.** When a release is published; or by hand. Runs no file this map can see.
 
 ## What happens through CI
 
@@ -28,6 +32,8 @@ CI writes nothing this map can see.
 ## The other doors
 
 **Deploy to GitHub Pages** runs scripts/qaAmbientAssets.mjs, scripts/qaSoundDesignManifesto.mjs, scripts/validatePhase2Content.mjs and 3 more, checks scripts/audio/check_bed_policy.py, scripts/audio/check_loudness.py, scripts/audio/check_spectrum.py and 3 more, and deploys the site.
+
+**Docker** runs no file this map can see and publishes a container image.
 
 ## What breaks what
 

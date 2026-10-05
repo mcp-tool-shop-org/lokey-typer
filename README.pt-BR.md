@@ -17,25 +17,25 @@ Um aplicativo de prática de digitação calmo, com paisagens sonoras ambiente, 
 
 ## O que é
 
-LoKey Typer é um aplicativo de prática de digitação desenvolvido para adultos que desejam sessões tranquilas e focadas, sem gamificação, tabelas de classificação ou distrações.
+LoKey Typer é um aplicativo de prática de digitação desenvolvido para adultos que desejam sessões tranquilas e focadas, sem elementos de gamificação, placares ou distrações.
 
 Todos os dados permanecem no seu dispositivo. Sem contas. Sem nuvem. Sem rastreamento.
 
 ## Modos de prática
 
-- **Foco** — Exercícios calmos e selecionados para desenvolver ritmo e precisão
-- **Vida Real** — Pratique com e-mails, formulários, mensagens, notas e outros textos do dia a dia
-- **Competitivo** — Séries cronometradas com melhores tempos pessoais
-- **Conjunto Diário** — Um novo conjunto de exercícios gerado a cada dia, adaptado às suas sessões recentes
-- **Estudo** — Adicione seu próprio texto. Ele permanece neste dispositivo e é apresentado aos poucos, em ordem ou aleatoriamente.
+- **Foco** — Exercícios calmos e selecionados para desenvolver ritmo e precisão.
+- **Vida Real** — Pratique com e-mails, formulários, mensagens, notas e outros textos do dia a dia.
+- **Competitivo** — Exercícios cronometrados com seus melhores tempos pessoais.
+- **Conjunto Diário** — Um novo conjunto de exercícios gerado a cada dia, adaptado às suas sessões recentes.
+- **Estudo** — Adicione seu próprio texto. Ele permanece neste dispositivo e é apresentado aos poucos, em ordem ou de forma aleatória.
 
 ## Recursos
 
-- Paisagens sonoras ambiente projetadas para manter o foco. As configurações listam apenas as categorias que possuem uma faixa sonora.
-- Áudio de digitação de máquina de escrever mecânica (opcional), além de sons de clique, som suave e silenciado. O teclado que você escolher será usado nessa gravação. O padrão é o teclado mecânico.
-- Exercícios diários personalizados com base nas sessões recentes
-- Suporte completo offline após o primeiro carregamento
-- Acessível: modo de leitor de tela, movimento reduzido, som opcional
+- Paisagens sonoras ambiente projetadas para manter o foco. As configurações listam apenas as categorias que possuem faixas de áudio.
+- Áudio de digitação de máquina de escrever mecânica (opcional), além de sons de clique, som suave e silenciado. O teclado que você escolher será usado na gravação. O padrão é o teclado mecânico.
+- Exercícios diários personalizados com base nas sessões recentes.
+- Suporte completo offline após o primeiro carregamento.
+- Acessível: modo de leitor de tela, movimento reduzido, som opcional.
 
 ## Instalação
 
@@ -43,11 +43,19 @@ Todos os dados permanecem no seu dispositivo. Sem contas. Sem nuvem. Sem rastrea
 [Obtenha-o na Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
 **Navegador:**
-Execute `npm run dev` e abra o endereço local. O fluxo de trabalho do Pages publica o aplicativo em [o site do Pages](https://mcp-tool-shop-org.github.io/lokey-typer/). O manual está disponível em `/handbook/` no mesmo site.
+Execute `npm run dev` e abra o endereço local. O fluxo de trabalho do Pages publica o aplicativo no [site do Pages](https://mcp-tool-shop-org.github.io/lokey-typer/). O manual está disponível em `/handbook/` no mesmo site.
+
+**Docker (hospedagem própria):**
+
+```bash
+docker run -d --name lokey-typer -p 8080:8080 --restart unless-stopped ghcr.io/mcp-tool-shop-org/lokey-typer:latest
+```
+
+Em seguida, abra `http://localhost:8080/`. O manual está em `/lokey-typer/handbook/`. Seu progresso é armazenado pelo seu navegador para esse endereço, não dentro do contêiner, portanto, interromper, atualizar ou substituir o contêiner o preserva. Abra o mesmo host e porta cada vez; um endereço diferente inicia do zero.
 
 ## Privacidade
 
-LoKey Typer não coleta dados. As preferências, o histórico de uso, os melhores tempos pessoais e o texto que você adiciona para o Estudo permanecem neste navegador. Consulte a [política de privacidade](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa. Essa página é enviada com o site.
+LoKey Typer não coleta dados. As preferências, o histórico de execução, os melhores tempos pessoais e o texto que você adiciona para o Estudo permanecem neste navegador. Consulte a [política de privacidade](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa. Essa página é enviada com o site.
 
 ## Licença
 
@@ -75,22 +83,22 @@ npm run preview
 
 - `npm run dev` — servidor de desenvolvimento
 - `npm run build` — verificação de tipo + compilação para produção
-- `npm run verify` — verificação de conteúdo, validação de sons, verificação de tipo, cobertura e compilação para produção
+- `npm run verify` — verificação de conteúdo, verificações de áudio, verificação de tipo, cobertura e compilação para produção
 - `npm run typecheck` — compilação do TypeScript, apenas verificação de tipo
 - `npm run lint` — ESLint
-- `npm run preview` — visualização da compilação para produção localmente
+- `npm run preview` — visualização da compilação de produção localmente
 - `npm run validate:content` — validação de esquema e estrutura para todos os pacotes de conteúdo
 - `npm run gen:phase2-content` — regenerar pacotes da Fase 2
 - `npm run smoke:rotation` — teste de novidade/rotação
-- `npm run qa:ambient:assets` — verificação de ativos WAV ambiente
-- `npm run qa:sound-design` — validação do design de som
+- `npm run qa:ambient:assets` — verificações de ativos de áudio ambiente
+- `npm run qa:sound-design` — verificações de aceitação do design de som
 - `npm run qa:phase3:novelty` — simulação de novidade do conjunto diário
-- `npm run qa:phase3:recommendation` — simulação de sanidade da recomendação
+- `npm run qa:phase3:recommendation` — simulação de sanidade de recomendação
 
 ### Estrutura do código
 
 - `src/app` — configuração do aplicativo (roteador, shell/layout, provedores globais)
-- `src/features` — interface do usuário específica do recurso (páginas + componentes de recurso)
+- `src/features` — interface do usuário de propriedade do recurso (páginas + componentes de recurso)
 - `src/lib` — lógica de domínio compartilhada (armazenamento, métricas de digitação, áudio/ambiente, etc.)
 - `src/content` — tipos de conteúdo + carregamento de pacotes de conteúdo
 
@@ -132,7 +140,7 @@ As configurações são abertas a partir do cabeçalho. Não há uma página de 
 
 LoKey Typer é um aplicativo web de prática de digitação (PWA + Microsoft Store) sem contas e sem telemetria.
 
-- **Dados acessados:** localStorage do navegador (preferências, histórico de uso, melhores tempos pessoais) e o banco de dados IndexedDB `lokey-study` (texto que você adiciona na página de Estudo)
+- **Dados acessados:** localStorage do navegador (preferências, histórico de execução, melhores tempos pessoais) e o banco de dados IndexedDB `lokey-study` (texto que você adiciona na página Estudo)
 - **Dados NÃO acessados:** Sem sincronização na nuvem. Sem telemetria. Sem análise. Sem contas. Sem rastreamento
 - **Rede:** O aplicativo carrega suas próprias páginas e áudio do mesmo domínio. Ele não chama um serviço de conta, um ponto de extremidade de telemetria ou qualquer API de terceiros.
 - **Nenhuma telemetria** é coletada ou enviada
