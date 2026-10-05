@@ -1,0 +1,14 @@
+.git
+.swarm
+node_modules
+site/node_modules
+dist
+site/dist
+coverage
+desktop
+msix-package
+store-assets
+AppPackages
+*.msix
+*.msixupload
+*~

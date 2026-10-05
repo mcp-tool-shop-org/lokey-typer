@@ -13,11 +13,11 @@
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
-Une application de pratique de frappe relaxante, avec des paysages sonores ambiants, des exercices quotidiens personnalisés et sans besoin de créer de compte.
+Une application de pratique de frappe relaxante, avec des paysages sonores ambiants, des exercices quotidiens personnalisés et sans besoin de créer un compte.
 
 ## Description
 
-LoKey Typer est une application de pratique de frappe conçue pour les adultes qui souhaitent des sessions calmes et concentrées, sans éléments de jeu, classements ou distractions.
+LoKey Typer est une application de pratique de frappe conçue pour les adultes qui souhaitent des sessions calmes et concentrées, sans éléments de gamification, classements ou distractions.
 
 Toutes les données restent sur votre appareil. Pas de comptes. Pas de cloud. Pas de suivi.
 
@@ -32,26 +32,34 @@ Toutes les données restent sur votre appareil. Pas de comptes. Pas de cloud. Pa
 ## Fonctionnalités
 
 - Paysages sonores ambiants conçus pour une concentration soutenue. Les paramètres affichent uniquement les catégories pour lesquelles il existe une piste audio.
-- Son de frappe de machine à écrire mécanique (facultatif), ainsi que les options « Clicky », « Tick » et « Muted ». Le clavier que vous choisissez est utilisé pour l’enregistrement. L’option mécanique est la valeur par défaut.
+- Audio de frappe de machine à écrire mécanique (facultatif), ainsi que les options « Clicky », « Tick » et « Muted ». Le clavier que vous choisissez est utilisé pour l’enregistrement. L’option « Mécanique » est l’option par défaut.
 - Exercices quotidiens personnalisés basés sur les sessions récentes.
 - Prise en charge complète hors ligne après le premier chargement.
 - Accessible : mode lecteur d’écran, réduction des mouvements, son facultatif.
 
 ## Installation
 
-**Microsoft Store** (recommandé) :
-[Téléchargez-la sur le Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
+**Microsoft Store** (recommandé) :
+[Téléchargez-la depuis le Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
-**Navigateur :**
+**Navigateur :**
 Exécutez `npm run dev` et ouvrez l’adresse locale. Le flux de travail Pages publie l’application sur [le site Pages](https://mcp-tool-shop-org.github.io/lokey-typer/). Le manuel d’utilisation est accessible à l’adresse `/handbook/` sur le même site.
+
+**Docker (auto-hébergement) :**
+
+```bash
+docker run -d --name lokey-typer -p 8080:8080 --restart unless-stopped ghcr.io/mcp-tool-shop-org/lokey-typer:latest
+```
+
+Ouvrez ensuite `http://localhost:8080/`. Le manuel d’utilisation est disponible à l’adresse `/lokey-typer/handbook/`. Vos progrès sont conservés par votre navigateur pour cette adresse, et non à l’intérieur du conteneur. Par conséquent, l’arrêt, la mise à niveau ou le remplacement du conteneur les conserve. Ouvrez le même hôte et le même port à chaque fois ; une adresse différente démarre une nouvelle session.
 
 ## Confidentialité
 
-LoKey Typer ne collecte aucune donnée. Les préférences, l’historique des sessions, les meilleurs temps personnels et le texte que vous ajoutez pour l’étude sont stockés dans ce navigateur. Consultez la politique de confidentialité complète [ici](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html). Cette page est fournie avec le site.
+LoKey Typer ne collecte aucune donnée. Les préférences, l’historique des sessions, les meilleurs temps personnels et le texte que vous ajoutez pour l’exercice d’étude sont stockés dans ce navigateur. Consultez la [politique de confidentialité](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html). Cette page est fournie avec le site.
 
 ## Licence
 
-MIT. Consultez le fichier [LICENSE](LICENSE).
+MIT. Consultez [LICENSE](LICENSE).
 
 ---
 
@@ -74,17 +82,17 @@ npm run preview
 ### Scripts
 
 - `npm run dev` — serveur de développement
-- `npm run build` — vérification du type + compilation pour la production
+- `npm run build` — vérification du type et compilation pour la production
 - `npm run verify` — vérification du contenu, validation des sons, vérification du type, couverture et compilation pour la production
-- `npm run typecheck` — compilation TypeScript, vérification du type uniquement
+- `npm run typecheck` — compilation TypeScript uniquement pour la vérification du type
 - `npm run lint` — ESLint
 - `npm run preview` — aperçu de la compilation pour la production en local
 - `npm run validate:content` — validation du schéma et de la structure pour tous les packs de contenu
-- `npm run gen:phase2-content` — régénération des packs de la phase 2
+- `npm run gen:phase2-content` — régénération des packs de la phase 2
 - `npm run smoke:rotation` — test de nouveauté/rotation
-- `npm run qa:ambient:assets` — vérification des ressources audio ambiantes au format WAV
+- `npm run qa:ambient:assets` — vérification des éléments audio ambiants au format WAV
 - `npm run qa:sound-design` — validation de la conception sonore
-- `npm run qa:phase3:novelty` — simulation de la nouveauté des exercices quotidiens
+- `npm run qa:phase3:novelty` — simulation de la nouveauté de l’exercice quotidien
 - `npm run qa:phase3:recommendation` — simulation de la pertinence des recommandations
 
 ### Structure du code
@@ -120,7 +128,7 @@ Les paramètres s’ouvrent à partir de l’en-tête. Il n’y a pas de page de
 ### Documentation
 
 - `modular.md` — architecture + contrats de limite d’importation
-- `docs/sound-design.md` — cadre de conception sonore ambiante
+- `docs/sound-design.md` — cadre de conception sonore ambiant
 - `docs/sound-design-manifesto.md` — manifeste de conception sonore + tests d’acceptation
 - `docs/sound-philosophy.md` — philosophie sonore publique
 - `docs/accessibility-commitment.md` — engagement en matière d’accessibilité
@@ -132,12 +140,12 @@ Les paramètres s’ouvrent à partir de l’en-tête. Il n’y a pas de page de
 
 LoKey Typer est une application web de pratique de frappe (PWA + Microsoft Store) sans compte et sans télémétrie.
 
-- **Données accessibles :** localStorage du navigateur (préférences, historique des sessions, meilleurs temps personnels) et la base de données IndexedDB `lokey-study` (texte que vous ajoutez dans la page Étude)
-- **Données NON accessibles :** Pas de synchronisation dans le cloud. Pas de télémétrie. Pas d’analyse. Pas de comptes. Pas de suivi.
-- **Réseau :** L’application charge ses propres pages et son propre audio à partir de la même origine. Elle n’appelle pas de service de compte, de point de terminaison de télémétrie ou d’API tierce.
-- **Aucune télémétrie** n’est collectée ou envoyée.
+- **Données accessibles :** localStorage du navigateur (préférences, historique des sessions, meilleurs temps personnels) et la base de données IndexedDB `lokey-study` (texte que vous ajoutez dans la page Étude)
+- **Données NON accessibles :** pas de synchronisation dans le cloud, pas de télémétrie, pas d’analyse, pas de compte, pas de suivi
+- **Réseau :** l’application charge ses propres pages et son propre audio à partir de la même origine. Elle n’appelle pas de service de compte, de point de terminaison de télémétrie ou d’API tierce.
+- **Aucune télémétrie** n’est collectée ou envoyée
 
-Politique complète : [SECURITY.md](SECURITY.md)
+Politique complète : [SECURITY.md](SECURITY.md)
 
 ---
 

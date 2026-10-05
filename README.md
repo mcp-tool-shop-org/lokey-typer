@@ -45,6 +45,14 @@ All data stays on your device. No accounts. No cloud. No tracking.
 **Browser:**
 Run `npm run dev` and open the local address. The Pages workflow publishes the app at [the Pages site](https://mcp-tool-shop-org.github.io/lokey-typer/). The handbook is served under `/handbook/` on that same site.
 
+**Docker (self-hosted):**
+
+```bash
+docker run -d --name lokey-typer -p 8080:8080 --restart unless-stopped ghcr.io/mcp-tool-shop-org/lokey-typer:latest
+```
+
+Then open `http://localhost:8080/`. The handbook is at `/lokey-typer/handbook/`. Your progress is kept by your browser for that address, not inside the container, so stopping, upgrading or replacing the container keeps it. Open the same host and port each time; a different address starts fresh.
+
 ## Privacy
 
 LoKey Typer collects no data. Preferences, run history, personal bests, and text you add for Study stay in this browser. See the full [privacy policy](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html). That page ships with the site.

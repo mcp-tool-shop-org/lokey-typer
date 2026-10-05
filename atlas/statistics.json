@@ -45,7 +45,7 @@
       "confidence": "low",
       "highWater": null,
       "name": "desktop",
-      "qualifyingSourceCommits": 1,
+      "qualifyingSourceCommits": 2,
       "rebaseline": null
     },
     {
@@ -214,8 +214,8 @@
         "path": ".github/workflows/pages.yml"
       },
       {
-        "commits": 5,
-        "lines": 41,
+        "commits": 6,
+        "lines": 42,
         "path": ".gitignore"
       },
       {
@@ -224,8 +224,8 @@
         "path": "CHANGELOG.md"
       },
       {
-        "commits": 3,
-        "lines": 83,
+        "commits": 5,
+        "lines": 90,
         "path": "CLAUDE.md"
       },
       {
@@ -239,43 +239,43 @@
         "path": "LoKeyTyper.appinstaller"
       },
       {
-        "commits": 4,
-        "lines": 147,
+        "commits": 5,
+        "lines": 295,
         "path": "README.es.md"
       },
       {
-        "commits": 4,
-        "lines": 147,
+        "commits": 5,
+        "lines": 305,
         "path": "README.fr.md"
       },
       {
-        "commits": 4,
-        "lines": 142,
+        "commits": 5,
+        "lines": 299,
         "path": "README.hi.md"
       },
       {
-        "commits": 4,
-        "lines": 146,
+        "commits": 5,
+        "lines": 291,
         "path": "README.it.md"
       },
       {
-        "commits": 4,
-        "lines": 143,
+        "commits": 5,
+        "lines": 293,
         "path": "README.ja.md"
       },
       {
-        "commits": 7,
-        "lines": 186,
+        "commits": 8,
+        "lines": 193,
         "path": "README.md"
       },
       {
-        "commits": 4,
-        "lines": 142,
+        "commits": 5,
+        "lines": 279,
         "path": "README.pt-BR.md"
       },
       {
-        "commits": 4,
-        "lines": 142,
+        "commits": 5,
+        "lines": 275,
         "path": "README.zh.md"
       },
       {
@@ -289,8 +289,8 @@
         "path": "SECURITY.md"
       },
       {
-        "commits": 2,
-        "lines": 84,
+        "commits": 3,
+        "lines": 88,
         "path": "SHIP_GATE.md"
       },
       {
@@ -304,8 +304,8 @@
         "path": "assets/logo.png"
       },
       {
-        "commits": 1,
-        "lines": 89,
+        "commits": 2,
+        "lines": 99,
         "path": "atlas/README.md"
       },
       {
@@ -314,18 +314,18 @@
         "path": "atlas/boundaries.yaml"
       },
       {
-        "commits": 1,
-        "lines": 370,
+        "commits": 2,
+        "lines": 400,
         "path": "atlas/page.json"
       },
       {
-        "commits": 1,
-        "lines": 2754,
+        "commits": 2,
+        "lines": 2799,
         "path": "atlas/statistics.json"
       },
       {
-        "commits": 1,
-        "lines": 3539,
+        "commits": 2,
+        "lines": 3665,
         "path": "atlas/structure.json"
       },
       {
@@ -424,13 +424,13 @@
         "path": "desktop/LoKeyTyper/MainWindow.xaml.cs"
       },
       {
-        "commits": 3,
-        "lines": 65,
+        "commits": 5,
+        "lines": 68,
         "path": "desktop/LoKeyTyper/Package.appxmanifest"
       },
       {
-        "commits": 1,
-        "lines": 1,
+        "commits": 2,
+        "lines": 2,
         "path": "desktop/LoKeyTyper/WebContent/assets/index-B1iOhOUC.css"
       },
       {
@@ -440,8 +440,18 @@
       },
       {
         "commits": 1,
-        "lines": 189,
+        "lines": 1,
+        "path": "desktop/LoKeyTyper/WebContent/assets/index-ChTNEhwV.css"
+      },
+      {
+        "commits": 2,
+        "lines": 378,
         "path": "desktop/LoKeyTyper/WebContent/assets/index-D4O5e3rM.js"
+      },
+      {
+        "commits": 1,
+        "lines": 191,
+        "path": "desktop/LoKeyTyper/WebContent/assets/index-uLDiQ1uZ.js"
       },
       {
         "commits": 2,
@@ -809,8 +819,8 @@
         "path": "desktop/LoKeyTyper/WebContent/audio/spacebar.wav"
       },
       {
-        "commits": 3,
-        "lines": 48,
+        "commits": 4,
+        "lines": 52,
         "path": "desktop/LoKeyTyper/WebContent/index.html"
       },
       {
@@ -844,8 +854,8 @@
         "path": "desktop/LoKeyTyper/WebContent/manifest.webmanifest"
       },
       {
-        "commits": 1,
-        "lines": 64,
+        "commits": 2,
+        "lines": 70,
         "path": "desktop/LoKeyTyper/WebContent/privacy.html"
       },
       {
@@ -854,8 +864,8 @@
         "path": "desktop/LoKeyTyper/WebContent/registerSW.js"
       },
       {
-        "commits": 2,
-        "lines": 3,
+        "commits": 3,
+        "lines": 5,
         "path": "desktop/LoKeyTyper/WebContent/sw.js"
       },
       {
@@ -959,8 +969,8 @@
         "path": "package-lock.json"
       },
       {
-        "commits": 3,
-        "lines": 59,
+        "commits": 4,
+        "lines": 62,
         "path": "package.json"
       },
       {
@@ -1524,8 +1534,8 @@
         "path": "site/src/content/docs/beginners.md"
       },
       {
-        "commits": 1,
-        "lines": 8,
+        "commits": 2,
+        "lines": 12,
         "path": "site/src/content/docs/getting-started.md"
       },
       {
@@ -1564,8 +1574,8 @@
         "path": "site/src/content/docs/handbook/sound-design.md"
       },
       {
-        "commits": 2,
-        "lines": 4,
+        "commits": 3,
+        "lines": 6,
         "path": "site/src/content/docs/personalization.md"
       },
       {
@@ -2414,8 +2424,18 @@
         "path": "src/main.tsx"
       },
       {
-        "commits": 3,
-        "lines": 91,
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/BrandedKeyArt_584x800.png"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/FeaturedSquare_1080x1080.png"
+      },
+      {
+        "commits": 5,
+        "lines": 149,
         "path": "store-assets/STORE_LISTING.md"
       },
       {
@@ -2424,9 +2444,49 @@
         "path": "store-assets/StoreLogo_300x300.png"
       },
       {
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/SuperHero_1920x1080.png"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/TitledHero_1920x1080.png"
+      },
+      {
         "commits": 3,
         "lines": 0,
         "path": "store-assets/WidePromo_1366x768.png"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/screenshots/01-home.png"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/screenshots/02-focus.png"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/screenshots/03-settings.png"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/screenshots/04-daily.png"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/screenshots/05-study.png"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "store-assets/screenshots/06-competitive.png"
       },
       {
         "commits": 1,
@@ -2634,9 +2694,9 @@
     "level": "low",
     "reason": "fewer than 25 source files reach 10 revisions in the window"
   },
-  "generatedAt": "2026-10-05T01:27:36.177Z",
+  "generatedAt": "2026-10-05T05:57:57.796Z",
   "generatedFrom": {
-    "commit": "aae2f56d0e0744225cddf401d9d5861d383833ef"
+    "commit": "6b47e2c2e1cd79968aba6968797874bd1fd43a17"
   },
   "pairs": [
     {
@@ -2748,16 +2808,16 @@
     "floor": "fallen",
     "floorHeld": false,
     "floorTrigger": "revision-depth",
-    "headDate": "2026-10-04T21:19:55-04:00",
-    "inScopeFiles": 468,
+    "headDate": "2026-10-04T22:33:52-04:00",
+    "inScopeFiles": 482,
     "pinnedStart": null,
     "priorFloor": "fallen",
-    "qualifyingCommits": 66,
+    "qualifyingCommits": 70,
     "qualifyingMinimum": 30,
     "revisions": 5,
     "shared": 10,
     "sharedFloorUsed": 3,
-    "since": "2026-04-08T01:19:55.000Z",
+    "since": "2026-04-08T02:33:52.000Z",
     "sourceExtensions": [
       ".js",
       ".mjs",
