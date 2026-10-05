@@ -6,7 +6,7 @@ Calm typing practice. The sound is the product: a mechanical keybed, other keybo
 
 A Vite + React app, plus a WinUI shell that hosts it for Windows. No accounts. Session data stays on the device.
 
-Modes are Focus, Real Life, Competitive, and a daily set.
+Modes are Focus, Real Life, Competitive, and a daily set. Study is its own page, not a fourth mode. Text you add stays in IndexedDB on this device.
 
 ## Sound
 
@@ -23,7 +23,7 @@ The hosted StartPage manifest under `msix-package/` is not that package. Its ide
 
 ## Site
 
-One Pages workflow, `.github/workflows/deploy.yml`, builds the app and the handbook together. The app is the site root. The handbook is the Starlight build at `/lokey-typer/handbook/`. `dist/404.html` is a copy of the app, so a refresh on a client route still opens the typer. This repository is private, so that URL is the deploy target, not a live site.
+One Pages workflow, `.github/workflows/deploy.yml`, builds the app and the handbook together. The app is the site root. The handbook is the Starlight build at `/lokey-typer/handbook/`. `dist/404.html` is a copy of the app, so a refresh on a client route still opens the typer. The repository is public. The Pages workflow publishes that URL.
 
 Content packs repeat passages. The loader keeps one copy, chooses a stable difficulty when the copies disagree, and still opens every old id.
 
@@ -33,5 +33,6 @@ Node 22.
 
 - `npm run dev`
 - `npm test`
+- `npm run verify`
 - `npm run qa:sound-design`
 - `npm run qa:ambient:assets`

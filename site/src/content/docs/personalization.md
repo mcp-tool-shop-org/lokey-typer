@@ -57,4 +57,4 @@ All personalization data lives in browser localStorage on your device. This incl
 
 ## Privacy guarantee
 
-LoKey Typer collects no data. The privacy policy in this repository is `public/privacy.html`. The Pages copy will be at the [privacy page](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) once this repository is public. Until then, that address is not a live page.
+LoKey Typer collects no data. The privacy policy in this repository is `public/privacy.html`. The Pages copy is the [privacy page](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html).

@@ -1,5 +1,5 @@
 <p align="center">
-  <strong>English</strong> | <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português</a>
+  <a href="README.md">English</a> | <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português (BR)</a>
 </p>
 
 <p align="center">
@@ -43,11 +43,11 @@ All data stays on your device. No accounts. No cloud. No tracking.
 [Get it from the Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
 **Browser:**
-Run `npm run dev` and open the local address. The Pages workflow publishes the app at [the Pages target](https://mcp-tool-shop-org.github.io/lokey-typer/) once this repository is public. The handbook is served under `/handbook/` on that same site. Until then, that address is not a live app.
+Run `npm run dev` and open the local address. The Pages workflow publishes the app at [the Pages site](https://mcp-tool-shop-org.github.io/lokey-typer/). The handbook is served under `/handbook/` on that same site.
 
 ## Privacy
 
-LoKey Typer collects no data. Preferences, run history, personal bests, and text you add for Study stay in this browser. See the full [privacy policy](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html). That page ships with the site. Until this repository is public, that address is not a live page.
+LoKey Typer collects no data. Preferences, run history, personal bests, and text you add for Study stay in this browser. See the full [privacy policy](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html). That page ships with the site.
 
 ## License
 
@@ -75,6 +75,7 @@ npm run preview
 
 - `npm run dev` — dev server
 - `npm run build` — typecheck + production build
+- `npm run verify` — content checks, sound gates, typecheck, coverage, and the production build
 - `npm run typecheck` — TypeScript build-only typecheck
 - `npm run lint` — ESLint
 - `npm run preview` — preview production build locally

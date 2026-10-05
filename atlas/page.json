@@ -64,7 +64,25 @@
     }
   ],
   "changes": {
-    "first": true
+    "fileCounts": {
+      "added": 2,
+      "changed": 58,
+      "moved": 0,
+      "parts": 8,
+      "removed": 2
+    },
+    "items": [
+      {
+        "kind": "counts",
+        "sentence": "Nothing structural changed since 2026-10-05; 2 files added, 2 removed and 58 changed content.",
+        "subjects": []
+      }
+    ],
+    "since": {
+      "commit": "bf82ec4761903527c1128d6038c12f929570b4d3",
+      "generatedAt": "2026-10-05T01:19:17.521Z"
+    },
+    "unchanged": true
   },
   "changesTogether": [
     {
@@ -144,12 +162,12 @@
     }
   ],
   "changesTogetherNote": [
-    "Confidence is low: fewer than 20 source files reach 10 revisions in the window.",
+    "Confidence is low: fewer than 25 source files reach 10 revisions in the window.",
     "Window: 180 days; a pair counts from 3 shared commits, since 5 source files reach 10 revisions; the floor rises to 10 when 25 do."
   ],
   "changesTogetherWithTests": 0,
-  "commit": "bf82ec4761903527c1128d6038c12f929570b4d3",
-  "defaultBranch": "atlas-adoption",
+  "commit": "aae2f56d0e0744225cddf401d9d5861d383833ef",
+  "defaultBranch": "main",
   "derived": "12 parts, mostly TypeScript (88 files). Work enters through 2 doors; the busiest is CI, which reaches 6 parts.",
   "doors": [
     {
@@ -303,13 +321,13 @@
       ]
     }
   ],
-  "generatedAt": "2026-10-05T01:19:17.521Z",
+  "generatedAt": "2026-10-05T01:27:36.177Z",
   "limits": [
     "42 import sites could not be resolved.",
     "3 writes and 20 reads use paths built at run time and are not named here.",
     "1 write goes to places this repository does not track, so it is not listed as generated.",
     "2 writes and 9 reads go to the directory the command is run in or the home directory, not to this repository.",
-    "Statistics confidence is low: fewer than 20 source files reach 10 revisions in the window."
+    "Statistics confidence is low: fewer than 25 source files reach 10 revisions in the window."
   ],
   "mainDoor": ".github/workflows/ci.yml",
   "partLabels": {

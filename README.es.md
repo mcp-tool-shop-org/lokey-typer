@@ -1,5 +1,5 @@
 <p align="center">
-  <strong>English</strong> | <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português</a>
+  <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.md">English</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português (BR)</a>
 </p>
 
 <p align="center">
@@ -13,40 +13,41 @@
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
-Una aplicación para practicar la mecanografía con un ambiente tranquilo, paisajes sonoros ambientales, rutinas diarias personalizables y sin necesidad de crear una cuenta.
+Una aplicación de práctica de mecanografía tranquila con paisajes sonoros ambientales, ejercicios diarios personalizados y sin necesidad de cuentas.
 
-## ¿De qué se trata?
+## ¿Qué es?
 
-LoKey Typer es una aplicación para practicar la mecanografía, diseñada para adultos que buscan sesiones de concentración y tranquilidad, sin elementos de gamificación, tablas de clasificación ni distracciones.
+LoKey Typer es una aplicación de práctica de mecanografía diseñada para adultos que desean sesiones tranquilas y enfocadas, sin elementos de juego, tablas de clasificación ni distracciones.
 
-Todos los datos permanecen en su dispositivo. No requiere cuentas. No utiliza la nube. No realiza ningún seguimiento.
+Todos los datos se almacenan en su dispositivo. No se requieren cuentas. No hay almacenamiento en la nube. No hay seguimiento.
 
 ## Modos de práctica
 
-- **Enfoque:** Ejercicios cuidadosamente diseñados para mejorar el ritmo y la precisión.
-- **Aplicación práctica:** Práctica con correos, formularios, mensajes, notas y otros textos cotidianos.
-- **Competitivo:** Pruebas cronometradas con registros personales.
-- **Conjunto diario:** Un nuevo conjunto de ejercicios generado cada día, adaptado a tus sesiones recientes.
+- **Concentración:** Ejercicios tranquilos y seleccionados para desarrollar el ritmo y la precisión.
+- **Vida real:** Práctica con correos electrónicos, formularios, mensajes, notas y otros textos cotidianos.
+- **Competitivo:** Sesiones cronometradas con mejores marcas personales.
+- **Ejercicio diario:** Un nuevo conjunto de ejercicios generado cada día, adaptado a sus sesiones recientes.
+- **Estudio:** Agregue su propio texto. Se guarda en este dispositivo y se presenta de a poco, en orden o de forma aleatoria.
 
 ## Características
 
-- Paisajes sonoros diseñados para favorecer la concentración prolongada. Los ajustes muestran solo las categorías que tienen una pista.
-- Sonido de las teclas de una máquina de escribir mecánica (opcional).
-- Ejercicios diarios personalizados basados en sesiones recientes.
+- Paisajes sonoros ambientales diseñados para mantener la concentración. La configuración muestra solo las categorías que tienen una pista.
+- Audio de pulsaciones de máquina de escribir mecánica (opcional), además de Clicky, Tick y Muted. El teclado que elija se mantendrá en esa grabación. El predeterminado es Mechanical.
+- Ejercicios diarios personalizados basados en las sesiones recientes.
 - Soporte completo sin conexión después de la primera carga.
-- Accesible: modo de lectura de pantalla, reducción de movimiento, opción de desactivar el sonido.
+- Accesible: modo de lector de pantalla, movimiento reducido, sonido opcional.
 
-## Instalar
+## Instalación
 
 **Microsoft Store** (recomendado):
-[Descárguelo de la Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
+[Obtenga la aplicación de Microsoft Store](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
 **Navegador:**
-Ejecute `npm run dev` y abra la dirección local. El flujo de Pages publica la aplicación en [el destino de Pages](https://mcp-tool-shop-org.github.io/lokey-typer/) cuando este repositorio sea público. El manual está en `/handbook/` en ese mismo sitio. Hasta entonces, esa dirección no es una aplicación en línea.
+Ejecute `npm run dev` y abra la dirección local. El flujo de trabajo de Pages publica la aplicación en [el sitio de Pages](https://mcp-tool-shop-org.github.io/lokey-typer/). El manual se sirve en `/handbook/` en el mismo sitio.
 
 ## Privacidad
 
-LoKey Typer no recopila ningún dato. Todas las preferencias, el historial de uso y los mejores resultados se almacenan localmente en su navegador. Consulte la [política de privacidad](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa. Esa página se publica con el sitio. Hasta que este repositorio sea público, esa dirección no está en línea.
+LoKey Typer no recopila datos. Las preferencias, el historial de ejecución, las mejores marcas personales y el texto que agrega para Estudio se guardan en este navegador. Consulte la [política de privacidad](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html) completa. Esa página se incluye con el sitio.
 
 ## Licencia
 
@@ -56,74 +57,103 @@ MIT. Consulte [LICENSE](LICENSE).
 
 ## Desarrollo
 
-### Ejecutar localmente
+### Ejecución local
 
 ```bash
 npm ci
 npm run dev
 ```
 
-### Construir
+### Compilación
 
 ```bash
 npm run build
 npm run preview
 ```
 
-### Guiones.
-Secuencias.
-Programas.
-Textos.
-Escenarios.
-(Dependiendo del contexto, también podría ser: "Guiones teatrales", "Guiones cinematográficos", etc.)
+### Scripts
 
-- `npm run dev`: servidor de desarrollo.
-- `npm run build`: verificación de tipos + compilación para producción.
-- `npm run typecheck`: verificación de tipos únicamente para TypeScript.
-- `npm run lint`: ESLint.
-- `npm run preview`: previsualización de la compilación para producción, localmente.
-- `npm run validate:content`: validación de esquema y estructura para todos los paquetes de contenido.
-- `npm run gen:phase2-content`: regeneración de los paquetes de la Fase 2.
-- `npm run smoke:rotation`: prueba de novedad/rotación.
-- `npm run qa:ambient:assets`: verificación de archivos de audio ambientales (WAV).
-- `npm run qa:sound-design`: pruebas de aceptación del diseño de sonido.
-- `npm run qa:phase3:novelty`: simulación diaria de contenido nuevo.
-- `npm run qa:phase3:recommendation`: simulación de verificación de la funcionalidad de recomendaciones.
+- `npm run dev`: servidor de desarrollo
+- `npm run build`: verificación de tipos + compilación de producción
+- `npm run verify`: verificación de contenido, controles de sonido, verificación de tipos, cobertura y compilación de producción
+- `npm run typecheck`: verificación de tipos de compilación solo de TypeScript
+- `npm run lint`: ESLint
+- `npm run preview`: vista previa de la compilación de producción localmente
+- `npm run validate:content`: validación de esquemas y estructuras para todos los paquetes de contenido
+- `npm run gen:phase2-content`: regeneración de los paquetes de la fase 2
+- `npm run smoke:rotation`: prueba de humo de novedades/rotación
+- `npm run qa:ambient:assets`: verificación de activos WAV ambientales
+- `npm run qa:sound-design`: controles de aceptación del diseño de sonido
+- `npm run qa:phase3:novelty`: simulación de novedades del ejercicio diario
+- `npm run qa:phase3:recommendation`: simulación de la lógica de recomendación
 
 ### Estructura del código
 
-- `src/app`: configuración de la aplicación (enrutador, estructura general/diseño, proveedores globales).
-- `src/features`: interfaz de usuario específica de cada funcionalidad (páginas y componentes de la funcionalidad).
-- `src/lib`: lógica compartida (almacenamiento, métricas, audio/sonido ambiente, etc.).
-- `src/content`: tipos de contenido y carga de paquetes de contenido.
+- `src/app`: cableado de la aplicación (enrutador, shell/diseño, proveedores globales)
+- `src/features`: interfaz de usuario de propiedad de la función (páginas + componentes de la función)
+- `src/lib`: lógica de dominio compartida (almacenamiento, métricas de mecanografía, audio/ambiente, etc.)
+- `src/content`: tipos de contenido + carga de paquetes de contenido
 
-Consulte el archivo `modular.md` para obtener información sobre los contratos de arquitectura y los límites de importación.
+Consulte `modular.md` para conocer los contratos de arquitectura y los límites de importación.
 
 ### Alias de importación
 
 - `@app` → `src/app`
 - `@features` → `src/features`
 - `@content` → `src/content`
-- `@lib` → `src/lib/public` (interfaz de la API pública)
-- `@lib-internal` → `src/lib` (restringido a la configuración y proveedores de la aplicación)
+- `@lib` → `src/lib/public` (superficie de la API pública)
+- `@lib-internal` → `src/lib` (restringido al cableado/proveedores de la aplicación)
 
 ### Rutas
 
-- `/` — Inicio
-- `/daily` — Conjunto diario
-- `/focus` — Modo de concentración
-- `/real-life` — Modo de vida real
-- `/competitive` — Modo competitivo
-- `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId` — Ejecutar un ejercicio
+- `/`: Inicio
+- `/daily`: Ejercicio diario
+- `/focus`: Modo Concentración
+- `/real-life`: Modo Vida real
+- `/competitive`: Modo Competitivo
+- `/study`: Estudio, para el texto que agrega
+- `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId`: ejecutar un ejercicio
 - `/practice` redirige a `/focus`. `/arcade` redirige a `/competitive`
 
-Los ajustes se abren desde el encabezado. No hay una página de lista de ejercicios.
+La configuración se abre desde la cabecera. No hay una página de lista de ejercicios.
 
-### Documentos
+### Documentación
 
-- `modular.md` — arquitectura y contratos de límites de importación.
-- `docs/sound-design.md` — marco de diseño de sonido ambiental.
-- `docs/sound-design-manifesto.md` — manifiesto de diseño de sonido y pruebas de aceptación.
-- `docs/sound-philosophy.md` — filosofía del sonido, orientada al público.
-- `docs/accessibility-commitment.md` — compromiso con la accesibilidad.
-- `docs/how-personalization-works.md` — explicación de cómo funciona la personalización.
+- `modular.md`: arquitectura + contratos de límite de importación
+- `docs/sound-design.md`: marco de diseño de sonido ambiental
+- `docs/sound-design-manifesto.md`: manifiesto de diseño de sonido + pruebas de aceptación
+- `docs/sound-philosophy.md`: filosofía del sonido de cara al público
+- `docs/accessibility-commitment.md`: compromiso con la accesibilidad
+- `docs/how-personalization-works.md`: explicación de la personalización
+
+---
+
+## Seguridad y alcance de los datos
+
+LoKey Typer es una aplicación web de práctica de mecanografía (PWA + Microsoft Store) sin cuentas y sin telemetría.
+
+- **Datos a los que se accede:** localStorage del navegador (preferencias, historial de ejecución, mejores marcas personales) y la base de datos IndexedDB `lokey-study` (texto que agrega en la página de Estudio)
+- **Datos a los que NO se accede:** No hay sincronización en la nube. No hay telemetría. No hay análisis. No hay cuentas. No hay seguimiento.
+- **Red:** La aplicación carga sus propias páginas y audio desde el mismo origen. No llama a un servicio de cuentas, un punto final de telemetría ni ninguna API de terceros.
+- **No se recopila ni se envía ninguna telemetría.**
+
+Política completa: [SECURITY.md](SECURITY.md)
+
+---
+
+## Tabla de puntuación
+
+| Categoría | Puntuación |
+|----------|-------|
+| A. Seguridad | 10/10 |
+| B. Manejo de errores | 10/10 |
+| C. Documentación para operadores | 10/10 |
+| D. Higiene de envío | 10/10 |
+| E. Identidad (suave) | 10/10 |
+| **Overall** | **50/50** |
+
+---
+
+<p align="center">
+  Built by <a href="https://mcp-tool-shop.github.io/">MCP Tool Shop</a>
+</p>

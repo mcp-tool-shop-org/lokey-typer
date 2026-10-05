@@ -1,5 +1,5 @@
 <p align="center">
-  <strong>English</strong> | <a href="README.ja.md">日本語</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português</a>
+  <a href="README.md">English</a> | <a href="README.zh.md">中文</a> | <a href="README.es.md">Español</a> | <a href="README.fr.md">Français</a> | <a href="README.hi.md">हिन्दी</a> | <a href="README.it.md">Italiano</a> | <a href="README.pt-BR.md">Português (BR)</a>
 </p>
 
 <p align="center">
@@ -13,50 +13,51 @@
   <a href="https://apps.microsoft.com/detail/9NRVWM08HQC4"><img src="https://img.shields.io/badge/Microsoft_Store-available-blue" alt="Microsoft Store"></a>
 </p>
 
-心地よい環境音と、個人のレベルに合わせたカスタマイズされた練習メニューが用意された、アカウント登録不要のタイピング練習アプリです。
+落ち着いた環境音と、パーソナライズされた日替わり練習、アカウント不要のタイピング練習アプリ。
 
-## それが何であるか
+## 概要
 
-LoKey Typerは、ゲーム要素やランキング、そして気が散るような要素を一切排除し、静かで集中できるタイピング練習環境を大人の方に提供することを目的としたアプリケーションです。
+LoKey Typerは、ゲーム要素、ランキング、気を散らす要素を排除し、静かで集中できるセッションを求める大人向けのタイピング練習アプリです。
 
-すべてのデータはあなたのデバイス内に保存されます。アカウントは不要です。クラウドも利用しません。また、追跡機能もありません。
+すべてのデータはデバイス上に保存されます。アカウントは不要です。クラウドも使用しません。追跡も行いません。
 
 ## 練習モード
 
-- **Focus (集中)**：リズムと正確性を高めるための、落ち着いて構成された練習メニュー。
-- **Real-Life (実用)**：メール、フォーム、メッセージ、メモ、その他の日常的な文章を使った実践的な練習。
-- **Competitive (競技)**：制限時間内にできるだけ多く問題を解くスピード練習で、自身の最高記録に挑戦。
-- **Daily Set (デイリーセット)**：毎日、あなたの最近の練習履歴に合わせて調整された、新しい練習メニューが提供されます。
+- **集中** — リズムと正確性を高めるための、落ち着いた厳選された練習
+- **実生活** — メール、フォーム、メッセージ、メモ、その他の日常的な文章での練習
+- **競争** — タイムを計って、自己ベストを目指す
+- **日替わり練習** — 毎日生成される、最近の練習に合わせて調整された新しい練習
+- **学習** — 独自のテキストを追加。このデバイスに保存され、順番に、またはランダムに、少しずつ表示されます。
 
-## 特徴
+## 機能
 
-- 集中力を維持するための環境音。設定には、トラックがあるカテゴリだけが表示されます。
-- 機械式タイプライターのキー音（オプション）。
-- 過去の利用状況に基づいてカスタマイズされた日々のエクササイズ。
-- 初回起動後は、完全にオフラインで使用可能。
-- アクセシビリティ：スクリーンリーダー対応、モーション効果の軽減、音声のオン/オフ設定。
+- 集中力を維持できるように設計された環境音。設定リストには、トラックを持つカテゴリのみが表示されます。
+- 機械式タイプライターのキー入力音（オプション）、および、クリック音、カチッという音、ミュート。選択したキーボードの設定が録音に使用されます。デフォルトは機械式です。
+- 最近の練習に基づいてパーソナライズされた日替わり練習
+- 最初の起動後の完全なオフラインサポート
+- アクセシビリティ：スクリーンリーダーモード、モーションの軽減、音のオプション
 
-## インストールする
+## インストール
 
-**Microsoft Store** (推奨):
+**Microsoft Store**（推奨）：
 [Microsoft Storeから入手](https://apps.microsoft.com/detail/9NRVWM08HQC4)
 
 **ブラウザ:**
-`npm run dev` を実行し、表示されたローカルアドレスを開いてください。[Pages の公開先](https://mcp-tool-shop-org.github.io/lokey-typer/) は、このリポジトリが公開されたあとにワークフローがアプリを置く場所です。ハンドブックは同じサイトの `/handbook/` です。それまでは、そのアドレスは公開中のアプリではありません。
+`npm run dev`を実行し、ローカルアドレスを開きます。Pagesワークフローは、アプリを[Pagesサイト](https://mcp-tool-shop-org.github.io/lokey-typer/)に公開します。ハンドブックは、同じサイトの`/handbook/`にあります。
 
 ## プライバシー
 
-LoKey Typerは、いかなるデータも収集しません。すべての設定、実行履歴、および個人記録は、すべてローカルにブラウザに保存されます。詳細については、[プライバシーポリシー](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html)をご覧ください。そのページはサイトと一緒に公開されます。このリポジトリが公開されるまで、そのアドレスは公開中のページではありません。
+LoKey Typerは、データを収集しません。設定、実行履歴、自己ベスト、および学習のために追加したテキストは、このブラウザに保存されます。完全な[プライバシーポリシー](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html)をご覧ください。このページはサイトに同梱されています。
 
 ## ライセンス
 
-MITライセンス。詳細は[LICENSE](LICENSE)をご参照ください。
+MIT。 [LICENSE](LICENSE)を参照してください。
 
 ---
 
 ## 開発
 
-### ローカル環境で実行する
+### ローカルで実行
 
 ```bash
 npm ci
@@ -70,56 +71,89 @@ npm run build
 npm run preview
 ```
 
-### スクリプト。
-または、台本
+### スクリプト
 
-- `npm run dev`：開発サーバー
-- `npm run build`：型チェックと本番環境ビルド
-- `npm run typecheck`：TypeScriptの型チェックのみ
-- `npm run lint`：ESLint
-- `npm run preview`：ローカル環境での本番環境ビルドのプレビュー
-- `npm run validate:content`：すべてのコンテンツパックに対するスキーマと構造の検証
-- `npm run gen:phase2-content`：Phase 2のコンテンツパックを再生成
-- `npm run smoke:rotation`：新規コンテンツのローテーションに関するテスト
-- `npm run qa:ambient:assets`：環境音（WAV形式）アセットのチェック
-- `npm run qa:sound-design`：サウンドデザインの品質チェック
-- `npm run qa:phase3:novelty`：デイリーセットの新規コンテンツシミュレーション
-- `npm run qa:phase3:recommendation`：レコメンデーション機能の動作確認シミュレーション
+- `npm run dev` — 開発サーバー
+- `npm run build` — 型チェック + 本番ビルド
+- `npm run verify` — コンテンツチェック、サウンドゲート、型チェック、カバレッジ、および本番ビルド
+- `npm run typecheck` — TypeScriptのみのビルド型チェック
+- `npm run lint` — ESLint
+- `npm run preview` — ローカルでの本番ビルドのプレビュー
+- `npm run validate:content` — すべてのコンテンツパックのスキーマと構造的検証
+- `npm run gen:phase2-content` — フェーズ2パックの再生成
+- `npm run smoke:rotation` — 新機能/ローテーションの簡易テスト
+- `npm run qa:ambient:assets` — 環境WAVアセットのチェック
+- `npm run qa:sound-design` — サウンドデザインの承認ゲート
+- `npm run qa:phase3:novelty` — 日替わり練習の新規性シミュレーション
+- `npm run qa:phase3:recommendation` — レコメンデーションの妥当性シミュレーション
 
-### コードの構造
+### コード構造
 
-- `src/app`: アプリケーションの構成 (ルーティング、シェル/レイアウト、グローバルプロバイダー)
-- `src/features`: 各機能に紐づいたUI (ページと機能コンポーネント)
-- `src/lib`: 共有されるドメインロジック (ストレージ、型定義、メトリクス、オーディオ/環境音など)
-- `src/content`: コンテンツの種類と、コンテンツパックの読み込み処理
+- `src/app` — アプリの配線（ルーター、シェル/レイアウト、グローバルプロバイダー）
+- `src/features` — 機能に依存するUI（ページ + 機能コンポーネント）
+- `src/lib` — 共有ドメインロジック（ストレージ、タイピングメトリクス、オーディオ/環境音など）
+- `src/content` — コンテンツタイプ + コンテンツパックのロード
 
-アーキテクチャに関する契約やインポートの範囲については、`modular.md` を参照してください。
+アーキテクチャの契約とインポート境界については、`modular.md`を参照してください。
 
-### インポートのエイリアス
+### インポートエイリアス
 
 - `@app` → `src/app`
 - `@features` → `src/features`
 - `@content` → `src/content`
-- `@lib` → `src/lib/public` (公開API)
-- `@lib-internal` → `src/lib` (アプリケーションの構成やプロバイダーに限定)
+- `@lib` → `src/lib/public`（パブリックAPIの表面）
+- `@lib-internal` → `src/lib`（アプリの配線/プロバイダーに限定）
 
 ### ルート
 
-- `/`：ホーム
-- `/daily`：デイリーセット
-- `/focus`：集中モード
-- `/real-life`：実生活モード
-- `/competitive`：競技モード
-- `/focus/run/:exerciseId`、`/real-life/run/:exerciseId`、`/competitive/run/:exerciseId`：練習を実行する
-- `/practice` は `/focus` へ、`/arcade` は `/competitive` へ移る
+- `/` — ホーム
+- `/daily` — 日替わり練習
+- `/focus` — 集中モード
+- `/real-life` — 実生活モード
+- `/competitive` — 競争モード
+- `/study` — 学習（独自のテキストを追加）
+- `/focus/run/:exerciseId`、`/real-life/run/:exerciseId`、`/competitive/run/:exerciseId` — 練習の実行
+- `/practice`は`/focus`にリダイレクトします。`/arcade`は`/competitive`にリダイレクトします。
 
-設定はヘッダーから開く。練習一覧のページはない。
+設定はヘッダーから開きます。練習リストページはありません。
 
 ### ドキュメント
 
-- `modular.md`：アーキテクチャとインポートに関する規定
-- `docs/sound-design.md`：アンビエントサウンドデザインのフレームワーク
-- `docs/sound-design-manifesto.md`：サウンドデザインに関する宣言と、その検証テスト
-- `docs/sound-philosophy.md`：公開されているサウンドに関する哲学
-- `docs/accessibility-commitment.md`：アクセシビリティに関する取り組み
-- `docs/how-personalization-works.md`：パーソナライゼーションの仕組みに関する解説
+- `modular.md` — アーキテクチャ + インポート境界の契約
+- `docs/sound-design.md` — 環境音デザインフレームワーク
+- `docs/sound-design-manifesto.md` — サウンドデザインマニフェスト + 受け入れテスト
+- `docs/sound-philosophy.md` — 公開向けのサウンド哲学
+- `docs/accessibility-commitment.md` — アクセシビリティへの取り組み
+- `docs/how-personalization-works.md` — パーソナライズの説明
+
+---
+
+## セキュリティとデータ範囲
+
+LoKey Typerは、アカウントやテレメトリーを持たないタイピング練習ウェブアプリ（PWA + Microsoft Store）です。
+
+- **アクセスされるデータ:** ブラウザのlocalStorage（設定、実行履歴、自己ベスト）およびIndexedDBデータベース`lokey-study`（学習ページに追加したテキスト）
+- **アクセスされないデータ:** クラウド同期はありません。テレメトリーもありません。分析も行いません。アカウントもありません。追跡も行いません。
+- **ネットワーク:** アプリは、独自のページとオーディオを同じオリジンからロードします。アカウントサービス、テレメトリーエンドポイント、またはサードパーティのAPIを呼び出しません。
+- **テレメトリーは収集または送信されません**
+
+完全なポリシー：[SECURITY.md](SECURITY.md)
+
+---
+
+## スコアカード
+
+| カテゴリ | スコア |
+|----------|-------|
+| A. セキュリティ | 10/10 |
+| B. エラー処理 | 10/10 |
+| C. 運用ドキュメント | 10/10 |
+| D. リリース衛生 | 10/10 |
+| E. 識別（ソフト） | 10/10 |
+| **Overall** | **50/50** |
+
+---
+
+<p align="center">
+  Built by <a href="https://mcp-tool-shop.github.io/">MCP Tool Shop</a>
+</p>

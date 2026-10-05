@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-LoKey Typer is on the Microsoft Store. The browser build is a Pages target once this repository is public, and you can run it locally while you develop.
+LoKey Typer is on the Microsoft Store. The Pages workflow publishes the browser build, and you can run it locally while you develop.
 
 ## Microsoft Store (recommended)
 
@@ -13,7 +13,7 @@ Search **LoKey Typer** in the Microsoft Store or visit the [store listing](https
 
 ## Browser
 
-The Pages workflow publishes the app at [the Pages target](https://mcp-tool-shop-org.github.io/lokey-typer/) once this repository is public. The handbook is served under `/handbook/` on that same site. Until then, that address is not a live app. Use the local steps below.
+The Pages workflow publishes the app at [the Pages site](https://mcp-tool-shop-org.github.io/lokey-typer/). The handbook is served under `/handbook/` on that same site. Use the local steps below to develop.
 
 ## Run locally (development)
 

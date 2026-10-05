@@ -18,7 +18,8 @@
     "qa:phase3:recommendation": "node scripts/qaPhase3RecommendationSanity.mjs",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "verify": "npm run validate:content && npm run qa:ambient:assets && npm run qa:sound-design && npm run typecheck && npm run test:coverage && npm run build"
   },
   "dependencies": {
     "react": "^19.2.0",

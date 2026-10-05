@@ -71,7 +71,7 @@
           "path": "desktop/LoKeyTyper.Tests/WebContentHostTests.cs"
         },
         {
-          "hash": "a06fb8b843a53d0b9e3f3b4cf28a9abda7e5e598462049f8d6f5d78e8215ab70",
+          "hash": "bc29bd105224c4ece301f8f2edc86a356dc4f449381be29903a54f12b666d671",
           "path": "desktop/LoKeyTyper.Tests/WindowLayoutTests.cs"
         },
         {
@@ -83,7 +83,7 @@
           "path": "desktop/LoKeyTyper/App.xaml"
         },
         {
-          "hash": "16129600a70170dbcbeba6c66e2601aad6cfc3d0ef2392ef41a7be1e2ff5079a",
+          "hash": "21fa26eed0bf900129bcaeaebb1888048f747bb068924382e7d1454655729662",
           "path": "desktop/LoKeyTyper/App.xaml.cs"
         },
         {
@@ -131,16 +131,16 @@
           "path": "desktop/LoKeyTyper/MainWindow.xaml.cs"
         },
         {
-          "hash": "1ae04e8f425418d7b806ce8c70fd655df4326fb30a9bd3ede041b02bba34f145",
+          "hash": "31bbc5cbaf3b0e451af4767f27a3cb5f7e874b66be28c39bdd29c41f4426d43b",
           "path": "desktop/LoKeyTyper/Package.appxmanifest"
         },
         {
-          "hash": "6a8ae047d7560fc72c623d18f1e46e0bcda38a32e62f4bf23dc98e865dfacd3a",
-          "path": "desktop/LoKeyTyper/WebContent/assets/index-B1iOhOUC.css"
+          "hash": "c5165fe0b524c00e1c42587b04c45af6a85f05cee2a5b22deff1485b62ec7428",
+          "path": "desktop/LoKeyTyper/WebContent/assets/index-ChTNEhwV.css"
         },
         {
-          "hash": "13492ad509142353de09c11fec20add548753538d6bde6cca71a015acd2c7676",
-          "path": "desktop/LoKeyTyper/WebContent/assets/index-D4O5e3rM.js"
+          "hash": "07d9aff6e861fdf017ef2c3e7d8772ccf53c3d37462e658dd7992061cdbd8418",
+          "path": "desktop/LoKeyTyper/WebContent/assets/index-uLDiQ1uZ.js"
         },
         {
           "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -431,7 +431,7 @@
           "path": "desktop/LoKeyTyper/WebContent/audio/spacebar.wav"
         },
         {
-          "hash": "86ea4d65988aadda3436f6e992fd1dc2800d8c028e7eee006284ae6712a74be9",
+          "hash": "72c732952d68b68a4f9f6fbba134b78ff5798fd14579bafcef0b8990649e47f7",
           "path": "desktop/LoKeyTyper/WebContent/index.html"
         },
         {
@@ -459,7 +459,7 @@
           "path": "desktop/LoKeyTyper/WebContent/manifest.webmanifest"
         },
         {
-          "hash": "969210eb8d8c31626009c1c33d325463626b6d3707f293a8ce2717d8f9125d28",
+          "hash": "aedcb65cc12c5b9fe7ca9dba671b73896440eb3227158ba2bcc2e3cb89b55264",
           "path": "desktop/LoKeyTyper/WebContent/privacy.html"
         },
         {
@@ -467,7 +467,7 @@
           "path": "desktop/LoKeyTyper/WebContent/registerSW.js"
         },
         {
-          "hash": "328654b6838c32138b2ab4f80ac0e8effebf8d1c11e998422ecfa4ac1b224aaa",
+          "hash": "260f0a1a92c43de3afe138b02ec76d0f844d85ebe1cd883d6b3eef5095050d39",
           "path": "desktop/LoKeyTyper/WebContent/sw.js"
         },
         {
@@ -475,7 +475,7 @@
           "path": "desktop/LoKeyTyper/WebContent/vite.svg"
         },
         {
-          "hash": "553dc3dea2fe33f01265b8ee5d0e95feef1254049d8d8f4e81f1cd9859f13008",
+          "hash": "3ad21a9ff8347da9410d22a6a7e48bf664194241553f27949d187772d2af870f",
           "path": "desktop/LoKeyTyper/WebContent/workbox-8c29f6e4.js"
         },
         {
@@ -483,7 +483,7 @@
           "path": "desktop/LoKeyTyper/WebContentHost.cs"
         },
         {
-          "hash": "e1c22d4cf5108d15c43805df6ea04b9488c059a127252ad8d38b5f0f90e7560b",
+          "hash": "aeb596dd1920c1b83ec5092e14e7d8c22c2625722319d64626c928a79082a9a5",
           "path": "desktop/LoKeyTyper/WindowLayout.cs"
         },
         {
@@ -553,7 +553,7 @@
       "externals": 0,
       "files": [
         {
-          "hash": "88ce22ce93ac52da3248fc813550afdebd41c2fc2c16cb0550e82c018aeab1d0",
+          "hash": "d19b9d0175beacee35b5569cb8c358e3942d5cba969536876ae96d8c32fd5dd8",
           "path": "msix-package/AppxManifest.xml"
         },
         {
@@ -600,7 +600,7 @@
           "path": "public/audio/README.md"
         },
         {
-          "hash": "7b3483bd894a0b40193ebc63bf9ea9baade7b8a9cd6a292a944811e87d29e099",
+          "hash": "fa26e3a03d230deb70de70b06ba53e1951c00478f2181bd106b4a6798ccbb5a4",
           "path": "public/audio/ambient/README.md"
         },
         {
@@ -920,7 +920,7 @@
           "path": "public/logo.svg"
         },
         {
-          "hash": "b3d6205f91a0d31633413f18051413832c30c1acdb257d9d7c290ef2bb5809ff",
+          "hash": "aedcb65cc12c5b9fe7ca9dba671b73896440eb3227158ba2bcc2e3cb89b55264",
           "path": "public/privacy.html"
         },
         {
@@ -947,7 +947,7 @@
       "externals": 0,
       "files": [
         {
-          "hash": "59d6e09ef0cc1b5ba02752ff3f4d14da92d54dfbd7804190c53973069b3c4b6e",
+          "hash": "af13fa56f451c6aa0ae3acb0106c0fe51fa26204e481a7144eae5dc034cc9d69",
           "path": ".gitignore"
         },
         {
@@ -955,7 +955,7 @@
           "path": "CHANGELOG.md"
         },
         {
-          "hash": "eda56caf04574f0a44ac1134f66c6e694823c992af9717bf3b5be6db905c5767",
+          "hash": "36ec37915a2318e2d0ee30854a41da1ffe894a87c40b3bf0c87d087757929e4d",
           "path": "CLAUDE.md"
         },
         {
@@ -967,39 +967,39 @@
           "path": "LoKeyTyper.appinstaller"
         },
         {
-          "hash": "62651075b8f6b359a4d092657d26abe3f3e623d5d629e6f3b3403dc8e21b6259",
+          "hash": "2938185e0c164cef6780820078174260efc570adfb6f408ba8cd892c091bb04d",
           "path": "README.es.md"
         },
         {
-          "hash": "98f91cca480d78eb6ca7c3347f9e1293167dc98fd6355bfcd9afbabfe884b8c6",
+          "hash": "2a8f0a7966c2fa7c08e495357f40f6a72f40fdbad55f9119a06ecdd2b40afb95",
           "path": "README.fr.md"
         },
         {
-          "hash": "50c916fdf197eb7770939329748eb4a164f44818fe509fd7a19fbbde1b828f82",
+          "hash": "e746a850d39ffbc78e4c342af0b08670cdb7db1f468d902ceb162d394dbeeee0",
           "path": "README.hi.md"
         },
         {
-          "hash": "d8c3a204dee663aee6c5642410661f57ed32d4986d54b6e8b081334bddde86f9",
+          "hash": "e8e5111b98e1077b04c6ff0c7385a6b1d63d25dc545514fddc02dd5bcdb065dd",
           "path": "README.it.md"
         },
         {
-          "hash": "65c93adf9dbf80a5a0a0a98f1fc26098830ac9d4b0a091ac93cd8545fb914f36",
+          "hash": "2ede7ba9fe09dd50693df1a5120c91793e00c4e3dfef3e03779bacf3b88dbde2",
           "path": "README.ja.md"
         },
         {
-          "hash": "d688b29ce9c8344b0238aa31a8af0a14d7fe9fec6a63e5c3ecc5adecbf5b2667",
+          "hash": "c89fbc379519476581d35ec8b2c913754fcccc62a35cdad7aeabba5996c7b7a8",
           "path": "README.md"
         },
         {
-          "hash": "9c8ed45bbe0da4ca42cc10e5151d71948e5393edaf1287b8494bf84adf376c3d",
+          "hash": "4b4fb7aee6d6b87d00ecfa7e1fe1b37713ae64f4c06085333322b8c2c2e0123b",
           "path": "README.pt-BR.md"
         },
         {
-          "hash": "2f6dcdeb9e1c3b37fc8511e6c8e4a826c5fe6440967c683a1e2ad3e06304aae3",
+          "hash": "867b972f93ed7afe93f97ab9a8ccda6d9489c589fcf17cc023d594828b49e1c2",
           "path": "README.zh.md"
         },
         {
-          "hash": "3ad63ceeb6e3eafbbc863f91a4e08b54fc5c9e526c66d2ea009b6561d227920d",
+          "hash": "f830abd184ceb0dbc70aa36c18f72477a290914180d7fea678fd102811f9b121",
           "path": "SCORECARD.md"
         },
         {
@@ -1007,15 +1007,15 @@
           "path": "SECURITY.md"
         },
         {
-          "hash": "13fe595a6d418d8d368907edadcc17f22b3435917c616969bb573c180eba78c3",
+          "hash": "1585eaa92bb18f663a13d913db349f6d2c2911e715a44569d39805ee08400ab4",
           "path": "SHIP_GATE.md"
         },
         {
-          "hash": "f09af27f9e01b3916014071870ec6e57a4fce8f666d3046d9cd8c65d21806beb",
+          "hash": "e83f16ba8286bd011d65747fdf05bb9beb8ff086c83b12b468dd9b1b2dfabcbd",
           "path": "ai-ui.config.json"
         },
         {
-          "hash": "cbbba13b3e29cb1b3f5acf29a86bbf84892f742ef9ee31bd8e295ad19c3638f0",
+          "hash": "fbebd5f3d08e8028d7c1209480928ac2c5cb99cbdf034462f0c41c7105debbdd",
           "path": "codecov.yml"
         },
         {
@@ -1035,11 +1035,11 @@
           "path": "package-lock.json"
         },
         {
-          "hash": "a1b210db2696cc0296666b8bf445a500ac504ef5b8d7b70c8f104f3a9c087aa0",
+          "hash": "bb9f275839af4c470dfc902d7490f5013e526f4748f325469e430f8420c04b73",
           "path": "package.json"
         },
         {
-          "hash": "1b05f72213e685ecb03d9603118a96f3d476474f52abd18184584ebcbb1944fa",
+          "hash": "da812a5f1925951c57a96a0de5e39a722d42b9e1e2dbb938f5365b4c263f1dc8",
           "path": "passport.json"
         },
         {
@@ -1075,7 +1075,7 @@
           "path": "tsconfig.tests.json"
         },
         {
-          "hash": "d0329779206fc19d830110115d1ee959ae34d6b958dfdce6971403f98f4bd3f4",
+          "hash": "95a45f968fbacec7542906e99ea1d1477fbe7ca858da940279d8327340c716c0",
           "path": "vite.config.ts"
         }
       ],
@@ -1102,7 +1102,7 @@
             "duration_sec",
             "main"
           ],
-          "hash": "444ea0a00cbc66c2b54fcf7ab8acd42026b1865ecd0efd84ac7a13d2cb8516cf",
+          "hash": "00df97db0a4d68e51f3e3b3186c299a0217eff84ed693e995c2108cd632bf0de",
           "path": "scripts/audio/check_bed_policy.py"
         },
         {
@@ -1163,7 +1163,7 @@
           "exports": [
             "load_kept"
           ],
-          "hash": "506f41c072a932a567ae77ba79624c584e199f73dd13bbfca958619772b0c764",
+          "hash": "7dd1504b54d8f8b7f23c410c1639699dbfc6c1583297f8c1acd0c3601ddaece0",
           "path": "scripts/audio/kept_beds.py"
         },
         {
@@ -1177,7 +1177,7 @@
             "master_one",
             "self_test"
           ],
-          "hash": "5aebb576ef5526ff8e298ae82dcb3d76e43c7b7d57073688208a468c58b4ea19",
+          "hash": "a8d48e2e7975462622423dd628c4680d4af5e841670c2ac2cb7a1ecfb4a3529e",
           "path": "scripts/audio/master_loudness.py"
         },
         {
@@ -1383,7 +1383,7 @@
       "externals": 0,
       "files": [
         {
-          "hash": "34ef928e8f38a93d543cf7407b4d1829a647a3513d9501755e8f7d2a963ea49d",
+          "hash": "00a908338da22a0858acc61783333aaa05ca304311ddbb4287898b7d05e7c1ad",
           "path": "site/astro.config.mjs"
         },
         {
@@ -1407,23 +1407,23 @@
           "path": "site/src/content/docs/accessibility.md"
         },
         {
-          "hash": "46797b888e7a97bfb12b346c292244abde1842292b9808e38b2049228fe9e342",
+          "hash": "293b9a4426f29f0f4a0efc201b45ea34f89899235e7b6ad05852834dd80189c2",
           "path": "site/src/content/docs/beginners.md"
         },
         {
-          "hash": "561f71d4364e2e1d6648242c36f2a7082b6433caa355dbde60d64a03490cd506",
+          "hash": "419d261f0a2cddffcccb8b8b93118a75a238bc9413a456652ca62c8e3db82dd6",
           "path": "site/src/content/docs/getting-started.md"
         },
         {
-          "hash": "7fd7140ef3a8705c817a65d839ebcf21809149f4c24e06c7e2c97a6e97e3e424",
+          "hash": "f10bc9db6920948e34f455eb737e57eaf3defd1ac56b0a68775c42c4533dcc3d",
           "path": "site/src/content/docs/index.md"
         },
         {
-          "hash": "e478e56054883ab9191b7f1fb62b2c18a8551d5db187664572f961dc9e5ee763",
+          "hash": "4261132f8772bbe4759fd08ec6c1ed31956adcf63631977cd0600747a31bedd6",
           "path": "site/src/content/docs/personalization.md"
         },
         {
-          "hash": "337008129cdfaff3fc0b4c50f359e5afb8cac6d9881c1c777eb2bb2e9471f1a8",
+          "hash": "7275966c4a535f6cb76d40358c3f7d174b0bc2ec1c71fbd86d1ee3ea6eca3b26",
           "path": "site/src/content/docs/practice-modes.md"
         },
         {
@@ -1538,7 +1538,7 @@
           "exports": [
             "useDocumentTitle"
           ],
-          "hash": "8c502ccdc04fcdb7fd34e818739bc5edab74748fd467c8cdc0fde39257d93ce7",
+          "hash": "ea7ec179b34bfc9c9a798977d861ef9e8062aaba4587ea2888ae7381af97b745",
           "path": "src/app/useDocumentTitle.ts"
         },
         {
@@ -1766,7 +1766,7 @@
           "path": "src/assets/icons/search.svg"
         },
         {
-          "hash": "9f132b641a5f20c977b511a7a1a35ca41d9b17186747e151723c9db44ed566d1",
+          "hash": "56417522cb406c453cf19ddaa6b20093202650fcabe80b72986b3c92a91a060f",
           "path": "src/assets/icons/settings.svg"
         },
         {
@@ -1840,7 +1840,7 @@
             "normalizePassageText",
             "passageKey"
           ],
-          "hash": "311105d84d40cc0b0b66690ff1150349b0eb0567c89901f7e0614dc13fcedceb",
+          "hash": "df9aef4dd9f461834bcfed09f3fa2ddc7d7ee99b96dc19a203ddf6342ef716c3",
           "importsFiles": [
             "src/content/types.ts"
           ],
@@ -2064,7 +2064,7 @@
           "path": "src/features/run/pages/RunPage.tsx"
         },
         {
-          "hash": "2fd26912c604807a0be9cae00ab0babcd56a14a58126a39105c087016d6c040f",
+          "hash": "a76a0759cb4050183836b0fc314977827130314519e9e2d5e6334ab979877903",
           "importsFiles": [
             "src/features/study/pages/StudyPage.tsx"
           ],
@@ -2074,7 +2074,7 @@
           "exports": [
             "StudyPage"
           ],
-          "hash": "bc02bc113d997a6b3e752bc8a5b5541a921e7ac8196c73458fa221ea82eee691",
+          "hash": "d81454772b17ddb24c630a26e7f4796ca1fc218f5026fc1b930e39b1ecb2679c",
           "path": "src/features/study/pages/StudyPage.tsx"
         },
         {
@@ -2132,7 +2132,7 @@
           "exports": [
             "repairLoopHead"
           ],
-          "hash": "cd8d7ab9f69cbbdfa62cd7cbe34c2aa5050861574e266a8ce01a09be8d5260a7",
+          "hash": "159b7b01cf0309221b61029838827873e59c87db6fe515091273ed3a50e35330",
           "path": "src/lib/ambient/loopJoin.ts"
         },
         {
@@ -2151,7 +2151,7 @@
           "exports": [
             "attackOffsetSamples"
           ],
-          "hash": "d63fd0dd6c307e0c7c0ef8ce5d2f92f8a439c69e60f2f92a0f9e84be2d736f7c",
+          "hash": "63cd7b476c5e56bbb0c48fb4f9e84b8fb3c2824cf08ef6df0167cbf515f76d62",
           "path": "src/lib/attackOffset.ts"
         },
         {
@@ -2238,7 +2238,7 @@
           "exports": [
             "isKeyboardVoice"
           ],
-          "hash": "8e7a269c7ac94ebc639ae129b3db5f232a461ca362f0cbf143d05ad4cbb14d41",
+          "hash": "55e34ec36a1b2293770fd6490639b821f4c533ae8099437877b4e569b9815d1a",
           "path": "src/lib/keyboardVoice.ts"
         },
         {
@@ -2372,7 +2372,7 @@
             "studyNameFromFile",
             "studySourceFromText"
           ],
-          "hash": "c8de6e8ac1de925f95761be19d88140075354688d20ab4c17100a561e3097570",
+          "hash": "adf14cfef6f42cf8802907cdb10e98a9bcadb417896dd7ad8811e1e0fd194d1d",
           "path": "src/lib/studyLibrary.ts"
         },
         {
@@ -2380,7 +2380,7 @@
             "createIndexedDbStudyStore",
             "createMemoryStudyStore"
           ],
-          "hash": "6b58054a2d758db95ed08050ad0199ca78223684895530caff4eff67c2c80340",
+          "hash": "94ea4baf9e837579e1b38b35798d610a064d165d2c92f931b43da624d3a445f1",
           "importsFiles": [
             "src/lib/studyLibrary.ts"
           ],
@@ -2477,7 +2477,7 @@
       "externals": 0,
       "files": [
         {
-          "hash": "cb5e8186b11335293fb7fdcd9cd3ffe372b6ff791ffc567a5c396e516e137fae",
+          "hash": "1119ffe294948d78925b86c3cf6a69f645bdd94c064e0afaa20ab7c991ec52f0",
           "path": "tests/ambientCatalog.test.ts"
         },
         {
@@ -2490,28 +2490,28 @@
           "path": "tests/ambientPlayer.test.ts"
         },
         {
-          "hash": "30546ffa548bbbe1acea86885638a28c5d08c282f0b1c5166560656be39523dc",
+          "hash": "caee83b158c4f0bf7bffd6ff711f3b5cd1afcf2cd108fac6d40da6f3e155db75",
           "importsFiles": [
             "src/lib/ambient.ts"
           ],
           "path": "tests/ambientVisibility.test.ts"
         },
         {
-          "hash": "dac4d11e65de62ca3350e8b27705a26034755ee5d0923e39994351d9c52e4e9e",
+          "hash": "158a04d0012a299efe65dd7b53b41a262199de1d03c2d5734ef595643a9f80ba",
           "importsFiles": [
             "src/lib/attackOffset.ts"
           ],
           "path": "tests/attackOffset.test.ts"
         },
         {
-          "hash": "175a69a31e2febe57d9749352b3176c2734b9999531e309e25ad61e5b2387230",
+          "hash": "2df839585a48c833893fb75f2b62d09f60f85e526122c09079c6e1517560072e",
           "importsFiles": [
             "src/lib/audio.ts"
           ],
           "path": "tests/audio.test.ts"
         },
         {
-          "hash": "15b0a999c09af248d211373d2c2cc033acc3deabf393f5cb415067a49c1bdd61",
+          "hash": "fd3de84605a672bea673c4667d42f388d5c302415ad218249af17d4dc4bdb4ef",
           "importsFiles": [
             "src/content/catalog.ts",
             "src/content/loadPacks.ts"
@@ -2519,7 +2519,7 @@
           "path": "tests/catalog.test.ts"
         },
         {
-          "hash": "04f8aac6d506e1d4ae7af88997313d91bbeffe0ffa85927db608f9d166d1e8c2",
+          "hash": "8cb009f66a8c11d096f40f52e82bd11c8036b3ce0b12153b61195b75a4e9cb16",
           "importsFiles": [
             "src/lib/ambient/ambientPlayerV3.ts",
             "src/lib/audio.ts"
@@ -2527,7 +2527,7 @@
           "path": "tests/coverageAudio.test.ts"
         },
         {
-          "hash": "210f06bc3d23088d70bd1f076cc562f5e7ea6067db1948e961f6d1230622231b",
+          "hash": "a28bd57965e6612fec969b14dc30cd087c2611da18c441c17d2a6f898782e54d",
           "importsFiles": [
             "src/content/loadPacks.ts",
             "src/content/types.ts",
@@ -2561,7 +2561,7 @@
           "path": "tests/dailySet.test.ts"
         },
         {
-          "hash": "eab73303951dd5d5d7892abb3b50b7e08c8eba264b410eda0d1e396a50bbb68e",
+          "hash": "5595c6629f2ed86b1f7596b77c8f115aac508964c1dd40823b2dbbd480f80cb6",
           "importsFiles": [
             "src/app/components/Icon.tsx"
           ],
@@ -2659,14 +2659,14 @@
           "path": "tests/skillModel.test.ts"
         },
         {
-          "hash": "919ad430b9fb77c3442a2107d29de220153db0c52a22461c1e5430422b27b002",
+          "hash": "f215dc0065b5b3042ddfc130d01686e65b57207e323b62788a1c817a7fa392d7",
           "importsFiles": [
             "src/lib/studyLibrary.ts"
           ],
           "path": "tests/studyLibrary.test.ts"
         },
         {
-          "hash": "92aa91c921d5ff1e9956ae19996788b81ec60921adcdfa579208eec1581a1227",
+          "hash": "93f4ebfbebba6e28001ef589a746a34205a957cc8d0cad070289840dcc33e15a",
           "importsFiles": [
             "src/lib/storage.ts",
             "src/lib/studyLibrary.ts",
@@ -2675,7 +2675,7 @@
           "path": "tests/studyPage.test.tsx"
         },
         {
-          "hash": "113fc0ed39fd3dd49912f99a90db2cee54a39f383c549445795c94e1d530d0b6",
+          "hash": "9baff3ecf7eb80181d884dce3ff4adfea2acf3a06c54df91188aa6b9ee0a68d4",
           "importsFiles": [
             "src/lib/studyLibrary.ts",
             "src/lib/studyStore.ts"
@@ -3210,7 +3210,7 @@
     }
   ],
   "generatedFrom": {
-    "commit": "bf82ec4761903527c1128d6038c12f929570b4d3",
+    "commit": "aae2f56d0e0744225cddf401d9d5861d383833ef",
     "tracked": 463
   },
   "landings": [
