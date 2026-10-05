@@ -119,7 +119,7 @@ describe('Study page', () => {
     await user.click(await screen.findByRole('button', { name: 'Start' }))
     expect(await screen.findByRole('heading', { name: 'Untitled' })).toBeTruthy()
     await waitFor(() => expect(document.title).toBe('Untitled — LoKey Typer'))
-    expect(passage()).toBe('Alpha')
+    await waitFor(() => expect(passage()).toBe('Alpha'))
 
     typeAll('Alpha')
     await screen.findByText(/WPM:/)
@@ -131,7 +131,7 @@ describe('Study page', () => {
     expect(await screen.findByText('Piece 2 of 2')).toBeTruthy()
     await user.click(screen.getByRole('button', { name: 'Continue' }))
     expect(await screen.findByRole('heading', { name: 'Untitled' })).toBeTruthy()
-    expect(passage()).toBe('Beta')
+    await waitFor(() => expect(passage()).toBe('Beta'))
   })
 
   it('shuffles once and starts that same deck from the beginning when the order changes', async () => {
@@ -144,7 +144,8 @@ describe('Study page', () => {
     expect(screen.getByRole('button', { name: 'Shuffled' }).getAttribute('aria-pressed')).toBe('true')
     expect(screen.getByText('Changing the order starts this text from the beginning.')).toBeTruthy()
     await user.click(screen.getByRole('button', { name: 'Start' }))
-    expect(passage()).toBe('Beta')
+    // The run screen renders after the click settles; a loaded CI runner can be a beat behind.
+    await waitFor(() => expect(passage()).toBe('Beta'))
     await user.click(screen.getByRole('button', { name: 'Exit' }))
     await user.click(screen.getByRole('button', { name: 'In order' }))
     expect(screen.getByText('Piece 1 of 3')).toBeTruthy()
@@ -191,7 +192,7 @@ describe('Study page', () => {
     setPaste(words)
     await user.click(screen.getByRole('button', { name: 'Add text' }))
     await user.click(await screen.findByRole('button', { name: 'Start' }))
-    const text = passage()
+    const text = await waitFor(() => passage())
     expect(text.length).toBeLessThanOrEqual(160)
     expect(text.startsWith('word')).toBe(true)
     expect(text.length).toBeLessThan(words.length)
@@ -237,11 +238,11 @@ describe('Study page', () => {
     await user.type(screen.getByRole('textbox', { name: 'Name' }), 'Second')
     await user.click(screen.getByRole('button', { name: 'Add text' }))
     await user.click(await screen.findByRole('button', { name: 'Start' }))
-    expect(passage()).toBe('One')
+    await waitFor(() => expect(passage()).toBe('One'))
     await user.click(screen.getByRole('button', { name: 'Exit' }))
     await user.click(screen.getByRole('button', { name: 'First' }))
     await user.click(screen.getByRole('button', { name: 'Continue' }))
-    expect(passage()).toBe('Beta')
+    await waitFor(() => expect(passage()).toBe('Beta'))
   })
 
   it('stays on the same piece when the session restarts', async () => {
@@ -251,9 +252,9 @@ describe('Study page', () => {
     setPaste('Alpha\n\nBeta')
     await user.click(screen.getByRole('button', { name: 'Add text' }))
     await user.click(await screen.findByRole('button', { name: 'Start' }))
-    expect(passage()).toBe('Alpha')
+    await waitFor(() => expect(passage()).toBe('Alpha'))
     await user.click(screen.getByRole('button', { name: 'Restart' }))
-    expect(passage()).toBe('Alpha')
+    await waitFor(() => expect(passage()).toBe('Alpha'))
     await user.click(screen.getByRole('button', { name: 'Exit' }))
     expect(screen.getByText('Piece 1 of 2')).toBeTruthy()
   })
@@ -270,7 +271,7 @@ describe('Study page', () => {
     setPaste('Alpha\n\nBeta')
     await user.click(screen.getByRole('button', { name: 'Add text' }))
     await user.click(await screen.findByRole('button', { name: 'Start' }))
-    expect(passage()).toBe('Alpha')
+    await waitFor(() => expect(passage()).toBe('Alpha'))
     await user.click(screen.getByRole('button', { name: 'Toggle reader' }))
     expect(screen.queryByRole('textbox', { name: 'Typing input' })).toBeNull()
     expect(screen.getByRole('heading', { name: 'Study' })).toBeTruthy()
@@ -311,7 +312,7 @@ describe('Study page', () => {
     expect((await screen.findByRole('status')).textContent).toBe(
       'This library could not be saved. It stays until you leave this page.',
     )
-    expect(passage()).toBe('Hello there')
+    await waitFor(() => expect(passage()).toBe('Hello there'))
   })
 
   it('keeps the previous order, text, and place when a save does not land', async () => {
