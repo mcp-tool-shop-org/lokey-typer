@@ -64,3 +64,29 @@ export {
   type SprintDurationMs,
   type UserSkillModel,
 } from '../storage'
+
+export {
+  STUDY_READER_MAX,
+  STUDY_SOURCE_MAX,
+  STUDY_TEXT_MAX,
+  activeStudySource,
+  addStudySource,
+  advanceStudyPlace,
+  chunkStudyText,
+  emptyStudyLibrary,
+  ensureStudyDeck,
+  openStudySource,
+  projectStudy,
+  removeStudySource,
+  restartStudySource,
+  setStudyOrder,
+  studyLibraryFromUnknown,
+  studyNameFromFile,
+  studySourceFromText,
+  type StudyLibrary,
+  type StudyOrder,
+  type StudyProjection,
+  type StudySource,
+} from '../studyLibrary'
+
+export { createIndexedDbStudyStore, createMemoryStudyStore, type StudyLoad, type StudyStore } from '../studyStore'

@@ -29,6 +29,10 @@ Daily sets come in three session types: Reset (5 exercises), Mix (8 exercises), 
 
 See the [Personalization](/lokey-typer/handbook/personalization/) page for details on how daily sets are built.
 
+## Study
+
+Study is not a practice mode. Add a text file or paste a passage, then type it one piece at a time, in order or shuffled. The text stays on this device, including after a restart. Finishing a piece does not save a Focus run.
+
 ## Routes
 
 The app mounts these routes:
@@ -38,6 +42,7 @@ The app mounts these routes:
 | `/` | Home |
 | `/daily` | Daily set |
 | `/focus`, `/real-life`, `/competitive` | Mode pages. Start typing begins a session |
+| `/study` | Study, for text you add |
 | `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId` | A direct run |
 | `/practice` | Redirects to `/focus` |
 | `/arcade` | Redirects to `/competitive` |

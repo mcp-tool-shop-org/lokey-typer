@@ -369,7 +369,7 @@ describe('routes and shell', () => {
   it('keeps each mode name on one line', () => {
     renderApp()
     const nav = screen.getByRole('navigation', { name: 'Main navigation' })
-    for (const name of ['Home', 'Daily', 'Focus', 'Real-Life', 'Competitive']) {
+    for (const name of ['Home', 'Daily', 'Focus', 'Real-Life', 'Competitive', 'Study']) {
       const tokens = classTokens(within(nav).getByRole('link', { name }))
       expect(tokens).toContain('whitespace-nowrap')
       expect(tokens).toContain('shrink-0')

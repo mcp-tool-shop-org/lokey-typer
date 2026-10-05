@@ -11,7 +11,7 @@ This page is for people who have just installed LoKey Typer and want to know how
 
 When you open LoKey Typer for the first time, you land on the home screen. There are no accounts to create and no setup wizards. Pick a mode and start typing. Focus mode is the recommended starting point -- it uses calm, short exercises designed for building rhythm.
 
-All your data stays on your device in browser localStorage. Nothing is sent anywhere.
+All your data stays on your device. Practice history stays in localStorage. Text you add in Study stays in this browser as well. Nothing is sent anywhere.
 
 ## 2. Choosing a practice mode
 

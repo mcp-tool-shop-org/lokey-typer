@@ -90,6 +90,7 @@ export function AppShell() {
             <NavItem to="/focus" label="Focus" />
             <NavItem to="/real-life" label="Real-Life" />
             <NavItem to="/competitive" label="Competitive" />
+            <NavItem to="/study" label="Study" />
             <span aria-hidden="true" data-nav-more="" className="pointer-events-none sticky right-0 h-8 w-6 shrink-0 bg-gradient-to-l from-zinc-950 to-transparent" />
           </nav>
           <div className="flex shrink-0 items-center gap-1 sm:gap-2.5">

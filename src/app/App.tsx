@@ -1,6 +1,6 @@
 import { Link, Navigate, Route, Routes } from 'react-router-dom'
 import { AppShell } from '@app/shell'
-import { DailySetPage, HomePage, ModePage, RunPage } from '@features'
+import { DailySetPage, HomePage, ModePage, RunPage, StudyPage } from '@features'
 import { Icon } from '@app/components/Icon'
 import { useDocumentTitle } from '@app/useDocumentTitle'
 
@@ -33,6 +33,7 @@ export default function App() {
         <Route index element={<HomePage />} />
 
         <Route path="daily" element={<DailySetPage />} />
+        <Route path="study" element={<StudyPage />} />
 
         <Route path="focus" element={<ModePage mode="focus" />} />
         <Route path="focus/run/:exerciseId" element={<RunPage mode="focus" />} />

@@ -27,6 +27,7 @@ All data stays on your device. No accounts. No cloud. No tracking.
 - **Real-Life** — Practice with emails, forms, messages, notes, and other everyday writing
 - **Competitive** — Timed sprints with personal bests
 - **Daily Set** — A fresh set of exercises generated each day, adapted to your recent sessions
+- **Study** — Add your own text. It stays on this device and comes back one piece at a time, in order or shuffled.
 
 ## Features
 
@@ -46,7 +47,7 @@ Run `npm run dev` and open the local address. The Pages workflow publishes the a
 
 ## Privacy
 
-LoKey Typer collects no data. All preferences, run history, and personal bests are stored locally in your browser. See the full [privacy policy](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html). That page ships with the site. Until this repository is public, that address is not a live page.
+LoKey Typer collects no data. Preferences, run history, personal bests, and text you add for Study stay in this browser. See the full [privacy policy](https://mcp-tool-shop-org.github.io/lokey-typer/privacy.html). That page ships with the site. Until this repository is public, that address is not a live page.
 
 ## License
 
@@ -109,6 +110,7 @@ See `modular.md` for architecture contracts and import boundaries.
 - `/focus` — Focus mode
 - `/real-life` — Real-Life mode
 - `/competitive` — Competitive mode
+- `/study` — Study, for text you add
 - `/focus/run/:exerciseId`, `/real-life/run/:exerciseId`, `/competitive/run/:exerciseId` — run an exercise
 - `/practice` redirects to `/focus`. `/arcade` redirects to `/competitive`
 
@@ -129,7 +131,7 @@ Settings open from the header. There is no exercise-list page.
 
 LoKey Typer is a typing practice web app (PWA + Microsoft Store) with no accounts and no telemetry.
 
-- **Data accessed:** Browser localStorage (preferences, run history, personal bests)
+- **Data accessed:** Browser localStorage (preferences, run history, personal bests) and the IndexedDB database `lokey-study` (text you add on the Study page)
 - **Data NOT accessed:** No cloud sync. No telemetry. No analytics. No accounts. No tracking
 - **Network:** The app loads its own pages and audio from the same origin. It does not call an account service, a telemetry endpoint, or any third-party API.
 - **No telemetry** is collected or sent

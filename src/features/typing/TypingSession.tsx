@@ -126,6 +126,7 @@ export function TypingSession(props: {
   onExit: () => void
   onRestart: () => void
   onComplete?: (result: { wpm: number; accuracy: number; durationMs: number }) => void
+  recordRun?: boolean
 }) {
   const targetText = keyboardPassage(props.targetText)
   const [typed, setTyped] = useState('')
@@ -243,6 +244,22 @@ export function TypingSession(props: {
     if (endOnceRef.current) return
     endOnceRef.current = true
 
+    const durationMs = timeLimitMs ?? Math.max(0, endedAtMs - (startedAtMs ?? endedAtMs))
+
+    // A study piece is the reader's own text. It must not become a Focus run.
+    if (props.recordRun === false) {
+      if (props.prefs.bellOnCompletion) {
+        typewriterAudio.play('return_bell', {
+          enabled: props.prefs.soundEnabled,
+          volume: props.prefs.volume,
+          modeGain: props.mode === 'focus' ? 0.7 : props.mode === 'competitive' ? 1.0 : 0.85,
+          keyboardVoice: props.prefs.keyboardVoice,
+        })
+      }
+      props.onComplete?.({ wpm: live.wpm, accuracy: live.accuracy, durationMs })
+      return
+    }
+
     const timestamp = Math.floor(endedAtMs / 1000)
 
     const run = {
@@ -254,7 +271,7 @@ export function TypingSession(props: {
       accuracy: live.accuracy,
       errors: live.errors,
       backspaces,
-      duration_ms: timeLimitMs ?? Math.max(0, endedAtMs - (startedAtMs ?? endedAtMs)),
+      duration_ms: durationMs,
       tags_hit: computeTagsHit({ exercise: props.exercise, targetText }),
       sprint_duration_ms: timeLimitMs as SprintDurationMs | undefined,
     }
@@ -332,6 +349,7 @@ export function TypingSession(props: {
     props.prefs.keyboardVoice,
     props.prefs.soundEnabled,
     props.prefs.volume,
+    props.recordRun,
     props.onComplete,
     startedAtMs,
     typed,

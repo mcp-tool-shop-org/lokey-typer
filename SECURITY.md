@@ -28,7 +28,7 @@ Include:
 
 LoKey Typer is a typing practice web app (PWA + Microsoft Store) with no accounts and no telemetry.
 
-- **Data touched:** Browser localStorage (preferences, run history, personal bests)
+- **Data touched:** Browser localStorage (preferences, run history, personal bests) and the IndexedDB database `lokey-study` (text you add on the Study page)
 - **Data NOT touched:** No cloud sync. No telemetry. No analytics. No accounts. No tracking
 - **Network:** The app loads its own pages and audio from the same origin. It does not call an account service, a telemetry endpoint, or any third-party API.
 - **No secrets handling** — does not read, store, or transmit credentials

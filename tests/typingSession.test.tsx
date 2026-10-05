@@ -189,6 +189,7 @@ function renderSession(
     showCompetitiveHud?: boolean
     ghostEnabled?: boolean
     onComplete?: CompleteFn | null
+    recordRun?: boolean
   } = {},
 ) {
   const onExit = vi.fn()
@@ -206,6 +207,7 @@ function renderSession(
       onExit={onExit}
       onRestart={onRestart}
       onComplete={onComplete}
+      recordRun={overrides.recordRun}
     />,
   )
   const input = screen.getByRole('textbox', { name: 'Typing input' }) as HTMLTextAreaElement
@@ -265,6 +267,15 @@ describe('TypingSession', () => {
     vi.restoreAllMocks()
     vi.unstubAllGlobals()
     Object.defineProperty(globalThis, 'localStorage', { value: originalLocalStorage, configurable: true })
+  })
+
+  it('leaves the practice history alone when the piece is not a catalog run', async () => {
+    const { input, onComplete } = renderSession({ targetText: 'ab', recordRun: false })
+    typeAll(input, 'ab')
+    await waitFor(() => expect(onComplete).toHaveBeenCalledWith({ wpm: expect.any(Number), accuracy: 1, durationMs: expect.any(Number) }))
+    expect(localStorage.getItem('lkt_runs_v1')).toBeNull()
+    expect(localStorage.getItem('lkt_last_mode_v1')).toBeNull()
+    expect(play.mock.calls.some((call) => call[0] === 'return_bell')).toBe(true)
   })
 
   it('accepts one typed character, rejects a pasted sentence, and blocks drop', async () => {
