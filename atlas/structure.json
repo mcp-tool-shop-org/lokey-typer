@@ -1,0 +1,3539 @@
+{
+  "boundaries": [
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "2602bf5030d45f4515543f1ab3770ae6700479ede4f9f4c7c5a92f7f2dffb74a",
+          "path": ".github/workflows/ci.yml"
+        },
+        {
+          "hash": "98e28ce47f4f9d43473274779b8edda03fa9239c4d91fc8a5124580c6fd368a5",
+          "path": ".github/workflows/deploy.yml"
+        }
+      ],
+      "globs": [
+        ".github/**"
+      ],
+      "importConfidence": "full",
+      "name": ".github",
+      "origin": "authored",
+      "role": "config",
+      "testedBy": 0,
+      "unresolvedSites": 0
+    },
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "b3d02ff0e9fc6fd7fcb6a3b71669072ccd84efbb9a451182a7cffba21ccc433e",
+          "path": "assets/logo.png"
+        }
+      ],
+      "globs": [
+        "assets/**"
+      ],
+      "importConfidence": "full",
+      "name": "assets",
+      "origin": "authored",
+      "role": "config",
+      "testedBy": 0,
+      "unresolvedSites": 0
+    },
+    {
+      "dynamicReads": 3,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "7cec55de4d2958f6714f6caa2e7261eda65d38605fb6d7fff3267c066dcbde71",
+          "path": "desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj"
+        },
+        {
+          "hash": "4476c0deae1361a0241a4011b2d00ccecce84b05b60f73818aa71b1be9ce2b91",
+          "path": "desktop/LoKeyTyper.Tests/Program.cs"
+        },
+        {
+          "hash": "31b91bc3b3647a9d5633906f708adb8bd369e558784166ef772d33763435d5ae",
+          "path": "desktop/LoKeyTyper.Tests/WebContentHostTests.cs"
+        },
+        {
+          "hash": "a06fb8b843a53d0b9e3f3b4cf28a9abda7e5e598462049f8d6f5d78e8215ab70",
+          "path": "desktop/LoKeyTyper.Tests/WindowLayoutTests.cs"
+        },
+        {
+          "hash": "95b97bb0d1fc7ae9151e5b1f3d2ceb9d9b9b5bf76edc2b1256d3c0d96fb8d8b7",
+          "path": "desktop/LoKeyTyper.sln"
+        },
+        {
+          "hash": "e1ad5ae78e148bad2ec6b2108a1102a47dfac929bfd2e5718b00a0e657b9c3f8",
+          "path": "desktop/LoKeyTyper/App.xaml"
+        },
+        {
+          "hash": "16129600a70170dbcbeba6c66e2601aad6cfc3d0ef2392ef41a7be1e2ff5079a",
+          "path": "desktop/LoKeyTyper/App.xaml.cs"
+        },
+        {
+          "hash": "3b9f91125b70e4ed224c1ba0543df50da4c459e89cf2c1745dfdea18e657e8d9",
+          "path": "desktop/LoKeyTyper/Assets/LargeTile.png"
+        },
+        {
+          "hash": "4ddf26f12a4f276fba0b207df7fc2a665b3061d5d0edc36919e47128667c6142",
+          "path": "desktop/LoKeyTyper/Assets/SmallTile.png"
+        },
+        {
+          "hash": "4a5e94a1ca882a3d58c30dfb7387fa27f3654e561d9f583af2434c013681a633",
+          "path": "desktop/LoKeyTyper/Assets/SplashScreen.png"
+        },
+        {
+          "hash": "c3da13993ce871bc1f4d3a5554aa486d8d8898515417f88e03e1939592a5eb5a",
+          "path": "desktop/LoKeyTyper/Assets/Square150x150Logo.png"
+        },
+        {
+          "hash": "cd6eae6bf0ac1c888aeb4645bb62afd5561a032469af157a66bd4a6c623eeebf",
+          "path": "desktop/LoKeyTyper/Assets/Square44x44Logo.png"
+        },
+        {
+          "hash": "d363457348b244f0ac975240943deecfbe82e10e3219158d88813bb564a68ced",
+          "path": "desktop/LoKeyTyper/Assets/Square44x44Logo.targetsize-24_altform-unplated.png"
+        },
+        {
+          "hash": "44f3ce834b90ff9ffdcf85b0bf7d222ce6cb69846f3fc2f96dac6a60e92bfc96",
+          "path": "desktop/LoKeyTyper/Assets/StoreLogo.png"
+        },
+        {
+          "hash": "d261f91710b60c087b12e7a2708da6478f0383b67f4bbd4cf5b3348e970f4041",
+          "path": "desktop/LoKeyTyper/Assets/Wide310x150Logo.png"
+        },
+        {
+          "hash": "0685a6089c1bad5b76e513f101288951ab97c9a54c839fe7797e225efd1a2153",
+          "path": "desktop/LoKeyTyper/LoKeyTyper.csproj"
+        },
+        {
+          "hash": "21b9b2f5597b027f8d9b72632775ccb0a1f124b55c418616758d365e8f3579e8",
+          "path": "desktop/LoKeyTyper/MainWindow.xaml"
+        },
+        {
+          "hash": "dc14f0e50410833c7eb280e767c83d17b62723d5d0ff3aeb966318c1c8aee0ca",
+          "path": "desktop/LoKeyTyper/MainWindow.xaml.cs"
+        },
+        {
+          "hash": "1ae04e8f425418d7b806ce8c70fd655df4326fb30a9bd3ede041b02bba34f145",
+          "path": "desktop/LoKeyTyper/Package.appxmanifest"
+        },
+        {
+          "hash": "6a8ae047d7560fc72c623d18f1e46e0bcda38a32e62f4bf23dc98e865dfacd3a",
+          "path": "desktop/LoKeyTyper/WebContent/assets/index-B1iOhOUC.css"
+        },
+        {
+          "hash": "13492ad509142353de09c11fec20add548753538d6bde6cca71a015acd2c7676",
+          "path": "desktop/LoKeyTyper/WebContent/assets/index-D4O5e3rM.js"
+        },
+        {
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "path": "desktop/LoKeyTyper/WebContent/audio/.gitkeep"
+        },
+        {
+          "hash": "a6eeeb739f049d05fe692a8bc0bbfde01a628d2a232c31ca7968c7d3e50ed03e",
+          "path": "desktop/LoKeyTyper/WebContent/audio/README.md"
+        },
+        {
+          "hash": "362ff890209f8e09ae40778fb267dadf0f0c1b7f9d303cdcd280dbe660c670f6",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/README.md"
+        },
+        {
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/.gitkeep"
+        },
+        {
+          "hash": "faab035c3ad4cfc6faf7f0e256284eb188a6486cb98525452fc61fbbb2b56206",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_01.wav"
+        },
+        {
+          "hash": "4917b72c3adbd942ffad447570580af2e7221ca70425f0cea631b6f4d6f93866",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_02.wav"
+        },
+        {
+          "hash": "140fb93197283aa87c135f728a03815e263488ba01a17c329a9488c05aea05b4",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_03.wav"
+        },
+        {
+          "hash": "2cf35f4bd23beae341feaf4dcf50e6649be0d5f3319db828f02f8c25f63747f1",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_01.wav"
+        },
+        {
+          "hash": "2c3904ec0fcfe159b75f40694f7b18d80607804b7b5a8b44e5ff4502291dbb8b",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_02.wav"
+        },
+        {
+          "hash": "602d23af8c43b5215a1152837987ab7b1235f494a895566f22f7a00797c54380",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_03.wav"
+        },
+        {
+          "hash": "f32eddf2b013ea2e6b87c64c571ee5229f8f00042ea5161d00f8bb88db1e5cfc",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_01.wav"
+        },
+        {
+          "hash": "d60d13227e74fa51667c89140d3bdba3a7facded0ad691efc78b6c316a167078",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_02.wav"
+        },
+        {
+          "hash": "b3ab66e6c4d73367b24e5ae645af8324fd96d090c95d3543190005a3d4cee8af",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_03.wav"
+        },
+        {
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/.gitkeep"
+        },
+        {
+          "hash": "f230afb19a9b68fdc1031b15d7d3714495d01c3dd74f3db79036a64c20de81a3",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/air/focus_soft_air_01.wav"
+        },
+        {
+          "hash": "cf3d36640c87bc6849f611c25f7f3b0c015e81a0a840c142185931417ae9460f",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/air/focus_soft_air_02.wav"
+        },
+        {
+          "hash": "ec6f8f23b9482b708a217437963ec0ffcef214986fd38761a1f4e9e37bdaf617",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/air/focus_soft_air_03.wav"
+        },
+        {
+          "hash": "1cd3fedb81edfc221ffec71b585ba162ebb298be172cebc9b82278e192c0702f",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_01.wav"
+        },
+        {
+          "hash": "25d8d932cf7bfd9912c98697eb635edd1b602382be1f87954e39f78ffc9aafee",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_02.wav"
+        },
+        {
+          "hash": "964ed07cc5484d2316b589334f5f1a58ff663828b7d744433603aeaed4b7c479",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_03.wav"
+        },
+        {
+          "hash": "0594994d88bd1549152d4250135a23267f6dee6cfed3645954af625094609672",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_01.wav"
+        },
+        {
+          "hash": "24a79f2f77809337377b7660695337b3766c49dc7f028044cea76a8633a8fc69",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_02.wav"
+        },
+        {
+          "hash": "93256580e6dba31b9ead04cd394dabcdaa22bc20551c02f63610e803a3e578b0",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_03.wav"
+        },
+        {
+          "hash": "2a7e941cedd1aca9c9b59593f9999b9f4a42cdbeb4dc6e290d110b66e4583177",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/air/focus_warm_air_01.wav"
+        },
+        {
+          "hash": "9e6294d962d534e0b4783f7b920a076b8b567a5cfb4a003bf84f6615aec5f37d",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/air/focus_warm_air_02.wav"
+        },
+        {
+          "hash": "89d04a14ef8b003f8345e722a16ca4e93f9ff525545b18e77f63612100d014ff",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/air/focus_warm_air_03.wav"
+        },
+        {
+          "hash": "283ca656a6b363fbeca81dc3dee163cbf8af70ad57e58fe0c34aeac6e7f86936",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_01.wav"
+        },
+        {
+          "hash": "58dde3e70515d41674b0102de20d015acf0d9e1205175bf7198bb850ede92c20",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_02.wav"
+        },
+        {
+          "hash": "e791c10d9df1723aaf5ef5323a9938097dd72536690e358152a06c9f8265dd7c",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_03.wav"
+        },
+        {
+          "hash": "e1ed9a3923297388a90f4b0d657c4c20f1fca125b0559de0065471b6a77827cf",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_01.wav"
+        },
+        {
+          "hash": "212832b6f2a094423f875c9177ab37329a4c67d9f7f194d555b564b253abb998",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_02.wav"
+        },
+        {
+          "hash": "de3171f490222ccdef7d76131320ef792a73fdf228848afe785e531c14e7b44a",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_03.wav"
+        },
+        {
+          "hash": "a6aa663fdc25084dba4ca74956b6b543f83c094fcee561556ed7383c45540ff4",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/room/focus_warm_room_01.wav"
+        },
+        {
+          "hash": "6e0e0d16c4afee18d11ba35780cf9e5e70a05528c1eb2450271a8cd11cbc14e3",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/room/focus_warm_room_02.wav"
+        },
+        {
+          "hash": "8359621151d87a9d5f005066c7c40ba2ddbc03a511fe5c553fe8fd54efe02bc5",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/room/focus_warm_room_03.wav"
+        },
+        {
+          "hash": "29271ae80b23ca571684104fac6b29fbccbbd68c1d3e3fd78ebdb5d9fe426328",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/air/nature_air_air_01.wav"
+        },
+        {
+          "hash": "28382e14a2cba61d4147a4bb95b4fc5f8297b4b59b58aa96e057f508edf9e703",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/air/nature_air_air_02.wav"
+        },
+        {
+          "hash": "4e47feaeca4ce0259969e250509765bdf2f9c5f8cab1f0bdb396c4c0dc1f4895",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/air/nature_air_air_03.wav"
+        },
+        {
+          "hash": "b30fd2ebcf98e1a284789b0fab03cfb03a30059b99d7f670c8cfc19864ea0c92",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_01.wav"
+        },
+        {
+          "hash": "2825fb3096440bda3d42a56d4a6594dd444a34ac1fcd9a5194707b9ba7ea91d7",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_02.wav"
+        },
+        {
+          "hash": "219e56efc9d39f2c03757d426dc84442c6aed328d4d0df5bdd8cda57485c9796",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_03.wav"
+        },
+        {
+          "hash": "eed6ccd6b4e0e14a1d8d2b3f8fe5702c0faee5d291e0efdcb5058721ef38d734",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_01.wav"
+        },
+        {
+          "hash": "b49c2f935a349a1ebbfd1a11487e5d3c647441a7eae1b914d1efe9bbc8d6c87e",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_02.wav"
+        },
+        {
+          "hash": "0270b191e03f5ff0e6b29a5712a7b0150f54eb3907e5b469aa26bc39a42bdf47",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_03.wav"
+        },
+        {
+          "hash": "9e8e5cdf5e5e2945b39b4f16e0a77ad28e61c3619d7e52f2122296f5bf166690",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/room/nature_air_room_01.wav"
+        },
+        {
+          "hash": "8249af7b38ce2e270eec5622409976ff7d7180682e57c9b0475c65796990360e",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/room/nature_air_room_02.wav"
+        },
+        {
+          "hash": "fa9bf6fbc68fbb8abedfe90cba6b4fac1cb6296b8b633ad59a8f57e64fbd632c",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/room/nature_air_room_03.wav"
+        },
+        {
+          "hash": "85f78f924de0b29a19e222f5725bbcf64a37b29b920d871d82cbda1ec1b181c7",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/manifest.json"
+        },
+        {
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/nature/.gitkeep"
+        },
+        {
+          "hash": "3658974a3339f57037297ae36b2a94bc709916127091245a533371dd65b094e7",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/ocean/ocean_coastal_breeze.wav"
+        },
+        {
+          "hash": "31a7d376d79956638806aa67a9bdc569c82db49cb834718a4fc9505bbe3d868d",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/ocean/ocean_gentle_waves.wav"
+        },
+        {
+          "hash": "7441edb490a8097c08938ece82cecd04df3378b0a0b2d6917e77b912f9f9a300",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/ocean/ocean_pebble_shore.wav"
+        },
+        {
+          "hash": "322d6bdda3dec248210958e0755c2f88dde02faa4ee7dd9bf2d1a630515faa48",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/rain/rain_heavy_downpour.wav"
+        },
+        {
+          "hash": "b80892786a7e910d6c5bbb8ee326af7fe29781e651bf9c28c5b2bfd92e526e63",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/rain/rain_steady.wav"
+        },
+        {
+          "hash": "2fdf8a5c230b0a9d1644ba7de224440b889271f19ea1a4feabcf8631f59d5cfc",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/rain/rain_thunderstorm.wav"
+        },
+        {
+          "hash": "3d66c2c457ff80481d4cfc34439eb1c642ad05eb273b5902f6b18791c99e445a",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/wind/wind_alpine_meadow.wav"
+        },
+        {
+          "hash": "a422187cce5ad1b141bac816d936667a4df5bd2ec03eab88ad15d0d6b22dd7ba",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/wind/wind_pine_forest.wav"
+        },
+        {
+          "hash": "7b80bf443323852fd00ef6acc384d291955aacaaadd587f37c52f4c69e4d2b9f",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_celestial_wash.wav"
+        },
+        {
+          "hash": "a2722421c36643fc462b5acf50a97ec5231d1efa7169d54fe0741d271151c94e",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_crystal_harmonics.wav"
+        },
+        {
+          "hash": "1461835cc32dfd2b15db3eea42f49fa166e2f6aa49f5237024fb999b031565e4",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_deep_earth_drone.wav"
+        },
+        {
+          "hash": "8f85ec7056c7bf723e00d02247aa45dc419e58f878df757a96b7f9a414241079",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_ethereal_pad.wav"
+        },
+        {
+          "hash": "25070a0a7497d35eb6165be5c86fd7d0072e2dbd8be13e8b64db8469035234f8",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_om_drone.wav"
+        },
+        {
+          "hash": "82ce4ab0788672ba354bc1078ae345b42e205124b1ca7a1764717612516480fb",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_singing_bowl.wav"
+        },
+        {
+          "hash": "9854e0cc4be7a4ad8f3bf3d5c71ceff5398b6f3a16fe315b5078ffe7277a3204",
+          "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_warm_fifths.wav"
+        },
+        {
+          "hash": "141f4c2f722e2f2adbe7f893c8a8f81229b0359e78d9440c5eee4fbb97c80479",
+          "path": "desktop/LoKeyTyper/WebContent/audio/backspace.wav"
+        },
+        {
+          "hash": "e99859d7cb217408ab06bb46846fbc50620a82a0008681d3554add26a5f74476",
+          "path": "desktop/LoKeyTyper/WebContent/audio/error.wav"
+        },
+        {
+          "hash": "db7ba01ee4b25f78288ad37e73d4bcdfc36a8e58d07f02697d7a4f0f638caa6d",
+          "path": "desktop/LoKeyTyper/WebContent/audio/key_1.wav"
+        },
+        {
+          "hash": "62b797803f79b0e31f8ca244b863f2dcaec1470989a229220224edf183c0c979",
+          "path": "desktop/LoKeyTyper/WebContent/audio/key_2.wav"
+        },
+        {
+          "hash": "df15405df05c560d09cb92a8fd8a0d6fb53dcd6184634ab44403b7edf5414326",
+          "path": "desktop/LoKeyTyper/WebContent/audio/key_3.wav"
+        },
+        {
+          "hash": "d78cb404a3a3ac988c304f0344be23fcf57a14952a25ed3e6b796668c23a6dac",
+          "path": "desktop/LoKeyTyper/WebContent/audio/key_4.wav"
+        },
+        {
+          "hash": "abd9969f11defbfc9cd56a234ebd9a25514dd7bc2133fad0d85b882274801bfa",
+          "path": "desktop/LoKeyTyper/WebContent/audio/return_bell.wav"
+        },
+        {
+          "hash": "bd0af62f04cc823849b5f4e4134d4badbac7e4ce4e816e8a058981bbcc169e01",
+          "path": "desktop/LoKeyTyper/WebContent/audio/spacebar.wav"
+        },
+        {
+          "hash": "86ea4d65988aadda3436f6e992fd1dc2800d8c028e7eee006284ae6712a74be9",
+          "path": "desktop/LoKeyTyper/WebContent/index.html"
+        },
+        {
+          "hash": "c3da13993ce871bc1f4d3a5554aa486d8d8898515417f88e03e1939592a5eb5a",
+          "path": "desktop/LoKeyTyper/WebContent/logo-150.png"
+        },
+        {
+          "hash": "d9d4ee9ac5eb2ee7f080a4098299c31f8de9c900ef445a692ee67968475f4ba3",
+          "path": "desktop/LoKeyTyper/WebContent/logo-192.png"
+        },
+        {
+          "hash": "cd6eae6bf0ac1c888aeb4645bb62afd5561a032469af157a66bd4a6c623eeebf",
+          "path": "desktop/LoKeyTyper/WebContent/logo-44.png"
+        },
+        {
+          "hash": "2748489333ec93eb66e35a5bce4641b65dc31c4f8db5e49f967bad14ea81c36a",
+          "path": "desktop/LoKeyTyper/WebContent/logo-512.png"
+        },
+        {
+          "hash": "d663ec1e2f001c5a77255f4f5226fc916bfd40b40be3e16398645489fc510f08",
+          "path": "desktop/LoKeyTyper/WebContent/logo.svg"
+        },
+        {
+          "hash": "9aeb79f1b18fb105e09cf899a8c8325df4b528acca9e704454bc1da1e30eea51",
+          "path": "desktop/LoKeyTyper/WebContent/manifest.webmanifest"
+        },
+        {
+          "hash": "969210eb8d8c31626009c1c33d325463626b6d3707f293a8ce2717d8f9125d28",
+          "path": "desktop/LoKeyTyper/WebContent/privacy.html"
+        },
+        {
+          "hash": "9742073ef7fc795e7673d98f272992843298426a0ffd8cb3507784df5143608b",
+          "path": "desktop/LoKeyTyper/WebContent/registerSW.js"
+        },
+        {
+          "hash": "328654b6838c32138b2ab4f80ac0e8effebf8d1c11e998422ecfa4ac1b224aaa",
+          "path": "desktop/LoKeyTyper/WebContent/sw.js"
+        },
+        {
+          "hash": "4a748afd443918bb16591c834c401dae33e87861ab5dbad0811c3a3b4a9214fb",
+          "path": "desktop/LoKeyTyper/WebContent/vite.svg"
+        },
+        {
+          "hash": "553dc3dea2fe33f01265b8ee5d0e95feef1254049d8d8f4e81f1cd9859f13008",
+          "path": "desktop/LoKeyTyper/WebContent/workbox-8c29f6e4.js"
+        },
+        {
+          "hash": "9fa8b0a2ec51f4764e9c1657135aaed781a3ad1e52adc24730a01fc88a646fbf",
+          "path": "desktop/LoKeyTyper/WebContentHost.cs"
+        },
+        {
+          "hash": "e1c22d4cf5108d15c43805df6ea04b9488c059a127252ad8d38b5f0f90e7560b",
+          "path": "desktop/LoKeyTyper/WindowLayout.cs"
+        },
+        {
+          "hash": "d4ccc4d17a7dd3d5952e590cc67536f95f79e8fd9d4857c3d6c8e9c9a1b6343f",
+          "path": "desktop/LoKeyTyper/app.manifest"
+        }
+      ],
+      "globs": [
+        "desktop/**"
+      ],
+      "importConfidence": "low",
+      "name": "desktop",
+      "origin": "authored",
+      "role": "code",
+      "testedBy": 0,
+      "unresolvedSites": 1
+    },
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "ed5bb6f5f1915d4628971c9d51beaca80300e240b9e30cab73e8f35b7e64930f",
+          "path": "docs/accessibility-commitment.md"
+        },
+        {
+          "hash": "fe303f0d37494b7bb6950d660ae1449e4da36a916b823f4974ac944fd48128aa",
+          "path": "docs/audio-review-checklist.md"
+        },
+        {
+          "hash": "2d1b356ee39339c2f145073e32d973deae3059450cb2c257dc0f1a93772594db",
+          "path": "docs/how-personalization-works.md"
+        },
+        {
+          "hash": "497e774c8a0917ee448a160399c208bc8700ee1949ee3d6c6369994e914caaee",
+          "path": "docs/sound-design-manifesto.md"
+        },
+        {
+          "hash": "215a884e0b252efd43f6e7b7244e58b301a93ba582ddd4878e381e70740d5086",
+          "path": "docs/sound-design.md"
+        },
+        {
+          "hash": "bf1ca0ce015cc8c02fd6ba3605905d97d5c41c52a3d626cbc290d53ac18a6ea5",
+          "path": "docs/sound-philosophy.md"
+        }
+      ],
+      "globs": [
+        "docs/**"
+      ],
+      "importConfidence": "full",
+      "name": "docs",
+      "origin": "authored",
+      "role": "docs",
+      "testedBy": 0,
+      "unresolvedSites": 0
+    },
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "88ce22ce93ac52da3248fc813550afdebd41c2fc2c16cb0550e82c018aeab1d0",
+          "path": "msix-package/AppxManifest.xml"
+        },
+        {
+          "hash": "653fcfe7859109583cda0251229da732d9cd3c6b8464bed24e6bef1f7b757133",
+          "path": "msix-package/images/SplashScreen.png"
+        },
+        {
+          "hash": "95fa1f1889390e1338c7ea89fc252a3ae5036a68eded543a3a14dd2db61e1b86",
+          "path": "msix-package/images/Square150x150Logo.png"
+        },
+        {
+          "hash": "dce9e37d26f0680e147e6a0fb95df1a9e4e95c790865d5e7c19e240c6c456c88",
+          "path": "msix-package/images/Square44x44Logo.png"
+        },
+        {
+          "hash": "8282596b3d50623777c951a487a593f75402018c1f847496ba359a05bf13a7d4",
+          "path": "msix-package/images/StoreLogo.png"
+        }
+      ],
+      "globs": [
+        "msix-package/**"
+      ],
+      "importConfidence": "full",
+      "name": "msix-package",
+      "origin": "authored",
+      "role": "config",
+      "testedBy": 0,
+      "unresolvedSites": 0
+    },
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "path": "public/audio/.gitkeep"
+        },
+        {
+          "hash": "a6eeeb739f049d05fe692a8bc0bbfde01a628d2a232c31ca7968c7d3e50ed03e",
+          "path": "public/audio/README.md"
+        },
+        {
+          "hash": "7b3483bd894a0b40193ebc63bf9ea9baade7b8a9cd6a292a944811e87d29e099",
+          "path": "public/audio/ambient/README.md"
+        },
+        {
+          "hash": "e331fc7585aac8eb70373a5700d38127facaba965cbc7ee35aa1ec6ddb7c47c5",
+          "path": "public/audio/ambient/binaural/binaural_alpha_ten.wav"
+        },
+        {
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "path": "public/audio/ambient/competitive/.gitkeep"
+        },
+        {
+          "hash": "faab035c3ad4cfc6faf7f0e256284eb188a6486cb98525452fc61fbbb2b56206",
+          "path": "public/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_01.wav"
+        },
+        {
+          "hash": "4917b72c3adbd942ffad447570580af2e7221ca70425f0cea631b6f4d6f93866",
+          "path": "public/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_02.wav"
+        },
+        {
+          "hash": "140fb93197283aa87c135f728a03815e263488ba01a17c329a9488c05aea05b4",
+          "path": "public/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_03.wav"
+        },
+        {
+          "hash": "039f276a196a716b4184d60b216c6bd5cc7e27cc4e0b1ea69e5d10de8fd73859",
+          "path": "public/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_01.wav"
+        },
+        {
+          "hash": "1ce8478a55b8d7f98ff16f7141d67d55278c9fa39b97b92b6dc39c7417a12efc",
+          "path": "public/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_02.wav"
+        },
+        {
+          "hash": "b4a477ad038015a73e35c8b9eaaf9d377072c660f5d1cf96ffbeaf6091eea3e8",
+          "path": "public/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_03.wav"
+        },
+        {
+          "hash": "f32eddf2b013ea2e6b87c64c571ee5229f8f00042ea5161d00f8bb88db1e5cfc",
+          "path": "public/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_01.wav"
+        },
+        {
+          "hash": "d60d13227e74fa51667c89140d3bdba3a7facded0ad691efc78b6c316a167078",
+          "path": "public/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_02.wav"
+        },
+        {
+          "hash": "b3ab66e6c4d73367b24e5ae645af8324fd96d090c95d3543190005a3d4cee8af",
+          "path": "public/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_03.wav"
+        },
+        {
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "path": "public/audio/ambient/focus/.gitkeep"
+        },
+        {
+          "hash": "f230afb19a9b68fdc1031b15d7d3714495d01c3dd74f3db79036a64c20de81a3",
+          "path": "public/audio/ambient/focus/focus_soft/air/focus_soft_air_01.wav"
+        },
+        {
+          "hash": "cf3d36640c87bc6849f611c25f7f3b0c015e81a0a840c142185931417ae9460f",
+          "path": "public/audio/ambient/focus/focus_soft/air/focus_soft_air_02.wav"
+        },
+        {
+          "hash": "ec6f8f23b9482b708a217437963ec0ffcef214986fd38761a1f4e9e37bdaf617",
+          "path": "public/audio/ambient/focus/focus_soft/air/focus_soft_air_03.wav"
+        },
+        {
+          "hash": "143bc27c9580b21fec75db506e4520d44cd26e6e583f3c685d682842c0121ed1",
+          "path": "public/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_01.wav"
+        },
+        {
+          "hash": "804099ae29e380ff3e9cf0a9ee03bf5f66f0384eacda942f70c86d23d5ba3882",
+          "path": "public/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_02.wav"
+        },
+        {
+          "hash": "bb9fda2a98cef691fc9a8da18a64f8b97ea4c979ad85c04f618f7460c54b00c5",
+          "path": "public/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_03.wav"
+        },
+        {
+          "hash": "629ccc661027159466531ab15a7aa7b3373948edb7f79d115cc0f90c580a5dd9",
+          "path": "public/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_01.wav"
+        },
+        {
+          "hash": "f8720e631496cf5ad90f81edac2d3ef5f74d659863a52f6272f136ebaeb5bb94",
+          "path": "public/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_02.wav"
+        },
+        {
+          "hash": "b1c207aba347b2defd3d999ce9684d662e612a860a9aa2730e1609ec229b7698",
+          "path": "public/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_03.wav"
+        },
+        {
+          "hash": "2a7e941cedd1aca9c9b59593f9999b9f4a42cdbeb4dc6e290d110b66e4583177",
+          "path": "public/audio/ambient/focus/focus_warm/air/focus_warm_air_01.wav"
+        },
+        {
+          "hash": "9e6294d962d534e0b4783f7b920a076b8b567a5cfb4a003bf84f6615aec5f37d",
+          "path": "public/audio/ambient/focus/focus_warm/air/focus_warm_air_02.wav"
+        },
+        {
+          "hash": "89d04a14ef8b003f8345e722a16ca4e93f9ff525545b18e77f63612100d014ff",
+          "path": "public/audio/ambient/focus/focus_warm/air/focus_warm_air_03.wav"
+        },
+        {
+          "hash": "223e940c3dd047050d7869d3c43945d4b7f6994080343e44a3118130c477c716",
+          "path": "public/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_01.wav"
+        },
+        {
+          "hash": "493b29edd78223faccccd747e7e7670fec7abbd1d84b6657d7366f361b4a2458",
+          "path": "public/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_02.wav"
+        },
+        {
+          "hash": "8af525cf9ab00b614486a56c4e7cf611b772994e591d5d838b64ff144ef405c1",
+          "path": "public/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_03.wav"
+        },
+        {
+          "hash": "6d0e24fc5a220f33d05c5a3b49954696b3c1c46f1580b7ee9f70c8fcae42b9f9",
+          "path": "public/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_01.wav"
+        },
+        {
+          "hash": "65ba9c58c39cd797707b8c37103c202501a68f7b0649d7190eebbe30e9cc156c",
+          "path": "public/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_02.wav"
+        },
+        {
+          "hash": "0445293f3ec85d87f893b5e8edc1a087797577ad7c660794cf1ecb6d5b32eb49",
+          "path": "public/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_03.wav"
+        },
+        {
+          "hash": "a6aa663fdc25084dba4ca74956b6b543f83c094fcee561556ed7383c45540ff4",
+          "path": "public/audio/ambient/focus/focus_warm/room/focus_warm_room_01.wav"
+        },
+        {
+          "hash": "6e0e0d16c4afee18d11ba35780cf9e5e70a05528c1eb2450271a8cd11cbc14e3",
+          "path": "public/audio/ambient/focus/focus_warm/room/focus_warm_room_02.wav"
+        },
+        {
+          "hash": "8359621151d87a9d5f005066c7c40ba2ddbc03a511fe5c553fe8fd54efe02bc5",
+          "path": "public/audio/ambient/focus/focus_warm/room/focus_warm_room_03.wav"
+        },
+        {
+          "hash": "29271ae80b23ca571684104fac6b29fbccbbd68c1d3e3fd78ebdb5d9fe426328",
+          "path": "public/audio/ambient/focus/nature_air/air/nature_air_air_01.wav"
+        },
+        {
+          "hash": "28382e14a2cba61d4147a4bb95b4fc5f8297b4b59b58aa96e057f508edf9e703",
+          "path": "public/audio/ambient/focus/nature_air/air/nature_air_air_02.wav"
+        },
+        {
+          "hash": "4e47feaeca4ce0259969e250509765bdf2f9c5f8cab1f0bdb396c4c0dc1f4895",
+          "path": "public/audio/ambient/focus/nature_air/air/nature_air_air_03.wav"
+        },
+        {
+          "hash": "3b3f5916ea2b93abda79ac6b787689d3aaa400c52bb151734b29150a1c77571e",
+          "path": "public/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_01.wav"
+        },
+        {
+          "hash": "22717d3f310698f12a1641abb4cb5395ee5ecdb78d88f10f18a1ce4c5db96774",
+          "path": "public/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_02.wav"
+        },
+        {
+          "hash": "524fc7bbf46420a245d0c2206412d82c40023012030968adfa79421f2b9b0399",
+          "path": "public/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_03.wav"
+        },
+        {
+          "hash": "2c678d9e0faae6b59cb05e5e947dc380978cb6c3facfefbad7fa940d826b4e15",
+          "path": "public/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_01.wav"
+        },
+        {
+          "hash": "ef0676ee5d098f29bb8b751ec564df25850cb73e5e40987dd02366807aea4e07",
+          "path": "public/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_02.wav"
+        },
+        {
+          "hash": "edc64d890d5e51ab0ed8ff2fd47a40454276ad2760516008aafab40dd10eb34d",
+          "path": "public/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_03.wav"
+        },
+        {
+          "hash": "9e8e5cdf5e5e2945b39b4f16e0a77ad28e61c3619d7e52f2122296f5bf166690",
+          "path": "public/audio/ambient/focus/nature_air/room/nature_air_room_01.wav"
+        },
+        {
+          "hash": "8249af7b38ce2e270eec5622409976ff7d7180682e57c9b0475c65796990360e",
+          "path": "public/audio/ambient/focus/nature_air/room/nature_air_room_02.wav"
+        },
+        {
+          "hash": "fa9bf6fbc68fbb8abedfe90cba6b4fac1cb6296b8b633ad59a8f57e64fbd632c",
+          "path": "public/audio/ambient/focus/nature_air/room/nature_air_room_03.wav"
+        },
+        {
+          "hash": "bfa162320dcb497d04e732f8e4f8367a63ae320abd93550bb9f8d7bef0a2a5b3",
+          "path": "public/audio/ambient/manifest.json"
+        },
+        {
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "path": "public/audio/ambient/nature/.gitkeep"
+        },
+        {
+          "hash": "ddd5316e22a36d9ed3b5f9cbb30a81675e334bae1b89861d09fd724e12f9a683",
+          "path": "public/audio/ambient/ocean/ocean_coastal_breeze.wav"
+        },
+        {
+          "hash": "7f460a4e97646051d95a3cfd42104077e3784546e9d9e44f5e7fe72e80c89822",
+          "path": "public/audio/ambient/ocean/ocean_gentle_waves.wav"
+        },
+        {
+          "hash": "ef85440a40874e046bee4b7bc2d2caad27af8f6bcdfdab11a3ab6371c56a22f6",
+          "path": "public/audio/ambient/ocean/ocean_night_stones.wav"
+        },
+        {
+          "hash": "8244758c5cdbaf444aafcfa40e1c0f93927f38b6faf16c49e2f80e732950df3c",
+          "path": "public/audio/ambient/ocean/ocean_pebble_shore.wav"
+        },
+        {
+          "hash": "b05bf7ebf906316fb5eb22012c256b7c7398b11d84e5365ff7e5ed486dfb6b30",
+          "path": "public/audio/ambient/rain/rain_heavy_downpour.wav"
+        },
+        {
+          "hash": "849c132a2cb6c694ee006b3f6a174f110dfcf41ff9f70e6dbd708b5a684f2e3c",
+          "path": "public/audio/ambient/rain/rain_steady.wav"
+        },
+        {
+          "hash": "0c32bf1bf081220bfc7af02fbe377cb405adfe8ac28e4544bba771faad605677",
+          "path": "public/audio/ambient/rain/rain_thunderstorm.wav"
+        },
+        {
+          "hash": "139b2e3794bcfbdd08433429cbdfd835a38c4e893966478194f1098b5defefe7",
+          "path": "public/audio/ambient/rain/rain_wet_leaves.wav"
+        },
+        {
+          "hash": "ffc44047a847d80d6b701f57e19a3751df446ca0c491ae556afb4c74faf9d022",
+          "path": "public/audio/ambient/rain/rain_wooden_roof.wav"
+        },
+        {
+          "hash": "0164c77d5447afff567e5a0b52abf9e86b80a2540b5e0310d7c329e45330da2d",
+          "path": "public/audio/ambient/wind/wind_alpine_meadow.wav"
+        },
+        {
+          "hash": "e2fb2c87f9de51e61e3a20a2ffdd722c1c1eb46e2df698117fd5f2cf62d81e08",
+          "path": "public/audio/ambient/wind/wind_pine_forest.wav"
+        },
+        {
+          "hash": "4a16102d6c96103ef057204ec0cba8795789a498caaedb0e3b9006c05cffa3c3",
+          "path": "public/audio/ambient/zen/zen_bronze_sustain.wav"
+        },
+        {
+          "hash": "edc88f048ad2205a01682a7c1674c8560e4a56edc861445cd9545016965c8bfb",
+          "path": "public/audio/ambient/zen/zen_celestial_wash.wav"
+        },
+        {
+          "hash": "445269fd6e198e1797e0ec2c810995203757938520fa9d5be96bf2288d1f7183",
+          "path": "public/audio/ambient/zen/zen_crystal_harmonics.wav"
+        },
+        {
+          "hash": "623645748ae17e882298c6d5bcc0ed45acd5de905799fb14184891a6da8c999a",
+          "path": "public/audio/ambient/zen/zen_deep_earth_drone.wav"
+        },
+        {
+          "hash": "bc3ce9b47e8796fedfa905afc48e8c779053592c7c324a71ffc5c06c614ac883",
+          "path": "public/audio/ambient/zen/zen_ethereal_pad.wav"
+        },
+        {
+          "hash": "96b8f469fcb387adacedfe7e3e9898c7728d133904a45390bdd7cc329e79e781",
+          "path": "public/audio/ambient/zen/zen_om_drone.wav"
+        },
+        {
+          "hash": "68a3f0264eae9881ac1ecadd490d22a9d437f98b75be25803b56a694154d8e9b",
+          "path": "public/audio/ambient/zen/zen_singing_bowl.wav"
+        },
+        {
+          "hash": "db8f4350787e1dcfa0a51d12810071d43f04ef2bd9ad0fad192e7b9704f4c0f6",
+          "path": "public/audio/ambient/zen/zen_warm_fifths.wav"
+        },
+        {
+          "hash": "141f4c2f722e2f2adbe7f893c8a8f81229b0359e78d9440c5eee4fbb97c80479",
+          "path": "public/audio/backspace.wav"
+        },
+        {
+          "hash": "e99859d7cb217408ab06bb46846fbc50620a82a0008681d3554add26a5f74476",
+          "path": "public/audio/error.wav"
+        },
+        {
+          "hash": "db7ba01ee4b25f78288ad37e73d4bcdfc36a8e58d07f02697d7a4f0f638caa6d",
+          "path": "public/audio/key_1.wav"
+        },
+        {
+          "hash": "62b797803f79b0e31f8ca244b863f2dcaec1470989a229220224edf183c0c979",
+          "path": "public/audio/key_2.wav"
+        },
+        {
+          "hash": "df15405df05c560d09cb92a8fd8a0d6fb53dcd6184634ab44403b7edf5414326",
+          "path": "public/audio/key_3.wav"
+        },
+        {
+          "hash": "d78cb404a3a3ac988c304f0344be23fcf57a14952a25ed3e6b796668c23a6dac",
+          "path": "public/audio/key_4.wav"
+        },
+        {
+          "hash": "abd9969f11defbfc9cd56a234ebd9a25514dd7bc2133fad0d85b882274801bfa",
+          "path": "public/audio/return_bell.wav"
+        },
+        {
+          "hash": "bd0af62f04cc823849b5f4e4134d4badbac7e4ce4e816e8a058981bbcc169e01",
+          "path": "public/audio/spacebar.wav"
+        },
+        {
+          "hash": "c3da13993ce871bc1f4d3a5554aa486d8d8898515417f88e03e1939592a5eb5a",
+          "path": "public/logo-150.png"
+        },
+        {
+          "hash": "d9d4ee9ac5eb2ee7f080a4098299c31f8de9c900ef445a692ee67968475f4ba3",
+          "path": "public/logo-192.png"
+        },
+        {
+          "hash": "cd6eae6bf0ac1c888aeb4645bb62afd5561a032469af157a66bd4a6c623eeebf",
+          "path": "public/logo-44.png"
+        },
+        {
+          "hash": "2748489333ec93eb66e35a5bce4641b65dc31c4f8db5e49f967bad14ea81c36a",
+          "path": "public/logo-512.png"
+        },
+        {
+          "hash": "d663ec1e2f001c5a77255f4f5226fc916bfd40b40be3e16398645489fc510f08",
+          "path": "public/logo.svg"
+        },
+        {
+          "hash": "b3d6205f91a0d31633413f18051413832c30c1acdb257d9d7c290ef2bb5809ff",
+          "path": "public/privacy.html"
+        },
+        {
+          "hash": "4a748afd443918bb16591c834c401dae33e87861ab5dbad0811c3a3b4a9214fb",
+          "path": "public/vite.svg"
+        }
+      ],
+      "globs": [
+        "public/**"
+      ],
+      "importConfidence": "full",
+      "name": "public",
+      "origin": "authored",
+      "role": "docs",
+      "testedBy": 0,
+      "unresolvedSites": 0
+    },
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "59d6e09ef0cc1b5ba02752ff3f4d14da92d54dfbd7804190c53973069b3c4b6e",
+          "path": ".gitignore"
+        },
+        {
+          "hash": "f7473ebf926f6ea09990962a60fa8f2b06ecc1859cbd69540662f3f137e5d239",
+          "path": "CHANGELOG.md"
+        },
+        {
+          "hash": "eda56caf04574f0a44ac1134f66c6e694823c992af9717bf3b5be6db905c5767",
+          "path": "CLAUDE.md"
+        },
+        {
+          "hash": "5ae6b3c8f446f0a7cb95176e4dadb91b68aaffb16b3be09f64f5de248b6a973a",
+          "path": "LICENSE"
+        },
+        {
+          "hash": "a6e5e7b805759ea29456f6ac3e0b1ce6dfbbf17328ca28a9a03e00da9ee6fd6a",
+          "path": "LoKeyTyper.appinstaller"
+        },
+        {
+          "hash": "62651075b8f6b359a4d092657d26abe3f3e623d5d629e6f3b3403dc8e21b6259",
+          "path": "README.es.md"
+        },
+        {
+          "hash": "98f91cca480d78eb6ca7c3347f9e1293167dc98fd6355bfcd9afbabfe884b8c6",
+          "path": "README.fr.md"
+        },
+        {
+          "hash": "50c916fdf197eb7770939329748eb4a164f44818fe509fd7a19fbbde1b828f82",
+          "path": "README.hi.md"
+        },
+        {
+          "hash": "d8c3a204dee663aee6c5642410661f57ed32d4986d54b6e8b081334bddde86f9",
+          "path": "README.it.md"
+        },
+        {
+          "hash": "65c93adf9dbf80a5a0a0a98f1fc26098830ac9d4b0a091ac93cd8545fb914f36",
+          "path": "README.ja.md"
+        },
+        {
+          "hash": "d688b29ce9c8344b0238aa31a8af0a14d7fe9fec6a63e5c3ecc5adecbf5b2667",
+          "path": "README.md"
+        },
+        {
+          "hash": "9c8ed45bbe0da4ca42cc10e5151d71948e5393edaf1287b8494bf84adf376c3d",
+          "path": "README.pt-BR.md"
+        },
+        {
+          "hash": "2f6dcdeb9e1c3b37fc8511e6c8e4a826c5fe6440967c683a1e2ad3e06304aae3",
+          "path": "README.zh.md"
+        },
+        {
+          "hash": "3ad63ceeb6e3eafbbc863f91a4e08b54fc5c9e526c66d2ea009b6561d227920d",
+          "path": "SCORECARD.md"
+        },
+        {
+          "hash": "79e3b243bd657d7cb2988c975ea0500693c1792acb8222fc4d11be20cc9475ae",
+          "path": "SECURITY.md"
+        },
+        {
+          "hash": "13fe595a6d418d8d368907edadcc17f22b3435917c616969bb573c180eba78c3",
+          "path": "SHIP_GATE.md"
+        },
+        {
+          "hash": "f09af27f9e01b3916014071870ec6e57a4fce8f666d3046d9cd8c65d21806beb",
+          "path": "ai-ui.config.json"
+        },
+        {
+          "hash": "cbbba13b3e29cb1b3f5acf29a86bbf84892f742ef9ee31bd8e295ad19c3638f0",
+          "path": "codecov.yml"
+        },
+        {
+          "hash": "8c041b0c13235e0f0f8398d146740db56d3bc0109e800d09d310af86e3fbc749",
+          "path": "eslint.config.js"
+        },
+        {
+          "hash": "0ffbb9103bb1ce058986406cd0701f0930aeabb38f079b8b16acdcec6b1bff5e",
+          "path": "index.html"
+        },
+        {
+          "hash": "827c149876fa45e02506e26983e6c4acbee37cf4217ba6ea5090d484d6bfb6bc",
+          "path": "modular.md"
+        },
+        {
+          "hash": "c056e03b4b2e000639e965a2e245a5ca5122042a4fba92298284688f16d73856",
+          "path": "package-lock.json"
+        },
+        {
+          "hash": "a1b210db2696cc0296666b8bf445a500ac504ef5b8d7b70c8f104f3a9c087aa0",
+          "path": "package.json"
+        },
+        {
+          "hash": "1b05f72213e685ecb03d9603118a96f3d476474f52abd18184584ebcbb1944fa",
+          "path": "passport.json"
+        },
+        {
+          "hash": "eab11e2701d4e0606f961e3cd1cd57f6ff188d85186992b4669aefd8a55bd5a6",
+          "path": "personalization_engine.md"
+        },
+        {
+          "hash": "374f669f08b18e67d0a7264fa45b71228017e604fe7f6db8a5c1bd5ba27e5c98",
+          "path": "postcss.config.js"
+        },
+        {
+          "hash": "8cb2556479200e5c55d2bd10c341fd3087e6bb9dca34293e150d18333bcb9f25",
+          "path": "settings.md"
+        },
+        {
+          "hash": "1cd7eed8ba3bc0813e184237a4fb652c472cf86ca09a9b8d326cb66c33587575",
+          "path": "tailwind.config.js"
+        },
+        {
+          "hash": "9fab1476b5ad0e9e0066fafe5a1840d48933099f0aa29c64d581f381a62e64c5",
+          "path": "tsconfig.app.json"
+        },
+        {
+          "hash": "ad28d132ee48d6e23917cf5827cace785d0fc01a44ca68b0dda51cc8c3fd3f52",
+          "path": "tsconfig.json"
+        },
+        {
+          "hash": "882aedd71cb5986a0bc9e11b83b4324836855040ef5e69b95cfc32086edc58f0",
+          "path": "tsconfig.node.json"
+        },
+        {
+          "hash": "0d34414130aa2868d895c54397537027648f151626af6cd7f7388b9b8166e1fd",
+          "path": "tsconfig.tests.json"
+        },
+        {
+          "hash": "d0329779206fc19d830110115d1ee959ae34d6b958dfdce6971403f98f4bd3f4",
+          "path": "vite.config.ts"
+        }
+      ],
+      "globs": [
+        "*"
+      ],
+      "importConfidence": "full",
+      "name": "root",
+      "origin": "authored",
+      "role": "config",
+      "testedBy": 0,
+      "unresolvedSites": 0
+    },
+    {
+      "dynamicReads": 17,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 3,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "exports": [
+            "duration_sec",
+            "main"
+          ],
+          "hash": "444ea0a00cbc66c2b54fcf7ab8acd42026b1865ecd0efd84ac7a13d2cb8516cf",
+          "path": "scripts/audio/check_bed_policy.py"
+        },
+        {
+          "exports": [
+            "main",
+            "measure_lufs"
+          ],
+          "hash": "6b291e1c852e1ce614858cced7af7b9de7de20ebd507f16797a7c2cd6a29ce25",
+          "path": "scripts/audio/check_loudness.py"
+        },
+        {
+          "exports": [
+            "analyze",
+            "main"
+          ],
+          "hash": "250dd30653dd03c32949ee589e306d65db477bb9b81d49b8de344db59aeea7a0",
+          "path": "scripts/audio/check_spectrum.py"
+        },
+        {
+          "exports": [
+            "apply_slow_filter_sweep",
+            "bandpass",
+            "brown_noise",
+            "crossfade_loop",
+            "generate_stem",
+            "highpass",
+            "lfo",
+            "lowpass",
+            "main",
+            "normalize",
+            "pink_noise",
+            "sine_wave",
+            "synth_air_breeze",
+            "synth_air_gentle",
+            "synth_air_soft",
+            "synth_low_bed_bright",
+            "synth_low_bed_deep",
+            "synth_low_bed_warm",
+            "synth_mid_presence_airy",
+            "synth_mid_presence_clean",
+            "synth_mid_presence_focused",
+            "synth_mid_texture_organic",
+            "synth_mid_texture_pad",
+            "synth_mid_texture_shimmer",
+            "synth_room_air",
+            "synth_room_deep",
+            "synth_room_wash",
+            "white_noise"
+          ],
+          "hash": "968eaaf561b0200db2de8fc31c9bfe514c0b5cb0bee8eb0c6160d9f86e4f164e",
+          "path": "scripts/audio/generate_ambient_stems.py"
+        },
+        {
+          "hash": "efd99c6d9377952889c06e1058f236e804a9648632959dc30d07e46c94b8fbf7",
+          "path": "scripts/audio/kept-beds.json"
+        },
+        {
+          "exports": [
+            "load_kept"
+          ],
+          "hash": "506f41c072a932a567ae77ba79624c584e199f73dd13bbfca958619772b0c764",
+          "path": "scripts/audio/kept_beds.py"
+        },
+        {
+          "exports": [
+            "apply_gain",
+            "collect_inputs",
+            "gain_toward",
+            "is_inside",
+            "live_catalog",
+            "main",
+            "master_one",
+            "self_test"
+          ],
+          "hash": "5aebb576ef5526ff8e298ae82dcb3d76e43c7b7d57073688208a468c58b4ea19",
+          "path": "scripts/audio/master_loudness.py"
+        },
+        {
+          "hash": "97d426c84c6610215cad4ac316ccd58fc6287a023b3573b40def63c8daef9d8a",
+          "path": "scripts/audio/requirements.txt"
+        },
+        {
+          "hash": "61c5b81e21060067dadd0fc8f9f1288b8af884798acceb5f3f387885b1380a5d",
+          "path": "scripts/generatePhase2Content.mjs"
+        },
+        {
+          "exports": [
+            "circle",
+            "icon_ambient_air",
+            "icon_ambient_drive",
+            "icon_ambient_soft",
+            "icon_ambient_warm",
+            "icon_ambient_wave",
+            "icon_arrow_left",
+            "icon_arrow_right",
+            "icon_backspace",
+            "icon_bar_chart",
+            "icon_bookmark",
+            "icon_calendar",
+            "icon_check",
+            "icon_checkmark_circle",
+            "icon_chevron_down",
+            "icon_chevron_right",
+            "icon_clock",
+            "icon_cursor",
+            "icon_difficulty",
+            "icon_external",
+            "icon_eye",
+            "icon_eye_off",
+            "icon_filter",
+            "icon_ghost",
+            "icon_grid",
+            "icon_hash",
+            "icon_heart",
+            "icon_home",
+            "icon_info",
+            "icon_keyboard",
+            "icon_kind_challenge",
+            "icon_kind_confidence",
+            "icon_kind_mix",
+            "icon_kind_real_life",
+            "icon_kind_targeted",
+            "icon_list",
+            "icon_logo",
+            "icon_logo_mark",
+            "icon_medal",
+            "icon_medal_bronze",
+            "icon_medal_gold",
+            "icon_medal_silver",
+            "icon_minus",
+            "icon_mode_competitive",
+            "icon_mode_focus",
+            "icon_mode_real_life",
+            "icon_personal_best",
+            "icon_play",
+            "icon_play_circle",
+            "icon_plus",
+            "icon_question",
+            "icon_refresh",
+            "icon_search",
+            "icon_settings",
+            "icon_sound_off",
+            "icon_sound_on",
+            "icon_star",
+            "icon_stat_accuracy",
+            "icon_stat_days",
+            "icon_stat_sessions",
+            "icon_stat_speed",
+            "icon_stat_streak",
+            "icon_timer",
+            "icon_trending_down",
+            "icon_trending_up",
+            "icon_trophy",
+            "icon_type_text",
+            "icon_x_close",
+            "icon_zap",
+            "line",
+            "main",
+            "path",
+            "polyline",
+            "rect",
+            "save"
+          ],
+          "hash": "65247e485ef5382705352512d81ce5c7253cb9517a78abaaa2ed4591dd01bca7",
+          "path": "scripts/icons/generate_icons.py"
+        },
+        {
+          "exports": [
+            "main",
+            "name_to_key",
+            "svg_to_inner"
+          ],
+          "hash": "6eb7b676702d2e3851bca3c3efd642ae82bb8d8c592db01e2e6ea838d85022cc",
+          "path": "scripts/icons/generate_react_icons.py"
+        },
+        {
+          "exports": [
+            "main",
+            "optimize_svg"
+          ],
+          "hash": "696cec6941d03c0d73cb3a982f8c6513d9799c7c2528a6c27e1a43232a8ec95d",
+          "path": "scripts/icons/optimize_icons.py"
+        },
+        {
+          "entry": "rawTrackLocation",
+          "entryRule": 1,
+          "hash": "5bc85acb85022b95da26ed5debfeccd6a80e115eb0184fcf1ef11afd731e4a69",
+          "path": "scripts/qaAmbientAssets.mjs",
+          "sequences": []
+        },
+        {
+          "hash": "b0dda6cbf92d9e9746c4bef9c47cdf3ba4432c187469724aad36c362a5b688f4",
+          "path": "scripts/qaPhase3Novelty.mjs"
+        },
+        {
+          "hash": "f42f0ecbd1c55336f0780e609fd12840d58063b24d382ef35af3318b7d2bc0fe",
+          "path": "scripts/qaPhase3RecommendationSanity.mjs"
+        },
+        {
+          "entry": "readText",
+          "entryRule": 1,
+          "hash": "75886b5b25d0dd07c742d9a712f7b33de3ad451041feaedf7b679e8b484167a0",
+          "path": "scripts/qaSoundDesignManifesto.mjs",
+          "sequences": []
+        },
+        {
+          "hash": "2681022694b717526ae70ea77749d108048781838ad23638d0690257f0343f40",
+          "path": "scripts/smokeRotation.mjs"
+        },
+        {
+          "entry": "validatePackFile",
+          "entryRule": 1,
+          "hash": "21d359310f686c038dcba6ec103663fbb28070dc0e1965e052730578131ce310",
+          "path": "scripts/validatePhase2Content.mjs",
+          "sequences": [
+            {
+              "calls": [
+                {
+                  "line": 36,
+                  "name": "charCodeAt",
+                  "target": null
+                }
+              ],
+              "exported": false,
+              "invokedAtTopLevel": false,
+              "isDefaultExport": false,
+              "name": "xmur3"
+            },
+            {
+              "calls": [
+                {
+                  "line": 36,
+                  "name": "charCodeAt",
+                  "target": null,
+                  "via": "xmur3"
+                }
+              ],
+              "exported": false,
+              "invokedAtTopLevel": false,
+              "isDefaultExport": false,
+              "name": "renderTemplate"
+            },
+            {
+              "calls": [
+                {
+                  "line": 36,
+                  "name": "charCodeAt",
+                  "target": null,
+                  "via": "xmur3"
+                }
+              ],
+              "exported": false,
+              "invokedAtTopLevel": true,
+              "isDefaultExport": false,
+              "name": "validatePackFile"
+            }
+          ]
+        }
+      ],
+      "globs": [
+        "scripts/**"
+      ],
+      "importConfidence": "full",
+      "name": "scripts",
+      "origin": "authored",
+      "outsideReads": 9,
+      "outsideWrites": 2,
+      "role": "code",
+      "testedBy": 0,
+      "unresolvedSites": 3
+    },
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "34ef928e8f38a93d543cf7407b4d1829a647a3513d9501755e8f7d2a963ea49d",
+          "path": "site/astro.config.mjs"
+        },
+        {
+          "hash": "acb6ade4347032e426f25397d3444e3613b5da5f54fb7694ccf967eaad24da2e",
+          "path": "site/package-lock.json"
+        },
+        {
+          "hash": "af861322dc6b5ade5708fb30bad7726348916869f7a5ba170057d1ba60bc530f",
+          "path": "site/package.json"
+        },
+        {
+          "hash": "71538b8c1ec125793420d6dc95e7d0231af714b19e8e906afd43081a9fa9709f",
+          "path": "site/postcss.config.mjs"
+        },
+        {
+          "hash": "ec030f2e4bf6dc57eaca075d390c228b3212cf29db267e32ef92e110de1acdcc",
+          "path": "site/src/content.config.ts"
+        },
+        {
+          "hash": "b568ea7221f23160d9a8856da155b14f56568cc25512c22b7b1795b62e273154",
+          "path": "site/src/content/docs/accessibility.md"
+        },
+        {
+          "hash": "46797b888e7a97bfb12b346c292244abde1842292b9808e38b2049228fe9e342",
+          "path": "site/src/content/docs/beginners.md"
+        },
+        {
+          "hash": "561f71d4364e2e1d6648242c36f2a7082b6433caa355dbde60d64a03490cd506",
+          "path": "site/src/content/docs/getting-started.md"
+        },
+        {
+          "hash": "7fd7140ef3a8705c817a65d839ebcf21809149f4c24e06c7e2c97a6e97e3e424",
+          "path": "site/src/content/docs/index.md"
+        },
+        {
+          "hash": "e478e56054883ab9191b7f1fb62b2c18a8551d5db187664572f961dc9e5ee763",
+          "path": "site/src/content/docs/personalization.md"
+        },
+        {
+          "hash": "337008129cdfaff3fc0b4c50f359e5afb8cac6d9881c1c777eb2bb2e9471f1a8",
+          "path": "site/src/content/docs/practice-modes.md"
+        },
+        {
+          "hash": "249ec7db205aae29a22e17dfea9bae0a9623a91282afdff9044dd8bdfd777bf7",
+          "path": "site/src/content/docs/sound-design.md"
+        },
+        {
+          "hash": "9d8dddc46c99a1863e6980810ca6375e764db806f99696446751cbdc5be1a1d9",
+          "path": "site/src/styles/starlight-custom.css"
+        },
+        {
+          "hash": "61fc24492db9aef7ec38eb91cfeebaef96155014bb5f22648fd8ed2327c6cae2",
+          "path": "site/tsconfig.json"
+        }
+      ],
+      "globs": [
+        "site/**"
+      ],
+      "importConfidence": "full",
+      "name": "site",
+      "origin": "authored",
+      "role": "site",
+      "testedBy": 0,
+      "unresolvedSites": 0
+    },
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [
+        "src/index.css"
+      ],
+      "externals": 0,
+      "files": [
+        {
+          "exports": [
+            "App"
+          ],
+          "hash": "40deae63432a0da164588d69d38b56051d3bb6172796df8e1044d0dbc2d2e9b0",
+          "path": "src/app/App.tsx"
+        },
+        {
+          "exports": [
+            "AudioSettingsPanel"
+          ],
+          "hash": "89087d38f94a4d6bac2b428abf3a8a6fdf133b2bb1e0f25c43e9011281d0d3b8",
+          "path": "src/app/components/AudioSettingsPanel.tsx"
+        },
+        {
+          "hash": "0bd930f04b1b2685be96eb578b2a9a1e2626fa8812160e4545d245ffa44d33c6",
+          "path": "src/app/components/ErrorBoundary.tsx"
+        },
+        {
+          "exports": [
+            "Icon"
+          ],
+          "hash": "e2b64e9cd24f77a96d7a66219f9325c59ba01998a2a8cc0ce0f9a8e69186c64f",
+          "path": "src/app/components/Icon.tsx"
+        },
+        {
+          "hash": "ac07c041c69be168cba6951935d079801ff134673167fbd616e59f4734cc4d91",
+          "importsFiles": [
+            "src/app/App.tsx",
+            "src/app/providers/index.ts",
+            "src/app/shell/index.ts"
+          ],
+          "path": "src/app/index.ts"
+        },
+        {
+          "exports": [
+            "AmbientProvider",
+            "useAmbient"
+          ],
+          "hash": "2b1c38ac78169e592f76de4aec21587aa6b12b68401475f5f1f85e0b07ae48d3",
+          "importsFiles": [
+            "src/app/providers/PreferencesProvider.tsx"
+          ],
+          "path": "src/app/providers/AmbientProvider.tsx"
+        },
+        {
+          "exports": [
+            "PreferencesProvider",
+            "usePreferences"
+          ],
+          "hash": "6323c49528a0a11a7c90976b52ea542a2488e3ffee519af6e4426fe47014427e",
+          "path": "src/app/providers/PreferencesProvider.tsx"
+        },
+        {
+          "hash": "f3752ccfefb1605894e30dea8be29e3590ec1988fec830f98389f52a5a5ccab1",
+          "importsFiles": [
+            "src/app/providers/AmbientProvider.tsx",
+            "src/app/providers/PreferencesProvider.tsx"
+          ],
+          "path": "src/app/providers/index.ts"
+        },
+        {
+          "exports": [
+            "AppShell"
+          ],
+          "hash": "42363246c0e807245ead812dbc931ef6a3d3a0689d647a439265cdce749aded0",
+          "path": "src/app/shell/AppShell.tsx"
+        },
+        {
+          "hash": "1cb117ad9444f3ef84a2322db6c6250e8ea6c0992de784bb10d7632c075d0082",
+          "importsFiles": [
+            "src/app/shell/AppShell.tsx"
+          ],
+          "path": "src/app/shell/index.ts"
+        },
+        {
+          "exports": [
+            "useDocumentTitle"
+          ],
+          "hash": "8c502ccdc04fcdb7fd34e818739bc5edab74748fd467c8cdc0fde39257d93ce7",
+          "path": "src/app/useDocumentTitle.ts"
+        },
+        {
+          "hash": "5edf190cb0c8541af0f355b2ec6c5608ed2fc249efd1cd1c7b91bf510588eb95",
+          "path": "src/assets/icons/ambient-air.svg"
+        },
+        {
+          "hash": "d259392d10ba548d1c86987a89e0095edd27f6946d3a0348252355a657f77f2b",
+          "path": "src/assets/icons/ambient-drive.svg"
+        },
+        {
+          "hash": "a62b19b898e88156e6fbb7245613f0528f42ae858f6785f45d0fed0d1e1f4dc1",
+          "path": "src/assets/icons/ambient-soft.svg"
+        },
+        {
+          "hash": "3dc9c41d16afce19af28a96fea3484872907a78b30ec206c7953e929d49100a8",
+          "path": "src/assets/icons/ambient-warm.svg"
+        },
+        {
+          "hash": "ce46c71e15159223f44f974ead1362cd1decf971d0e6d1b39f4221cd3f44e1d9",
+          "path": "src/assets/icons/ambient-wave.svg"
+        },
+        {
+          "hash": "adacb9a1bc7ac33ead7f09870a5665a9fb3d5b497abbfb2923e66a7811641448",
+          "path": "src/assets/icons/arrow-left.svg"
+        },
+        {
+          "hash": "fc6b99da8409dccf33501af08a13bdeef93871e9ec3bb5e67789b6a8f5338ecd",
+          "path": "src/assets/icons/arrow-right.svg"
+        },
+        {
+          "hash": "4d8a448aa06c6db1c4bea90a58dccc1c309dc563bf2f822a8638e57670e3909e",
+          "path": "src/assets/icons/backspace.svg"
+        },
+        {
+          "hash": "b60cd44ebfee3747a7713fb219166c64f027bedb05cb3231487c8616055d3027",
+          "path": "src/assets/icons/bar-chart.svg"
+        },
+        {
+          "hash": "1e6742b995f8689c19b2f5af97590d3499c57d6d884224c94aca88fa8f7db83f",
+          "path": "src/assets/icons/bookmark.svg"
+        },
+        {
+          "hash": "b44dc91516fc90645a733de8d9536c0f2abcc8ed39243d5cc65c9414c04d8232",
+          "path": "src/assets/icons/calendar.svg"
+        },
+        {
+          "hash": "5f4866f5edb90164a51a23310a048b014056324e2be63c67dc518c7c76fb4854",
+          "path": "src/assets/icons/check.svg"
+        },
+        {
+          "hash": "c86393f94d9dafe94756d25143cae09e2cd1457aa353173a3984f3f59ea5f536",
+          "path": "src/assets/icons/checkmark-circle.svg"
+        },
+        {
+          "hash": "74634f606eed4e76aaa05b3f7103755651e96ef4652684ee108d4e85987bc9c4",
+          "path": "src/assets/icons/chevron-down.svg"
+        },
+        {
+          "hash": "4dadd28b31fc19a4c0509c7649e7f81ab597072b60f190cae9962815c7c68611",
+          "path": "src/assets/icons/chevron-right.svg"
+        },
+        {
+          "hash": "4b3e31f7ccd5adf89b7e66ae7327f1e4d20067ec2ec202f7844a59e579cb5506",
+          "path": "src/assets/icons/clock.svg"
+        },
+        {
+          "hash": "7cef9f1860032854ca4a2e68b69126efb1cbc73f72d5b6bd66ebf44210d88091",
+          "path": "src/assets/icons/cursor.svg"
+        },
+        {
+          "hash": "f33dddaf84a3da5051ef930c5b51a27c8a6f908749598570bf5213de194f90d2",
+          "path": "src/assets/icons/difficulty-1.svg"
+        },
+        {
+          "hash": "2c131f9c8314f65c6c7a7e22d48997faf21aeb9d3e8344bc24cefd631d74fb20",
+          "path": "src/assets/icons/difficulty-2.svg"
+        },
+        {
+          "hash": "85b7dab204a879ebcf6e9e38d63141bb3125bafc4da3bb88b52232d6ea1c165e",
+          "path": "src/assets/icons/difficulty-3.svg"
+        },
+        {
+          "hash": "19265c29ae2f0d432bc2a11fc2db0425845f754ac57478e4a418e2fdb7158b93",
+          "path": "src/assets/icons/difficulty-4.svg"
+        },
+        {
+          "hash": "b5bfbbe8d835dfb3b9591c0eca6e47e4b72c80dfaf88fb6269cb0e901dc150a8",
+          "path": "src/assets/icons/difficulty-5.svg"
+        },
+        {
+          "hash": "19e6c3e366e935d757797c1e0dc528a0a49b8513dd65100c0e7f4fe2d29c10c1",
+          "path": "src/assets/icons/external.svg"
+        },
+        {
+          "hash": "4a41c60c8d9eb19a50aa91615f532accfcf358eefe54eb6914750c2cbf7893d9",
+          "path": "src/assets/icons/eye-off.svg"
+        },
+        {
+          "hash": "abaf77cdf1a782ae129660a8c7f718fd4f3fb63d6207e1a59e106874076e15aa",
+          "path": "src/assets/icons/eye.svg"
+        },
+        {
+          "hash": "f2a9b321ce0987249c6e0db8f9f419714cf265d7868f0b59e542f2adc64754c7",
+          "path": "src/assets/icons/filter.svg"
+        },
+        {
+          "hash": "b1254f143d5af560b1729e05f87c4540a0bd7c98cde931f41f0469ea79254b10",
+          "path": "src/assets/icons/ghost.svg"
+        },
+        {
+          "hash": "7b854976ca68a7fa736d919e39fb4ccc892f9167d91bb226cfa1b704526ab96d",
+          "path": "src/assets/icons/grid.svg"
+        },
+        {
+          "hash": "5e5be8597a373f752811c6aeaf043fde64b11b947f8e4525edbc7fecea0ba304",
+          "path": "src/assets/icons/hash.svg"
+        },
+        {
+          "hash": "64f4a0aae3626f0b440e209313a2008e5ab2a5a8f940a17c5dfcff3735130cbe",
+          "path": "src/assets/icons/heart.svg"
+        },
+        {
+          "hash": "0b9216199cd56f0035ca693d2d96a45eb681020ca477aee12805709a9cc187b6",
+          "path": "src/assets/icons/home.svg"
+        },
+        {
+          "hash": "8800287dad38ef1a898b5cf57c992b0818de5bc694fb5142540ed6c78d9e6989",
+          "path": "src/assets/icons/info.svg"
+        },
+        {
+          "hash": "773785b11981d3cc7ff8472e06e4d589fabb3d04b66fd28d9605219f1056ba35",
+          "path": "src/assets/icons/keyboard.svg"
+        },
+        {
+          "hash": "28373e6f4a8898238deb07f3ed93474b3866e96fa2f1b9921473f08c23555365",
+          "path": "src/assets/icons/kind-challenge.svg"
+        },
+        {
+          "hash": "7364b48fff8ac612a5dedaf7eefc1c0821b1e611fa23dc2d51a425eabda7644f",
+          "path": "src/assets/icons/kind-confidence.svg"
+        },
+        {
+          "hash": "54f99d68ae35f78d7d1710ebf0f05a430f79c5147d3f210ebf574941f4dcb077",
+          "path": "src/assets/icons/kind-mix.svg"
+        },
+        {
+          "hash": "ca22c11c79fd0c72bc4b2d2d47dbac874904d4ce04b7966f05825a2275801afd",
+          "path": "src/assets/icons/kind-real-life.svg"
+        },
+        {
+          "hash": "56ab4a707b96ab3c9526e0de8b5682134a618935a1b8174c64091b496988e03f",
+          "path": "src/assets/icons/kind-targeted.svg"
+        },
+        {
+          "hash": "3abc1962ea479e0bacebfed7e4232d89a95ca325a04f8453a321361d94874ccd",
+          "path": "src/assets/icons/list.svg"
+        },
+        {
+          "hash": "de080dd4c46281dca82e225bbf1d110efc5405a0f2e10b7d9f88df816994a17c",
+          "path": "src/assets/icons/logo-mark.svg"
+        },
+        {
+          "hash": "01e5a1465e84031b62e373805f626fa21fb5c58f602c3211f5a097538b4dc930",
+          "path": "src/assets/icons/logo.svg"
+        },
+        {
+          "hash": "f79ae6f55a953f60ec3f57b95fe5592d6d8f408f167b282e0f302a1a2f4b929d",
+          "path": "src/assets/icons/medal-bronze.svg"
+        },
+        {
+          "hash": "03c54a81088f61ad4166f70c022af429fc43f28a729cfc53882c104163bbad2c",
+          "path": "src/assets/icons/medal-gold.svg"
+        },
+        {
+          "hash": "b61afed1b5c9e7598af44c0c1a42408a3e0de97f2f69edbbace04329c80e2859",
+          "path": "src/assets/icons/medal-silver.svg"
+        },
+        {
+          "hash": "9867abe377f649c052d4cc15b9e803903d6aec32e1d17bdeb633b7a82af542a7",
+          "path": "src/assets/icons/medal.svg"
+        },
+        {
+          "hash": "c299fbd3c6a1699e2d2a0599fe9fd9f68f683efb093a6fd1a8ba51d2e580cc91",
+          "path": "src/assets/icons/minus.svg"
+        },
+        {
+          "hash": "169fe8fca47eeba4a1c757a165edfe815f32f02c77ce301e7cbaa8cbcadab21b",
+          "path": "src/assets/icons/mode-competitive.svg"
+        },
+        {
+          "hash": "1e2be2a608dc2feb461a8b4af6d940401daa23f8b77a5170c9398136e7e588c9",
+          "path": "src/assets/icons/mode-focus.svg"
+        },
+        {
+          "hash": "90b5509f8b1ca32e0d241d6b313e0e47f4469ebf74d9b2945582302009a8e8c9",
+          "path": "src/assets/icons/mode-real-life.svg"
+        },
+        {
+          "hash": "f8090c6f29453b12776e1cb0a9ad8a7f56527ad13e193c4b1cf317cbf7059f93",
+          "path": "src/assets/icons/personal-best.svg"
+        },
+        {
+          "hash": "605cc8ff68fbdf070803e48db2d168b6fe248cd9a985b937ef3a9f6a1ec4fd2a",
+          "path": "src/assets/icons/play-circle.svg"
+        },
+        {
+          "hash": "fd3e21d41631bb9770efc75e7dada1053095fd73c66130ef7afd912a2a98e5ee",
+          "path": "src/assets/icons/play.svg"
+        },
+        {
+          "hash": "390a008f5a6edca103dd6dc0ca7d564041947fa2434b931e0813b9ab0f9b04c2",
+          "path": "src/assets/icons/plus.svg"
+        },
+        {
+          "hash": "aa4b5a5d3498609402e0a7589fce42c3f2cbcb5e8dc3dba153bfb385a7b42a07",
+          "path": "src/assets/icons/question.svg"
+        },
+        {
+          "hash": "aad93b32420c0ff00f0161b19e19b8e1b1af492ff03a58bc089448b84e17a8af",
+          "path": "src/assets/icons/refresh.svg"
+        },
+        {
+          "hash": "e5879918d7bb6b75665a81105d487995541e18bd5d41bb33e344de2a7b8d7ad9",
+          "path": "src/assets/icons/search.svg"
+        },
+        {
+          "hash": "9f132b641a5f20c977b511a7a1a35ca41d9b17186747e151723c9db44ed566d1",
+          "path": "src/assets/icons/settings.svg"
+        },
+        {
+          "hash": "1e43902fe2146f7d16e7c2d087290561d34ee4a5e5f45001961a9933f46cb8ca",
+          "path": "src/assets/icons/sound-off.svg"
+        },
+        {
+          "hash": "66441bceb3bed92e756052434f8b9bc87c667598f35e728c25ed76c296480986",
+          "path": "src/assets/icons/sound-on.svg"
+        },
+        {
+          "hash": "5da7979a2fa07874ca0083ee266d86563c0319c1feda5f6583f0bbb43c9e6c35",
+          "path": "src/assets/icons/star.svg"
+        },
+        {
+          "hash": "2986943a7b9151b99203ff356fefa9e35fb0d8e87ceff11c2a4936dd3d280012",
+          "path": "src/assets/icons/stat-accuracy.svg"
+        },
+        {
+          "hash": "a4678cf7797f80fa4f0d28d95136bae3cb44964091813f214f06140042e9c9df",
+          "path": "src/assets/icons/stat-days.svg"
+        },
+        {
+          "hash": "263d9e5efaf96f58f9afff7011ca80ff44eba687db07446fdfaf536d221f2bb0",
+          "path": "src/assets/icons/stat-sessions.svg"
+        },
+        {
+          "hash": "5c844b637df1005b73862e5118ee323255308df7b0aec9139ecceefc9dd561ab",
+          "path": "src/assets/icons/stat-speed.svg"
+        },
+        {
+          "hash": "71bab6f7b565ccdf4bfc01d98917016437f8a17d4c556d4c647c9a7e992ee73a",
+          "path": "src/assets/icons/stat-streak.svg"
+        },
+        {
+          "hash": "cea497037f55ed305d0ed0c3257b613c3261152aaf3f7618b80b214764885de5",
+          "path": "src/assets/icons/timer.svg"
+        },
+        {
+          "hash": "e76a8431ba146de49356738812b204774127aa63651bd757e0643bc32583025f",
+          "path": "src/assets/icons/trending-down.svg"
+        },
+        {
+          "hash": "cc544ce0db2eba42344314950a3dc3055e4a0b5340d63eb489d25d8bbbfbbb9c",
+          "path": "src/assets/icons/trending-up.svg"
+        },
+        {
+          "hash": "2286a008d4559699489510a64d427f61c006ff90ca3641cd940f069fe5b019d1",
+          "path": "src/assets/icons/trophy.svg"
+        },
+        {
+          "hash": "5daa134d1911c6e41b48d95ac12360834bfe0da972cc201e6ea15a5f1df72ce5",
+          "path": "src/assets/icons/type-text.svg"
+        },
+        {
+          "hash": "a8c5ab9c77aea9280e0e6d206d39b37d3f70fd09df318e9ca82e50c4703b8418",
+          "path": "src/assets/icons/x-close.svg"
+        },
+        {
+          "hash": "28373e6f4a8898238deb07f3ed93474b3866e96fa2f1b9921473f08c23555365",
+          "path": "src/assets/icons/zap.svg"
+        },
+        {
+          "hash": "35ef61ed53b323ae94a16a8ec659b3d0af3880698791133f23b084085ab1c2e5",
+          "path": "src/assets/react.svg"
+        },
+        {
+          "exports": [
+            "chooseCanonicalExercise",
+            "lowerMedianDifficulty",
+            "normalizePassageText",
+            "passageKey"
+          ],
+          "hash": "311105d84d40cc0b0b66690ff1150349b0eb0567c89901f7e0614dc13fcedceb",
+          "importsFiles": [
+            "src/content/types.ts"
+          ],
+          "path": "src/content/catalog.ts"
+        },
+        {
+          "hash": "3ce65d74ec33267b119331ce91e9c9cd375ddf5a3e3f289d1b42c63a33525a7a",
+          "importsFiles": [
+            "src/content/loadPacks.ts",
+            "src/content/types.ts"
+          ],
+          "path": "src/content/index.ts"
+        },
+        {
+          "exports": [
+            "findExercise",
+            "loadAllPacks",
+            "loadExercisesByMode"
+          ],
+          "hash": "c98d3d842a81a09e647aa010d6f380da279b949eb30f7178b40a91c731d9860a",
+          "importsFiles": [
+            "src/content/catalog.ts",
+            "src/content/types.ts"
+          ],
+          "path": "src/content/loadPacks.ts"
+        },
+        {
+          "hash": "b4a298cc8832e2151369fdd8b488a45d376a48bd0156d6d2cad4c5b5bed51daa",
+          "path": "src/content/packs/competitive_mixed_01.json"
+        },
+        {
+          "hash": "dc238b84452bc622d3bc9b08acd6b44e0ee59a7f3d560e66e7d2e9e5994c8a5c",
+          "path": "src/content/packs/competitive_mixed_02.json"
+        },
+        {
+          "hash": "19877a68dcfcfe1b9a54239f71c50421677f51d640585ffbe5a8334472d19f47",
+          "path": "src/content/packs/competitive_templates.json"
+        },
+        {
+          "hash": "d92d96d2a2d7ece88723c4b9717edbd68328d58d9b04fee49f10117110be56f0",
+          "path": "src/content/packs/focus_calm_01.json"
+        },
+        {
+          "hash": "bf91503042bd13fed00a5ac051fc7db619ed41bf6f2adc94bb940d9a54487c18",
+          "path": "src/content/packs/focus_calm_02.json"
+        },
+        {
+          "hash": "a465f559d450a3052e2338044c3207b358c96dc7dd8153e8db2876a60d2da9ff",
+          "path": "src/content/packs/focus_calm_03.json"
+        },
+        {
+          "hash": "c8c7ee4acb2d549b5aa5d5357a76125573e4b14b87849c1e6204d43c193675b1",
+          "path": "src/content/packs/real_life_admin_forms_01.json"
+        },
+        {
+          "hash": "c4ec247e67897784b5d73e0a4f002548f45c9890790e5a17d42f4a364a93456c",
+          "path": "src/content/packs/real_life_admin_templates.json"
+        },
+        {
+          "hash": "b79a2920a4e73e84910dd3783cb00b570b2d9f05857ffcc73cf69efd2b57cae5",
+          "path": "src/content/packs/real_life_email_01.json"
+        },
+        {
+          "hash": "fa43ac3dd58278714b1322a8ec5731dfa3e76c6493cb3107f14053a59c8904d6",
+          "path": "src/content/packs/real_life_email_02.json"
+        },
+        {
+          "hash": "dc855523272ee9a201eb4a24aa76dc33081ff6fa61d6f61f0335acee00edaf3a",
+          "path": "src/content/packs/real_life_email_templates.json"
+        },
+        {
+          "hash": "0aa6d053c22aa45d7c4f4fc3e235923480750a1b4aa09408d392e53a62d57786",
+          "path": "src/content/packs/real_life_journal_01.json"
+        },
+        {
+          "hash": "05babf1abeb778622cef9d0507f32f8483582552d1536c2b7ef2fb31a3314267",
+          "path": "src/content/packs/real_life_journal_templates.json"
+        },
+        {
+          "hash": "d17efb8a6da479d2a24181cff019a12c9c341298d68fc14d8f56e4018c9e3e40",
+          "path": "src/content/packs/real_life_meetings_notes_01.json"
+        },
+        {
+          "hash": "37999f314e471f3c1f17167fce498714526d2ec22d1aa002fee155f76f1257b9",
+          "path": "src/content/packs/real_life_meetings_templates.json"
+        },
+        {
+          "hash": "aee44b39b71bf52329e213c35fa51530911338f55c1fa4451889ebf2e0f69708",
+          "path": "src/content/packs/real_life_support_01.json"
+        },
+        {
+          "hash": "c357870eac6a73c5ad3335b907bc0528893f36844c02948c85013199bb887f33",
+          "path": "src/content/packs/real_life_support_templates.json"
+        },
+        {
+          "hash": "a71a41b67d40694070a67e65dbb6b272081a28b244f1dd40a9ad78829ee9d3be",
+          "path": "src/content/packs/real_life_texts_01.json"
+        },
+        {
+          "hash": "226a71bbc04c9097f5e290e92d1ab2c6569371b4228d7796ff4c0ee2cd18c314",
+          "path": "src/content/packs/real_life_texts_02.json"
+        },
+        {
+          "hash": "7798c24e6c7ed4f715bb2c192f26c0412a54343f2fd8d1ff9795af5ff3218444",
+          "path": "src/content/packs/real_life_texts_templates.json"
+        },
+        {
+          "hash": "1648a4ee9f2df0a056188b0b9e49da0a52eb5abeb9e5bdc26b2e77a3109bce71",
+          "path": "src/content/phase2/accessibility_presets.json"
+        },
+        {
+          "hash": "40a0928d918cc289e9935cc5838729ed2bea3b230e3c09b138d6f5b59b6fb386",
+          "path": "src/content/phase2/content_index.json"
+        },
+        {
+          "hash": "78aa89e2c9980949b99fbd2c127f9e2a485cd1c40e69e05f6eff0b4c3a4d0a67",
+          "path": "src/content/phase2/micro_feedback_rules_v2.json"
+        },
+        {
+          "hash": "2070b16d6168a2c2f20641c87d3bc17ff638cef79a2799df9dc14b2de597c193",
+          "path": "src/content/phase2/schemas/accessibility_presets.schema.json"
+        },
+        {
+          "hash": "3dca464e11e2bf54b83652b2584d213f95eaad6afbaa34fe24bdbd2a37de7926",
+          "path": "src/content/phase2/schemas/exercise_template.schema.json"
+        },
+        {
+          "hash": "e51c02ee44b695c21b02dfdcd5e614cf6bfcb58e3063e1030218909e4115445b",
+          "path": "src/content/phase2/schemas/micro_feedback_rules_v2.schema.json"
+        },
+        {
+          "hash": "c83915aecbedc51d13c8dc241146dc4d2832b9c683b9e74c333418070033f76e",
+          "path": "src/content/phase2/schemas/user_settings.schema.json"
+        },
+        {
+          "hash": "553378eef48287bc065d0263d4ab517811ebcec742a3b728f02728c3bc5b8419",
+          "path": "src/content/phase2/ui_strings_accessible.json"
+        },
+        {
+          "hash": "29d64952ce8c13a2cf3f1e1c0455e0ef264bdb5a7049bd50ba9fca536ce8ebf5",
+          "path": "src/content/phase3/schemas/user_skill_model.schema.json"
+        },
+        {
+          "hash": "ef637b2ce2cb8a1259eca903f2fc7fbff67ce074c717978a14c88e4ec204a89a",
+          "path": "src/content/types.ts"
+        },
+        {
+          "hash": "d34c3d6264c6a503fee2d1fb4da7219c2ba6409e5ae48ec257f566c1bfdadfa4",
+          "importsFiles": [
+            "src/features/daily/pages/DailySetPage.tsx"
+          ],
+          "path": "src/features/daily/index.ts"
+        },
+        {
+          "exports": [
+            "DailySetPage"
+          ],
+          "hash": "1612fa4bc8f79e1e68692e4c29c678086bc950d94af84a246c702cb1d4a401ad",
+          "path": "src/features/daily/pages/DailySetPage.tsx"
+        },
+        {
+          "hash": "4f88a7b86402295305a97b889e759f3720a30da679dd00ea31e9eb8d9998abe0",
+          "importsFiles": [
+            "src/features/home/pages/HomePage.tsx"
+          ],
+          "path": "src/features/home/index.ts"
+        },
+        {
+          "exports": [
+            "HomePage"
+          ],
+          "hash": "ccbe5d3a0d440cb051b967cb3c8af214cade98013f06302d876f2f53e3562d19",
+          "path": "src/features/home/pages/HomePage.tsx"
+        },
+        {
+          "hash": "e7320586676fa096609567ffbe89307def6619446ece9f718da069326d0648b0",
+          "importsFiles": [
+            "src/features/daily/index.ts",
+            "src/features/home/index.ts",
+            "src/features/modes/index.ts",
+            "src/features/run/index.ts",
+            "src/features/study/index.ts",
+            "src/features/typing/index.ts"
+          ],
+          "path": "src/features/index.ts",
+          "reexportsAll": [
+            "src/features/daily/index.ts",
+            "src/features/home/index.ts",
+            "src/features/modes/index.ts",
+            "src/features/run/index.ts",
+            "src/features/study/index.ts",
+            "src/features/typing/index.ts"
+          ]
+        },
+        {
+          "hash": "2f212f74c735899714c0783d375e02864b69426d0f9389c28654236b1dc98384",
+          "importsFiles": [
+            "src/features/modes/pages/ModePage.tsx"
+          ],
+          "path": "src/features/modes/index.ts"
+        },
+        {
+          "exports": [
+            "ModePage"
+          ],
+          "hash": "f1a23d5cb2185577241b75b5e72fb5e776b4dd36e1d7116382bea245a79e4eca",
+          "path": "src/features/modes/pages/ModePage.tsx"
+        },
+        {
+          "hash": "8179e5d74d9f77eb19f55551892e6d5a1653a36e551fdf9796a088e8743615d6",
+          "importsFiles": [
+            "src/features/run/pages/RunPage.tsx"
+          ],
+          "path": "src/features/run/index.ts"
+        },
+        {
+          "exports": [
+            "RunPage"
+          ],
+          "hash": "efbeb1c8ff3df76c6f3144bb369e4b27f16a1b142e2a54199f0a9de85a8df20e",
+          "path": "src/features/run/pages/RunPage.tsx"
+        },
+        {
+          "hash": "2fd26912c604807a0be9cae00ab0babcd56a14a58126a39105c087016d6c040f",
+          "importsFiles": [
+            "src/features/study/pages/StudyPage.tsx"
+          ],
+          "path": "src/features/study/index.ts"
+        },
+        {
+          "exports": [
+            "StudyPage"
+          ],
+          "hash": "bc02bc113d997a6b3e752bc8a5b5541a921e7ac8196c73458fa221ea82eee691",
+          "path": "src/features/study/pages/StudyPage.tsx"
+        },
+        {
+          "exports": [
+            "TypingOverlay"
+          ],
+          "hash": "cd05ec5d8ec12c550316e57f30292a7e66f85c40c2f98022e507c2489ddd9bf3",
+          "path": "src/features/typing/TypingOverlay.tsx"
+        },
+        {
+          "exports": [
+            "TypingSession"
+          ],
+          "hash": "46ec14609f88ff07697877b2e478f57a24f9b43bc701e5e86060ac37436d327a",
+          "importsFiles": [
+            "src/features/typing/TypingOverlay.tsx"
+          ],
+          "path": "src/features/typing/TypingSession.tsx"
+        },
+        {
+          "hash": "7f139d789d4b3a28f549454c4cf13bf1b5fd2ccf2d2a3943b24f69e39551264a",
+          "importsFiles": [
+            "src/features/typing/TypingOverlay.tsx",
+            "src/features/typing/TypingSession.tsx"
+          ],
+          "path": "src/features/typing/index.ts"
+        },
+        {
+          "hash": "039b51c25e36dfdc6e6360a75fbc04784289ee4b7c7e029133107c5173897694",
+          "path": "src/index.css"
+        },
+        {
+          "hash": "5f1cc13a6477dcff6044e94a5e539b4ac05218f8023707f4b7aae6e91111a389",
+          "importsFiles": [
+            "src/lib/ambient/ambientPlayerV3.ts"
+          ],
+          "path": "src/lib/ambient.ts"
+        },
+        {
+          "hash": "5c88833bb3981dc50f14cd5b8d7c9212f1c5230263911c57f4ea16971875e93e",
+          "path": "src/lib/ambient/ambientHistoryV3.ts"
+        },
+        {
+          "hash": "fcea6fcaece01e7e0c6f785d2d15b348808f604a22e15b2a427fae61d55728d8",
+          "importsFiles": [
+            "src/lib/ambient/ambientHistoryV3.ts",
+            "src/lib/ambient/loopJoin.ts",
+            "src/lib/ambient/lruBufferCache.ts",
+            "src/lib/ambientManifest.ts",
+            "src/lib/audioContext.ts"
+          ],
+          "path": "src/lib/ambient/ambientPlayerV3.ts"
+        },
+        {
+          "exports": [
+            "repairLoopHead"
+          ],
+          "hash": "cd8d7ab9f69cbbdfa62cd7cbe34c2aa5050861574e266a8ce01a09be8d5260a7",
+          "path": "src/lib/ambient/loopJoin.ts"
+        },
+        {
+          "hash": "ad7524a56343fa6bab36921f6049b8f4620cce3f04b3d57a62a1d82bb90852a7",
+          "path": "src/lib/ambient/lruBufferCache.ts"
+        },
+        {
+          "exports": [
+            "ambientCategoriesInTracks",
+            "fetchAmbientManifest"
+          ],
+          "hash": "1f2f885693cf309827eefef6b442657f446752847a8a992f11189267090f405a",
+          "path": "src/lib/ambientManifest.ts"
+        },
+        {
+          "exports": [
+            "attackOffsetSamples"
+          ],
+          "hash": "d63fd0dd6c307e0c7c0ef8ce5d2f92f8a439c69e60f2f92a0f9e84be2d736f7c",
+          "path": "src/lib/attackOffset.ts"
+        },
+        {
+          "hash": "dde62a62e97c99ddfd45a4d05b0e58f7100c8a252011087414a282b37ce5c676",
+          "importsFiles": [
+            "src/lib/attackOffset.ts",
+            "src/lib/audioContext.ts",
+            "src/lib/keyboardVoice.ts"
+          ],
+          "path": "src/lib/audio.ts"
+        },
+        {
+          "exports": [
+            "getAudioContext",
+            "resumeAudioContext"
+          ],
+          "hash": "96c0f27e1b550bd3649386593dab1556f7fbcc2baeec62dba5d818bc420c9a6d",
+          "path": "src/lib/audioContext.ts"
+        },
+        {
+          "exports": [
+            "getPoolStatus",
+            "pickNextExercise"
+          ],
+          "hash": "1ef36f76addd0288629fbbc0b3ccbd5039156b3db88ffa8ff9d690c4baddfaef",
+          "importsFiles": [
+            "src/lib/keyboardPassage.ts",
+            "src/lib/passageShape.ts",
+            "src/lib/repeatPassage.ts",
+            "src/lib/storage.ts",
+            "src/lib/templateRender.ts"
+          ],
+          "path": "src/lib/contentEngine.ts"
+        },
+        {
+          "exports": [
+            "dailyResumeIndex",
+            "generateDailySet",
+            "loadDailyProgress",
+            "localDateKey",
+            "saveDailyProgress"
+          ],
+          "hash": "17bcd6df84dc45ece57def23495207f638f89f4daedbcbd46705803817efe258",
+          "importsFiles": [
+            "src/lib/passageShape.ts",
+            "src/lib/storage.ts"
+          ],
+          "path": "src/lib/dailySet.ts"
+        },
+        {
+          "exports": [
+            "enforceAccessibilityLocks",
+            "getEffectiveAmbientEnabled",
+            "isAmbientLockedOff"
+          ],
+          "hash": "09a2728d6f7d64bedda461656559a66f06ab60bb9edfe42b47e5284c6b24d450",
+          "path": "src/lib/effectivePrefs.ts"
+        },
+        {
+          "exports": [
+            "buildFeedback"
+          ],
+          "hash": "3c6a843b93b04cf644437e8c729e81f7377d5c7b1a2573db86898b6e7548a1b6",
+          "path": "src/lib/feedback.ts"
+        },
+        {
+          "hash": "6cc02543f103ab0fbdd9a07497b7c1a2387ca8a09a3f8079e4073d5a7d5070b7",
+          "importsFiles": [
+            "src/lib/public/index.ts"
+          ],
+          "path": "src/lib/index.ts",
+          "reexportsAll": [
+            "src/lib/public/index.ts"
+          ]
+        },
+        {
+          "exports": [
+            "keyboardPassage"
+          ],
+          "hash": "88bda26077072e9740bcc3b1667726e87d31470f5c2c487dee19f727ddacc021",
+          "path": "src/lib/keyboardPassage.ts"
+        },
+        {
+          "exports": [
+            "isKeyboardVoice"
+          ],
+          "hash": "8e7a269c7ac94ebc639ae129b3db5f232a461ca362f0cbf143d05ad4cbb14d41",
+          "path": "src/lib/keyboardVoice.ts"
+        },
+        {
+          "exports": [
+            "modeLabel",
+            "modeToPath",
+            "pathToMode",
+            "preferredQuickstartMode"
+          ],
+          "hash": "40b8357ce6b6fccaa65d699161007c8131317d41e5b22a5a22fafd839663bd30",
+          "importsFiles": [
+            "src/lib/storage.ts"
+          ],
+          "path": "src/lib/mode.ts"
+        },
+        {
+          "exports": [
+            "isMultilinePassage",
+            "isScreenReaderSafePassage",
+            "tagMatches",
+            "weaknessForTag"
+          ],
+          "hash": "7fa2caef65ef093048e5c1691ed90299837b9c169a73438679acead9e1499d06",
+          "path": "src/lib/passageShape.ts"
+        },
+        {
+          "hash": "de546dd4c6ca4c50a291fbf770cfa501a122a9e5601826dc579395aadf968acc",
+          "importsFiles": [
+            "src/lib/ambient.ts",
+            "src/lib/audio.ts",
+            "src/lib/contentEngine.ts",
+            "src/lib/dailySet.ts",
+            "src/lib/effectivePrefs.ts",
+            "src/lib/feedback.ts",
+            "src/lib/keyboardVoice.ts",
+            "src/lib/mode.ts",
+            "src/lib/recommendations.ts",
+            "src/lib/skillModel.ts",
+            "src/lib/storage.ts",
+            "src/lib/studyLibrary.ts",
+            "src/lib/studyStore.ts",
+            "src/lib/templateRender.ts",
+            "src/lib/typing.ts",
+            "src/lib/typingMetrics.ts"
+          ],
+          "path": "src/lib/public/index.ts",
+          "reexportsAll": [
+            "src/lib/effectivePrefs.ts",
+            "src/lib/feedback.ts",
+            "src/lib/mode.ts",
+            "src/lib/typing.ts",
+            "src/lib/typingMetrics.ts"
+          ]
+        },
+        {
+          "exports": [
+            "getNextRecommendations"
+          ],
+          "hash": "cf43dc394b13ccc6b7918ad5339031c96af79c91024f0b5276f6565760addee6",
+          "importsFiles": [
+            "src/lib/passageShape.ts",
+            "src/lib/storage.ts"
+          ],
+          "path": "src/lib/recommendations.ts"
+        },
+        {
+          "exports": [
+            "competitiveMinLength",
+            "repeatPassage"
+          ],
+          "hash": "c0d755e1b60857d8e2ad2c078888106ec5eac34069437333c2a8bb2d88b71543",
+          "path": "src/lib/repeatPassage.ts"
+        },
+        {
+          "exports": [
+            "computeErrorHotspots",
+            "noteMistake",
+            "updateSkillModelFromRun"
+          ],
+          "hash": "6bac53b4abac695ee71e0fe0011520874f3b6f114da39d52d0bce1ceebc3062b",
+          "importsFiles": [
+            "src/lib/storage.ts"
+          ],
+          "path": "src/lib/skillModel.ts"
+        },
+        {
+          "exports": [
+            "appendRun",
+            "bestAccuracyForExercise",
+            "bestWpmForExercise",
+            "getOrCreateUserId",
+            "getPersonalBest",
+            "loadLastMode",
+            "loadPersonalBests",
+            "loadPreferences",
+            "loadRecents",
+            "loadRuns",
+            "loadSkillModel",
+            "maybeUpdatePersonalBest",
+            "pushRecent",
+            "resetPreferencesToDefaults",
+            "sanitizePreferences",
+            "saveLastMode",
+            "savePreferences",
+            "saveSkillModel",
+            "topCompetitiveRuns"
+          ],
+          "hash": "bd95e58e6db927ddb12f705cbcfa608578e40bdbc79521603eabca6b78e9457f",
+          "importsFiles": [
+            "src/lib/ambientManifest.ts",
+            "src/lib/effectivePrefs.ts",
+            "src/lib/keyboardVoice.ts"
+          ],
+          "path": "src/lib/storage.ts"
+        },
+        {
+          "exports": [
+            "activeStudySource",
+            "addStudySource",
+            "advanceStudyPlace",
+            "chunkStudyText",
+            "emptyStudyLibrary",
+            "ensureStudyDeck",
+            "openStudySource",
+            "projectStudy",
+            "removeStudySource",
+            "restartStudySource",
+            "setStudyOrder",
+            "shuffleStudyDeck",
+            "studyLibraryFromUnknown",
+            "studyNameFromFile",
+            "studySourceFromText"
+          ],
+          "hash": "c8de6e8ac1de925f95761be19d88140075354688d20ab4c17100a561e3097570",
+          "path": "src/lib/studyLibrary.ts"
+        },
+        {
+          "exports": [
+            "createIndexedDbStudyStore",
+            "createMemoryStudyStore"
+          ],
+          "hash": "6b58054a2d758db95ed08050ad0199ca78223684895530caff4eff67c2c80340",
+          "importsFiles": [
+            "src/lib/studyLibrary.ts"
+          ],
+          "path": "src/lib/studyStore.ts"
+        },
+        {
+          "exports": [
+            "isTemplateExercise",
+            "renderTemplateExercise"
+          ],
+          "hash": "28f949c7c4b743911d48a6dad6a99c78c36e0443d044867296df0680536ed8a9",
+          "path": "src/lib/templateRender.ts"
+        },
+        {
+          "exports": [
+            "clamp",
+            "computeStats",
+            "formatMs"
+          ],
+          "hash": "055ad110f4b5fe3238f0fcdf005c72e28dcc1eb61be3664d7e2c05d67670b038",
+          "path": "src/lib/typing.ts"
+        },
+        {
+          "exports": [
+            "acceptTypingEdit",
+            "addedSpan",
+            "graphemesOf"
+          ],
+          "hash": "9ae7a7c8d92c449250a4c5126051ef945d666f43ed6f7a134b7ab3586219de3f",
+          "path": "src/lib/typingEdit.ts"
+        },
+        {
+          "exports": [
+            "computeLiveMetrics"
+          ],
+          "hash": "4a34a5bea8a08f3e525ffca4e897258e1d076bc4cddef136620e850c12fedab1",
+          "path": "src/lib/typingMetrics.ts"
+        },
+        {
+          "hash": "d06ffed45ccb13c06956cb3b825af7e1e0ec483e02d0fccb7b1ea68369e76382",
+          "importsFiles": [
+            "src/index.css"
+          ],
+          "path": "src/main.tsx"
+        }
+      ],
+      "globs": [
+        "src/**"
+      ],
+      "importConfidence": "full",
+      "name": "src",
+      "origin": "mixed",
+      "role": "code",
+      "testedBy": 25,
+      "unresolvedSites": 31
+    },
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "0a20881b615580e93b4d311bb1eedf70a665efdba7ed72f338e2129859fa0d61",
+          "path": "store-assets/STORE_LISTING.md"
+        },
+        {
+          "hash": "455bb337fa5cbe4e7d4efb2ed67f4721718bbd1c53aa672c63d302a21a2d91a5",
+          "path": "store-assets/StoreLogo_300x300.png"
+        },
+        {
+          "hash": "3b5d6cfc900f043e8148ab9499dbcda2cd8c4fa9752c2dfdd1404e1a10f13e14",
+          "path": "store-assets/WidePromo_1366x768.png"
+        }
+      ],
+      "globs": [
+        "store-assets/**"
+      ],
+      "importConfidence": "full",
+      "name": "store-assets",
+      "origin": "authored",
+      "role": "docs",
+      "testedBy": 0,
+      "unresolvedSites": 0
+    },
+    {
+      "dynamicReads": 0,
+      "dynamicSpawns": 0,
+      "dynamicSpawnsInTests": 0,
+      "dynamicWrites": 0,
+      "entryPoints": [],
+      "externals": 0,
+      "files": [
+        {
+          "hash": "cb5e8186b11335293fb7fdcd9cd3ffe372b6ff791ffc567a5c396e516e137fae",
+          "path": "tests/ambientCatalog.test.ts"
+        },
+        {
+          "hash": "3256a13e194ec06cd0e1437fe17528f373dc38ad4dd74185ee4b4bdb9b659740",
+          "importsFiles": [
+            "src/lib/ambient.ts",
+            "src/lib/ambient/ambientPlayerV3.ts",
+            "src/lib/ambientManifest.ts"
+          ],
+          "path": "tests/ambientPlayer.test.ts"
+        },
+        {
+          "hash": "30546ffa548bbbe1acea86885638a28c5d08c282f0b1c5166560656be39523dc",
+          "importsFiles": [
+            "src/lib/ambient.ts"
+          ],
+          "path": "tests/ambientVisibility.test.ts"
+        },
+        {
+          "hash": "dac4d11e65de62ca3350e8b27705a26034755ee5d0923e39994351d9c52e4e9e",
+          "importsFiles": [
+            "src/lib/attackOffset.ts"
+          ],
+          "path": "tests/attackOffset.test.ts"
+        },
+        {
+          "hash": "175a69a31e2febe57d9749352b3176c2734b9999531e309e25ad61e5b2387230",
+          "importsFiles": [
+            "src/lib/audio.ts"
+          ],
+          "path": "tests/audio.test.ts"
+        },
+        {
+          "hash": "15b0a999c09af248d211373d2c2cc033acc3deabf393f5cb415067a49c1bdd61",
+          "importsFiles": [
+            "src/content/catalog.ts",
+            "src/content/loadPacks.ts"
+          ],
+          "path": "tests/catalog.test.ts"
+        },
+        {
+          "hash": "04f8aac6d506e1d4ae7af88997313d91bbeffe0ffa85927db608f9d166d1e8c2",
+          "importsFiles": [
+            "src/lib/ambient/ambientPlayerV3.ts",
+            "src/lib/audio.ts"
+          ],
+          "path": "tests/coverageAudio.test.ts"
+        },
+        {
+          "hash": "210f06bc3d23088d70bd1f076cc562f5e7ea6067db1948e961f6d1230622231b",
+          "importsFiles": [
+            "src/content/loadPacks.ts",
+            "src/content/types.ts",
+            "src/lib/ambient/ambientHistoryV3.ts",
+            "src/lib/ambient/lruBufferCache.ts",
+            "src/lib/ambientManifest.ts",
+            "src/lib/attackOffset.ts",
+            "src/lib/audioContext.ts",
+            "src/lib/contentEngine.ts",
+            "src/lib/dailySet.ts",
+            "src/lib/feedback.ts",
+            "src/lib/index.ts",
+            "src/lib/mode.ts",
+            "src/lib/passageShape.ts",
+            "src/lib/public/index.ts",
+            "src/lib/recommendations.ts",
+            "src/lib/repeatPassage.ts",
+            "src/lib/skillModel.ts",
+            "src/lib/storage.ts",
+            "src/lib/typing.ts"
+          ],
+          "path": "tests/coverageGaps.test.ts"
+        },
+        {
+          "hash": "26a0f3828b6e6293b74bb225ced315ddf44fbbff5303d2800b61b5ec4457997a",
+          "importsFiles": [
+            "src/content/loadPacks.ts",
+            "src/lib/dailySet.ts",
+            "src/lib/passageShape.ts"
+          ],
+          "path": "tests/dailySet.test.ts"
+        },
+        {
+          "hash": "eab73303951dd5d5d7892abb3b50b7e08c8eba264b410eda0d1e396a50bbb68e",
+          "importsFiles": [
+            "src/app/components/Icon.tsx"
+          ],
+          "path": "tests/icon.test.tsx"
+        },
+        {
+          "hash": "d20966ead0e571cfe6ba91bf3b7006d718aabe5890c8e50d2cdb02244a2bb5fd",
+          "importsFiles": [
+            "src/lib/keyboardPassage.ts"
+          ],
+          "path": "tests/keyboardPassage.test.ts"
+        },
+        {
+          "hash": "e0cb1af0db52e5b2b0ef1f05a00b4c5f4364e6dc2134fc90bacf233c4ce4912d",
+          "importsFiles": [
+            "src/content/catalog.ts",
+            "src/content/index.ts",
+            "src/content/loadPacks.ts",
+            "src/content/types.ts",
+            "src/lib/ambient/ambientHistoryV3.ts",
+            "src/lib/ambient/lruBufferCache.ts",
+            "src/lib/ambientManifest.ts",
+            "src/lib/attackOffset.ts",
+            "src/lib/audioContext.ts",
+            "src/lib/index.ts",
+            "src/lib/passageShape.ts",
+            "src/lib/public/index.ts",
+            "src/lib/repeatPassage.ts",
+            "src/lib/skillModel.ts",
+            "src/lib/storage.ts"
+          ],
+          "path": "tests/libCoverage.test.ts"
+        },
+        {
+          "hash": "60b7117e37fc5107cdaf659d4a7b897519045db59dcf7ef39fc8e1631bd45407",
+          "path": "tests/logoPlate.test.ts"
+        },
+        {
+          "hash": "dd23ed6cc6eec2fbac4bda47247b8c98d67174be081c48fdc27635b722b571f1",
+          "importsFiles": [
+            "src/lib/ambient/loopJoin.ts"
+          ],
+          "path": "tests/loopJoin.test.ts"
+        },
+        {
+          "hash": "b7142f24656e9eaa54a8d10f32cf8a688d73db0ff8b04851eaa2075a82f2cd27",
+          "importsFiles": [
+            "src/lib/keyboardPassage.ts",
+            "src/lib/repeatPassage.ts",
+            "src/lib/storage.ts",
+            "src/main.tsx"
+          ],
+          "path": "tests/pages.test.tsx"
+        },
+        {
+          "hash": "17b2c3910644c3af05d7b48e0fd315b681c0d226e7a95ad0f1dec7f48a4f299d",
+          "importsFiles": [
+            "src/content/loadPacks.ts",
+            "src/lib/passageShape.ts"
+          ],
+          "path": "tests/passageShape.test.ts"
+        },
+        {
+          "hash": "3f923cac66fc7baeebad23abc476f42d7fdc9d14fe6da7fc058704994fbab90f",
+          "importsFiles": [
+            "src/content/loadPacks.ts",
+            "src/lib/contentEngine.ts",
+            "src/lib/passageShape.ts",
+            "src/lib/storage.ts"
+          ],
+          "path": "tests/pickNextExercise.test.ts"
+        },
+        {
+          "hash": "d31c129183967e318af2b1f29cb3f8f5377f516fa26ad7f760d2e95589d65a2b",
+          "importsFiles": [
+            "src/lib/effectivePrefs.ts",
+            "src/lib/storage.ts"
+          ],
+          "path": "tests/preferences.test.ts"
+        },
+        {
+          "hash": "b07eb9c976278e38a848cedddc9efbcf2ba5457c431379c6996182eb16dff3ca",
+          "importsFiles": [
+            "src/lib/repeatPassage.ts"
+          ],
+          "path": "tests/repeatPassage.test.ts"
+        },
+        {
+          "hash": "5ffdebf34a1a220b1ccab6fc67b15a6a41962a7c36a333912cc0d8afe4f70eab",
+          "importsFiles": [
+            "src/content/types.ts",
+            "src/lib/skillModel.ts",
+            "src/lib/storage.ts"
+          ],
+          "path": "tests/skillModel.test.ts"
+        },
+        {
+          "hash": "919ad430b9fb77c3442a2107d29de220153db0c52a22461c1e5430422b27b002",
+          "importsFiles": [
+            "src/lib/studyLibrary.ts"
+          ],
+          "path": "tests/studyLibrary.test.ts"
+        },
+        {
+          "hash": "92aa91c921d5ff1e9956ae19996788b81ec60921adcdfa579208eec1581a1227",
+          "importsFiles": [
+            "src/lib/storage.ts",
+            "src/lib/studyLibrary.ts",
+            "src/lib/typingEdit.ts"
+          ],
+          "path": "tests/studyPage.test.tsx"
+        },
+        {
+          "hash": "113fc0ed39fd3dd49912f99a90db2cee54a39f383c549445795c94e1d530d0b6",
+          "importsFiles": [
+            "src/lib/studyLibrary.ts",
+            "src/lib/studyStore.ts"
+          ],
+          "path": "tests/studyStore.test.ts"
+        },
+        {
+          "hash": "6f62e064cfe67622753a8db8d17d2c17dd7d97ecf38192dd90daa863b6172d11",
+          "importsFiles": [
+            "src/lib/templateRender.ts"
+          ],
+          "path": "tests/templateRender.test.ts"
+        },
+        {
+          "hash": "822339fa978129d37d7eda116024bb836fdd0ba38ba89baafc0b71a0cb1bd4f9",
+          "importsFiles": [
+            "src/lib/typingEdit.ts"
+          ],
+          "path": "tests/typingEdit.test.ts"
+        },
+        {
+          "hash": "4849545c29d9d090f9228488920d3e4d81e680ec7b1c35994b213cb104e7ccca",
+          "importsFiles": [
+            "src/lib/typingMetrics.ts"
+          ],
+          "path": "tests/typingMetrics.test.ts"
+        },
+        {
+          "hash": "85c9428adbbd857f5660efbaab50f0bbb5b884ac262b7a5a6c8a0d75a8d5177f",
+          "importsFiles": [
+            "src/content/types.ts",
+            "src/features/typing/index.ts",
+            "src/lib/audio.ts",
+            "src/lib/storage.ts",
+            "src/lib/typingEdit.ts"
+          ],
+          "path": "tests/typingSession.test.tsx"
+        }
+      ],
+      "globs": [
+        "tests/**"
+      ],
+      "importConfidence": "full",
+      "name": "tests",
+      "origin": "authored",
+      "role": "test",
+      "testedBy": 0,
+      "unresolvedSites": 7
+    }
+  ],
+  "doors": [
+    {
+      "checksCount": 8,
+      "commands": [
+        {
+          "job": "build-and-test",
+          "step": "Atlas check",
+          "text": "npx --yes @dogfood-lab/atlas@1.15.0 check"
+        },
+        {
+          "job": "build-and-test",
+          "step": "3",
+          "text": "npm ci"
+        },
+        {
+          "job": "build-and-test",
+          "step": "4",
+          "text": "npm run validate:content"
+        },
+        {
+          "job": "build-and-test",
+          "step": "5",
+          "text": "npm run qa:ambient:assets"
+        },
+        {
+          "job": "build-and-test",
+          "step": "6",
+          "text": "npm run qa:sound-design"
+        },
+        {
+          "job": "build-and-test",
+          "step": "7",
+          "text": "npm run typecheck"
+        },
+        {
+          "job": "build-and-test",
+          "step": "8",
+          "text": "npm run build"
+        },
+        {
+          "job": "build-and-test",
+          "step": "Build handbook",
+          "text": "npm ci\nnpm run build\n"
+        },
+        {
+          "job": "build-and-test",
+          "step": "10",
+          "text": "npm run test:coverage"
+        },
+        {
+          "job": "build-and-test",
+          "step": "Audio loudness and spectrum",
+          "text": "sudo apt-get update\nsudo apt-get install -y ffmpeg python3-venv\npython3 -m venv \"$RUNNER_TEMP/audio-venv\"\n\"$RUNNER_TEMP/audio-venv/bin/pip\" install -r scripts/audio/requirements.txt\n\"$RUNNER_TEMP/audio-venv/bin/python\" scripts/audio/check_bed_policy.py public/audio/ambient\n\"$RUNNER_TEMP/audio-venv/bin/python\" scripts/audio/check_loudness.py public/audio/ambient\n\"$RUNNER_TEMP/audio-venv/bin/python\" scripts/audio/check_spectrum.py public/audio/ambient\n"
+        },
+        {
+          "job": "build-winui",
+          "step": "Build desktop shell",
+          "text": "dotnet build desktop/LoKeyTyper.sln --configuration Release -p:Platform=x64 -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false"
+        },
+        {
+          "job": "build-winui",
+          "step": "Run desktop host tests",
+          "text": "dotnet run --project desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj --configuration Release"
+        }
+      ],
+      "elsewhere": [],
+      "file": ".github/workflows/ci.yml",
+      "landings": [],
+      "mentions": [],
+      "name": "CI",
+      "permissions": [
+        "contents:read"
+      ],
+      "pushes": false,
+      "reach": [
+        {
+          "boundary": "desktop",
+          "depth": 0,
+          "files": 2
+        },
+        {
+          "boundary": "root",
+          "depth": 0,
+          "files": 1
+        },
+        {
+          "boundary": "scripts",
+          "depth": 0,
+          "files": 7
+        },
+        {
+          "boundary": "site",
+          "depth": 0,
+          "files": 2
+        },
+        {
+          "boundary": "src",
+          "depth": 0,
+          "files": 60
+        },
+        {
+          "boundary": "tests",
+          "depth": 0,
+          "files": 27
+        }
+      ],
+      "readers": [],
+      "runs": [
+        {
+          "job": "build-winui",
+          "path": "desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj",
+          "runKind": "checks"
+        },
+        {
+          "job": "build-winui",
+          "path": "desktop/LoKeyTyper.sln",
+          "runKind": "checks"
+        },
+        {
+          "job": "build-and-test",
+          "path": "scripts/audio/check_bed_policy.py",
+          "runKind": "checks"
+        },
+        {
+          "job": "build-and-test",
+          "path": "scripts/audio/check_loudness.py",
+          "runKind": "checks"
+        },
+        {
+          "job": "build-and-test",
+          "path": "scripts/audio/check_spectrum.py",
+          "runKind": "checks"
+        },
+        {
+          "job": "build-and-test",
+          "path": "scripts/audio/requirements.txt",
+          "runKind": "checks"
+        },
+        {
+          "job": "build-and-test",
+          "path": "scripts/qaAmbientAssets.mjs",
+          "runKind": "executes"
+        },
+        {
+          "job": "build-and-test",
+          "path": "scripts/qaSoundDesignManifesto.mjs",
+          "runKind": "executes"
+        },
+        {
+          "job": "build-and-test",
+          "path": "scripts/validatePhase2Content.mjs",
+          "runKind": "executes"
+        },
+        {
+          "job": "build-and-test",
+          "matched": true,
+          "path": "site/astro.config.mjs",
+          "runKind": "executes",
+          "via": "astro build"
+        },
+        {
+          "directory": true,
+          "job": "build-and-test",
+          "matched": true,
+          "path": "site/src/",
+          "runKind": "executes",
+          "via": "astro build"
+        },
+        {
+          "directory": true,
+          "job": "build-and-test",
+          "matched": true,
+          "path": "src/",
+          "runKind": "checks",
+          "via": "tsc tsconfig.json"
+        },
+        {
+          "directory": true,
+          "job": "build-and-test",
+          "matched": true,
+          "path": "tests/",
+          "runKind": "executes",
+          "via": "vitest vite.config.ts"
+        },
+        {
+          "job": "build-and-test",
+          "matched": true,
+          "path": "vite.config.ts",
+          "runKind": "checks",
+          "via": "tsc tsconfig.json"
+        }
+      ],
+      "runsCount": 14,
+      "secrets": [
+        "CODECOV_TOKEN"
+      ],
+      "sends": {
+        "deploysPages": false,
+        "dispatchesTo": [],
+        "opensIssues": false,
+        "opensIssuesOnFailure": false,
+        "opensPullRequests": false,
+        "publishes": false,
+        "publishesTo": [],
+        "releases": false
+      },
+      "stages": [],
+      "triggers": [
+        {
+          "event": "pull_request",
+          "paths": [
+            ".github/workflows/**",
+            "LoKeyTyper.appinstaller",
+            "atlas/**",
+            "desktop/**",
+            "eslint.config.js",
+            "index.html",
+            "msix-package/**",
+            "package-lock.json",
+            "package.json",
+            "postcss.config.js",
+            "public/**",
+            "scripts/**",
+            "site/**",
+            "src/**",
+            "tailwind.config.js",
+            "tests/**",
+            "tsconfig*.json",
+            "vite.config.ts"
+          ]
+        },
+        {
+          "event": "push",
+          "paths": [
+            ".github/workflows/**",
+            "LoKeyTyper.appinstaller",
+            "atlas/**",
+            "desktop/**",
+            "eslint.config.js",
+            "index.html",
+            "msix-package/**",
+            "package-lock.json",
+            "package.json",
+            "postcss.config.js",
+            "public/**",
+            "scripts/**",
+            "site/**",
+            "src/**",
+            "tailwind.config.js",
+            "tests/**",
+            "tsconfig*.json",
+            "vite.config.ts"
+          ]
+        },
+        {
+          "event": "workflow_dispatch"
+        }
+      ],
+      "uses": [
+        "actions/checkout",
+        "actions/setup-dotnet",
+        "actions/setup-node",
+        "codecov/codecov-action"
+      ],
+      "usesWorkflowToken": false
+    },
+    {
+      "checksCount": 6,
+      "commands": [
+        {
+          "job": "build",
+          "step": "2",
+          "text": "npm ci"
+        },
+        {
+          "job": "build",
+          "step": "3",
+          "text": "npm run validate:content"
+        },
+        {
+          "job": "build",
+          "step": "4",
+          "text": "npm run qa:ambient:assets"
+        },
+        {
+          "job": "build",
+          "step": "5",
+          "text": "npm run qa:sound-design"
+        },
+        {
+          "job": "build",
+          "step": "6",
+          "text": "npm run test:coverage"
+        },
+        {
+          "job": "build",
+          "step": "Audio loudness and spectrum",
+          "text": "sudo apt-get update\nsudo apt-get install -y ffmpeg python3-venv\npython3 -m venv \"$RUNNER_TEMP/audio-venv\"\n\"$RUNNER_TEMP/audio-venv/bin/pip\" install -r scripts/audio/requirements.txt\n\"$RUNNER_TEMP/audio-venv/bin/python\" scripts/audio/check_bed_policy.py public/audio/ambient\n\"$RUNNER_TEMP/audio-venv/bin/python\" scripts/audio/check_loudness.py public/audio/ambient\n\"$RUNNER_TEMP/audio-venv/bin/python\" scripts/audio/check_spectrum.py public/audio/ambient\n"
+        },
+        {
+          "job": "build",
+          "step": "8",
+          "text": "npm run build"
+        },
+        {
+          "job": "build",
+          "step": "Build handbook",
+          "text": "npm ci\nnpm run build\n"
+        },
+        {
+          "job": "build",
+          "step": "Assemble one site",
+          "text": "rm -rf dist/handbook\nmkdir -p dist/handbook\ncp -a site/dist/. dist/handbook/\ncp dist/index.html dist/404.html\n"
+        }
+      ],
+      "elsewhere": [],
+      "file": ".github/workflows/deploy.yml",
+      "landings": [],
+      "mentions": [],
+      "name": "Deploy to GitHub Pages",
+      "permissions": [
+        "contents:read",
+        "id-token:write",
+        "pages:write"
+      ],
+      "pushes": false,
+      "reach": [
+        {
+          "boundary": "root",
+          "depth": 0,
+          "files": 1
+        },
+        {
+          "boundary": "scripts",
+          "depth": 0,
+          "files": 7
+        },
+        {
+          "boundary": "site",
+          "depth": 0,
+          "files": 2
+        },
+        {
+          "boundary": "src",
+          "depth": 0,
+          "files": 60
+        },
+        {
+          "boundary": "tests",
+          "depth": 0,
+          "files": 27
+        }
+      ],
+      "readers": [],
+      "runs": [
+        {
+          "job": "build",
+          "path": "scripts/audio/check_bed_policy.py",
+          "runKind": "checks"
+        },
+        {
+          "job": "build",
+          "path": "scripts/audio/check_loudness.py",
+          "runKind": "checks"
+        },
+        {
+          "job": "build",
+          "path": "scripts/audio/check_spectrum.py",
+          "runKind": "checks"
+        },
+        {
+          "job": "build",
+          "path": "scripts/audio/requirements.txt",
+          "runKind": "checks"
+        },
+        {
+          "job": "build",
+          "path": "scripts/qaAmbientAssets.mjs",
+          "runKind": "executes"
+        },
+        {
+          "job": "build",
+          "path": "scripts/qaSoundDesignManifesto.mjs",
+          "runKind": "executes"
+        },
+        {
+          "job": "build",
+          "path": "scripts/validatePhase2Content.mjs",
+          "runKind": "executes"
+        },
+        {
+          "job": "build",
+          "matched": true,
+          "path": "site/astro.config.mjs",
+          "runKind": "executes",
+          "via": "astro build"
+        },
+        {
+          "directory": true,
+          "job": "build",
+          "matched": true,
+          "path": "site/src/",
+          "runKind": "executes",
+          "via": "astro build"
+        },
+        {
+          "directory": true,
+          "job": "build",
+          "matched": true,
+          "path": "src/",
+          "runKind": "checks",
+          "via": "tsc tsconfig.json"
+        },
+        {
+          "directory": true,
+          "job": "build",
+          "matched": true,
+          "path": "tests/",
+          "runKind": "executes",
+          "via": "vitest vite.config.ts"
+        },
+        {
+          "job": "build",
+          "matched": true,
+          "path": "vite.config.ts",
+          "runKind": "checks",
+          "via": "tsc tsconfig.json"
+        }
+      ],
+      "runsCount": 12,
+      "secrets": [],
+      "sends": {
+        "deploysPages": true,
+        "dispatchesTo": [],
+        "opensIssues": false,
+        "opensIssuesOnFailure": false,
+        "opensPullRequests": false,
+        "publishes": false,
+        "publishesTo": [],
+        "releases": false
+      },
+      "stages": [],
+      "triggers": [
+        {
+          "branches": [
+            "main"
+          ],
+          "event": "push",
+          "paths": [
+            ".github/workflows/deploy.yml",
+            "index.html",
+            "package-lock.json",
+            "package.json",
+            "postcss.config.js",
+            "public/**",
+            "site/**",
+            "src/**",
+            "tailwind.config.js",
+            "tests/**",
+            "vite.config.ts"
+          ]
+        },
+        {
+          "event": "workflow_dispatch"
+        }
+      ],
+      "uses": [
+        "actions/checkout",
+        "actions/deploy-pages",
+        "actions/setup-node",
+        "actions/upload-pages-artifact"
+      ],
+      "usesWorkflowToken": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "tests",
+      "fromTests": true,
+      "kind": "file",
+      "to": "src"
+    }
+  ],
+  "generatedFrom": {
+    "commit": "bf82ec4761903527c1128d6038c12f929570b4d3",
+    "tracked": 463
+  },
+  "landings": [
+    {
+      "readers": [
+        {
+          "by": "ai-ui.config.json",
+          "call": "literal",
+          "confidence": "text"
+        }
+      ],
+      "target": "CHANGELOG.md",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "ai-ui.config.json",
+          "call": "literal",
+          "confidence": "text"
+        }
+      ],
+      "target": "README.md",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "desktop/LoKeyTyper/WebContent/sw.js",
+          "call": "literal",
+          "confidence": "ast"
+        },
+        {
+          "by": "desktop/LoKeyTyper/WebContent/workbox-8c29f6e4.js",
+          "call": "literal",
+          "confidence": "ast"
+        },
+        {
+          "by": "tailwind.config.js",
+          "call": "literal",
+          "confidence": "ast"
+        }
+      ],
+      "target": "index.html",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "scripts/audio/master_loudness.py",
+          "call": "literal",
+          "confidence": "ast"
+        }
+      ],
+      "target": "public/audio/ambient",
+      "writers": []
+    },
+    {
+      "readers": [],
+      "target": "public/audio/ambient/manifest.generated.json",
+      "tracked": false,
+      "writers": [
+        {
+          "by": "scripts/audio/generate_ambient_stems.py",
+          "confidence": "ast"
+        }
+      ]
+    },
+    {
+      "readers": [
+        {
+          "by": "scripts/audio/generate_ambient_stems.py",
+          "call": "literal",
+          "confidence": "ast"
+        }
+      ],
+      "target": "public/audio/ambient/manifest.json",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "scripts/audio/kept_beds.py",
+          "call": "literal",
+          "confidence": "ast"
+        }
+      ],
+      "target": "scripts/audio/kept-beds.json",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "site/astro.config.mjs",
+          "call": "content-collection",
+          "confidence": "ast"
+        }
+      ],
+      "target": "site/src/content/docs",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "vite.config.ts",
+          "call": "literal",
+          "confidence": "ast"
+        }
+      ],
+      "target": "src/app",
+      "writers": []
+    },
+    {
+      "readers": [],
+      "target": "src/app/components/Icon.tsx",
+      "writers": [
+        {
+          "by": "scripts/icons/generate_react_icons.py",
+          "confidence": "ast"
+        }
+      ]
+    },
+    {
+      "readers": [
+        {
+          "by": "tsconfig.app.json",
+          "call": "literal",
+          "confidence": "text"
+        },
+        {
+          "by": "tsconfig.node.json",
+          "call": "literal",
+          "confidence": "text"
+        },
+        {
+          "by": "tsconfig.tests.json",
+          "call": "literal",
+          "confidence": "text"
+        }
+      ],
+      "target": "src/app/index.ts",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "scripts/icons/generate_icons.py",
+          "call": "os.listdir",
+          "confidence": "ast"
+        },
+        {
+          "by": "scripts/icons/generate_react_icons.py",
+          "call": "open",
+          "confidence": "ast"
+        },
+        {
+          "by": "scripts/icons/generate_react_icons.py",
+          "call": "os.listdir",
+          "confidence": "ast"
+        },
+        {
+          "by": "scripts/icons/optimize_icons.py",
+          "call": "os.listdir",
+          "confidence": "ast"
+        }
+      ],
+      "target": "src/assets/icons",
+      "writers": [
+        {
+          "by": "scripts/icons/generate_icons.py",
+          "confidence": "ast"
+        }
+      ]
+    },
+    {
+      "readers": [
+        {
+          "by": "vite.config.ts",
+          "call": "literal",
+          "confidence": "ast"
+        }
+      ],
+      "target": "src/content",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "tsconfig.app.json",
+          "call": "literal",
+          "confidence": "text"
+        },
+        {
+          "by": "tsconfig.node.json",
+          "call": "literal",
+          "confidence": "text"
+        },
+        {
+          "by": "tsconfig.tests.json",
+          "call": "literal",
+          "confidence": "text"
+        }
+      ],
+      "target": "src/content/index.ts",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "vite.config.ts",
+          "call": "literal",
+          "confidence": "ast"
+        }
+      ],
+      "target": "src/features",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "tsconfig.app.json",
+          "call": "literal",
+          "confidence": "text"
+        },
+        {
+          "by": "tsconfig.node.json",
+          "call": "literal",
+          "confidence": "text"
+        },
+        {
+          "by": "tsconfig.tests.json",
+          "call": "literal",
+          "confidence": "text"
+        }
+      ],
+      "target": "src/features/index.ts",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "eslint.config.js",
+          "call": "literal",
+          "confidence": "ast"
+        },
+        {
+          "by": "vite.config.ts",
+          "call": "literal",
+          "confidence": "ast"
+        }
+      ],
+      "target": "src/lib",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "vite.config.ts",
+          "call": "literal",
+          "confidence": "ast"
+        }
+      ],
+      "target": "src/lib/public",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "tsconfig.app.json",
+          "call": "literal",
+          "confidence": "text"
+        },
+        {
+          "by": "tsconfig.node.json",
+          "call": "literal",
+          "confidence": "text"
+        },
+        {
+          "by": "tsconfig.tests.json",
+          "call": "literal",
+          "confidence": "text"
+        }
+      ],
+      "target": "src/lib/public/index.ts",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "tsconfig.json",
+          "call": "literal",
+          "confidence": "text"
+        }
+      ],
+      "target": "tsconfig.app.json",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "tsconfig.json",
+          "call": "literal",
+          "confidence": "text"
+        }
+      ],
+      "target": "tsconfig.node.json",
+      "writers": []
+    },
+    {
+      "readers": [
+        {
+          "by": "tsconfig.node.json",
+          "call": "literal",
+          "confidence": "text"
+        }
+      ],
+      "target": "vite.config.ts",
+      "writers": []
+    }
+  ],
+  "overlaps": [],
+  "submodules": [],
+  "symlinks": [],
+  "testFiles": 27,
+  "unassigned": []
+}

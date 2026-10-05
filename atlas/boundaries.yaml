@@ -1,0 +1,50 @@
+summary: "LoKey Typer is a calm typing practice app: a browser client, a Windows shell for the Store package, and ambient audio that stays on the device."
+boundaries:
+  - name: .github
+    globs:
+      - .github/**
+    role: config
+  - name: assets
+    globs:
+      - assets/**
+    role: config
+  - name: desktop
+    globs:
+      - desktop/**
+    role: code
+  - name: docs
+    globs:
+      - docs/**
+    role: docs
+  - name: msix-package
+    globs:
+      - msix-package/**
+    role: config
+  - name: public
+    globs:
+      - public/**
+    role: docs
+  - name: root
+    globs:
+      - "*"
+    role: config
+  - name: scripts
+    globs:
+      - scripts/**
+    role: code
+  - name: site
+    globs:
+      - site/**
+    role: site
+  - name: src
+    globs:
+      - src/**
+    role: code
+  - name: store-assets
+    globs:
+      - store-assets/**
+    role: docs
+  - name: tests
+    globs:
+      - tests/**
+    role: test

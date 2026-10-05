@@ -1,0 +1,370 @@
+{
+  "authored": [
+    ".github/",
+    "assets/",
+    "docs/",
+    "msix-package/",
+    "public/",
+    "root",
+    "site/",
+    "store-assets/"
+  ],
+  "breaks": [
+    {
+      "doors": 2,
+      "importedBy": [],
+      "importedByTests": [
+        "tests"
+      ],
+      "kind": "part",
+      "name": "src",
+      "partLabel": "src"
+    },
+    {
+      "doors": 2,
+      "importedBy": [],
+      "importedByTests": [],
+      "kind": "part",
+      "name": "root",
+      "partLabel": "the repository root"
+    },
+    {
+      "doors": 2,
+      "importedBy": [],
+      "importedByTests": [],
+      "kind": "part",
+      "name": "scripts",
+      "partLabel": "scripts"
+    },
+    {
+      "doors": 2,
+      "importedBy": [],
+      "importedByTests": [],
+      "kind": "part",
+      "name": "site",
+      "partLabel": "the site"
+    },
+    {
+      "doors": 2,
+      "importedBy": [],
+      "importedByTests": [],
+      "kind": "part",
+      "name": "tests",
+      "partLabel": "tests"
+    },
+    {
+      "kind": "place",
+      "readers": [
+        "scripts"
+      ],
+      "target": "src/assets/icons/",
+      "writers": [
+        "scripts"
+      ]
+    }
+  ],
+  "changes": {
+    "first": true
+  },
+  "changesTogether": [
+    {
+      "a": "src/features/home/pages/HomePage.tsx",
+      "b": "src/features/modes/pages/ModePage.tsx",
+      "either": 6,
+      "partLabels": [
+        "src",
+        "src"
+      ],
+      "parts": [
+        "src",
+        "src"
+      ],
+      "relation": "inside",
+      "shared": 5
+    },
+    {
+      "a": "tests/pages.test.tsx",
+      "b": "tests/typingSession.test.tsx",
+      "either": 13,
+      "partLabels": [
+        "tests",
+        "tests"
+      ],
+      "parts": [
+        "tests",
+        "tests"
+      ],
+      "relation": "inside",
+      "shared": 8
+    },
+    {
+      "a": "src/features/daily/pages/DailySetPage.tsx",
+      "b": "src/features/run/pages/RunPage.tsx",
+      "either": 16,
+      "partLabels": [
+        "src",
+        "src"
+      ],
+      "parts": [
+        "src",
+        "src"
+      ],
+      "relation": "inside",
+      "shared": 9
+    },
+    {
+      "a": "src/app/components/AudioSettingsPanel.tsx",
+      "b": "src/app/shell/AppShell.tsx",
+      "either": 11,
+      "partLabels": [
+        "src",
+        "src"
+      ],
+      "parts": [
+        "src",
+        "src"
+      ],
+      "relation": "inside",
+      "shared": 6
+    },
+    {
+      "a": "src/features/daily/pages/DailySetPage.tsx",
+      "b": "src/features/typing/TypingSession.tsx",
+      "either": 18,
+      "partLabels": [
+        "src",
+        "src"
+      ],
+      "parts": [
+        "src",
+        "src"
+      ],
+      "relation": "inside",
+      "shared": 9
+    }
+  ],
+  "changesTogetherNote": [
+    "Confidence is low: fewer than 20 source files reach 10 revisions in the window.",
+    "Window: 180 days; a pair counts from 3 shared commits, since 5 source files reach 10 revisions; the floor rises to 10 when 25 do."
+  ],
+  "changesTogetherWithTests": 0,
+  "commit": "bf82ec4761903527c1128d6038c12f929570b4d3",
+  "defaultBranch": "atlas-adoption",
+  "derived": "12 parts, mostly TypeScript (88 files). Work enters through 2 doors; the busiest is CI, which reaches 6 parts.",
+  "doors": [
+    {
+      "checks": [
+        "desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj",
+        "desktop/LoKeyTyper.sln",
+        "scripts/audio/check_bed_policy.py",
+        "scripts/audio/check_loudness.py",
+        "scripts/audio/check_spectrum.py",
+        "scripts/audio/requirements.txt",
+        "src/",
+        "vite.config.ts"
+      ],
+      "checksCount": 8,
+      "file": ".github/workflows/ci.yml",
+      "id": ".github/workflows/ci.yml",
+      "landings": [],
+      "name": "CI",
+      "pushes": false,
+      "reach": [
+        {
+          "boundary": "desktop",
+          "depth": 0,
+          "files": 2
+        },
+        {
+          "boundary": "root",
+          "depth": 0,
+          "files": 1
+        },
+        {
+          "boundary": "scripts",
+          "depth": 0,
+          "files": 7
+        },
+        {
+          "boundary": "site",
+          "depth": 0,
+          "files": 2
+        },
+        {
+          "boundary": "src",
+          "depth": 0,
+          "files": 60
+        },
+        {
+          "boundary": "tests",
+          "depth": 0,
+          "files": 27
+        }
+      ],
+      "runs": [
+        "scripts/qaAmbientAssets.mjs",
+        "scripts/qaSoundDesignManifesto.mjs",
+        "scripts/validatePhase2Content.mjs",
+        "site/astro.config.mjs",
+        "site/src/",
+        "tests/"
+      ],
+      "runsCount": 6,
+      "sends": [],
+      "stages": [],
+      "triggers": [
+        "on a pull request touching 18 paths",
+        "on a push touching 18 paths",
+        "or by hand"
+      ]
+    },
+    {
+      "checks": [
+        "scripts/audio/check_bed_policy.py",
+        "scripts/audio/check_loudness.py",
+        "scripts/audio/check_spectrum.py",
+        "scripts/audio/requirements.txt",
+        "src/",
+        "vite.config.ts"
+      ],
+      "checksCount": 6,
+      "file": ".github/workflows/deploy.yml",
+      "id": ".github/workflows/deploy.yml",
+      "landings": [],
+      "name": "Deploy to GitHub Pages",
+      "pushes": false,
+      "reach": [
+        {
+          "boundary": "root",
+          "depth": 0,
+          "files": 1
+        },
+        {
+          "boundary": "scripts",
+          "depth": 0,
+          "files": 7
+        },
+        {
+          "boundary": "site",
+          "depth": 0,
+          "files": 2
+        },
+        {
+          "boundary": "src",
+          "depth": 0,
+          "files": 60
+        },
+        {
+          "boundary": "tests",
+          "depth": 0,
+          "files": 27
+        }
+      ],
+      "runs": [
+        "scripts/qaAmbientAssets.mjs",
+        "scripts/qaSoundDesignManifesto.mjs",
+        "scripts/validatePhase2Content.mjs",
+        "site/astro.config.mjs",
+        "site/src/",
+        "tests/"
+      ],
+      "runsCount": 6,
+      "sends": [
+        "deploys the site"
+      ],
+      "stages": [],
+      "triggers": [
+        "on a push to main touching 11 paths",
+        "or by hand"
+      ]
+    }
+  ],
+  "duplicates": [],
+  "duplicatesLead": null,
+  "duplicatesNote": [],
+  "edges": [
+    {
+      "from": "tests",
+      "fromTests": true,
+      "to": "src"
+    }
+  ],
+  "generated": [
+    {
+      "place": "src/app/components/Icon.tsx",
+      "writers": [
+        "scripts/icons/generate_react_icons.py"
+      ]
+    },
+    {
+      "place": "src/assets/icons/",
+      "writers": [
+        "scripts/icons/generate_icons.py"
+      ]
+    }
+  ],
+  "generatedAt": "2026-10-05T01:19:17.521Z",
+  "limits": [
+    "42 import sites could not be resolved.",
+    "3 writes and 20 reads use paths built at run time and are not named here.",
+    "1 write goes to places this repository does not track, so it is not listed as generated.",
+    "2 writes and 9 reads go to the directory the command is run in or the home directory, not to this repository.",
+    "Statistics confidence is low: fewer than 20 source files reach 10 revisions in the window."
+  ],
+  "mainDoor": ".github/workflows/ci.yml",
+  "partLabels": {
+    ".github": ".github",
+    "assets": "assets",
+    "desktop": "desktop",
+    "docs": "docs",
+    "msix-package": "msix-package",
+    "public": "public",
+    "root": "the repository root",
+    "scripts": "scripts",
+    "site": "the site",
+    "src": "src",
+    "store-assets": "store-assets",
+    "tests": "tests"
+  },
+  "parts": 12,
+  "readers": [],
+  "repo": "mcp-tool-shop-org/lokey-typer",
+  "sequences": [],
+  "startDoor": ".github/workflows/ci.yml",
+  "startHere": [
+    ".github/workflows/ci.yml",
+    "scripts/qaAmbientAssets.mjs"
+  ],
+  "summary": "LoKey Typer is a calm typing practice app: a browser client, a Windows shell for the Store package, and ambient audio that stays on the device.",
+  "summaryFrom": "person",
+  "testFiles": 27,
+  "testedBy": {
+    "desktop": 0,
+    "scripts": 0,
+    "src": 25
+  },
+  "unnamedWrites": 3,
+  "unread": [
+    {
+      "place": "src/app/components/Icon.tsx",
+      "writers": [
+        "scripts/icons/generate_react_icons.py"
+      ]
+    }
+  ],
+  "unreadNote": [],
+  "untested": [
+    {
+      "part": "desktop",
+      "partLabel": "desktop",
+      "testedBy": 0
+    },
+    {
+      "part": "scripts",
+      "partLabel": "scripts",
+      "testedBy": 0
+    }
+  ],
+  "untestedNote": [],
+  "written": 2
+}
