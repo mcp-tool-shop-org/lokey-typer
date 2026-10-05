@@ -17,7 +17,7 @@ Modes are Focus, Real Life, Competitive, and a daily set. Study is its own page,
 
 ## Package
 
-The Store submission is `LoKeyTyper_1.1.0.0_x64.msix` for product `9NRVWM08HQC4`. The package identity name is `mcp-tool-shop.LoKeyTyper`. The publisher subject is the one in `desktop/LoKeyTyper/Package.appxmanifest`. A later Rust executable can take that package's entry point. Keep the name and the publisher, or the Store product will not update.
+The package version is `2.0.0.0` for product `9NRVWM08HQC4`. The earlier submission was `LoKeyTyper_1.1.0.0_x64.msix`. The package identity name is `mcp-tool-shop.LoKeyTyper`. The publisher subject is the one in `desktop/LoKeyTyper/Package.appxmanifest`. A later Rust executable can take that package's entry point. Keep the name and the publisher, or the Store product will not update.
 
 The hosted StartPage manifest under `msix-package/` is not that package. Its identity name is `mcp-tool-shop.LoKeyTyper.WebHost`, so installing it cannot update the Store product. It does not grant Windows Runtime access to the site.
 
