@@ -72,16 +72,14 @@ Screen reader mode and reduced motion are in settings. Screen reader mode turns 
 
 ## Screenshots
 
-You need to capture these yourself from the running app (dark mode is fine).
+These six are 1920x1080 PNG files of the running app:
 
-Recommended set (4-6 screenshots, 1366x768 or 1920x1080):
-
-1. Home page — shows mode cards
-2. Focus mode — mid-typing with the textarea active
-3. Run complete — results screen showing WPM/accuracy
-4. Daily Set — "Today's Set" page
-5. Settings — showing ambient/sound controls
-6. Competitive mode — sprint with personal best display
+1. `store-assets/screenshots/01-home.png` — Home
+2. `store-assets/screenshots/02-focus.png` — Focus, mid-passage
+3. `store-assets/screenshots/03-settings.png` — Settings, keyboard and ambient
+4. `store-assets/screenshots/04-daily.png` — Daily set
+5. `store-assets/screenshots/05-study.png` — Study, with one text added
+6. `store-assets/screenshots/06-competitive.png` — Competitive sprint
 
 ---
 
