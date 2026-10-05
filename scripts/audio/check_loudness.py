@@ -7,6 +7,10 @@ Acceptance range:
   Tolerance: ±1 LUFS
   => hard fail outside [-35, -29]
 
+A bed named for loudness in kept-beds.json may sit outside that window.
+The name holds only while the measurement is outside. An unnamed file
+still hard-fails. The wav bytes are not changed.
+
 Usage:
   python scripts/audio/check_loudness.py public/audio/ambient
 
@@ -20,6 +24,8 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+
+from kept_beds import load_kept
 
 TARGET_MIN = -35.0
 TARGET_MAX = -29.0
@@ -82,17 +88,6 @@ def measure_lufs(path: Path) -> tuple[float | None, str]:
     return lufs, f"{lufs:.1f} LUFS"
 
 
-def check_file(path: Path) -> tuple[bool, str]:
-    lufs, detail = measure_lufs(path)
-    if lufs is None:
-        return False, detail
-
-    if not (TARGET_MIN <= lufs <= TARGET_MAX):
-        return False, f"{lufs:.1f} LUFS (out of range [{TARGET_MIN:.0f}, {TARGET_MAX:.0f}])"
-
-    return True, detail
-
-
 def main(folder: str) -> int:
     root = Path(folder)
     if not root.exists():
@@ -104,13 +99,48 @@ def main(folder: str) -> int:
         print(f"FAIL no .wav files found in {root}")
         return 1
 
+    try:
+        kept = load_kept()
+    except ValueError as exc:
+        print(f"FAIL {exc}")
+        return 1
+
     failed = False
+    seen: set[str] = set()
     for wav in wavs:
-        ok, msg = check_file(wav)
-        status = "OK" if ok else "FAIL"
-        print(f"{status:4} {wav.as_posix()}: {msg}")
-        if not ok:
+        rel = wav.relative_to(root).as_posix()
+        seen.add(rel)
+        entry = kept.get(rel)
+        named = entry is not None and entry.loudness
+        lufs, detail = measure_lufs(wav)
+        if lufs is None:
             failed = True
+            print(f"FAIL {wav.as_posix()}: {detail}")
+            continue
+
+        outside = not (TARGET_MIN <= lufs <= TARGET_MAX)
+        if named and outside:
+            print(
+                f"KEPT {wav.as_posix()}: {lufs:.1f} LUFS "
+                f"(outside [{TARGET_MIN:.0f}, {TARGET_MAX:.0f}]). Named bed: {entry.reason}"
+            )
+        elif named:
+            failed = True
+            print(
+                f"FAIL {wav.as_posix()}: {lufs:.1f} LUFS is inside "
+                f"[{TARGET_MIN:.0f}, {TARGET_MAX:.0f}]. "
+                "This named bed no longer needs a loudness exception."
+            )
+        elif outside:
+            failed = True
+            print(f"FAIL {wav.as_posix()}: {lufs:.1f} LUFS (out of range [{TARGET_MIN:.0f}, {TARGET_MAX:.0f}])")
+        else:
+            print(f"OK   {wav.as_posix()}: {detail}")
+
+    for rel, entry in sorted(kept.items()):
+        if entry.loudness and rel not in seen:
+            failed = True
+            print(f"FAIL named loudness bed is not in this folder: {rel}")
 
     return 1 if failed else 0
 

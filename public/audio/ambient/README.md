@@ -8,7 +8,7 @@ The player reads version 3 of `manifest.json`. Each entry is a track.
 - `category`: one of the categories in `src/lib/ambientManifest.ts`. Settings only offers a category that has a track in the live manifest.
 - `path`: a site path beginning with `/audio/ambient/`
 - `duration_sec`
-- `lufs_i`: integrated loudness, accepted about −35 to −29
+- `lufs_i`: integrated loudness. Unnamed tracks are accepted about −35 to −29. A bed named in `scripts/audio/kept-beds.json` may stay outside that window, or outside the spectrum caps, because a filter that pulls it in deletes the sound.
 - `tags`
 
 `scripts/audio/generate_ambient_stems.py` writes `manifest.generated.json` next to this file. It does not replace `manifest.json`.

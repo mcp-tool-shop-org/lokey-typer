@@ -31,6 +31,66 @@ function ok(msg) {
   console.log(`OK: ${msg}`)
 }
 
+function loadKeptBeds() {
+  const keptPath = path.join(ROOT, 'scripts', 'audio', 'kept-beds.json')
+  if (!fs.existsSync(keptPath)) return { ok: true, byId: new Map() }
+  let data
+  try {
+    data = JSON.parse(fs.readFileSync(keptPath, 'utf8'))
+  } catch (err) {
+    return { ok: false, error: `kept beds file could not be read: ${err instanceof Error ? err.message : String(err)}` }
+  }
+  if (!data || typeof data !== 'object' || !Array.isArray(data.beds)) {
+    return { ok: false, error: 'kept beds file needs an object with a beds array' }
+  }
+  const byId = new Map()
+  const seenPath = new Set()
+  for (const item of data.beds) {
+    if (!item || typeof item !== 'object') {
+      return { ok: false, error: 'each kept bed must be an object' }
+    }
+    const id = item.id
+    const rel = item.path
+    const reason = item.reason
+    if (typeof id !== 'string' || !id || id.includes('/') || id.includes('\\')) {
+      return { ok: false, error: `kept bed id is not a plain track id: ${String(id)}` }
+    }
+    if (
+      typeof rel !== 'string' ||
+      !rel ||
+      rel.startsWith('/') ||
+      rel.includes('\\') ||
+      rel.split('/').includes('..')
+    ) {
+      return { ok: false, error: `kept bed path is not a relative catalog path: ${String(rel)}` }
+    }
+    const stem = rel.split('/').pop().replace(/\.wav$/i, '')
+    if (stem !== id) {
+      return { ok: false, error: `kept bed path does not match its id: ${id}` }
+    }
+    if (typeof reason !== 'string' || !reason.trim()) {
+      return { ok: false, error: `kept bed ${id} needs a reason` }
+    }
+    if (typeof item.loudness !== 'boolean' || typeof item.spectrum !== 'boolean') {
+      return { ok: false, error: `kept bed ${id} needs loudness and spectrum as true or false` }
+    }
+    if (!item.loudness && !item.spectrum) {
+      return { ok: false, error: `kept bed ${id} names neither gate` }
+    }
+    if (byId.has(id)) return { ok: false, error: `duplicate kept bed id: ${id}` }
+    if (seenPath.has(rel)) return { ok: false, error: `duplicate kept bed path: ${rel}` }
+    seenPath.add(rel)
+    byId.set(id, {
+      id,
+      path: rel,
+      reason: reason.trim(),
+      loudness: item.loudness,
+      spectrum: item.spectrum,
+    })
+  }
+  return { ok: true, byId }
+}
+
 console.log('--- QA: Sound Design Manifesto Gates ---')
 
 // Gate 1: the constants AmbientPlayerV3 actually ships.
@@ -79,32 +139,68 @@ if (!fs.existsSync(MANIFEST_PATH)) {
   } else if (tracks.length === 0) {
     fail('Manifest has zero tracks')
   } else {
-    // Acceptance: –30 to –34 LUFS with ±1 LUFS tolerance => [-35, -29]
+    // Acceptance: –30 to –34 LUFS with ±1 LUFS tolerance => [-35, -29].
+    // A named bed may stay outside that window. The stamp is not rewritten.
     const min = -35
     const max = -29
+    const kept = loadKeptBeds()
 
-    let missing = 0
-    let outOfRange = 0
+    if (!kept.ok) {
+      fail(kept.error)
+    } else {
+      let missing = 0
+      let outOfRange = 0
+      let namedOutside = 0
+      let staleNamed = 0
+      const seenIds = new Set()
 
-    for (const s of tracks) {
-      const id = String(s?.id ?? '')
-      const lufs = Number(s?.lufs_i)
-      if (!Number.isFinite(lufs)) {
-        missing += 1
-        console.log(`FAIL: track missing lufs_i: ${id || '(unknown id)'}`)
-        continue
+      for (const s of tracks) {
+        const id = String(s?.id ?? '')
+        seenIds.add(id)
+        const lufs = Number(s?.lufs_i)
+        const entry = kept.byId.get(id)
+        const named = entry?.loudness === true
+        if (!Number.isFinite(lufs)) {
+          missing += 1
+          console.log(`FAIL: track missing lufs_i: ${id || '(unknown id)'}`)
+          continue
+        }
+        if (lufs < min || lufs > max) {
+          if (named) {
+            namedOutside += 1
+            console.log(`KEPT: ${id} lufs_i ${lufs} stays outside [-35, -29]. ${entry.reason}`)
+          } else {
+            outOfRange += 1
+            console.log(`FAIL: track lufs_i out of range [-35, -29]: ${id || '(unknown id)'} => ${lufs}`)
+          }
+        } else if (named) {
+          staleNamed += 1
+          console.log(
+            `FAIL: ${id} lufs_i ${lufs} is inside [-35, -29]. This named bed no longer needs a loudness exception.`,
+          )
+        }
       }
-      if (lufs < min || lufs > max) {
-        outOfRange += 1
-        console.log(`FAIL: track lufs_i out of range [-35, -29]: ${id || '(unknown id)'} => ${lufs}`)
+
+      let missingNamed = 0
+      for (const [id, entry] of kept.byId) {
+        if (entry.loudness && !seenIds.has(id)) {
+          missingNamed += 1
+          console.log(`FAIL: named loudness bed is not in the manifest: ${id}`)
+        }
+      }
+
+      if (missing === 0) ok('All tracks provide lufs_i metadata')
+      else fail(`${missing} track(s) missing lufs_i metadata`)
+
+      if (outOfRange === 0 && staleNamed === 0 && missingNamed === 0) {
+        if (namedOutside === 0) ok('All tracks lufs_i within acceptance range [-35, -29]')
+        else ok(`All other tracks lufs_i within [-35, -29]. ${namedOutside} named bed(s) stay outside that window.`)
+      } else {
+        if (outOfRange > 0) fail(`${outOfRange} track(s) out of LUFS range [-35, -29]`)
+        if (staleNamed > 0) fail(`${staleNamed} named bed(s) are inside [-35, -29] and no longer need a loudness exception`)
+        if (missingNamed > 0) fail(`${missingNamed} named loudness bed(s) are not in the manifest`)
       }
     }
-
-    if (missing === 0) ok('All tracks provide lufs_i metadata')
-    else fail(`${missing} track(s) missing lufs_i metadata`)
-
-    if (outOfRange === 0) ok('All tracks lufs_i within acceptance range [-35, -29]')
-    else fail(`${outOfRange} track(s) out of LUFS range [-35, -29]`)
   }
 }
 
