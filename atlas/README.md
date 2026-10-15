@@ -1,6 +1,6 @@
 # lokey-typer: how it works
 
-Mapped at 2026-10-15 from commit a01d1a3 by Atlas 1.24.0.
+Mapped at 2026-10-15 from commit c01213c by Atlas 1.24.0.
 
 ## What this is
 
@@ -8,16 +8,9 @@ LoKey Typer is a calm typing practice app: a browser client, a Windows shell for
 
 12 parts, mostly TypeScript (88 files), JavaScript (16), Python (9), C# (7), HTML (4) and CSS (3). Work enters through 3 doors; the busiest is CI, which reaches 6 parts. It publishes a container image. It deploys a site to GitHub Pages.
 
-## What changed since 2026-10-05 (6b47e2c)
+## What changed since 2026-10-15 (a01d1a3)
 
-- CI no longer checks desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj.
-- Docker now also runs site/astro.config.mjs, site/src/, src/ and 1 more.
-- Docker now also checks docker/nginx.conf, package-lock.json, package.json and 2 more.
-- src/assets/icons/ is now also written by scripts/icons/optimize_icons.py.
-- src/content/packs/ is now written by scripts/generatePhase2Content.mjs.
-- src/content/phase2/accessibility_presets.json is now written by scripts/generatePhase2Content.mjs.
-- And 27 more new writers and readers of places.
-- 294 files changed content, across 11 parts.
+Nothing structural changed since 2026-10-15; 1 file changed content.
 
 ## What comes in
 
