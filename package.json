@@ -34,7 +34,7 @@
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
-    "@vitest/coverage-v8": "^3.2.7",
+    "@vitest/coverage-v8": "^4.1.11",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "autoprefixer": "^10.4.24",
@@ -49,6 +49,9 @@
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",
     "vite-plugin-pwa": "^1.2.0",
-    "vitest": "^3.0.0"
+    "vitest": "^4.1.11"
+  },
+  "overrides": {
+    "postcss-selector-parser": "^7.1.6"
   }
 }
