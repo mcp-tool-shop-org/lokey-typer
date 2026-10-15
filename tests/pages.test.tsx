@@ -1572,7 +1572,9 @@ describe('providers, boundary, and bootstrap', () => {
   })
 
   it('boots the createRoot app into #root', async () => {
-    window.history.pushState({}, '', '/lokey-typer/')
+    // The router's basename comes from BASE_URL, which vitest 4 sets to '/' in tests
+    // (vitest 3 used vite.config's base), so start at whatever base the build reports.
+    window.history.pushState({}, '', import.meta.env.BASE_URL)
     document.body.innerHTML = '<div id="root"></div>'
     await import('../src/main.tsx')
     expect(await screen.findByRole('link', { name: (name) => name === 'LoKey Typer' })).toBeTruthy()
