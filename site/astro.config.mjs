@@ -16,7 +16,7 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Handbook',
-          autogenerate: { directory: '.' },
+          items: [{ autogenerate: { directory: '.' } }],
         },
       ],
       customCss: ['./src/styles/starlight-custom.css'],

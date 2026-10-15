@@ -11,7 +11,7 @@
   ],
   "breaks": [
     {
-      "doors": 2,
+      "doors": 3,
       "importedBy": [],
       "importedByTests": [
         "tests"
@@ -21,12 +21,20 @@
       "partLabel": "src"
     },
     {
-      "doors": 2,
+      "doors": 3,
       "importedBy": [],
       "importedByTests": [],
       "kind": "part",
       "name": "root",
       "partLabel": "the repository root"
+    },
+    {
+      "doors": 3,
+      "importedBy": [],
+      "importedByTests": [],
+      "kind": "part",
+      "name": "site",
+      "partLabel": "the site"
     },
     {
       "doors": 2,
@@ -35,14 +43,6 @@
       "kind": "part",
       "name": "scripts",
       "partLabel": "scripts"
-    },
-    {
-      "doors": 2,
-      "importedBy": [],
-      "importedByTests": [],
-      "kind": "part",
-      "name": "site",
-      "partLabel": "the site"
     },
     {
       "doors": 2,
@@ -65,51 +65,89 @@
   ],
   "changes": {
     "fileCounts": {
-      "added": 14,
-      "changed": 60,
+      "added": 0,
+      "changed": 294,
       "moved": 0,
-      "parts": 10,
+      "parts": 11,
       "removed": 0
     },
     "items": [
       {
         "kind": "door",
-        "sentence": "Docker (.github/workflows/docker.yml) is a new door. It starts when a release is published; or by hand. It runs no file this map can see.",
+        "sentence": "CI no longer checks desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj.",
         "subjects": [
-          ".github/workflows/docker.yml"
+          ".github/workflows/ci.yml",
+          "desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj"
+        ]
+      },
+      {
+        "kind": "door",
+        "sentence": "Docker now also runs site/astro.config.mjs, site/src/, src/ and 1 more.",
+        "subjects": [
+          ".github/workflows/docker.yml",
+          "site/astro.config.mjs",
+          "site/src/",
+          "src/",
+          "vite.config.ts"
+        ]
+      },
+      {
+        "kind": "door",
+        "sentence": "Docker now also checks docker/nginx.conf, package-lock.json, package.json and 2 more.",
+        "subjects": [
+          ".github/workflows/docker.yml",
+          "docker/nginx.conf",
+          "package-lock.json",
+          "package.json",
+          "site/package-lock.json",
+          "site/package.json"
         ]
       },
       {
         "kind": "landing",
-        "sentence": "package.json is now read by .github/workflows/docker.yml.",
+        "sentence": "src/assets/icons/ is now also written by scripts/icons/optimize_icons.py.",
         "subjects": [
-          "package.json",
-          ".github/workflows/docker.yml"
+          "src/assets/icons/",
+          "scripts/icons/optimize_icons.py"
         ]
       },
       {
-        "kind": "unassigned",
-        "sentence": "docker/nginx.conf is new and belongs to no part, so atlas check fails on it against the previous map.",
+        "kind": "landing",
+        "sentence": "src/content/packs/ is now written by scripts/generatePhase2Content.mjs.",
         "subjects": [
-          "docker/nginx.conf"
+          "src/content/packs/",
+          "scripts/generatePhase2Content.mjs"
         ]
+      },
+      {
+        "kind": "landing",
+        "sentence": "src/content/phase2/accessibility_presets.json is now written by scripts/generatePhase2Content.mjs.",
+        "subjects": [
+          "src/content/phase2/accessibility_presets.json",
+          "scripts/generatePhase2Content.mjs"
+        ]
+      },
+      {
+        "kind": "landing",
+        "sentence": "And 27 more new writers and readers of places.",
+        "subjects": []
       },
       {
         "kind": "counts",
-        "sentence": "14 files added and 60 changed content, across 10 parts.",
+        "sentence": "294 files changed content, across 11 parts.",
         "subjects": []
       }
     ],
     "since": {
-      "commit": "aae2f56d0e0744225cddf401d9d5861d383833ef",
-      "generatedAt": "2026-10-05T01:27:36.177Z"
+      "commit": "6b47e2c2e1cd79968aba6968797874bd1fd43a17",
+      "generatedAt": "2026-10-05T05:57:57.796Z"
     },
     "unchanged": false
   },
   "changesTogether": [
     {
-      "a": "src/features/home/pages/HomePage.tsx",
-      "b": "src/features/modes/pages/ModePage.tsx",
+      "a": "src/app/shell/AppShell.tsx",
+      "b": "src/features/daily/pages/DailySetPage.tsx",
       "either": 6,
       "partLabels": [
         "src",
@@ -120,12 +158,12 @@
         "src"
       ],
       "relation": "inside",
-      "shared": 5
+      "shared": 4
     },
     {
       "a": "tests/pages.test.tsx",
       "b": "tests/typingSession.test.tsx",
-      "either": 13,
+      "either": 10,
       "partLabels": [
         "tests",
         "tests"
@@ -133,44 +171,14 @@
       "parts": [
         "tests",
         "tests"
-      ],
-      "relation": "inside",
-      "shared": 8
-    },
-    {
-      "a": "src/features/daily/pages/DailySetPage.tsx",
-      "b": "src/features/run/pages/RunPage.tsx",
-      "either": 16,
-      "partLabels": [
-        "src",
-        "src"
-      ],
-      "parts": [
-        "src",
-        "src"
-      ],
-      "relation": "inside",
-      "shared": 9
-    },
-    {
-      "a": "src/app/components/AudioSettingsPanel.tsx",
-      "b": "src/app/shell/AppShell.tsx",
-      "either": 11,
-      "partLabels": [
-        "src",
-        "src"
-      ],
-      "parts": [
-        "src",
-        "src"
       ],
       "relation": "inside",
       "shared": 6
     },
     {
-      "a": "src/features/daily/pages/DailySetPage.tsx",
+      "a": "src/app/shell/AppShell.tsx",
       "b": "src/features/typing/TypingSession.tsx",
-      "either": 18,
+      "either": 7,
       "partLabels": [
         "src",
         "src"
@@ -180,30 +188,30 @@
         "src"
       ],
       "relation": "inside",
-      "shared": 9
+      "shared": 4
     }
   ],
   "changesTogetherNote": [
     "Confidence is low: fewer than 25 source files reach 10 revisions in the window.",
-    "Window: 180 days; a pair counts from 3 shared commits, since 5 source files reach 10 revisions; the floor rises to 10 when 25 do."
+    "Window: 180 days; a pair counts from 3 shared commits, since 0 source files reach 10 revisions; the floor rises to 10 when 25 do."
   ],
   "changesTogetherWithTests": 0,
-  "commit": "6b47e2c2e1cd79968aba6968797874bd1fd43a17",
+  "commit": "a01d1a3fdaab0016226ee1d74cc3d4fd609f4232",
   "defaultBranch": "main",
-  "derived": "12 parts, mostly TypeScript (88 files). Work enters through 3 doors; the busiest is CI, which reaches 6 parts. It publishes a container image.",
+  "derived": "12 parts, mostly TypeScript (88 files), JavaScript (16), Python (9), C# (7), HTML (4) and CSS (3). Work enters through 3 doors; the busiest is CI, which reaches 6 parts. It publishes a container image. It deploys a site to GitHub Pages.",
   "doors": [
     {
+      "builds": [
+        "desktop/LoKeyTyper.sln"
+      ],
       "checks": [
-        "desktop/LoKeyTyper.Tests/LoKeyTyper.Tests.csproj",
-        "desktop/LoKeyTyper.sln",
         "scripts/audio/check_bed_policy.py",
         "scripts/audio/check_loudness.py",
         "scripts/audio/check_spectrum.py",
-        "scripts/audio/requirements.txt",
-        "src/",
-        "vite.config.ts"
+        "scripts/audio/requirements.txt"
       ],
-      "checksCount": 8,
+      "checksCount": 4,
+      "checksMore": 1,
       "file": ".github/workflows/ci.yml",
       "id": ".github/workflows/ci.yml",
       "landings": [],
@@ -213,7 +221,7 @@
         {
           "boundary": "desktop",
           "depth": 0,
-          "files": 2
+          "files": 1
         },
         {
           "boundary": "root",
@@ -223,7 +231,7 @@
         {
           "boundary": "scripts",
           "depth": 0,
-          "files": 7
+          "files": 8
         },
         {
           "boundary": "site",
@@ -247,10 +255,15 @@
         "scripts/validatePhase2Content.mjs",
         "site/astro.config.mjs",
         "site/src/",
-        "tests/"
+        "src/",
+        "tests/",
+        "vite.config.ts"
       ],
-      "runsCount": 6,
-      "sends": [],
+      "runsCount": 8,
+      "runsMore": 89,
+      "sends": [
+        "uploads coverage to Codecov"
+      ],
       "stages": [],
       "triggers": [
         "on a pull request touching 18 paths",
@@ -263,11 +276,10 @@
         "scripts/audio/check_bed_policy.py",
         "scripts/audio/check_loudness.py",
         "scripts/audio/check_spectrum.py",
-        "scripts/audio/requirements.txt",
-        "src/",
-        "vite.config.ts"
+        "scripts/audio/requirements.txt"
       ],
-      "checksCount": 6,
+      "checksCount": 4,
+      "checksMore": 1,
       "file": ".github/workflows/deploy.yml",
       "id": ".github/workflows/deploy.yml",
       "landings": [],
@@ -282,7 +294,7 @@
         {
           "boundary": "scripts",
           "depth": 0,
-          "files": 7
+          "files": 8
         },
         {
           "boundary": "site",
@@ -306,9 +318,12 @@
         "scripts/validatePhase2Content.mjs",
         "site/astro.config.mjs",
         "site/src/",
-        "tests/"
+        "src/",
+        "tests/",
+        "vite.config.ts"
       ],
-      "runsCount": 6,
+      "runsCount": 8,
+      "runsMore": 89,
       "sends": [
         "deploys the site"
       ],
@@ -321,14 +336,44 @@
     {
       "checks": [],
       "checksCount": 0,
+      "checksMore": 0,
       "file": ".github/workflows/docker.yml",
       "id": ".github/workflows/docker.yml",
       "landings": [],
       "name": "Docker",
+      "packs": [
+        "docker/nginx.conf",
+        "package-lock.json",
+        "package.json",
+        "site/package-lock.json",
+        "site/package.json"
+      ],
       "pushes": false,
-      "reach": [],
-      "runs": [],
-      "runsCount": 0,
+      "reach": [
+        {
+          "boundary": "root",
+          "depth": 0,
+          "files": 3
+        },
+        {
+          "boundary": "site",
+          "depth": 0,
+          "files": 4
+        },
+        {
+          "boundary": "src",
+          "depth": 0,
+          "files": 60
+        }
+      ],
+      "runs": [
+        "site/astro.config.mjs",
+        "site/src/",
+        "src/",
+        "vite.config.ts"
+      ],
+      "runsCount": 4,
+      "runsMore": 1,
       "sends": [
         "publishes a container image"
       ],
@@ -349,6 +394,7 @@
       "to": "src"
     }
   ],
+  "engine": "1.24.0",
   "generated": [
     {
       "place": "src/app/components/Icon.tsx",
@@ -359,16 +405,55 @@
     {
       "place": "src/assets/icons/",
       "writers": [
-        "scripts/icons/generate_icons.py"
+        "scripts/icons/generate_icons.py",
+        "scripts/icons/optimize_icons.py"
+      ]
+    },
+    {
+      "fromRoot": true,
+      "place": "src/content/packs/",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
+      ]
+    },
+    {
+      "fromRoot": true,
+      "place": "src/content/phase2/accessibility_presets.json",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
+      ]
+    },
+    {
+      "fromRoot": true,
+      "place": "src/content/phase2/content_index.json",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
+      ]
+    },
+    {
+      "fromRoot": true,
+      "place": "src/content/phase2/micro_feedback_rules_v2.json",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
+      ]
+    },
+    {
+      "fromRoot": true,
+      "place": "src/content/phase2/ui_strings_accessible.json",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
       ]
     }
   ],
-  "generatedAt": "2026-10-05T05:57:57.796Z",
+  "generatedAt": "2026-10-15T02:55:49.374Z",
   "limits": [
-    "42 import sites could not be resolved.",
-    "3 writes and 20 reads use paths built at run time and are not named here.",
+    "79 imports could not be resolved: `desktop/LoKeyTyper/WebContent/assets/index-uLDiQ1uZ.js` imports a path built at run time; `src/app/App.tsx` imports `@app/components/Icon`, which is not declared; `src/app/App.tsx` imports `@app/shell`, which is not declared; and 76 more.",
+    "3 reads use paths built at run time and are not named here.",
     "1 write goes to places this repository does not track, so it is not listed as generated.",
-    "2 writes and 9 reads go to the directory the command is run in or the home directory, not to this repository.",
+    "47 reads go to a path their caller passes, not to this repository.",
+    "3 writes and 21 reads go to the directory the command is run in, not to this repository.",
+    "2 reads go to the directory the command is run in or a path their caller passes, not to this repository.",
+    "1 file belongs to no part: docker/nginx.conf.",
     "Statistics confidence is low: fewer than 25 source files reach 10 revisions in the window."
   ],
   "mainDoor": ".github/workflows/ci.yml",
@@ -391,10 +476,8 @@
   "repo": "mcp-tool-shop-org/lokey-typer",
   "sequences": [],
   "startDoor": ".github/workflows/ci.yml",
-  "startHere": [
-    ".github/workflows/ci.yml",
-    "scripts/qaAmbientAssets.mjs"
-  ],
+  "startHere": [],
+  "startNote": "CI runs no code this map can follow; it only checks code, so there is no path of files to read in order.",
   "summary": "LoKey Typer is a calm typing practice app: a browser client, a Windows shell for the Store package, and ambient audio that stays on the device.",
   "summaryFrom": "person",
   "testFiles": 27,
@@ -403,15 +486,46 @@
     "scripts": 0,
     "src": 25
   },
-  "unnamedWrites": 3,
+  "unnamedWrites": 0,
   "unread": [
     {
       "place": "src/app/components/Icon.tsx",
       "writers": [
         "scripts/icons/generate_react_icons.py"
       ]
+    },
+    {
+      "place": "src/content/packs/",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
+      ]
+    },
+    {
+      "place": "src/content/phase2/accessibility_presets.json",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
+      ]
+    },
+    {
+      "place": "src/content/phase2/content_index.json",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
+      ]
+    },
+    {
+      "place": "src/content/phase2/micro_feedback_rules_v2.json",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
+      ]
+    },
+    {
+      "place": "src/content/phase2/ui_strings_accessible.json",
+      "writers": [
+        "scripts/generatePhase2Content.mjs"
+      ]
     }
   ],
+  "unreadFiles": 0,
   "unreadNote": [],
   "untested": [
     {
@@ -426,5 +540,5 @@
     }
   ],
   "untestedNote": [],
-  "written": 2
+  "written": 7
 }
