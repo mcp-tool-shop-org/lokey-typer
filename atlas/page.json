@@ -66,28 +66,28 @@
   "changes": {
     "fileCounts": {
       "added": 0,
-      "changed": 1,
+      "changed": 6,
       "moved": 0,
-      "parts": 1,
+      "parts": 4,
       "removed": 0
     },
     "items": [
       {
         "kind": "counts",
-        "sentence": "Nothing structural changed since 2026-10-15; 1 file changed content.",
+        "sentence": "Nothing structural changed since 2026-10-15; 6 files changed content.",
         "subjects": []
       }
     ],
     "since": {
-      "commit": "a01d1a3fdaab0016226ee1d74cc3d4fd609f4232",
-      "generatedAt": "2026-10-15T02:55:49.374Z"
+      "commit": "c01213c34c38e8e91f237981d2edb980e6f484dd",
+      "generatedAt": "2026-10-15T03:18:58.899Z"
     },
     "unchanged": true
   },
   "changesTogether": [
     {
-      "a": "src/app/shell/AppShell.tsx",
-      "b": "src/features/daily/pages/DailySetPage.tsx",
+      "a": "src/features/home/pages/HomePage.tsx",
+      "b": "src/features/modes/pages/ModePage.tsx",
       "either": 6,
       "partLabels": [
         "src",
@@ -98,12 +98,12 @@
         "src"
       ],
       "relation": "inside",
-      "shared": 4
+      "shared": 5
     },
     {
       "a": "tests/pages.test.tsx",
       "b": "tests/typingSession.test.tsx",
-      "either": 10,
+      "either": 14,
       "partLabels": [
         "tests",
         "tests"
@@ -111,14 +111,44 @@
       "parts": [
         "tests",
         "tests"
+      ],
+      "relation": "inside",
+      "shared": 8
+    },
+    {
+      "a": "src/features/daily/pages/DailySetPage.tsx",
+      "b": "src/features/run/pages/RunPage.tsx",
+      "either": 16,
+      "partLabels": [
+        "src",
+        "src"
+      ],
+      "parts": [
+        "src",
+        "src"
+      ],
+      "relation": "inside",
+      "shared": 9
+    },
+    {
+      "a": "src/app/components/AudioSettingsPanel.tsx",
+      "b": "src/app/shell/AppShell.tsx",
+      "either": 11,
+      "partLabels": [
+        "src",
+        "src"
+      ],
+      "parts": [
+        "src",
+        "src"
       ],
       "relation": "inside",
       "shared": 6
     },
     {
-      "a": "src/app/shell/AppShell.tsx",
+      "a": "src/features/daily/pages/DailySetPage.tsx",
       "b": "src/features/typing/TypingSession.tsx",
-      "either": 7,
+      "either": 18,
       "partLabels": [
         "src",
         "src"
@@ -128,15 +158,15 @@
         "src"
       ],
       "relation": "inside",
-      "shared": 4
+      "shared": 9
     }
   ],
   "changesTogetherNote": [
     "Confidence is low: fewer than 25 source files reach 10 revisions in the window.",
-    "Window: 180 days; a pair counts from 3 shared commits, since 0 source files reach 10 revisions; the floor rises to 10 when 25 do."
+    "Window: 180 days; a pair counts from 3 shared commits, since 5 source files reach 10 revisions; the floor rises to 10 when 25 do."
   ],
   "changesTogetherWithTests": 0,
-  "commit": "c01213c34c38e8e91f237981d2edb980e6f484dd",
+  "commit": "d3120c3900d820efe86148484b0af52ba13b5d3c",
   "defaultBranch": "main",
   "derived": "12 parts, mostly TypeScript (88 files), JavaScript (16), Python (9), C# (7), HTML (4) and CSS (3). Work enters through 3 doors; the busiest is CI, which reaches 6 parts. It publishes a container image. It deploys a site to GitHub Pages.",
   "doors": [
@@ -334,7 +364,7 @@
       "to": "src"
     }
   ],
-  "engine": "1.24.0",
+  "engine": "1.26.0",
   "generated": [
     {
       "place": "src/app/components/Icon.tsx",
@@ -385,7 +415,7 @@
       ]
     }
   ],
-  "generatedAt": "2026-10-15T03:18:58.899Z",
+  "generatedAt": "2026-11-11T22:21:24.375Z",
   "limits": [
     "79 imports could not be resolved: `desktop/LoKeyTyper/WebContent/assets/index-uLDiQ1uZ.js` imports a path built at run time; `src/app/App.tsx` imports `@app/components/Icon`, which is not declared; `src/app/App.tsx` imports `@app/shell`, which is not declared; and 76 more.",
     "3 reads use paths built at run time and are not named here.",
@@ -426,6 +456,7 @@
     "scripts": 0,
     "src": 25
   },
+  "testedCodeParts": 3,
   "unnamedWrites": 0,
   "unread": [
     {

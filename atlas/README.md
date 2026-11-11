@@ -1,6 +1,6 @@
 # lokey-typer: how it works
 
-Mapped at 2026-10-15 from commit c01213c by Atlas 1.24.0.
+Mapped at 2026-11-11 from commit d3120c3 by Atlas 1.26.0.
 
 ## What this is
 
@@ -8,9 +8,9 @@ LoKey Typer is a calm typing practice app: a browser client, a Windows shell for
 
 12 parts, mostly TypeScript (88 files), JavaScript (16), Python (9), C# (7), HTML (4) and CSS (3). Work enters through 3 doors; the busiest is CI, which reaches 6 parts. It publishes a container image. It deploys a site to GitHub Pages.
 
-## What changed since 2026-10-15 (a01d1a3)
+## What changed since 2026-10-15 (c01213c)
 
-Nothing structural changed since 2026-10-15; 1 file changed content.
+Nothing structural changed since 2026-10-15; 6 files changed content.
 
 ## What comes in
 
@@ -44,13 +44,15 @@ CI writes nothing this map can see.
 
 ## What tends to change together
 
-- **src/app/shell/AppShell.tsx** and **src/features/daily/pages/DailySetPage.tsx** changed together in 4 of 6 commits, inside the src part.
-- **tests/pages.test.tsx** and **tests/typingSession.test.tsx** changed together in 6 of 10 commits, inside the tests part.
-- **src/app/shell/AppShell.tsx** and **src/features/typing/TypingSession.tsx** changed together in 4 of 7 commits, inside the src part.
+- **src/features/home/pages/HomePage.tsx** and **src/features/modes/pages/ModePage.tsx** changed together in 5 of 6 commits, inside the src part.
+- **tests/pages.test.tsx** and **tests/typingSession.test.tsx** changed together in 8 of 14 commits, inside the tests part.
+- **src/features/daily/pages/DailySetPage.tsx** and **src/features/run/pages/RunPage.tsx** changed together in 9 of 16 commits, inside the src part.
+- **src/app/components/AudioSettingsPanel.tsx** and **src/app/shell/AppShell.tsx** changed together in 6 of 11 commits, inside the src part.
+- **src/features/daily/pages/DailySetPage.tsx** and **src/features/typing/TypingSession.tsx** changed together in 9 of 18 commits, inside the src part.
 
 Confidence is low: fewer than 25 source files reach 10 revisions in the window.
 
-Window: 180 days; a pair counts from 3 shared commits, since 0 source files reach 10 revisions; the floor rises to 10 when 25 do.
+Window: 180 days; a pair counts from 3 shared commits, since 5 source files reach 10 revisions; the floor rises to 10 when 25 do.
 
 ## What no test touches
 

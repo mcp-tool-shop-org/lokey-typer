@@ -113,7 +113,7 @@
       "confidence": "low",
       "highWater": null,
       "name": "root",
-      "qualifyingSourceCommits": 0,
+      "qualifyingSourceCommits": 3,
       "rebaseline": null
     },
     {
@@ -129,7 +129,7 @@
       "confidence": "low",
       "highWater": null,
       "name": "scripts",
-      "qualifyingSourceCommits": 5,
+      "qualifyingSourceCommits": 7,
       "rebaseline": null
     },
     {
@@ -145,7 +145,7 @@
       "confidence": "low",
       "highWater": null,
       "name": "site",
-      "qualifyingSourceCommits": 1,
+      "qualifyingSourceCommits": 2,
       "rebaseline": null
     },
     {
@@ -160,10 +160,10 @@
       },
       "cohesion": 1,
       "cohesionDropped": false,
-      "confidence": "low",
+      "confidence": "full",
       "highWater": null,
       "name": "src",
-      "qualifyingSourceCommits": 13,
+      "qualifyingSourceCommits": 34,
       "rebaseline": null
     },
     {
@@ -192,10 +192,10 @@
       },
       "cohesion": 1,
       "cohesionDropped": false,
-      "confidence": "low",
+      "confidence": "full",
       "highWater": null,
       "name": "tests",
-      "qualifyingSourceCommits": 15,
+      "qualifyingSourceCommits": 30,
       "rebaseline": null
     }
   ],
@@ -208,13 +208,13 @@
         "path": ".dockerignore"
       },
       {
-        "commits": 5,
-        "lines": 171,
+        "commits": 11,
+        "lines": 157,
         "path": ".github/workflows/ci.yml"
       },
       {
-        "commits": 3,
-        "lines": 151,
+        "commits": 7,
+        "lines": 94,
         "path": ".github/workflows/deploy.yml"
       },
       {
@@ -223,18 +223,23 @@
         "path": ".github/workflows/docker.yml"
       },
       {
-        "commits": 4,
-        "lines": 81,
+        "commits": 2,
+        "lines": 100,
+        "path": ".github/workflows/pages.yml"
+      },
+      {
+        "commits": 6,
+        "lines": 42,
         "path": ".gitignore"
       },
       {
         "commits": 3,
-        "lines": 75,
+        "lines": 48,
         "path": "CHANGELOG.md"
       },
       {
-        "commits": 4,
-        "lines": 81,
+        "commits": 5,
+        "lines": 90,
         "path": "CLAUDE.md"
       },
       {
@@ -243,83 +248,83 @@
         "path": "Dockerfile"
       },
       {
-        "commits": 2,
-        "lines": 42,
+        "commits": 1,
+        "lines": 21,
         "path": "LICENSE"
       },
       {
-        "commits": 4,
-        "lines": 52,
+        "commits": 5,
+        "lines": 44,
         "path": "LoKeyTyper.appinstaller"
       },
       {
-        "commits": 4,
-        "lines": 456,
+        "commits": 6,
+        "lines": 345,
         "path": "README.es.md"
       },
       {
-        "commits": 4,
-        "lines": 462,
+        "commits": 6,
+        "lines": 351,
         "path": "README.fr.md"
-      },
-      {
-        "commits": 4,
-        "lines": 441,
-        "path": "README.hi.md"
-      },
-      {
-        "commits": 4,
-        "lines": 485,
-        "path": "README.it.md"
-      },
-      {
-        "commits": 4,
-        "lines": 446,
-        "path": "README.ja.md"
       },
       {
         "commits": 6,
         "lines": 335,
+        "path": "README.hi.md"
+      },
+      {
+        "commits": 6,
+        "lines": 375,
+        "path": "README.it.md"
+      },
+      {
+        "commits": 6,
+        "lines": 339,
+        "path": "README.ja.md"
+      },
+      {
+        "commits": 9,
+        "lines": 201,
         "path": "README.md"
       },
       {
-        "commits": 4,
-        "lines": 433,
+        "commits": 6,
+        "lines": 327,
         "path": "README.pt-BR.md"
       },
       {
-        "commits": 4,
-        "lines": 415,
+        "commits": 6,
+        "lines": 309,
         "path": "README.zh.md"
       },
       {
-        "commits": 2,
-        "lines": 86,
+        "commits": 1,
+        "lines": 43,
         "path": "SCORECARD.md"
       },
       {
         "commits": 3,
-        "lines": 72,
+        "lines": 41,
         "path": "SECURITY.md"
       },
       {
-        "commits": 4,
-        "lines": 168,
+        "commits": 3,
+        "lines": 88,
         "path": "SHIP_GATE.md"
       },
       {
-        "commits": 2,
-        "lines": 70,
+        "commits": 1,
+        "lines": 35,
         "path": "ai-ui.config.json"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "assets/logo.png"
       },
       {
         "commits": 4,
-        "lines": 187,
+        "lines": 180,
         "path": "atlas/README.md"
       },
       {
@@ -329,7 +334,7 @@
       },
       {
         "commits": 4,
-        "lines": 764,
+        "lines": 734,
         "path": "atlas/page.json"
       },
       {
@@ -343,8 +348,8 @@
         "path": "atlas/structure.json"
       },
       {
-        "commits": 2,
-        "lines": 16,
+        "commits": 1,
+        "lines": 8,
         "path": "codecov.yml"
       },
       {
@@ -369,17 +374,17 @@
       },
       {
         "commits": 3,
-        "lines": 76,
+        "lines": 48,
         "path": "desktop/LoKeyTyper.sln"
       },
       {
-        "commits": 2,
-        "lines": 26,
+        "commits": 1,
+        "lines": 13,
         "path": "desktop/LoKeyTyper/App.xaml"
       },
       {
-        "commits": 3,
-        "lines": 83,
+        "commits": 2,
+        "lines": 66,
         "path": "desktop/LoKeyTyper/App.xaml.cs"
       },
       {
@@ -424,22 +429,22 @@
       },
       {
         "commits": 3,
-        "lines": 106,
+        "lines": 60,
         "path": "desktop/LoKeyTyper/LoKeyTyper.csproj"
       },
       {
-        "commits": 4,
-        "lines": 98,
+        "commits": 6,
+        "lines": 95,
         "path": "desktop/LoKeyTyper/MainWindow.xaml"
       },
       {
-        "commits": 7,
-        "lines": 871,
+        "commits": 11,
+        "lines": 814,
         "path": "desktop/LoKeyTyper/MainWindow.xaml.cs"
       },
       {
         "commits": 5,
-        "lines": 115,
+        "lines": 68,
         "path": "desktop/LoKeyTyper/Package.appxmanifest"
       },
       {
@@ -448,8 +453,8 @@
         "path": "desktop/LoKeyTyper/WebContent/assets/index-B1iOhOUC.css"
       },
       {
-        "commits": 3,
-        "lines": 531,
+        "commits": 2,
+        "lines": 354,
         "path": "desktop/LoKeyTyper/WebContent/assets/index-CaJAhlUG.js"
       },
       {
@@ -468,373 +473,373 @@
         "path": "desktop/LoKeyTyper/WebContent/assets/index-uLDiQ1uZ.js"
       },
       {
-        "commits": 3,
-        "lines": 3,
+        "commits": 2,
+        "lines": 2,
         "path": "desktop/LoKeyTyper/WebContent/assets/index-vhO8ktpx.css"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/.gitkeep"
       },
       {
         "commits": 3,
-        "lines": 46,
+        "lines": 84,
         "path": "desktop/LoKeyTyper/WebContent/audio/README.md"
       },
       {
         "commits": 2,
-        "lines": 34,
+        "lines": 47,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/README.md"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/.gitkeep"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/.gitkeep"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/air/focus_soft_air_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/air/focus_soft_air_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/air/focus_soft_air_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/air/focus_warm_air_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/air/focus_warm_air_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/air/focus_warm_air_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/room/focus_warm_room_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/room/focus_warm_room_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/focus_warm/room/focus_warm_room_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/air/nature_air_air_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/air/nature_air_air_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/air/nature_air_air_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/room/nature_air_room_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/room/nature_air_room_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/focus/nature_air/room/nature_air_room_03.wav"
       },
       {
-        "commits": 2,
-        "lines": 1044,
+        "commits": 1,
+        "lines": 522,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/manifest.json"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/nature/.gitkeep"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/ocean/ocean_coastal_breeze.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/ocean/ocean_gentle_waves.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/ocean/ocean_pebble_shore.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/rain/rain_heavy_downpour.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/rain/rain_steady.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/rain/rain_thunderstorm.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/wind/wind_alpine_meadow.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/wind/wind_pine_forest.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_celestial_wash.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_crystal_harmonics.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_deep_earth_drone.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_ethereal_pad.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_om_drone.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_singing_bowl.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/ambient/zen/zen_warm_fifths.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/backspace.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/error.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/key_1.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/key_2.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/key_3.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/key_4.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/return_bell.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "desktop/LoKeyTyper/WebContent/audio/spacebar.wav"
       },
       {
-        "commits": 5,
-        "lines": 68,
+        "commits": 4,
+        "lines": 52,
         "path": "desktop/LoKeyTyper/WebContent/index.html"
       },
       {
@@ -859,37 +864,37 @@
       },
       {
         "commits": 4,
-        "lines": 28,
+        "lines": 23,
         "path": "desktop/LoKeyTyper/WebContent/logo.svg"
       },
       {
         "commits": 3,
-        "lines": 78,
+        "lines": 79,
         "path": "desktop/LoKeyTyper/WebContent/manifest.webmanifest"
       },
       {
-        "commits": 3,
-        "lines": 134,
+        "commits": 2,
+        "lines": 70,
         "path": "desktop/LoKeyTyper/WebContent/privacy.html"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "desktop/LoKeyTyper/WebContent/registerSW.js"
       },
       {
-        "commits": 4,
-        "lines": 6,
+        "commits": 3,
+        "lines": 5,
         "path": "desktop/LoKeyTyper/WebContent/sw.js"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "desktop/LoKeyTyper/WebContent/vite.svg"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "desktop/LoKeyTyper/WebContent/workbox-8c29f6e4.js"
       },
       {
@@ -903,8 +908,8 @@
         "path": "desktop/LoKeyTyper/WindowLayout.cs"
       },
       {
-        "commits": 2,
-        "lines": 34,
+        "commits": 1,
+        "lines": 17,
         "path": "desktop/LoKeyTyper/app.manifest"
       },
       {
@@ -913,113 +918,113 @@
         "path": "docker/nginx.conf"
       },
       {
-        "commits": 2,
-        "lines": 46,
+        "commits": 1,
+        "lines": 23,
         "path": "docs/accessibility-commitment.md"
       },
       {
-        "commits": 2,
-        "lines": 56,
+        "commits": 1,
+        "lines": 28,
         "path": "docs/audio-review-checklist.md"
       },
       {
-        "commits": 2,
-        "lines": 56,
+        "commits": 1,
+        "lines": 28,
         "path": "docs/how-personalization-works.md"
       },
       {
-        "commits": 3,
-        "lines": 494,
+        "commits": 4,
+        "lines": 260,
         "path": "docs/sound-design-manifesto.md"
       },
       {
-        "commits": 2,
-        "lines": 482,
+        "commits": 3,
+        "lines": 255,
         "path": "docs/sound-design.md"
       },
       {
         "commits": 2,
-        "lines": 116,
+        "lines": 68,
         "path": "docs/sound-philosophy.md"
       },
       {
-        "commits": 2,
-        "lines": 116,
+        "commits": 1,
+        "lines": 58,
         "path": "eslint.config.js"
       },
       {
-        "commits": 2,
-        "lines": 30,
+        "commits": 1,
+        "lines": 15,
         "path": "index.html"
       },
       {
-        "commits": 2,
-        "lines": 626,
+        "commits": 1,
+        "lines": 313,
         "path": "modular.md"
       },
       {
         "commits": 2,
-        "lines": 130,
+        "lines": 75,
         "path": "msix-package/AppxManifest.xml"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "msix-package/images/SplashScreen.png"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "msix-package/images/Square150x150Logo.png"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "msix-package/images/Square44x44Logo.png"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "msix-package/images/StoreLogo.png"
       },
       {
-        "commits": 4,
-        "lines": 22081,
+        "commits": 5,
+        "lines": 12656,
         "path": "package-lock.json"
       },
       {
-        "commits": 5,
-        "lines": 110,
+        "commits": 6,
+        "lines": 71,
         "path": "package.json"
       },
       {
-        "commits": 2,
-        "lines": 202,
+        "commits": 1,
+        "lines": 101,
         "path": "passport.json"
       },
       {
-        "commits": 2,
-        "lines": 350,
+        "commits": 1,
+        "lines": 175,
         "path": "personalization_engine.md"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "postcss.config.js"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/.gitkeep"
       },
       {
         "commits": 4,
-        "lines": 46,
+        "lines": 84,
         "path": "public/audio/README.md"
       },
       {
-        "commits": 4,
-        "lines": 36,
+        "commits": 5,
+        "lines": 54,
         "path": "public/audio/ambient/README.md"
       },
       {
@@ -1028,242 +1033,242 @@
         "path": "public/audio/ambient/binaural/binaural_alpha_ten.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/competitive/.gitkeep"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/competitive/competitive_clean/air/competitive_clean_air_03.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_01.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_02.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/competitive/competitive_clean/low_bed/competitive_clean_low_bed_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/competitive/competitive_clean/mid_presence/competitive_clean_mid_presence_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/.gitkeep"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_soft/air/focus_soft_air_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_soft/air/focus_soft_air_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_soft/air/focus_soft_air_03.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_01.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_02.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_soft/low_bed/focus_soft_low_bed_03.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_01.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_02.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_soft/mid_texture/focus_soft_mid_texture_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/air/focus_warm_air_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/air/focus_warm_air_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/air/focus_warm_air_03.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_01.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_02.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/low_bed/focus_warm_low_bed_03.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_01.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_02.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/mid_texture/focus_warm_mid_texture_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/room/focus_warm_room_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/room/focus_warm_room_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/focus_warm/room/focus_warm_room_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/air/nature_air_air_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/air/nature_air_air_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/air/nature_air_air_03.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_01.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_02.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/low_bed/nature_air_low_bed_03.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_01.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_02.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/mid_texture/nature_air_mid_texture_03.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/room/nature_air_room_01.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/room/nature_air_room_02.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/focus/nature_air/room/nature_air_room_03.wav"
       },
       {
-        "commits": 3,
-        "lines": 1506,
+        "commits": 2,
+        "lines": 984,
         "path": "public/audio/ambient/manifest.json"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/ambient/nature/.gitkeep"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/ocean/ocean_coastal_breeze.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/ocean/ocean_gentle_waves.wav"
       },
@@ -1273,22 +1278,22 @@
         "path": "public/audio/ambient/ocean/ocean_night_stones.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/ocean/ocean_pebble_shore.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/rain/rain_heavy_downpour.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/rain/rain_steady.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/rain/rain_thunderstorm.wav"
       },
@@ -1303,12 +1308,12 @@
         "path": "public/audio/ambient/rain/rain_wooden_roof.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/wind/wind_alpine_meadow.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/wind/wind_pine_forest.wav"
       },
@@ -1318,77 +1323,77 @@
         "path": "public/audio/ambient/zen/zen_bronze_sustain.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/zen/zen_celestial_wash.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/zen/zen_crystal_harmonics.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/zen/zen_deep_earth_drone.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/zen/zen_ethereal_pad.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/zen/zen_om_drone.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/zen/zen_singing_bowl.wav"
       },
       {
-        "commits": 3,
+        "commits": 2,
         "lines": 0,
         "path": "public/audio/ambient/zen/zen_warm_fifths.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/backspace.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/error.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/key_1.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/key_2.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/key_3.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/key_4.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/return_bell.wav"
       },
       {
-        "commits": 2,
+        "commits": 1,
         "lines": 0,
         "path": "public/audio/spacebar.wav"
       },
@@ -1414,17 +1419,17 @@
       },
       {
         "commits": 4,
-        "lines": 28,
+        "lines": 23,
         "path": "public/logo.svg"
       },
       {
-        "commits": 3,
-        "lines": 134,
+        "commits": 2,
+        "lines": 70,
         "path": "public/privacy.html"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "public/vite.svg"
       },
       {
@@ -1433,18 +1438,18 @@
         "path": "scripts/audio/check_bed_policy.py"
       },
       {
-        "commits": 5,
-        "lines": 297,
+        "commits": 6,
+        "lines": 211,
         "path": "scripts/audio/check_loudness.py"
       },
       {
-        "commits": 4,
-        "lines": 257,
+        "commits": 5,
+        "lines": 172,
         "path": "scripts/audio/check_spectrum.py"
       },
       {
         "commits": 2,
-        "lines": 814,
+        "lines": 447,
         "path": "scripts/audio/generate_ambient_stems.py"
       },
       {
@@ -1463,183 +1468,223 @@
         "path": "scripts/audio/master_loudness.py"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "scripts/audio/requirements.txt"
       },
       {
-        "commits": 2,
-        "lines": 2002,
+        "commits": 1,
+        "lines": 1001,
         "path": "scripts/generatePhase2Content.mjs"
       },
       {
-        "commits": 3,
-        "lines": 1566,
+        "commits": 2,
+        "lines": 791,
         "path": "scripts/icons/generate_icons.py"
       },
       {
-        "commits": 2,
-        "lines": 260,
+        "commits": 1,
+        "lines": 130,
         "path": "scripts/icons/generate_react_icons.py"
       },
       {
-        "commits": 2,
-        "lines": 134,
+        "commits": 1,
+        "lines": 67,
         "path": "scripts/icons/optimize_icons.py"
       },
       {
-        "commits": 3,
-        "lines": 350,
+        "commits": 5,
+        "lines": 413,
         "path": "scripts/qaAmbientAssets.mjs"
       },
       {
-        "commits": 2,
-        "lines": 315,
+        "commits": 3,
+        "lines": 170,
         "path": "scripts/qaPhase3Novelty.mjs"
       },
       {
-        "commits": 2,
-        "lines": 250,
+        "commits": 3,
+        "lines": 135,
         "path": "scripts/qaPhase3RecommendationSanity.mjs"
       },
       {
         "commits": 4,
-        "lines": 370,
+        "lines": 311,
         "path": "scripts/qaSoundDesignManifesto.mjs"
       },
       {
-        "commits": 2,
-        "lines": 353,
+        "commits": 3,
+        "lines": 188,
         "path": "scripts/smokeRotation.mjs"
       },
       {
-        "commits": 2,
-        "lines": 617,
+        "commits": 3,
+        "lines": 360,
         "path": "scripts/validatePhase2Content.mjs"
       },
       {
-        "commits": 2,
-        "lines": 258,
+        "commits": 1,
+        "lines": 129,
         "path": "settings.md"
       },
       {
         "commits": 3,
-        "lines": 60,
+        "lines": 35,
         "path": "site/astro.config.mjs"
       },
       {
         "commits": 3,
-        "lines": 21102,
+        "lines": 13569,
         "path": "site/package-lock.json"
       },
       {
         "commits": 3,
-        "lines": 42,
+        "lines": 27,
         "path": "site/package.json"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "site/postcss.config.mjs"
       },
       {
-        "commits": 2,
-        "lines": 14,
+        "commits": 1,
+        "lines": 7,
         "path": "site/src/content.config.ts"
       },
       {
-        "commits": 2,
-        "lines": 80,
-        "path": "site/src/content/docs/accessibility.md"
-      },
-      {
         "commits": 4,
-        "lines": 169,
+        "lines": 11,
         "path": "site/src/content/docs/beginners.md"
       },
       {
-        "commits": 3,
-        "lines": 76,
+        "commits": 2,
+        "lines": 12,
         "path": "site/src/content/docs/getting-started.md"
       },
       {
-        "commits": 2,
+        "commits": 1,
+        "lines": 40,
+        "path": "site/src/content/docs/handbook/accessibility.md"
+      },
+      {
+        "commits": 1,
+        "lines": 83,
+        "path": "site/src/content/docs/handbook/beginners.md"
+      },
+      {
+        "commits": 1,
+        "lines": 38,
+        "path": "site/src/content/docs/handbook/getting-started.md"
+      },
+      {
+        "commits": 1,
+        "lines": 21,
+        "path": "site/src/content/docs/handbook/index.md"
+      },
+      {
+        "commits": 1,
+        "lines": 60,
+        "path": "site/src/content/docs/handbook/personalization.md"
+      },
+      {
+        "commits": 1,
+        "lines": 41,
+        "path": "site/src/content/docs/handbook/practice-modes.md"
+      },
+      {
+        "commits": 1,
         "lines": 42,
-        "path": "site/src/content/docs/index.md"
+        "path": "site/src/content/docs/handbook/sound-design.md"
       },
       {
         "commits": 3,
-        "lines": 122,
+        "lines": 6,
         "path": "site/src/content/docs/personalization.md"
       },
       {
-        "commits": 3,
-        "lines": 95,
+        "commits": 2,
+        "lines": 21,
         "path": "site/src/content/docs/practice-modes.md"
       },
       {
-        "commits": 3,
-        "lines": 86,
+        "commits": 1,
+        "lines": 2,
         "path": "site/src/content/docs/sound-design.md"
       },
       {
         "commits": 2,
-        "lines": 34,
+        "lines": 66,
+        "path": "site/src/pages/index.astro"
+      },
+      {
+        "commits": 2,
+        "lines": 352,
+        "path": "site/src/site-config.ts"
+      },
+      {
+        "commits": 2,
+        "lines": 14,
+        "path": "site/src/styles/global.css"
+      },
+      {
+        "commits": 1,
+        "lines": 17,
         "path": "site/src/styles/starlight-custom.css"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "site/tsconfig.json"
       },
       {
-        "commits": 6,
-        "lines": 111,
+        "commits": 5,
+        "lines": 60,
         "path": "src/app/App.tsx"
       },
       {
-        "commits": 6,
-        "lines": 671,
+        "commits": 11,
+        "lines": 484,
         "path": "src/app/components/AudioSettingsPanel.tsx"
       },
       {
-        "commits": 2,
-        "lines": 80,
+        "commits": 1,
+        "lines": 40,
         "path": "src/app/components/ErrorBoundary.tsx"
       },
       {
         "commits": 3,
-        "lines": 745,
+        "lines": 387,
         "path": "src/app/components/Icon.tsx"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/app/index.ts"
       },
       {
-        "commits": 2,
-        "lines": 216,
+        "commits": 6,
+        "lines": 258,
         "path": "src/app/providers/AmbientProvider.tsx"
       },
       {
-        "commits": 2,
-        "lines": 124,
+        "commits": 7,
+        "lines": 235,
         "path": "src/app/providers/PreferencesProvider.tsx"
       },
       {
-        "commits": 2,
-        "lines": 4,
+        "commits": 1,
+        "lines": 2,
         "path": "src/app/providers/index.ts"
       },
       {
-        "commits": 10,
-        "lines": 402,
+        "commits": 18,
+        "lines": 461,
         "path": "src/app/shell/AppShell.tsx"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "src/app/shell/index.ts"
       },
       {
@@ -1648,578 +1693,578 @@
         "path": "src/app/useDocumentTitle.ts"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/ambient-air.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/ambient-drive.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/ambient-soft.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/ambient-warm.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/ambient-wave.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/arrow-left.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/arrow-right.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/backspace.svg"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "src/assets/icons/bar-chart.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/bookmark.svg"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "src/assets/icons/calendar.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/check.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/checkmark-circle.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/chevron-down.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/chevron-right.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/clock.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/cursor.svg"
       },
       {
-        "commits": 2,
-        "lines": 14,
+        "commits": 1,
+        "lines": 7,
         "path": "src/assets/icons/difficulty-1.svg"
       },
       {
-        "commits": 2,
-        "lines": 14,
+        "commits": 1,
+        "lines": 7,
         "path": "src/assets/icons/difficulty-2.svg"
       },
       {
-        "commits": 2,
-        "lines": 14,
+        "commits": 1,
+        "lines": 7,
         "path": "src/assets/icons/difficulty-3.svg"
       },
       {
-        "commits": 2,
-        "lines": 14,
+        "commits": 1,
+        "lines": 7,
         "path": "src/assets/icons/difficulty-4.svg"
       },
       {
-        "commits": 2,
-        "lines": 14,
+        "commits": 1,
+        "lines": 7,
         "path": "src/assets/icons/difficulty-5.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/external.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/eye-off.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/eye.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/filter.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/ghost.svg"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "src/assets/icons/grid.svg"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "src/assets/icons/hash.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/heart.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/home.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/info.svg"
       },
       {
-        "commits": 2,
-        "lines": 18,
+        "commits": 1,
+        "lines": 9,
         "path": "src/assets/icons/keyboard.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/kind-challenge.svg"
       },
       {
-        "commits": 2,
-        "lines": 22,
+        "commits": 1,
+        "lines": 11,
         "path": "src/assets/icons/kind-confidence.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/kind-mix.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/kind-real-life.svg"
       },
       {
-        "commits": 2,
-        "lines": 16,
+        "commits": 1,
+        "lines": 8,
         "path": "src/assets/icons/kind-targeted.svg"
       },
       {
-        "commits": 2,
-        "lines": 16,
+        "commits": 1,
+        "lines": 8,
         "path": "src/assets/icons/list.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/logo-mark.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/logo.svg"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "src/assets/icons/medal-bronze.svg"
       },
       {
-        "commits": 2,
-        "lines": 14,
+        "commits": 1,
+        "lines": 7,
         "path": "src/assets/icons/medal-gold.svg"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "src/assets/icons/medal-silver.svg"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "src/assets/icons/medal.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/minus.svg"
       },
       {
-        "commits": 2,
-        "lines": 14,
+        "commits": 1,
+        "lines": 7,
         "path": "src/assets/icons/mode-competitive.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/mode-focus.svg"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "src/assets/icons/mode-real-life.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/personal-best.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/play-circle.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/play.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/plus.svg"
       },
       {
-        "commits": 2,
-        "lines": 10,
+        "commits": 1,
+        "lines": 5,
         "path": "src/assets/icons/question.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/refresh.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/search.svg"
-      },
-      {
-        "commits": 3,
-        "lines": 25,
-        "path": "src/assets/icons/settings.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 10,
-        "path": "src/assets/icons/sound-off.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 10,
-        "path": "src/assets/icons/sound-on.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 6,
-        "path": "src/assets/icons/star.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 10,
-        "path": "src/assets/icons/stat-accuracy.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 28,
-        "path": "src/assets/icons/stat-days.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 8,
-        "path": "src/assets/icons/stat-sessions.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 10,
-        "path": "src/assets/icons/stat-speed.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 8,
-        "path": "src/assets/icons/stat-streak.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 14,
-        "path": "src/assets/icons/timer.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 8,
-        "path": "src/assets/icons/trending-down.svg"
-      },
-      {
-        "commits": 2,
-        "lines": 8,
-        "path": "src/assets/icons/trending-up.svg"
       },
       {
         "commits": 2,
         "lines": 16,
+        "path": "src/assets/icons/settings.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 5,
+        "path": "src/assets/icons/sound-off.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 5,
+        "path": "src/assets/icons/sound-on.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 3,
+        "path": "src/assets/icons/star.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 5,
+        "path": "src/assets/icons/stat-accuracy.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 14,
+        "path": "src/assets/icons/stat-days.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 4,
+        "path": "src/assets/icons/stat-sessions.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 5,
+        "path": "src/assets/icons/stat-speed.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 4,
+        "path": "src/assets/icons/stat-streak.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 7,
+        "path": "src/assets/icons/timer.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 4,
+        "path": "src/assets/icons/trending-down.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 4,
+        "path": "src/assets/icons/trending-up.svg"
+      },
+      {
+        "commits": 1,
+        "lines": 8,
         "path": "src/assets/icons/trophy.svg"
       },
       {
-        "commits": 2,
-        "lines": 12,
+        "commits": 1,
+        "lines": 6,
         "path": "src/assets/icons/type-text.svg"
       },
       {
-        "commits": 2,
-        "lines": 8,
+        "commits": 1,
+        "lines": 4,
         "path": "src/assets/icons/x-close.svg"
       },
       {
-        "commits": 2,
-        "lines": 6,
+        "commits": 1,
+        "lines": 3,
         "path": "src/assets/icons/zap.svg"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "src/assets/react.svg"
       },
       {
-        "commits": 2,
-        "lines": 98,
+        "commits": 1,
+        "lines": 49,
         "path": "src/content/catalog.ts"
       },
       {
-        "commits": 2,
-        "lines": 4,
+        "commits": 1,
+        "lines": 2,
         "path": "src/content/index.ts"
       },
       {
         "commits": 2,
-        "lines": 362,
+        "lines": 183,
         "path": "src/content/loadPacks.ts"
       },
       {
-        "commits": 2,
-        "lines": 1128,
+        "commits": 1,
+        "lines": 564,
         "path": "src/content/packs/competitive_mixed_01.json"
       },
       {
-        "commits": 2,
-        "lines": 1128,
+        "commits": 1,
+        "lines": 564,
         "path": "src/content/packs/competitive_mixed_02.json"
       },
       {
-        "commits": 2,
-        "lines": 1994,
+        "commits": 1,
+        "lines": 997,
         "path": "src/content/packs/competitive_templates.json"
       },
       {
-        "commits": 2,
-        "lines": 1414,
+        "commits": 1,
+        "lines": 707,
         "path": "src/content/packs/focus_calm_01.json"
       },
       {
-        "commits": 2,
-        "lines": 1414,
+        "commits": 1,
+        "lines": 707,
         "path": "src/content/packs/focus_calm_02.json"
       },
       {
-        "commits": 2,
-        "lines": 1414,
+        "commits": 1,
+        "lines": 707,
         "path": "src/content/packs/focus_calm_03.json"
       },
       {
-        "commits": 2,
-        "lines": 1380,
+        "commits": 1,
+        "lines": 690,
         "path": "src/content/packs/real_life_admin_forms_01.json"
       },
       {
-        "commits": 2,
-        "lines": 1244,
+        "commits": 1,
+        "lines": 622,
         "path": "src/content/packs/real_life_admin_templates.json"
       },
       {
-        "commits": 2,
-        "lines": 1494,
+        "commits": 1,
+        "lines": 747,
         "path": "src/content/packs/real_life_email_01.json"
       },
       {
-        "commits": 2,
-        "lines": 1494,
+        "commits": 1,
+        "lines": 747,
         "path": "src/content/packs/real_life_email_02.json"
       },
       {
-        "commits": 2,
-        "lines": 5084,
+        "commits": 1,
+        "lines": 2542,
         "path": "src/content/packs/real_life_email_templates.json"
       },
       {
-        "commits": 2,
-        "lines": 1348,
+        "commits": 1,
+        "lines": 674,
         "path": "src/content/packs/real_life_journal_01.json"
       },
       {
-        "commits": 2,
-        "lines": 1034,
+        "commits": 1,
+        "lines": 517,
         "path": "src/content/packs/real_life_journal_templates.json"
       },
       {
-        "commits": 2,
-        "lines": 1414,
+        "commits": 1,
+        "lines": 707,
         "path": "src/content/packs/real_life_meetings_notes_01.json"
       },
       {
-        "commits": 2,
-        "lines": 3494,
+        "commits": 1,
+        "lines": 1747,
         "path": "src/content/packs/real_life_meetings_templates.json"
       },
       {
-        "commits": 2,
-        "lines": 1398,
+        "commits": 1,
+        "lines": 699,
         "path": "src/content/packs/real_life_support_01.json"
       },
       {
-        "commits": 2,
-        "lines": 1004,
+        "commits": 1,
+        "lines": 502,
         "path": "src/content/packs/real_life_support_templates.json"
       },
       {
-        "commits": 2,
-        "lines": 1414,
+        "commits": 1,
+        "lines": 707,
         "path": "src/content/packs/real_life_texts_01.json"
       },
       {
-        "commits": 2,
-        "lines": 1414,
+        "commits": 1,
+        "lines": 707,
         "path": "src/content/packs/real_life_texts_02.json"
       },
       {
-        "commits": 2,
-        "lines": 914,
+        "commits": 1,
+        "lines": 457,
         "path": "src/content/packs/real_life_texts_templates.json"
       },
       {
-        "commits": 2,
-        "lines": 192,
+        "commits": 1,
+        "lines": 96,
         "path": "src/content/phase2/accessibility_presets.json"
       },
       {
-        "commits": 2,
-        "lines": 100,
+        "commits": 1,
+        "lines": 50,
         "path": "src/content/phase2/content_index.json"
       },
       {
-        "commits": 2,
-        "lines": 488,
+        "commits": 1,
+        "lines": 244,
         "path": "src/content/phase2/micro_feedback_rules_v2.json"
       },
       {
-        "commits": 2,
-        "lines": 134,
+        "commits": 1,
+        "lines": 67,
         "path": "src/content/phase2/schemas/accessibility_presets.schema.json"
       },
       {
-        "commits": 2,
-        "lines": 102,
+        "commits": 1,
+        "lines": 51,
         "path": "src/content/phase2/schemas/exercise_template.schema.json"
       },
       {
-        "commits": 2,
-        "lines": 122,
+        "commits": 1,
+        "lines": 61,
         "path": "src/content/phase2/schemas/micro_feedback_rules_v2.schema.json"
       },
       {
-        "commits": 2,
-        "lines": 158,
+        "commits": 1,
+        "lines": 79,
         "path": "src/content/phase2/schemas/user_settings.schema.json"
       },
       {
-        "commits": 2,
-        "lines": 64,
+        "commits": 1,
+        "lines": 32,
         "path": "src/content/phase2/ui_strings_accessible.json"
       },
       {
-        "commits": 2,
-        "lines": 230,
+        "commits": 1,
+        "lines": 115,
         "path": "src/content/phase3/schemas/user_skill_model.schema.json"
       },
       {
-        "commits": 2,
-        "lines": 102,
+        "commits": 1,
+        "lines": 51,
         "path": "src/content/types.ts"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "src/features/daily/index.ts"
       },
       {
-        "commits": 11,
-        "lines": 1318,
+        "commits": 25,
+        "lines": 1143,
         "path": "src/features/daily/pages/DailySetPage.tsx"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "src/features/home/index.ts"
       },
       {
-        "commits": 7,
-        "lines": 234,
+        "commits": 9,
+        "lines": 146,
         "path": "src/features/home/pages/HomePage.tsx"
       },
       {
-        "commits": 3,
-        "lines": 11,
+        "commits": 2,
+        "lines": 6,
         "path": "src/features/index.ts"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "src/features/modes/index.ts"
       },
       {
-        "commits": 7,
-        "lines": 543,
+        "commits": 12,
+        "lines": 360,
         "path": "src/features/modes/pages/ModePage.tsx"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "src/features/run/index.ts"
       },
       {
-        "commits": 9,
-        "lines": 410,
+        "commits": 20,
+        "lines": 354,
         "path": "src/features/run/pages/RunPage.tsx"
       },
       {
@@ -2233,93 +2278,93 @@
         "path": "src/features/study/pages/StudyPage.tsx"
       },
       {
-        "commits": 6,
-        "lines": 210,
+        "commits": 9,
+        "lines": 121,
         "path": "src/features/typing/TypingOverlay.tsx"
       },
       {
-        "commits": 10,
-        "lines": 1456,
+        "commits": 21,
+        "lines": 1126,
         "path": "src/features/typing/TypingSession.tsx"
       },
       {
-        "commits": 2,
-        "lines": 4,
+        "commits": 1,
+        "lines": 2,
         "path": "src/features/typing/index.ts"
       },
       {
-        "commits": 2,
-        "lines": 108,
+        "commits": 3,
+        "lines": 67,
         "path": "src/index.css"
       },
       {
-        "commits": 2,
-        "lines": 20,
+        "commits": 1,
+        "lines": 10,
         "path": "src/lib/ambient.ts"
       },
       {
-        "commits": 2,
-        "lines": 168,
+        "commits": 1,
+        "lines": 84,
         "path": "src/lib/ambient/ambientHistoryV3.ts"
       },
       {
-        "commits": 6,
-        "lines": 1306,
+        "commits": 11,
+        "lines": 900,
         "path": "src/lib/ambient/ambientPlayerV3.ts"
       },
       {
-        "commits": 2,
-        "lines": 40,
+        "commits": 1,
+        "lines": 20,
         "path": "src/lib/ambient/loopJoin.ts"
       },
       {
-        "commits": 2,
-        "lines": 102,
+        "commits": 1,
+        "lines": 51,
         "path": "src/lib/ambient/lruBufferCache.ts"
       },
       {
         "commits": 2,
-        "lines": 208,
+        "lines": 104,
         "path": "src/lib/ambientManifest.ts"
       },
       {
-        "commits": 2,
-        "lines": 34,
+        "commits": 1,
+        "lines": 17,
         "path": "src/lib/attackOffset.ts"
       },
       {
         "commits": 3,
-        "lines": 364,
+        "lines": 206,
         "path": "src/lib/audio.ts"
       },
       {
-        "commits": 2,
-        "lines": 42,
+        "commits": 1,
+        "lines": 21,
         "path": "src/lib/audioContext.ts"
       },
       {
-        "commits": 2,
-        "lines": 535,
+        "commits": 11,
+        "lines": 499,
         "path": "src/lib/contentEngine.ts"
       },
       {
-        "commits": 3,
-        "lines": 1026,
+        "commits": 9,
+        "lines": 762,
         "path": "src/lib/dailySet.ts"
       },
       {
-        "commits": 2,
-        "lines": 40,
+        "commits": 1,
+        "lines": 20,
         "path": "src/lib/effectivePrefs.ts"
       },
       {
-        "commits": 4,
-        "lines": 158,
+        "commits": 3,
+        "lines": 81,
         "path": "src/lib/feedback.ts"
       },
       {
-        "commits": 2,
-        "lines": 2,
+        "commits": 1,
+        "lines": 1,
         "path": "src/lib/index.ts"
       },
       {
@@ -2333,38 +2378,38 @@
         "path": "src/lib/keyboardVoice.ts"
       },
       {
-        "commits": 2,
-        "lines": 52,
+        "commits": 1,
+        "lines": 26,
         "path": "src/lib/mode.ts"
       },
       {
-        "commits": 2,
-        "lines": 146,
+        "commits": 10,
+        "lines": 207,
         "path": "src/lib/passageShape.ts"
       },
       {
-        "commits": 5,
-        "lines": 155,
+        "commits": 8,
+        "lines": 97,
         "path": "src/lib/public/index.ts"
       },
       {
         "commits": 2,
-        "lines": 308,
+        "lines": 168,
         "path": "src/lib/recommendations.ts"
       },
       {
-        "commits": 2,
-        "lines": 34,
+        "commits": 3,
+        "lines": 23,
         "path": "src/lib/repeatPassage.ts"
       },
       {
-        "commits": 2,
-        "lines": 524,
+        "commits": 3,
+        "lines": 342,
         "path": "src/lib/skillModel.ts"
       },
       {
-        "commits": 4,
-        "lines": 1489,
+        "commits": 8,
+        "lines": 1186,
         "path": "src/lib/storage.ts"
       },
       {
@@ -2378,28 +2423,28 @@
         "path": "src/lib/studyStore.ts"
       },
       {
-        "commits": 2,
-        "lines": 122,
+        "commits": 1,
+        "lines": 61,
         "path": "src/lib/templateRender.ts"
       },
       {
-        "commits": 2,
-        "lines": 82,
+        "commits": 1,
+        "lines": 41,
         "path": "src/lib/typing.ts"
       },
       {
-        "commits": 2,
+        "commits": 3,
         "lines": 60,
         "path": "src/lib/typingEdit.ts"
       },
       {
-        "commits": 2,
-        "lines": 80,
+        "commits": 1,
+        "lines": 40,
         "path": "src/lib/typingMetrics.ts"
       },
       {
-        "commits": 2,
-        "lines": 40,
+        "commits": 3,
+        "lines": 24,
         "path": "src/main.tsx"
       },
       {
@@ -2413,8 +2458,8 @@
         "path": "store-assets/FeaturedSquare_1080x1080.png"
       },
       {
-        "commits": 4,
-        "lines": 232,
+        "commits": 5,
+        "lines": 149,
         "path": "store-assets/STORE_LISTING.md"
       },
       {
@@ -2468,8 +2513,8 @@
         "path": "store-assets/screenshots/06-competitive.png"
       },
       {
-        "commits": 2,
-        "lines": 38,
+        "commits": 1,
+        "lines": 19,
         "path": "tailwind.config.js"
       },
       {
@@ -2478,48 +2523,48 @@
         "path": "tests/ambientCatalog.test.ts"
       },
       {
-        "commits": 6,
-        "lines": 2180,
+        "commits": 7,
+        "lines": 1209,
         "path": "tests/ambientPlayer.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 44,
+        "commits": 1,
+        "lines": 22,
         "path": "tests/ambientVisibility.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 40,
+        "commits": 1,
+        "lines": 20,
         "path": "tests/attackOffset.test.ts"
       },
       {
-        "commits": 3,
-        "lines": 795,
+        "commits": 2,
+        "lines": 415,
         "path": "tests/audio.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 72,
+        "commits": 1,
+        "lines": 36,
         "path": "tests/catalog.test.ts"
       },
       {
-        "commits": 3,
-        "lines": 665,
+        "commits": 2,
+        "lines": 340,
         "path": "tests/coverageAudio.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 1016,
+        "commits": 1,
+        "lines": 508,
         "path": "tests/coverageGaps.test.ts"
       },
       {
-        "commits": 3,
-        "lines": 350,
+        "commits": 4,
+        "lines": 324,
         "path": "tests/dailySet.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 256,
+        "commits": 1,
+        "lines": 128,
         "path": "tests/icon.test.tsx"
       },
       {
@@ -2528,8 +2573,8 @@
         "path": "tests/keyboardPassage.test.ts"
       },
       {
-        "commits": 7,
-        "lines": 4948,
+        "commits": 9,
+        "lines": 2670,
         "path": "tests/libCoverage.test.ts"
       },
       {
@@ -2538,33 +2583,33 @@
         "path": "tests/logoPlate.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 40,
+        "commits": 3,
+        "lines": 31,
         "path": "tests/loopJoin.test.ts"
       },
       {
-        "commits": 16,
-        "lines": 3079,
+        "commits": 19,
+        "lines": 1988,
         "path": "tests/pages.test.tsx"
       },
       {
-        "commits": 3,
-        "lines": 224,
+        "commits": 8,
+        "lines": 193,
         "path": "tests/passageShape.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 270,
+        "commits": 6,
+        "lines": 278,
         "path": "tests/pickNextExercise.test.ts"
       },
       {
-        "commits": 3,
-        "lines": 519,
+        "commits": 6,
+        "lines": 465,
         "path": "tests/preferences.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 52,
+        "commits": 3,
+        "lines": 36,
         "path": "tests/repeatPassage.test.ts"
       },
       {
@@ -2588,49 +2633,84 @@
         "path": "tests/studyStore.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 148,
+        "commits": 3,
+        "lines": 75,
         "path": "tests/templateRender.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 58,
+        "commits": 5,
+        "lines": 40,
         "path": "tests/typingEdit.test.ts"
       },
       {
-        "commits": 2,
-        "lines": 114,
+        "commits": 1,
+        "lines": 57,
         "path": "tests/typingMetrics.test.ts"
       },
       {
         "commits": 12,
-        "lines": 1898,
+        "lines": 1055,
         "path": "tests/typingSession.test.tsx"
       },
       {
-        "commits": 2,
-        "lines": 80,
+        "commits": 1,
+        "lines": 40,
         "path": "tsconfig.app.json"
       },
       {
-        "commits": 3,
-        "lines": 18,
+        "commits": 4,
+        "lines": 16,
         "path": "tsconfig.json"
       },
       {
-        "commits": 2,
-        "lines": 76,
+        "commits": 1,
+        "lines": 38,
         "path": "tsconfig.node.json"
       },
       {
-        "commits": 1,
-        "lines": 36,
+        "commits": 2,
+        "lines": 72,
         "path": "tsconfig.tests.json"
       },
       {
-        "commits": 2,
-        "lines": 160,
+        "commits": 4,
+        "lines": 84,
         "path": "vite.config.ts"
+      },
+      {
+        "commits": 1,
+        "lines": 4,
+        "path": "}/accessibility.md"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "}/beginners.md"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "}/getting-started.md"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "}/index.md"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "}/personalization.md"
+      },
+      {
+        "commits": 1,
+        "lines": 0,
+        "path": "}/practice-modes.md"
+      },
+      {
+        "commits": 1,
+        "lines": 12,
+        "path": "}/sound-design.md"
       }
     ]
   },
@@ -2638,31 +2718,304 @@
     "level": "low",
     "reason": "fewer than 25 source files reach 10 revisions in the window"
   },
-  "generatedAt": "2026-10-15T03:18:58.899Z",
+  "generatedAt": "2026-11-11T22:21:24.375Z",
   "generatedFrom": {
-    "commit": "c01213c34c38e8e91f237981d2edb980e6f484dd"
+    "commit": "d3120c3900d820efe86148484b0af52ba13b5d3c"
   },
   "pairs": [
     {
-      "a": "src/app/shell/AppShell.tsx",
-      "b": "src/features/daily/pages/DailySetPage.tsx",
-      "either": 6,
-      "shared": 4,
-      "strength": 0.666667
+      "a": "README.es.md",
+      "b": "README.fr.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
     },
     {
-      "a": "src/app/shell/AppShell.tsx",
-      "b": "src/features/typing/TypingSession.tsx",
+      "a": "README.es.md",
+      "b": "README.hi.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.es.md",
+      "b": "README.it.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.es.md",
+      "b": "README.ja.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.es.md",
+      "b": "README.md",
+      "either": 8,
+      "shared": 5,
+      "strength": 0.625
+    },
+    {
+      "a": "README.es.md",
+      "b": "README.pt-BR.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.es.md",
+      "b": "README.zh.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.fr.md",
+      "b": "README.hi.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.fr.md",
+      "b": "README.it.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.fr.md",
+      "b": "README.ja.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.fr.md",
+      "b": "README.md",
+      "either": 8,
+      "shared": 5,
+      "strength": 0.625
+    },
+    {
+      "a": "README.fr.md",
+      "b": "README.pt-BR.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.fr.md",
+      "b": "README.zh.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.hi.md",
+      "b": "README.it.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.hi.md",
+      "b": "README.ja.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.hi.md",
+      "b": "README.md",
+      "either": 8,
+      "shared": 5,
+      "strength": 0.625
+    },
+    {
+      "a": "README.hi.md",
+      "b": "README.pt-BR.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.hi.md",
+      "b": "README.zh.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.it.md",
+      "b": "README.ja.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.it.md",
+      "b": "README.md",
+      "either": 8,
+      "shared": 5,
+      "strength": 0.625
+    },
+    {
+      "a": "README.it.md",
+      "b": "README.pt-BR.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.it.md",
+      "b": "README.zh.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.ja.md",
+      "b": "README.md",
+      "either": 8,
+      "shared": 5,
+      "strength": 0.625
+    },
+    {
+      "a": "README.ja.md",
+      "b": "README.pt-BR.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.ja.md",
+      "b": "README.zh.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "README.md",
+      "b": "README.pt-BR.md",
+      "either": 8,
+      "shared": 5,
+      "strength": 0.625
+    },
+    {
+      "a": "README.md",
+      "b": "README.zh.md",
+      "either": 8,
+      "shared": 5,
+      "strength": 0.625
+    },
+    {
+      "a": "README.pt-BR.md",
+      "b": "README.zh.md",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "desktop/LoKeyTyper.Tests/WebContentHostTests.cs",
+      "b": "desktop/LoKeyTyper/MainWindow.xaml.cs",
       "either": 7,
       "shared": 4,
       "strength": 0.571429
     },
     {
+      "a": "desktop/LoKeyTyper.Tests/WebContentHostTests.cs",
+      "b": "desktop/LoKeyTyper/WebContentHost.cs",
+      "either": 5,
+      "shared": 5,
+      "strength": 1
+    },
+    {
+      "a": "desktop/LoKeyTyper/MainWindow.xaml.cs",
+      "b": "desktop/LoKeyTyper/WebContentHost.cs",
+      "either": 7,
+      "shared": 4,
+      "strength": 0.571429
+    },
+    {
+      "a": "src/app/components/AudioSettingsPanel.tsx",
+      "b": "src/app/shell/AppShell.tsx",
+      "either": 11,
+      "shared": 6,
+      "strength": 0.545455
+    },
+    {
+      "a": "src/app/components/AudioSettingsPanel.tsx",
+      "b": "src/features/home/pages/HomePage.tsx",
+      "either": 8,
+      "shared": 4,
+      "strength": 0.5
+    },
+    {
+      "a": "src/app/components/AudioSettingsPanel.tsx",
+      "b": "src/lib/storage.ts",
+      "either": 8,
+      "shared": 4,
+      "strength": 0.5
+    },
+    {
+      "a": "src/app/shell/AppShell.tsx",
+      "b": "src/features/daily/pages/DailySetPage.tsx",
+      "either": 16,
+      "shared": 8,
+      "strength": 0.5
+    },
+    {
+      "a": "src/app/shell/AppShell.tsx",
+      "b": "src/features/home/pages/HomePage.tsx",
+      "either": 10,
+      "shared": 5,
+      "strength": 0.5
+    },
+    {
+      "a": "src/app/shell/AppShell.tsx",
+      "b": "src/features/run/pages/RunPage.tsx",
+      "either": 14,
+      "shared": 7,
+      "strength": 0.5
+    },
+    {
+      "a": "src/features/daily/pages/DailySetPage.tsx",
+      "b": "src/features/run/pages/RunPage.tsx",
+      "either": 16,
+      "shared": 9,
+      "strength": 0.5625
+    },
+    {
+      "a": "src/features/daily/pages/DailySetPage.tsx",
+      "b": "src/features/typing/TypingSession.tsx",
+      "either": 18,
+      "shared": 9,
+      "strength": 0.5
+    },
+    {
+      "a": "src/features/home/pages/HomePage.tsx",
+      "b": "src/features/modes/pages/ModePage.tsx",
+      "either": 6,
+      "shared": 5,
+      "strength": 0.833333
+    },
+    {
+      "a": "src/lib/contentEngine.ts",
+      "b": "src/lib/passageShape.ts",
+      "either": 8,
+      "shared": 4,
+      "strength": 0.5
+    },
+    {
       "a": "tests/pages.test.tsx",
       "b": "tests/typingSession.test.tsx",
-      "either": 10,
-      "shared": 6,
-      "strength": 0.6
+      "either": 14,
+      "shared": 8,
+      "strength": 0.571429
     }
   ],
   "parameters": {
@@ -2675,16 +3028,16 @@
     "floor": "fallen",
     "floorHeld": false,
     "floorTrigger": "revision-depth",
-    "headDate": "2026-10-14T22:56:03-04:00",
+    "headDate": "2026-10-15T01:52:00-07:00",
     "inScopeFiles": 482,
     "pinnedStart": null,
     "priorFloor": "fallen",
-    "qualifyingCommits": 35,
+    "qualifyingCommits": 75,
     "qualifyingMinimum": 30,
     "revisions": 5,
     "shared": 10,
     "sharedFloorUsed": 3,
-    "since": "2026-04-18T02:56:03.000Z",
+    "since": "2026-04-18T08:52:00.000Z",
     "sourceExtensions": [
       ".js",
       ".mjs",
@@ -2700,7 +3053,7 @@
     ],
     "sourceFileReach": 20,
     "sourceFileRise": 25,
-    "sourceFilesReachingStrongFloor": 0,
+    "sourceFilesReachingStrongFloor": 5,
     "strength": 0.5,
     "windowDays": 180
   },
