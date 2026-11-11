@@ -9,7 +9,7 @@
       "externals": 0,
       "files": [
         {
-          "hash": "66a1315e73c3672f120311580355e3b5166c5e02b67fb7c3560513b9947b005a",
+          "hash": "aa3745042280995f0e6869c1b2ae6d274b5ce9e5bc7d5deb3da544d26b1158d7",
           "path": ".github/workflows/ci.yml"
         },
         {
@@ -2536,11 +2536,11 @@
           "path": "modular.md"
         },
         {
-          "hash": "3494ff74162afc0f5f30b08ec8af48dde1ea4c1117146bb9bd6225bf17ea1866",
+          "hash": "ee37b446115a0514f850169be8fd131c8a840cc920caf0b6d05e49cd6c836c90",
           "path": "package-lock.json"
         },
         {
-          "hash": "470d724ec9f8f84ba948b15f8833df1f3875203b65012e7569a303fc82efe0ca",
+          "hash": "98858df12dfcc5393e34d5fb16e9bb7d79d9c7a4c36260d57c7b85d646f1c40b",
           "path": "package.json"
         },
         {
@@ -3126,11 +3126,11 @@
           "path": "site/astro.config.mjs"
         },
         {
-          "hash": "dd48a1d64bc3670c5a8fc75e95a66d1e971decf5b70eda3b06c8860ed9fb2fce",
+          "hash": "2b34c157fc1596604daad0f93ac093aae39b86c824424d473681a23b1d1aaf26",
           "path": "site/package-lock.json"
         },
         {
-          "hash": "17ed487ab5049bb52f8c5e35f77f21be7da639f1fb6a3fa70e9b02ffabfe7be6",
+          "hash": "f70476bbf956f26e144852469081483b247f4867786b127be7c97ffdc39cfb39",
           "path": "site/package.json"
         },
         {
@@ -4787,7 +4787,7 @@
           "testFramework": "vitest"
         },
         {
-          "hash": "41b889475e1002d6df5beda7e6cd11731e21b626bb5a523e3d39dfafc21c1600",
+          "hash": "616aa5306100f6e85cf111fe83130d0a15a8b94745e69af3547f6f36f2350711",
           "importsFiles": [
             "src/lib/keyboardPassage.ts",
             "src/lib/repeatPassage.ts",
@@ -5791,9 +5791,9 @@
       "to": "src"
     }
   ],
-  "engine": "1.24.0",
+  "engine": "1.26.0",
   "generatedFrom": {
-    "commit": "c01213c34c38e8e91f237981d2edb980e6f484dd",
+    "commit": "d3120c3900d820efe86148484b0af52ba13b5d3c",
     "tracked": 477
   },
   "landings": [
