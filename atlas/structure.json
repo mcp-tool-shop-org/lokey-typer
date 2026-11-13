@@ -2536,11 +2536,11 @@
           "path": "modular.md"
         },
         {
-          "hash": "ee37b446115a0514f850169be8fd131c8a840cc920caf0b6d05e49cd6c836c90",
+          "hash": "81f8dc10146117efb9a4242c12a7c9ee62277296674dcdff7960875774fa8e5f",
           "path": "package-lock.json"
         },
         {
-          "hash": "98858df12dfcc5393e34d5fb16e9bb7d79d9c7a4c36260d57c7b85d646f1c40b",
+          "hash": "50df4d056d254b5f26b4f0fc5838d2fc79d0f5a56574108e64319841e5ff4d6a",
           "path": "package.json"
         },
         {
@@ -3126,7 +3126,7 @@
           "path": "site/astro.config.mjs"
         },
         {
-          "hash": "2b34c157fc1596604daad0f93ac093aae39b86c824424d473681a23b1d1aaf26",
+          "hash": "3c3bedafe5ed5aabd87d71bd24fe0110b7099f1c88092b60dac256180d583b99",
           "path": "site/package-lock.json"
         },
         {
@@ -5793,7 +5793,7 @@
   ],
   "engine": "1.26.0",
   "generatedFrom": {
-    "commit": "d3120c3900d820efe86148484b0af52ba13b5d3c",
+    "commit": "439091008a7d3950c09e03c846f981a87767323a",
     "tracked": 477
   },
   "landings": [
